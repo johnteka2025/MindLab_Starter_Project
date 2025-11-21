@@ -1,0 +1,14 @@
+﻿node_modules
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+.DS_Store
+.git
+.gitignore
+test-results
+playwright-report
+frontend/dist
+backend/static
+Dockerfile
+Dockerfile.*
+full_smoke.ps1

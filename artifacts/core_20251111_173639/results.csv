@@ -1,0 +1,3 @@
+"path","status","ok"
+"/api/health","404","False"
+"/api/ping","404","False"

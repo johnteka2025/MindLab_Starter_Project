@@ -1,0 +1,10 @@
+﻿node_modules/
+dist/
+backend/static/
+frontend/dist/
+.env
+npm-debug.log*
+playwright-report/
+test-results/
+.vscode/
+.DS_Store

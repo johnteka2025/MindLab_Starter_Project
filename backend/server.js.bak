@@ -1,0 +1,20 @@
+﻿const http = require("http");
+
+// MUST listen on 0.0.0.0 inside Docker so other containers can reach us
+const HOST = "0.0.0.0";
+const PORT = process.env.PORT || 8085;
+
+const server = http.createServer(async (req, res) => {
+  if (req.url === "/health") {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.end(JSON.stringify({ ok: true }));
+    return;
+  }
+  // TODO: add your routes here (auth, puzzles, etc.)
+  res.writeHead(404, {"Content-Type": "application/json"});
+  res.end(JSON.stringify({ error: "not found", path: req.url }));
+});
+
+server.listen(PORT, HOST, () => {
+  console.log(`API listening on http://${HOST}:${PORT}`);
+});

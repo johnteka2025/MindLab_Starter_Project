@@ -1,0 +1,32 @@
+﻿services:
+  db:
+    image: postgres:15-alpine
+    container_name: mindlab-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - mindlab_pg:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    container_name: mindlab-api
+    depends_on: [ db ]
+    env_file: [ ./prod/.env ]
+    ports: [ "${API_PORT}:8085" ]
+
+  web:
+    build:
+      context: ../web
+      dockerfile: Dockerfile
+    container_name: mindlab-web
+    depends_on: [ api ]
+    env_file: [ ./prod/.env ]
+    environment: [ "VITE_API_BASE=${API_BASE}" ]
+    ports: [ "${WEB_PORT}:5177" ]
+
+volumes: { mindlab_pg: {} }
