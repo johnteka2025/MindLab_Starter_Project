@@ -1,0 +1,37 @@
+﻿services:
+  db:
+    image: postgres:15
+    container_name: mindlab-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mindlab
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d mindlab"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  backend:
+    build:
+      context: "./api"
+      dockerfile: "Dockerfile"
+    container_name: mindlab-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: mindlab
+    ports:
+      - "8085:8085"
+
+volumes:
+  dbdata:

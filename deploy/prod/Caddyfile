@@ -1,0 +1,18 @@
+﻿:80 {
+  # Serve the frontend (built static files are in /usr/share/caddy)
+  handle / {
+    root * /usr/share/caddy
+    file_server
+  }
+
+  # Everything under /api goes to the backend.
+  # `handle_path` strips the /api prefix so /api/health -> /health in the API.
+  handle_path /api/* {
+    reverse_proxy http://api:8085
+  }
+
+  # Local web container health
+  handle /healthz {
+    respond "ok" 200
+  }
+}

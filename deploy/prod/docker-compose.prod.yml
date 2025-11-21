@@ -1,0 +1,48 @@
+﻿version: "3.9"
+services:
+  api:
+    container_name: mindlab-api
+    build:
+      context: ../..
+      dockerfile: ./backend/Dockerfile
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    depends_on:
+      - db
+    ports:
+      - "8085:8085" # host port ONLY for local diagnostics
+    networks: [default]
+
+  db:
+    container_name: mindlab-db
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - mindlab_db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432" # optional local debug
+    networks: [default]
+
+  web:
+    container_name: mindlab-web
+    image: caddy:2-alpine
+    volumes:
+      - ./prod/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./prod/frontend:/usr/share/caddy:ro
+    depends_on:
+      - api
+    ports:
+      - "80:80"   # public entry
+    networks: [default]
+
+volumes:
+  mindlab_db_data:
+
+networks:
+  default:
+    name: prod_default

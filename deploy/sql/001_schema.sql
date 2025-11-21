@@ -1,0 +1,5 @@
+﻿CREATE TABLE IF NOT EXISTS puzzles(
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  difficulty TEXT NOT NULL
+);

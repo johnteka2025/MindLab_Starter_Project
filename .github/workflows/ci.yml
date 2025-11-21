@@ -1,0 +1,92 @@
+﻿name: MindLab CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Backend dependencies
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      # Frontend dependencies
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      # Build frontend (Vite) production bundle
+      - name: Build frontend (Vite)
+        working-directory: frontend
+        run: npm run build
+
+      # Copy built frontend into backend/static
+      - name: Copy frontend build into backend/static
+        run: |
+          rm -rf backend/static/*
+          mkdir -p backend/static
+          cp -r frontend/dist/* backend/static/
+
+      # Install Playwright browsers on CI
+      - name: Install Playwright browsers
+        working-directory: frontend
+        run: npx playwright install --with-deps
+
+      # Start backend in background (serves / and /app on 8085)
+      - name: Start backend server
+        working-directory: backend
+        run: |
+          npm start &
+          echo $! > /tmp/mindlab-backend.pid
+          sleep 5
+
+      # Wait for backend /health to be ready
+      - name: Wait for /health
+        run: |
+          for i in {1..30}; do
+            echo "Checking backend /health (try $i)..."
+            if curl -sf http://127.0.0.1:8085/health > /dev/null; then
+              echo "Backend is healthy ✅"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Backend did not become healthy in time ❌"
+          exit 1
+
+      # Run Playwright tests (same ones you run locally)
+      - name: Run Playwright tests
+        working-directory: frontend
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: npx playwright test --trace=on
+
+      # Upload Playwright traces if something fails
+      - name: Upload Playwright traces (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: frontend/test-results
+
+      # Try to stop backend (cleanup) even if tests fail
+      - name: Stop backend server
+        if: always()
+        run: |
+          if [ -f /tmp/mindlab-backend.pid ]; then
+            kill $(cat /tmp/mindlab-backend.pid) || true
+          fi

@@ -1,0 +1,7 @@
+﻿services:
+  api:
+    build:
+      context: C:/Projects/MindLab_Starter_Project/api
+  web:
+    build:
+      context: C:/Projects/MindLab_Starter_Project/web
