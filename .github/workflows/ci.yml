@@ -2,9 +2,9 @@
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ master ]
 
 jobs:
   e2e-tests:
@@ -17,36 +17,30 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
 
-      # Backend dependencies
       - name: Install backend dependencies
         working-directory: backend
         run: npm ci
 
-      # Frontend dependencies
       - name: Install frontend dependencies
         working-directory: frontend
         run: npm ci
 
-      # Build frontend (Vite) production bundle
       - name: Build frontend (Vite)
         working-directory: frontend
         run: npm run build
 
-      # Copy built frontend into backend/static
       - name: Copy frontend build into backend/static
         run: |
           rm -rf backend/static/*
           mkdir -p backend/static
           cp -r frontend/dist/* backend/static/
 
-      # Install Playwright browsers on CI
       - name: Install Playwright browsers
         working-directory: frontend
         run: npx playwright install --with-deps
 
-      # Start backend in background (serves / and /app on 8085)
       - name: Start backend server
         working-directory: backend
         run: |
@@ -54,11 +48,10 @@ jobs:
           echo $! > /tmp/mindlab-backend.pid
           sleep 5
 
-      # Wait for backend /health to be ready
       - name: Wait for /health
         run: |
           for i in {1..30}; do
-            echo "Checking backend /health (try $i)..."
+            echo "Checking backend /health (try )..."
             if curl -sf http://127.0.0.1:8085/health > /dev/null; then
               echo "Backend is healthy ✅"
               exit 0
@@ -68,25 +61,84 @@ jobs:
           echo "Backend did not become healthy in time ❌"
           exit 1
 
-      # Run Playwright tests (same ones you run locally)
       - name: Run Playwright tests
         working-directory: frontend
         env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npx playwright test --trace=on
 
-      # Upload Playwright traces if something fails
       - name: Upload Playwright traces (on failure)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-traces
+          name: playwright-traces-node
           path: frontend/test-results
 
-      # Try to stop backend (cleanup) even if tests fail
       - name: Stop backend server
         if: always()
         run: |
           if [ -f /tmp/mindlab-backend.pid ]; then
-            kill $(cat /tmp/mindlab-backend.pid) || true
+            kill  || true
           fi
+
+  docker-smoke:
+    needs: e2e-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install frontend dependencies (for Playwright)
+        working-directory: frontend
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: frontend
+        run: npx playwright install --with-deps
+
+      - name: Build Docker image (full app)
+        run: docker build -f Dockerfile.fullapp -t mindlab-fullapp:ci .
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8085:8085 --name mindlab-fullapp-ci mindlab-fullapp:ci
+          sleep 5
+
+      - name: Wait for /health inside container
+        run: |
+          for i in {1..30}; do
+            echo "Checking container /health (try )..."
+            if curl -sf http://127.0.0.1:8085/health > /dev/null; then
+              echo "Container backend is healthy ✅"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Container backend did not become healthy in time ❌"
+          docker logs mindlab-fullapp-ci || true
+          exit 1
+
+      - name: Run Playwright tests against container
+        working-directory: frontend
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npx playwright test --trace=on
+
+      - name: Upload Playwright traces (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces-docker
+          path: frontend/test-results
+
+      - name: Stop and remove Docker container
+        if: always()
+        run: |
+          docker stop mindlab-fullapp-ci || true
+          docker rm mindlab-fullapp-ci || true
