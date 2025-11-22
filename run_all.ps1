@@ -1,30 +1,60 @@
-﻿$ErrorActionPreference = "Stop"
-Set-Location $PSScriptRoot
+param(
+    [switch]$SkipDocker
+)
 
-# install deps on first run
-if (-not (Test-Path .\backend\node_modules)) { pushd .\backend; npm init -y | Out-Null; npm i express cors --silent; popd }
-if (-not (Test-Path .\frontend\node_modules)) { pushd .\frontend; npm init -y | Out-Null; popd }
+Write-Host '=== MindLab FULL TEST RUN (local + docker) ===' -ForegroundColor Cyan
 
-# start backend
-$be = Get-Job -Name node-backend -ErrorAction SilentlyContinue
-if ($be) { Stop-Job -Name node-backend; Remove-Job -Name node-backend }
-Start-Job -Name node-backend -ScriptBlock { Set-Location $using:PSScriptRoot\backend; node .\server.js } | Out-Null
+# Step 1 — Local full smoke
+Write-Host ''
+Write-Host '[1/2] Running full_smoke.ps1 (local)...' -ForegroundColor Yellow
 
-# wait for 8085
-$deadline = (Get-Date).AddSeconds(10)
-do { Start-Sleep 300; $ok = Test-NetConnection 127.0.0.1 -Port 8085 -InformationLevel Quiet } until ($ok -or (Get-Date) -gt $deadline)
-if (-not $ok) { throw "backend failed to start" }
+$fullSmoke = Join-Path $PSScriptRoot 'full_smoke.ps1'
+if (-not (Test-Path $fullSmoke)) {
+    Write-Host 'ERROR: full_smoke.ps1 not found in project root.' -ForegroundColor Red
+    exit 1
+}
 
-# start frontend
-$fe = Get-Job -Name node-frontend -ErrorAction SilentlyContinue
-if ($fe) { Stop-Job -Name node-frontend; Remove-Job -Name node-frontend }
-Start-Job -Name node-frontend -ScriptBlock { Set-Location $using:PSScriptRoot\frontend; node .\server.js } | Out-Null
+& $fullSmoke
+$fullExit = $LASTEXITCODE
 
-# wait for 5177
-$deadline = (Get-Date).AddSeconds(10)
-do { Start-Sleep 300; $ok = Test-NetConnection 127.0.0.1 -Port 5177 -InformationLevel Quiet } until ($ok -or (Get-Date) -gt $deadline)
-if (-not $ok) { throw "frontend failed to start" }
+if ($fullExit -ne 0) {
+    Write-Host ''
+    Write-Host 'FULL SMOKE FAILED. Skipping docker smoke.' -ForegroundColor Red
+    exit $fullExit
+}
 
-Write-Host "`n=== Sanity ==="
-Invoke-RestMethod http://127.0.0.1:8085/health | Out-Host
-Write-Host "Open: http://127.0.0.1:5177/"
+Write-Host ''
+Write-Host 'Local FULL SMOKE PASSED ✅' -ForegroundColor Green
+
+if ($SkipDocker) {
+    Write-Host ''
+    Write-Host 'SkipDocker flag set — Docker smoke will not run.' -ForegroundColor Yellow
+    Write-Host '=== MASTER TEST RUN COMPLETE (LOCAL ONLY) ===' -ForegroundColor Cyan
+    exit 0
+}
+
+# Step 2 — Docker smoke
+Write-Host ''
+Write-Host '[2/2] Running docker_smoke.ps1...' -ForegroundColor Yellow
+
+$dockerSmoke = Join-Path $PSScriptRoot 'docker_smoke.ps1'
+if (-not (Test-Path $dockerSmoke)) {
+    Write-Host 'ERROR: docker_smoke.ps1 not found in project root.' -ForegroundColor Red
+    exit 1
+}
+
+& $dockerSmoke
+$dockerExit = $LASTEXITCODE
+
+if ($dockerExit -ne 0) {
+    Write-Host ''
+    Write-Host 'DOCKER SMOKE FAILED.' -ForegroundColor Red
+    exit $dockerExit
+}
+
+Write-Host ''
+Write-Host 'Docker SMOKE PASSED ✅' -ForegroundColor Green
+
+Write-Host ''
+Write-Host '=== ALL TESTS PASSED (LOCAL + DOCKER) 🎉 ===' -ForegroundColor Cyan
+exit 0
