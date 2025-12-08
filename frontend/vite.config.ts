@@ -1,9 +1,15 @@
-﻿import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+﻿import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-const port = Number(process.env.PORT || 5177);
-
+// MindLab frontend Vite config – React + TS
 export default defineConfig({
   plugins: [react()],
-  server: { port, strictPort: true }
+  server: {
+    port: 5177,
+    strictPort: true
+  },
+  preview: {
+    port: 4173,
+    strictPort: true
+  }
 });

@@ -1,0 +1,32 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = process.env.DAILY_UI_URL ?? "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+  // --- Safer HTTP status check ---
+  if (response) {
+    const status = response.status();
+    expect(
+      status < 400,
+      Expected HTTP 2xx/3xx but got status \ for \
+    ).toBeTruthy();
+  } else {
+    // Some navigations can return null (e.g. browser cache or redirects)
+    console.warn("WARN: page.goto(DAILY_URL) returned null response");
+  }
+
+  // --- Basic Daily challenge UI checks (adjust text if your UI differs) ---
+  await expect(
+    page.getByRole("heading", { name: /Daily Challenge/i })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("button", { name: /Daily Puzzle/i })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("textbox")
+  ).toBeVisible();
+});

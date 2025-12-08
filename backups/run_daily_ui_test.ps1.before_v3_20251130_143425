@@ -1,0 +1,57 @@
+﻿param(
+    [switch]$Headed
+)
+
+Write-Host "=== MindLab Daily UI Playwright test (v2) ===" -ForegroundColor Cyan
+
+# Frontend folder relative to this script
+$frontendDir = Join-Path $PSScriptRoot 'frontend'
+# Use forward slashes in the spec path (friendlier for Node CLIs)
+$specRelative = 'tests/e2e/mindlab-daily-ui.spec.ts'
+
+Write-Host "[INFO] Frontend dir : $frontendDir" -ForegroundColor Cyan
+Write-Host "[INFO] Spec file    : $specRelative" -ForegroundColor Cyan
+
+if (-not (Test-Path $frontendDir)) {
+    Write-Host "[ERROR] Frontend folder not found at: $frontendDir" -ForegroundColor Red
+    exit 1
+}
+
+Push-Location $frontendDir
+try {
+    if (-not (Test-Path $specRelative)) {
+        $fullSpec = Join-Path $frontendDir $specRelative
+        Write-Host "[ERROR] Spec file not found at: $fullSpec" -ForegroundColor Red
+        exit 1
+    }
+
+    Write-Host "[OK] Spec file found." -ForegroundColor Green
+
+    # Build argument list for npx -> playwright test <spec> --trace=on [--headed]
+    $argList = @('playwright', 'test', $specRelative, '--trace=on')
+    if ($Headed) {
+        $argList += '--headed'
+    }
+
+    Write-Host "[INFO] Running: npx $($argList -join ' ')" -ForegroundColor Yellow
+
+    # Use Start-Process so arguments are passed cleanly
+    $proc = Start-Process -FilePath 'npx.cmd' `
+                          -ArgumentList $argList `
+                          -NoNewWindow `
+                          -Wait `
+                          -PassThru
+
+    $exitCode = $proc.ExitCode
+
+    if ($exitCode -eq 0) {
+        Write-Host "[RESULT] Daily UI Playwright test PASSED." -ForegroundColor Green
+    } else {
+        Write-Host "[RESULT] Daily UI Playwright test FAILED with exit code $exitCode." -ForegroundColor Red
+    }
+
+    exit $exitCode
+}
+finally {
+    Pop-Location
+}

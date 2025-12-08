@@ -1,0 +1,19 @@
+﻿import { test, expect } from "@playwright/test";
+
+// Very small but robust smoke test:
+// - Confirms the frontend homepage responds with HTTP 200
+// - Confirms the page renders some content (body is visible)
+
+const FRONTEND_BASE_URL =
+  process.env.MINDLAB_FRONTEND_BASE_URL ?? "http://localhost:5177/app";
+
+test("MindLab Homepage Loads + Talks to Backend", async ({ page }) => {
+  // 1) Go to the main MindLab app URL
+  const response = await page.goto(FRONTEND_BASE_URL, { waitUntil: "networkidle" });
+
+  // If the app fails to load (non-2xx/3xx status), this will fail:
+  expect(response?.ok()).toBeTruthy();
+
+  // 2) Basic DOM sanity: something rendered on the page
+  await expect(page.locator("body")).toBeVisible();
+});

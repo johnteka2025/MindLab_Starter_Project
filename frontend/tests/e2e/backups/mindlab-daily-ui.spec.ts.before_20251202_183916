@@ -1,0 +1,26 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = process.env.DAILY_UI_URL || "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  // 1) Navigate to the Daily Challenge page
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+  expect(response?.ok()).toBeTruthy();
+
+  // 2) Heading should be visible
+  await expect(
+    page.getByRole("heading", { name: /Daily Challenge/i })
+  ).toBeVisible();
+
+  // 3) At least one puzzle tab/button with 'Daily Puzzle' in the name
+  const firstPuzzleTab = page.getByRole("button", { name: /Daily Puzzle/i }).first();
+  await expect(firstPuzzleTab).toBeVisible();
+
+  // 4) Answer input should be visible (any textbox)
+  await expect(page.getByRole("textbox")).toBeVisible();
+
+  // 5) Submit button should be visible (any text containing 'submit')
+  await expect(
+    page.getByRole("button", { name: /submit/i })
+  ).toBeVisible();
+});

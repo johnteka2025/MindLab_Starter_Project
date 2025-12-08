@@ -1,0 +1,55 @@
+﻿MindLab Game Feature Backlog
+Generated: 2025-11-28 16:12:29
+
+========================================
+1. Completed Foundation
+========================================
+- Backend health and /daily API sanity scripts
+- Daily sanity (status, instance, answer flow)
+- Daily routine checks
+- Playwright end-to-end tests:
+  - Homepage plus backend
+  - Health and puzzles flow
+  - Progress API stats
+  - Puzzles navigation
+  - Daily UI smoke test
+  - Daily solve-flow (answer button)
+  - Daily result UI feedback
+- Daily Phase runner script
+
+========================================
+2. Next Features – Daily Experience
+========================================
+- Clear Daily completion card showing correct/incorrect and explanation.
+- Daily streak display for consecutive days played.
+- Simple reward text or icon when streak milestones are hit.
+- Better visual layout for Daily that feels good for all ages.
+
+========================================
+3. Next Features – Puzzle Variety
+========================================
+- New puzzle type: word and definition matching.
+- New puzzle type: memory or sequence game.
+- Difficulty tuning per puzzle (1–5) with clear icons.
+
+========================================
+4. Next Features – Age Adaptation
+========================================
+- Age group selection: child, teen, adult.
+- Adjust puzzle difficulty and wording based on age group.
+- Optional gentle mode with hints for younger players.
+
+========================================
+5. Next Features – Progress and Meta
+========================================
+- Weekly summary screen: puzzles solved, streak, accuracy.
+- Simple achievement badges such as 7-day streak and first 10 puzzles solved.
+- Export basic stats for a future parent or teacher view.
+
+========================================
+6. Tech and QA Enhancements (Later Phases)
+========================================
+- Extra Playwright tests for new puzzle types.
+- Optional visual regression or screenshot comparisons.
+- CI integration to run the Daily Phase on each change.
+

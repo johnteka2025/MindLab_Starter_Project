@@ -1,0 +1,121 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251205162203
+Username: CT\cteka
+RunAs User: CT\cteka
+Configuration Name: 
+Machine: CT (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 10632
+PSVersion: 5.1.26100.7309
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7309
+BuildVersion: 10.0.26100.7309
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+-----------------------------------------------
+[STEP 1] Backend daily routine (routes + health)
+-----------------------------------------------
+============================================================
+MindLab daily routine (v3b) starting...
+Project root : C:\Projects\MindLab_Starter_Project
+============================================================
+
+STEP 1 – Quick daily stack via run_quick_daily_stack.ps1
+------------------------------------------------------------
+=== MindLab quick daily stack (v3 – backend + frontend sanity) ===
+[INFO] Project root : C:\Projects\MindLab_Starter_Project
+[ERROR] Backend API server is NOT reachable on port 8085.
+[ERROR] Frontend dev server (Vite) is NOT reachable on port 5177.
+[ERROR] Quick daily stack failed with exit code 1.
+[ERROR] Fix the quick stack before continuing development.
+
+STEP 2 – Optional route sanity check (health, /puzzles, /progress, /app, /app/daily)
+------------------------------------------------------------
+=== MindLab route sanity ===
+
+[CHECK] Backend /health : http://localhost:8085/health
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[ERROR] Backend /health check failed: Unable to connect to the remote server
+
+[CHECK] Backend /puzzles : http://localhost:8085/puzzles
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[ERROR] Backend /puzzles check failed: Unable to connect to the remote server
+
+[CHECK] Backend /progress : http://localhost:8085/progress
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[ERROR] Backend /progress check failed: Unable to connect to the remote server
+
+[CHECK] Backend /app : http://localhost:8085/app
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[ERROR] Backend /app check failed: Unable to connect to the remote server
+
+[CHECK] Frontend dev /app (5177) : http://localhost:5177/app
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[INFO] Optional route Frontend dev /app (5177) check failed (dev server may not be running): Unable to connect to the remote server
+
+[RESULT] Route sanity checks complete.
+
+================ DAILY ROUTINE SUMMARY ==================
+Quick daily stack      exit code: 1
+Route sanity checks    exit code: 1
+=========================================================
+
+[WARN] MindLab daily routine : HAD ISSUES (see logs above).
+
+-----------------------------------------------
+[STEP 2] UI test suite (Daily + Progress)
+-----------------------------------------------
+=== MindLab UI Suite (Daily + Progress) ===
+[INFO] Project root : C:\Projects\MindLab_Starter_Project
+[INFO] Daily UI script   : C:\Projects\MindLab_Starter_Project\run_daily_ui_test.ps1
+[INFO] Progress UI script: C:\Projects\MindLab_Starter_Project\run_progress_ui_test.ps1
+
+-----------------------------------------------
+[STEP] Daily UI Playwright test (/app/daily)
+-----------------------------------------------
+=== MindLab Daily UI Playwright test (clean v7) ===
+[INFO] Project root : C:\Projects\MindLab_Starter_Project
+[INFO] Frontend dir: C:\Projects\MindLab_Starter_Project\frontend
+[INFO] Spec FS path: C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\mindlab-daily-ui.spec.ts
+
+[INFO] DAILY_UI_URL set to: http://localhost:5177/app/daily
+[INFO] Checking DAILY_UI_URL HTTP status via Invoke-WebRequest...
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[ERROR] Failed to reach DAILY_UI_URL: http://localhost:5177/app/daily
+       Unable to connect to the remote server
+
+HINT: Make sure the frontend dev server is running:
+  1) Open NEW Admin PowerShell
+  2) Set-Location 'C:\Projects\MindLab_Starter_Project\frontend'
+  3) npm run dev
+
+-----------------------------------------------
+[STEP] Progress UI Playwright test (/app/progress)
+-----------------------------------------------
+=== MindLab Progress UI Playwright test (v2) ===
+[INFO] Project root (auto-detected): C:\Projects\MindLab_Starter_Project
+[INFO] Checking PROGRESS_UI_URL HTTP status via Invoke-WebRequest...
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+[WARN] Could not reach http://localhost:5177/app/progress : Unable to connect to the remote server
+[INFO] Frontend dir : C:\Projects\MindLab_Starter_Project\frontend
+[INFO] Spec FS path : C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\progress-ui.spec.ts
+[INFO] Spec CLI arg : tests/e2e/progress-ui.spec.ts
+[INFO] Running: npx playwright test 'tests/e2e/progress-ui.spec.ts' --trace=on
+[RESULT] Progress UI Playwright test PASSED.
+
+================ UI SUITE SUMMARY ================
+Daily UI test    exit code: 1
+Progress UI test exit code: 0
+==================================================
+[RESULT] UI suite had failures (see details above).
+
+[INFO] Stopping transcript...
+**********************
+Windows PowerShell transcript end
+End time: 20251205162259
+**********************

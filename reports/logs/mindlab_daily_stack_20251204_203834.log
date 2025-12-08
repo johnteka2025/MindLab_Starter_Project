@@ -1,0 +1,141 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251204203834
+Username: CT\cteka
+RunAs User: CT\cteka
+Configuration Name: 
+Machine: CT (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 31044
+PSVersion: 5.1.26100.7309
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7309
+BuildVersion: 10.0.26100.7309
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+-----------------------------------------------
+[STEP 1] Backend daily routine (routes + health)
+-----------------------------------------------
+============================================================
+MindLab daily routine (v3b) starting...
+Project root : C:\Projects\MindLab_Starter_Project
+============================================================
+
+STEP 1 – Quick daily stack via run_quick_daily_stack.ps1
+------------------------------------------------------------
+=== MindLab quick daily stack (v3 – backend + frontend sanity) ===
+[INFO] Project root : C:\Projects\MindLab_Starter_Project
+[OK] Backend API server is reachable on port 8085.
+[OK] Frontend dev server (Vite) is reachable on port 5177.
+[STEP] HTTP endpoint sanity checks...
+[OK] Backend /health (http://localhost:8085/health) -> HTTP 200
+[OK] Backend /puzzles (http://localhost:8085/puzzles) -> HTTP 200
+[OK] Backend /progress (http://localhost:8085/progress) -> HTTP 200
+[OK] Backend /app (http://localhost:8085/app) -> HTTP 200
+[RESULT] Quick daily stack complete.
+
+STEP 2 – Optional route sanity check (health, /puzzles, /progress, /app, /app/daily)
+------------------------------------------------------------
+=== MindLab route sanity ===
+
+[CHECK] Backend /health : http://localhost:8085/health
+[OK] Backend /health (200)
+
+[CHECK] Backend /puzzles : http://localhost:8085/puzzles
+[OK] Backend /puzzles (200)
+
+[CHECK] Backend /progress : http://localhost:8085/progress
+[OK] Backend /progress (200)
+
+[CHECK] Backend /app : http://localhost:8085/app
+[OK] Backend /app (200)
+
+[CHECK] Frontend dev /app (5177) : http://localhost:5177/app
+PS>TerminatingError(Invoke-WebRequest): "The remote server returned an error: (404) Not Found."
+[INFO] Optional route Frontend dev /app (5177) check failed (dev server may not be running): The remote server returned an error: (404) Not Found.
+
+[RESULT] Route sanity checks complete.
+
+================ DAILY ROUTINE SUMMARY ==================
+Quick daily stack      exit code: 0
+Route sanity checks    exit code: 0
+=========================================================
+
+[RESULT] MindLab daily routine : COMPLETED
+[RESULT] You are clear to start new feature or development work.
+
+-----------------------------------------------
+[STEP 2] UI test suite (Daily + Progress)
+-----------------------------------------------
+=== MindLab UI Suite (Daily + Progress) ===
+[INFO] Project root : C:\Projects\MindLab_Starter_Project
+[INFO] Daily UI script   : C:\Projects\MindLab_Starter_Project\run_daily_ui_test.ps1
+[INFO] Progress UI script: C:\Projects\MindLab_Starter_Project\run_progress_ui_test.ps1
+
+-----------------------------------------------
+[STEP] Daily UI Playwright test (/app/daily)
+-----------------------------------------------
+=== MindLab Daily UI Playwright test (clean v7) ===
+[INFO] Project root : C:\Projects\MindLab_Starter_Project
+[INFO] Frontend dir: C:\Projects\MindLab_Starter_Project\frontend
+[INFO] Spec FS path: C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\mindlab-daily-ui.spec.ts
+
+[INFO] DAILY_UI_URL set to: http://localhost:5177/app/daily
+[INFO] Checking DAILY_UI_URL HTTP status via Invoke-WebRequest...
+[INFO] DAILY_UI_URL HTTP status: 200
+[INFO] Using npm from PATH to run script 'mindlab:daily-ui'...
+
+
+> mindlab-frontend@1.0.0 mindlab:daily-ui
+> playwright test tests/e2e/mindlab-daily-ui.spec.ts --trace=on
+
+
+Running 3 tests using 1 worker
+
+  ok 1 tests\e2e\mindlab-daily-ui.spec.ts:5:5 › Daily challenge page loads (858ms)
+  ok 2 tests\e2e\mindlab-daily-ui.spec.ts:18:5 › Daily challenge page shows puzzles list (optional but recommended) (772ms)
+WARN: puzzles-list not found (may be feature-flagged).
+  ok 3 tests\e2e\mindlab-daily-ui.spec.ts:30:5 › Daily challenge page has a submit button (optional) (779ms)
+
+  3 passed (3.7s)
+
+================ TEST SUMMARY ================
+Daily UI test exit code: 0
+==============================================
+[RESULT] Daily UI Playwright test PASSED.
+
+-----------------------------------------------
+[STEP] Progress UI Playwright test (/app/progress)
+-----------------------------------------------
+=== MindLab Progress UI Playwright test (v2) ===
+[INFO] Project root (auto-detected): C:\Projects\MindLab_Starter_Project
+[INFO] Checking PROGRESS_UI_URL HTTP status via Invoke-WebRequest...
+[INFO] PROGRESS_UI_URL HTTP status: 200
+[INFO] Frontend dir : C:\Projects\MindLab_Starter_Project\frontend
+[INFO] Spec FS path : C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\progress-ui.spec.ts
+[INFO] Spec CLI arg : tests/e2e/progress-ui.spec.ts
+[INFO] Running: npx playwright test 'tests/e2e/progress-ui.spec.ts' --trace=on
+
+Running 2 tests using 1 worker
+
+  ok 1 tests\e2e\progress-ui.spec.ts:26:5 › Progress page loads and shows a heading (858ms)
+  ok 2 tests\e2e\progress-ui.spec.ts:34:5 › Progress page optionally exposes stats UI (789ms)
+
+  2 passed (2.7s)
+[RESULT] Progress UI Playwright test PASSED.
+
+================ UI SUITE SUMMARY ================
+Daily UI test    exit code: 0
+Progress UI test exit code: 0
+==================================================
+[RESULT] All UI tests PASSED.
+
+[INFO] Stopping transcript...
+**********************
+Windows PowerShell transcript end
+End time: 20251204203900
+**********************

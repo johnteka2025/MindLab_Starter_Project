@@ -1,0 +1,20 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = process.env.DAILY_UI_URL ?? "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+  if (response) {
+    const status = response.status();
+    expect(status).toBeLessThan(400);
+  }
+
+  await expect(
+    page.getByRole("heading", { name: /Daily Challenge/i })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("textbox")
+  ).toBeVisible();
+});

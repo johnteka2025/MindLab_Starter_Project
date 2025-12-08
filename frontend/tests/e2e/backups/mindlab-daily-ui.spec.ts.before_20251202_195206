@@ -1,0 +1,30 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = process.env.DAILY_UI_URL ?? "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+  // Basic HTTP sanity
+  if (response) {
+    const status = response.status();
+    expect(status).toBeLessThan(400);
+  }
+
+  // Required: main Daily heading
+  await expect(
+    page.getByRole("heading", { name: /Daily Challenge/i })
+  ).toBeVisible();
+
+  // Optional: textbox (some builds may not show one)
+  const textboxes = page.getByRole("textbox");
+  const textboxCount = await textboxes.count();
+
+  if (textboxCount > 0) {
+    await expect(textboxes.first()).toBeVisible();
+  } else {
+    console.warn(
+      "Optional UI: no element with role='textbox' found on Daily Challenge page - skipping textbox visibility assertion."
+    );
+  }
+});

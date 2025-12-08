@@ -1,0 +1,32 @@
+﻿import { test, expect } from "@playwright/test";
+
+// DAILY_UI_URL is injected by run_daily_ui_test.ps1.
+// Fallback to Vite dev port if not set.
+const DAILY_URL =
+  process.env.DAILY_UI_URL ?? "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  // 1) Go to the Daily Challenge page
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+  // Must be a successful HTTP status (2xx / 3xx)
+  expect(response?.ok()).toBeTruthy();
+
+  // 2) Basic UI checks
+
+  // Page heading
+  await expect(
+    page.getByRole("heading", { name: "Daily Challenge" })
+  ).toBeVisible();
+
+  // Submit button
+  await expect(
+    page.getByRole("button", { name: "Submit answer" })
+  ).toBeVisible();
+
+  // 3) At least one puzzle label should be visible.
+  // There are multiple "Daily Puzzle 1" texts (tab + header), so we pick the first one.
+  await expect(
+    page.getByText(/Daily Puzzle 1/i).first()
+  ).toBeVisible();
+});

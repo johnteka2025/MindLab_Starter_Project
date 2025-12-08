@@ -1,0 +1,34 @@
+﻿import { test, expect } from "@playwright/test";
+
+// Allow overriding via env var, but default to dev server Daily page
+const DAILY_URL =
+  process.env.DAILY_UI_URL ||
+  "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  // 1) Load the Daily Challenge page
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+  expect(response?.ok(), "Daily URL should load successfully").toBeTruthy();
+
+  // 2) Main heading
+  await expect(
+    page.getByRole("heading", { name: "Daily Challenge" })
+  ).toBeVisible();
+
+  // 3) At least one puzzle label (Daily Puzzle 1) should be visible.
+  // There are multiple "Daily Puzzle 1" texts (tab + header), so pick the first.
+  const firstPuzzleLabel = page
+    .getByText("Daily Puzzle 1", { exact: false })
+    .first();
+  await expect(firstPuzzleLabel).toBeVisible();
+
+  // 4) Answer input should be visible
+  await expect(
+    page.getByRole("textbox", { name: /your answer/i })
+  ).toBeVisible();
+
+  // 5) Submit button – be flexible and match any button containing "submit"
+  await expect(
+    page.getByRole("button", { name: /submit/i })
+  ).toBeVisible();
+});

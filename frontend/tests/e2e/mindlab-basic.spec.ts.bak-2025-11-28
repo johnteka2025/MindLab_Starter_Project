@@ -1,0 +1,41 @@
+﻿import { test, expect } from "@playwright/test";
+
+// Basic smoke test: frontend loads and can reach backend
+test("MindLab Homepage Loads + Talks to Backend", async ({ page }) => {
+  // Base URLs for local dev
+  const FRONTEND_URL = "http://localhost:5177";
+  const BACKEND_URL = "http://localhost:8085";
+
+  // 1. Load the frontend
+  await page.goto(FRONTEND_URL);
+
+  // 2. Check main heading and key section headings
+  await expect(
+    page.getByText(/Health/i)
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("heading", { name: "Health" })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("heading", { name: "Puzzles" })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("heading", { name: "Progress" })
+  ).toBeVisible();
+
+  // 3. Call backend through direct HTTP requests (sanity)
+  const healthResp = await page.request.get(`${BACKEND_URL}/health`);
+  expect(healthResp.status()).toBe(200);
+
+  const puzzlesResp = await page.request.get(`${BACKEND_URL}/puzzles`);
+  expect(puzzlesResp.status()).toBe(200);
+
+  const progressResp = await page.request.get(`${BACKEND_URL}/progress`);
+  expect(progressResp.status()).toBe(200);
+});
+
+
+

@@ -1,0 +1,40 @@
+﻿MindLab – Daily UI Progress Summary (2025-12-08 16:25)
+
+========================================
+WHAT WE COMPLETED TODAY
+========================================
+1. Cleaned up duplicate frontend JS/TS files and moved old copies into _legacy_js_backup_20251208.
+2. Confirmed DailyChallengeDetailPage.tsx calls the real backend on port 8085 (/daily)
+   and displays the first puzzle with a working answer input + Submit button.
+3. Updated App.tsx routing so:
+   - /app        → Home with links to Daily UI and Progress
+   - /app/daily  → DailyChallengeDetailPage
+   - /app/progress → Progress page component.
+4. Fixed the Vite overlay / import issues (react-router-dom not found).
+5. Verified the frontend dev server:
+   - npm run dev (in frontend) → Vite running on http://localhost:5177/.
+6. Re-ran the Daily UI Playwright spec directly:
+   - npx playwright test "tests/e2e/mindlab-daily-ui.spec.ts" --trace=on
+   Result: 2 tests PASSED (basic smoke + gameplay).
+7. Ran full UI suite from project root:
+   - .\run_ui_suite.ps1
+   Result:
+   - REQUIRED Daily UI Playwright test : PASSED (exit code 0)
+   - OPTIONAL Daily UI test           : PASSED (exit code 0)
+   All required and optional Daily UI checks passed or were skipped as expected.
+
+========================================
+PLAN FOR NEXT SESSION
+========================================
+1. Improve DailyChallengeDetailPage UI (styling, layout, better messages).
+2. Flesh out /app/progress page to show real progress data from /progress endpoint.
+3. Add more Playwright checks around Daily UI (wrong answer, correct answer, etc.).
+4. Do another full backend + UI sanity run:
+   - Backend checks on :8085
+   - npm run dev
+   - npx playwright test "tests/e2e/mindlab-daily-ui.spec.ts" --trace=on
+   - .\run_ui_suite.ps1
+
+Notes:
+- Current state is stable: backend healthy, frontend routes working, all UI tests green.
+- This file can be opened and edited in Word if more notes are needed.

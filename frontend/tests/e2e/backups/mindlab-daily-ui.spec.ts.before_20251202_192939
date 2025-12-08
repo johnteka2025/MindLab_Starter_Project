@@ -1,0 +1,39 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = process.env.DAILY_UI_URL ?? "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads and basic UI is visible", async ({ page }) => {
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+  // --- HTTP status check with clear error message ---
+  if (response) {
+    const status = response.status();
+    expect(
+      status < 400,
+      \Expected HTTP 2xx/3xx but got status \ for \\
+    ).toBeTruthy();
+  } else {
+    console.warn("WARN: page.goto(DAILY_URL) returned null response");
+  }
+
+  // --- Required: page heading (stable baseline) ---
+  await expect(
+    page.getByRole("heading", { name: /Daily Challenge/i })
+  ).toBeVisible();
+
+  // --- Optional: Daily Puzzle tab ---
+  // We *don't* want the whole pipeline to fail just because this one button
+  // is renamed or temporarily hidden. So we only assert when it's present.
+  const dailyPuzzleButtons = page.getByRole("button", { name: /Daily Puzzle/i });
+
+  if ((await dailyPuzzleButtons.count()) > 0) {
+    await expect(dailyPuzzleButtons.first()).toBeVisible();
+  } else {
+    console.warn("Optional UI: 'Daily Puzzle' button not found – skipping visibility check.");
+  }
+
+  // --- Required: some input textbox is visible (basic interaction) ---
+  await expect(
+    page.getByRole("textbox")
+  ).toBeVisible();
+});

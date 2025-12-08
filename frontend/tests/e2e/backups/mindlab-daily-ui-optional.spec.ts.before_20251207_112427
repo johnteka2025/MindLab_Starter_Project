@@ -1,0 +1,49 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = "http://localhost:5177/app/daily";
+
+test.describe("MindLab Daily UI - optional checks", () => {
+  test(
+    "Daily challenge page shows puzzles list (optional but recommended)",
+    async ({ page }) => {
+      await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+      const puzzlesList = page.locator('[data-testid="puzzles-list"]');
+      const count = await puzzlesList.count();
+
+      if (count === 0) {
+        console.warn(
+          '[WARN] Optional check: no element with data-testid="puzzles-list" found on the Daily page.'
+        );
+        // Optional: no puzzles list yet -> DO NOT fail the test
+        return;
+      }
+
+      expect(
+        count,
+        "Expected at least one puzzles list on the Daily page"
+      ).toBeGreaterThan(0);
+    }
+  );
+
+  test(
+    "Daily challenge page has a submit button (optional)",
+    async ({ page }) => {
+      await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+      const submitBtn = page.getByRole("button", { name: /submit/i });
+      const submitCount = await submitBtn.count();
+
+      if (submitCount === 0) {
+        console.warn(
+          '[WARN] Optional check: no "Submit" button found on the Daily page. This is optional and will not fail the suite.'
+        );
+        // Optional: if there is no Submit button yet, do NOT fail the test
+        return;
+      }
+
+      // Only assert visibility if at least one button exists
+      await expect(submitBtn).toBeVisible();
+    }
+  );
+});

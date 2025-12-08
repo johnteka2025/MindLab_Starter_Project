@@ -1,0 +1,40 @@
+﻿param()
+
+Write-Host "=== MindLab Daily UI Playwright test (v3) ===" -ForegroundColor Cyan
+
+# Frontend folder and spec file
+\ = "C:\Projects\MindLab_Starter_Project\frontend"
+\ = "tests\e2e\mindlab-daily-ui.spec.ts"
+\ = Join-Path \ \
+
+# Sanity checks
+if (-not (Test-Path \)) {
+    Write-Host "[ERROR] Frontend dir not found: \" -ForegroundColor Red
+    exit 1
+}
+
+if (-not (Test-Path \)) {
+    Write-Host "[ERROR] Playwright spec not found: \" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "[INFO] Frontend dir : \"
+Write-Host "[INFO] Spec file    : \"
+
+Push-Location \
+try {
+    Write-Host "[INFO] Running: npx playwright test \ --trace=on" -ForegroundColor Yellow
+    npx playwright test \ --trace=on
+    \ = \
+
+    if (\ -eq 0) {
+        Write-Host "[RESULT] Daily UI Playwright test PASSED." -ForegroundColor Green
+    } else {
+        Write-Host "[RESULT] Daily UI Playwright test FAILED with exit code \." -ForegroundColor Red
+    }
+
+    exit \
+}
+finally {
+    Pop-Location
+}

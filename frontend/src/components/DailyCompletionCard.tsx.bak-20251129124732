@@ -1,0 +1,109 @@
+﻿import React from "react";
+
+export type DailyResultStatus = "correct" | "incorrect";
+
+export interface DailyCompletionCardProps {
+  status: DailyResultStatus;
+  explanation?: string;
+  streak?: number;
+  onNext?: () => void;
+}
+
+/**
+ * MindLab DailyCompletionCard
+ * - Shows clear feedback after a daily puzzle is answered.
+ * - status: "correct" | "incorrect"
+ * - explanation: optional text explaining the answer
+ * - streak: optional number of consecutive days
+ * - onNext: optional callback for a "Next puzzle" button
+ */
+export const DailyCompletionCard: React.FC<DailyCompletionCardProps> = ({
+  status,
+  explanation,
+  streak,
+  onNext,
+}) => {
+  const isCorrect = status === "correct";
+  const headline = isCorrect ? "Nice work!" : "Good try!";
+  const statusText = isCorrect ? "Correct answer" : "Incorrect answer";
+
+  const streakText =
+    typeof streak === "number"
+      ? `Current streak: ${streak} day${streak === 1 ? "" : "s"}`
+      : null;
+
+  return (
+    <div
+      className="mindlab-daily-completion-card"
+      style={{
+        borderRadius: "12px",
+        padding: "16px 20px",
+        marginTop: "16px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        backgroundColor: isCorrect ? "#e6ffed" : "#ffecec",
+      }}
+    >
+      <h2
+        style={{
+          margin: "0 0 4px 0",
+          fontSize: "1.25rem",
+          fontWeight: 600,
+        }}
+      >
+        {headline}
+      </h2>
+
+      <p
+        style={{
+          margin: "0 0 8px 0",
+          fontWeight: 500,
+        }}
+      >
+        {statusText}
+      </p>
+
+      {streakText && (
+        <p
+          style={{
+            margin: "0 0 8px 0",
+            fontSize: "0.95rem",
+          }}
+        >
+          {streakText}
+        </p>
+      )}
+
+      {explanation && (
+        <p
+          className="mindlab-daily-explanation"
+          style={{
+            margin: "0 0 12px 0",
+            fontSize: "0.95rem",
+          }}
+        >
+          {explanation}
+        </p>
+      )}
+
+      {onNext && (
+        <button
+          type="button"
+          onClick={onNext}
+          style={{
+            padding: "8px 14px",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: 500,
+            backgroundColor: "#2563eb",
+            color: "#ffffff",
+          }}
+        >
+          Next puzzle
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default DailyCompletionCard;

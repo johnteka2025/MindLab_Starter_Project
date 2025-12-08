@@ -1,0 +1,51 @@
+﻿param(
+    [switch]$Headed
+)
+
+Write-Host "=== MindLab Daily UI Playwright test ===" -ForegroundColor Cyan
+
+# Figure out the frontend folder relative to this script
+$frontendDir = Join-Path $PSScriptRoot 'frontend'
+$specRelative = 'tests\e2e\mindlab-daily-ui.spec.ts'
+
+Write-Host "[INFO] Frontend dir : $frontendDir" -ForegroundColor Cyan
+Write-Host "[INFO] Spec file    : $specRelative" -ForegroundColor Cyan
+
+if (-not (Test-Path $frontendDir)) {
+    Write-Host "[ERROR] Frontend folder not found at: $frontendDir" -ForegroundColor Red
+    exit 1
+}
+
+Push-Location $frontendDir
+try {
+    # Sanity check: does the spec exist?
+    if (-not (Test-Path $specRelative)) {
+        Write-Host "[ERROR] Spec file not found at: $(Join-Path $frontendDir $specRelative)" -ForegroundColor Red
+        exit 1
+    }
+
+    Write-Host "[OK] Spec file found." -ForegroundColor Green
+
+    # Build Playwright command
+    $args = @('test', $specRelative, '--trace=on')
+    if ($Headed) {
+        $args += '--headed'
+    }
+
+    Write-Host "[INFO] Running: npx playwright $($args -join ' ')" -ForegroundColor Yellow
+
+    # Actually run Playwright
+    npx playwright @args
+    $exitCode = $LASTEXITCODE
+
+    if ($exitCode -eq 0) {
+        Write-Host "[RESULT] Daily UI Playwright test PASSED." -ForegroundColor Green
+    } else {
+        Write-Host "[RESULT] Daily UI Playwright test FAILED with exit code $exitCode." -ForegroundColor Red
+    }
+
+    exit $exitCode
+}
+finally {
+    Pop-Location
+}

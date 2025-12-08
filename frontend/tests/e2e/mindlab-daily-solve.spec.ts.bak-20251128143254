@@ -1,0 +1,60 @@
+﻿import { test, expect } from "@playwright/test";
+
+// Daily solve flow:
+// - Opens the app via backend (8085)
+// - Navigates to the Daily UI (best-effort selectors)
+// - Clicks an answer button
+// - Verifies that the /daily/answer backend endpoint is hit successfully
+
+const HOME_URL =
+  process.env.MINDLAB_HOME_URL ?? "http://localhost:8085/app";
+
+test("Daily puzzle solve flow hits /daily/answer", async ({ page }) => {
+  // 1) Navigate to the main app
+  const response = await page.goto(HOME_URL, { waitUntil: "networkidle" });
+  expect(response?.ok()).toBeTruthy();
+
+  // Basic DOM sanity
+  await expect(page.locator("body")).toBeVisible();
+
+  // 2) Try to navigate to the Daily area.
+  // We use several flexible selectors so this is not fragile.
+
+  // Try a link or button with "Daily" in its name
+  const dailyLink = page.getByRole("link", { name: /daily/i });
+  const dailyButton = page.getByRole("button", { name: /daily/i });
+  const dailyText = page.getByText(/daily/i, { exact: false });
+
+  if (await dailyLink.count()) {
+    await dailyLink.first().click();
+  } else if (await dailyButton.count()) {
+    await dailyButton.first().click();
+  } else if (await dailyText.count()) {
+    await dailyText.first().click();
+  }
+
+  // Allow any navigation or UI transition to settle
+  await page.waitForLoadState("networkidle");
+
+  // 3) Find any visible answer button.
+  // We assume answer options are rendered as buttons.
+  const answerButtons = page.getByRole("button");
+
+  // Wait until at least one button is visible
+  await expect(answerButtons.first()).toBeVisible();
+
+  // 4) Prepare to wait for the backend /daily/answer POST
+  const answerResponsePromise = page.waitForResponse((res) => {
+    return (
+      res.url().includes("/daily/answer") &&
+      res.request().method() === "POST"
+    );
+  });
+
+  // 5) Click the first visible button (represents choosing an answer)
+  await answerButtons.first().click();
+
+  // 6) Wait for the backend to accept the answer
+  const answerResponse = await answerResponsePromise;
+  expect(answerResponse.ok()).toBeTruthy();
+});

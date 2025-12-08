@@ -1,0 +1,50 @@
+﻿[CmdletBinding()]
+param()
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+# Always work from the project root where this script lives
+$projectRoot = Split-Path -Parent $PSCommandPath
+Set-Location $projectRoot
+
+Write-Host "=== MindLab daily routine ===" -ForegroundColor Cyan
+
+# --- Sanity: check key helper scripts exist ---
+$requiredScripts = @(
+    "run_quick_daily_stack.ps1",
+    "run_route_sanity.ps1"
+)
+
+foreach ($name in $requiredScripts) {
+    $full = Join-Path $projectRoot $name
+    if (Test-Path $full) {
+        Write-Host "[OK] Found helper script: $name" -ForegroundColor Green
+    } else {
+        Write-Host "[WARN] Helper script missing: $name" -ForegroundColor Yellow
+    }
+}
+
+Write-Host ""
+Write-Host "=== STEP 1: Quick daily stack (backend + frontend + tests) ===" -ForegroundColor Cyan
+$stackScript = Join-Path $projectRoot "run_quick_daily_stack.ps1"
+if (Test-Path $stackScript) {
+    & $stackScript
+} else {
+    Write-Host "[SKIP] run_quick_daily_stack.ps1 not found, skipping STEP 1." -ForegroundColor Yellow
+}
+
+Write-Host ""
+Write-Host "=== STEP 2: Route sanity (/health, /puzzles, /progress, /app, /app/daily) ===" -ForegroundColor Cyan
+$routeScript = Join-Path $projectRoot "run_route_sanity.ps1"
+if (Test-Path $routeScript) {
+    & $routeScript
+} else {
+    Write-Host "[SKIP] run_route_sanity.ps1 not found, skipping STEP 2." -ForegroundColor Yellow
+}
+
+Write-Host ""
+Write-Host "==============================================" -ForegroundColor Cyan
+Write-Host "[RESULT] MindLab daily routine : COMPLETED" -ForegroundColor Green
+Write-Host "You are clear to start new feature or development work." -ForegroundColor Green
+Write-Host "==============================================" -ForegroundColor Cyan

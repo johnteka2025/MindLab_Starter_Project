@@ -1,0 +1,24 @@
+﻿{\rtf1\ansi
+\b MindLab Daily Status - 2025-12-01\b0\par
+\par
+Completed today:\par
+\par
+- Daily MindLab routine script \b(run_mindlab_daily_routine.ps1 v3)\b0 is stable and running without errors.\par
+- Route sanity script \b(run_route_sanity.ps1)\b0 confirms backend \health, \puzzles, \progress, and \app endpoints are OK.\par
+- Daily UI Playwright smoke test \b(run_daily_ui_test.ps1)\b0 for the /app/daily page is green (heading visible, page loads).\par
+- Combined daily start orchestrator \b(run_daily_start.ps1)\b0 runs backend routine + UI smoke in one command.\par
+\par
+Next phases / actions:\par
+\par
+Phase 1 (Stability & UX):\par
+- Add clearer success / error feedback on the Daily Challenge page after submitting an answer.\par
+- Extend Playwright coverage on the /app/daily flow (submit demo answer, verify messages).\par
+\par
+Phase 2 (Game design rules):\par
+- Finalize XP, Level, and Streak rules so the /progress endpoint and UI become more meaningful.\par
+- Define how daily puzzles contribute to long-term progression in MindLab.\par
+\par
+Phase 3 (Polish / cleanup):\par
+- Clean up any old helper scripts and keep only the “daily routine” + “daily start” + a small set of dev helpers.\par
+- Review logs and tighten error messages to make troubleshooting easier.\par
+}

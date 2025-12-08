@@ -1,0 +1,37 @@
+﻿import { test, expect } from "@playwright/test";
+
+const FRONTEND_URL = "https://mindlab-swpk.onrender.com/app";
+const BACKEND_URL  = "https://mindlab-swpk.onrender.com";
+
+test("PROD: MindLab app loads and backend endpoints are healthy", async ({ page }) => {
+  // --- 1. Warm-up / retry wrapper for frontend ---
+  async function warmup() {
+    for (let i = 1; i <= 10; i++) {
+      const res = await page.goto(FRONTEND_URL, { waitUntil: "domcontentloaded" });
+
+      if (res && res.status() < 400) {
+        console.log(`WARMUP TRY ${i} → SUCCESS with status ${res.status()}`);
+        return res;
+      }
+
+      console.log(`WARMUP TRY ${i} FAILED → status ${res?.status()} → retrying in 2s`);
+      await page.waitForTimeout(2000);
+    }
+    throw new Error("Frontend warm-up failed after 10 attempts");
+  }
+
+  // 1) Warm-up + assert navigation OK
+  const response = await warmup();
+  expect(response.status()).toBeLessThan(400);
+
+  // --- 2. Backend health checks directly on Render ---
+  const health   = await page.request.get(`${BACKEND_URL}/health`);
+  const puzzles  = await page.request.get(`${BACKEND_URL}/puzzles`);
+  const progress = await page.request.get(`${BACKEND_URL}/progress`);
+  const app      = await page.request.get(`${BACKEND_URL}/app`);
+
+  expect(health.status()).toBe(200);
+  expect(puzzles.status()).toBe(200);
+  expect(progress.status()).toBe(200);
+  expect(app.status()).toBe(200);
+});

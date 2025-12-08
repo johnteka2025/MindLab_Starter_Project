@@ -1,0 +1,134 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251126125225
+Username: CT\cteka
+RunAs User: CT\cteka
+Configuration Name: 
+Machine: CT (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 20692
+PSVersion: 5.1.26100.7019
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7019
+BuildVersion: 10.0.26100.7019
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+
+STEP 0 - Quick health checks
+STEP 0 - Quick health checks
+LOCAL /health -> HTTP 200
+LOCAL /health -> HTTP 200
+PROD /health -> HTTP 200
+PROD /health -> HTTP 200
+
+
+STEP 1 - LOCAL API robustness
+STEP 1 - LOCAL API robustness
+
+
+[LOCAL] Checking endpoint http://localhost:8085/progress (3 attempts)...
+[LOCAL] Checking endpoint http://localhost:8085/progress (3 attempts)...
+[LOCAL] Attempt 1: http://localhost:8085/progress -> HTTP 200
+[LOCAL] Attempt 1: http://localhost:8085/progress -> HTTP 200
+[LOCAL] Attempt 2: http://localhost:8085/progress -> HTTP 200
+[LOCAL] Attempt 2: http://localhost:8085/progress -> HTTP 200
+[LOCAL] Attempt 3: http://localhost:8085/progress -> HTTP 200
+[LOCAL] Attempt 3: http://localhost:8085/progress -> HTTP 200
+[LOCAL] Endpoint /progress passed robustness check.
+[LOCAL] Endpoint /progress passed robustness check.
+
+
+[LOCAL] Checking endpoint http://localhost:8085/puzzles (3 attempts)...
+[LOCAL] Checking endpoint http://localhost:8085/puzzles (3 attempts)...
+[LOCAL] Attempt 1: http://localhost:8085/puzzles -> HTTP 200
+[LOCAL] Attempt 1: http://localhost:8085/puzzles -> HTTP 200
+[LOCAL] Attempt 2: http://localhost:8085/puzzles -> HTTP 200
+[LOCAL] Attempt 2: http://localhost:8085/puzzles -> HTTP 200
+[LOCAL] Attempt 3: http://localhost:8085/puzzles -> HTTP 200
+[LOCAL] Attempt 3: http://localhost:8085/puzzles -> HTTP 200
+[LOCAL] Endpoint /puzzles passed robustness check.
+[LOCAL] Endpoint /puzzles passed robustness check.
+
+
+STEP 2 - PROD API robustness
+STEP 2 - PROD API robustness
+
+
+[PROD] Checking endpoint https://mindlab-swpk.onrender.com/progress (3 attempts)...
+[PROD] Checking endpoint https://mindlab-swpk.onrender.com/progress (3 attempts)...
+[PROD] Attempt 1: https://mindlab-swpk.onrender.com/progress -> HTTP 200
+[PROD] Attempt 1: https://mindlab-swpk.onrender.com/progress -> HTTP 200
+[PROD] Attempt 2: https://mindlab-swpk.onrender.com/progress -> HTTP 200
+[PROD] Attempt 2: https://mindlab-swpk.onrender.com/progress -> HTTP 200
+[PROD] Attempt 3: https://mindlab-swpk.onrender.com/progress -> HTTP 200
+[PROD] Attempt 3: https://mindlab-swpk.onrender.com/progress -> HTTP 200
+[PROD] Endpoint /progress passed robustness check.
+[PROD] Endpoint /progress passed robustness check.
+
+
+[PROD] Checking endpoint https://mindlab-swpk.onrender.com/puzzles (3 attempts)...
+[PROD] Checking endpoint https://mindlab-swpk.onrender.com/puzzles (3 attempts)...
+[PROD] Attempt 1: https://mindlab-swpk.onrender.com/puzzles -> HTTP 200
+[PROD] Attempt 1: https://mindlab-swpk.onrender.com/puzzles -> HTTP 200
+[PROD] Attempt 2: https://mindlab-swpk.onrender.com/puzzles -> HTTP 200
+[PROD] Attempt 2: https://mindlab-swpk.onrender.com/puzzles -> HTTP 200
+[PROD] Attempt 3: https://mindlab-swpk.onrender.com/puzzles -> HTTP 200
+[PROD] Attempt 3: https://mindlab-swpk.onrender.com/puzzles -> HTTP 200
+[PROD] Endpoint /puzzles passed robustness check.
+[PROD] Endpoint /puzzles passed robustness check.
+
+
+Running Playwright spec: LOCAL progress-api.spec.ts (tests/e2e/progress-api.spec.ts)
+Running Playwright spec: LOCAL progress-api.spec.ts (tests/e2e/progress-api.spec.ts)
+Spec log: C:\Projects\MindLab_Starter_Project\logs\phase3_tests_e2e_progress-api_spec_ts_20251126_125226.log
+Spec log: C:\Projects\MindLab_Starter_Project\logs\phase3_tests_e2e_progress-api_spec_ts_20251126_125226.log
+
+Running 1 test using 1 worker
+
+  ok 1 tests\e2e\progress-api.spec.ts:6:5 ΓÇ║ Progress API returns valid stats (LOCAL) (81ms)
+
+  1 passed (1.3s)
+LOCAL progress-api.spec.ts : PASS (exit code 0)
+LOCAL progress-api.spec.ts : PASS (exit code 0)
+
+
+Running Playwright spec: PROD progress-api-prod.spec.ts (tests/e2e/progress-api-prod.spec.ts)
+Running Playwright spec: PROD progress-api-prod.spec.ts (tests/e2e/progress-api-prod.spec.ts)
+Spec log: C:\Projects\MindLab_Starter_Project\logs\phase3_tests_e2e_progress-api-prod_spec_ts_20251126_125230.log
+Spec log: C:\Projects\MindLab_Starter_Project\logs\phase3_tests_e2e_progress-api-prod_spec_ts_20251126_125230.log
+
+Running 1 test using 1 worker
+
+  ok 1 tests\e2e\progress-api-prod.spec.ts:6:5 ΓÇ║ PROD: Progress API returns valid stats (235ms)
+
+  1 passed (1.4s)
+PROD progress-api-prod.spec.ts : PASS (exit code 0)
+PROD progress-api-prod.spec.ts : PASS (exit code 0)
+
+
+=== Phase 3 - API robustness summary ===
+=== Phase 3 - API robustness summary ===
+LOCAL /progress robustness : PASS
+LOCAL /progress robustness : PASS
+LOCAL /puzzles robustness  : PASS
+LOCAL /puzzles robustness  : PASS
+PROD  /progress robustness : PASS
+PROD  /progress robustness : PASS
+PROD  /puzzles robustness  : PASS
+PROD  /puzzles robustness  : PASS
+LOCAL Playwright progress spec : PASS (exit code 0)
+LOCAL Playwright progress spec : PASS (exit code 0)
+PROD  Playwright progress spec : PASS (exit code 0)
+PROD  Playwright progress spec : PASS (exit code 0)
+
+
+[RESULT] Phase 3 - API robustness: PASSED
+[RESULT] Phase 3 - API robustness: PASSED
+**********************
+Windows PowerShell transcript end
+End time: 20251126125233
+**********************

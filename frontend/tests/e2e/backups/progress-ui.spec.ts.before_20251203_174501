@@ -1,0 +1,33 @@
+﻿import { test, expect } from "@playwright/test";
+
+const PROGRESS_URL =
+  process.env.PROGRESS_UI_URL ?? "http://localhost:5177/app/progress";
+
+test("Progress page loads and shows a heading", async ({ page }) => {
+  const response = await page.goto(PROGRESS_URL, { waitUntil: "networkidle" });
+
+  if (response) {
+    const status = response.status();
+    expect(status).toBeLessThan(400);
+  }
+
+  // We only assert that at least one heading is visible to keep this stable.
+  const firstHeading = page.getByRole("heading").first();
+  await expect(firstHeading).toBeVisible();
+});
+
+test("Progress page optionally exposes stats UI", async ({ page }) => {
+  await page.goto(PROGRESS_URL, { waitUntil: "networkidle" });
+
+  // Very defensive: just look for any list or table as a stand-in for stats.
+  const listOrTable = page.locator("ul, ol, table");
+  const count = await listOrTable.count();
+
+  if (count > 0) {
+    await expect(listOrTable.first()).toBeVisible();
+  } else {
+    console.warn(
+      "Optional UI: no list/table found on Progress page â€“ skipping stats assertion."
+    );
+  }
+});

@@ -1,60 +1,137 @@
-param(
-    [switch]$SkipDocker
-)
+﻿param()
 
-Write-Host '=== MindLab FULL TEST RUN (local + docker) ===' -ForegroundColor Cyan
+$ErrorActionPreference = "Stop"
 
-# Step 1 — Local full smoke
-Write-Host ''
-Write-Host '[1/2] Running full_smoke.ps1 (local)...' -ForegroundColor Yellow
+# ------------------------------------------------
+# 1. Fixed project root
+# ------------------------------------------------
+$projectRoot = 'C:\Projects\MindLab_Starter_Project'
 
-$fullSmoke = Join-Path $PSScriptRoot 'full_smoke.ps1'
-if (-not (Test-Path $fullSmoke)) {
-    Write-Host 'ERROR: full_smoke.ps1 not found in project root.' -ForegroundColor Red
+Write-Host "=== MindLab daily stack (run_all v2 with port sanity) ===" -ForegroundColor Cyan
+Write-Host "[INFO] Using project root: $projectRoot" -ForegroundColor Cyan
+
+if (-not (Test-Path -LiteralPath $projectRoot)) {
+    Write-Host "[FATAL] Project root not found: $projectRoot" -ForegroundColor Red
     exit 1
 }
 
-& $fullSmoke
-$fullExit = $LASTEXITCODE
+Set-Location $projectRoot
 
-if ($fullExit -ne 0) {
-    Write-Host ''
-    Write-Host 'FULL SMOKE FAILED. Skipping docker smoke.' -ForegroundColor Red
-    exit $fullExit
+# ------------------------------------------------
+# 2. Helper: quick port check
+# ------------------------------------------------
+function Test-ServicePort {
+    param(
+        [int]$Port,
+        [string]$Name
+    )
+
+    $result = Test-NetConnection -ComputerName 'localhost' -Port $Port -WarningAction SilentlyContinue
+
+    if ($result.TcpTestSucceeded) {
+        Write-Host "[OK] $Name is reachable on port $Port." -ForegroundColor Green
+        return $true
+    } else {
+        Write-Host "[ERROR] $Name is NOT reachable on port $Port." -ForegroundColor Red
+        return $false
+    }
 }
 
-Write-Host ''
-Write-Host 'Local FULL SMOKE PASSED ✅' -ForegroundColor Green
+# ------------------------------------------------
+# 3. Port sanity: frontend (5177) + backend (8085)
+# ------------------------------------------------
+$frontendOk = Test-ServicePort -Port 5177 -Name "Frontend dev server (Vite)"
+$backendOk  = Test-ServicePort -Port 8085 -Name "Backend API server"
 
-if ($SkipDocker) {
-    Write-Host ''
-    Write-Host 'SkipDocker flag set — Docker smoke will not run.' -ForegroundColor Yellow
-    Write-Host '=== MASTER TEST RUN COMPLETE (LOCAL ONLY) ===' -ForegroundColor Cyan
-    exit 0
-}
-
-# Step 2 — Docker smoke
-Write-Host ''
-Write-Host '[2/2] Running docker_smoke.ps1...' -ForegroundColor Yellow
-
-$dockerSmoke = Join-Path $PSScriptRoot 'docker_smoke.ps1'
-if (-not (Test-Path $dockerSmoke)) {
-    Write-Host 'ERROR: docker_smoke.ps1 not found in project root.' -ForegroundColor Red
+if (-not $frontendOk) {
+    Write-Host ""
+    Write-Host "[FATAL] Frontend dev server is not running." -ForegroundColor Red
+    Write-Host "        Start it in a new window with:" -ForegroundColor Yellow
+    Write-Host "        Set-Location 'C:\Projects\MindLab_Starter_Project\frontend'" -ForegroundColor Yellow
+    Write-Host "        npm run dev" -ForegroundColor Yellow
     exit 1
 }
 
-& $dockerSmoke
-$dockerExit = $LASTEXITCODE
-
-if ($dockerExit -ne 0) {
-    Write-Host ''
-    Write-Host 'DOCKER SMOKE FAILED.' -ForegroundColor Red
-    exit $dockerExit
+if (-not $backendOk) {
+    Write-Host ""
+    Write-Host "[FATAL] Backend API server is not running (port 8085)." -ForegroundColor Red
+    Write-Host "        Start your backend stack before running tests." -ForegroundColor Yellow
+    Write-Host "        (Use your normal backend start command.)" -ForegroundColor Yellow
+    exit 1
 }
 
-Write-Host ''
-Write-Host 'Docker SMOKE PASSED ✅' -ForegroundColor Green
+# ------------------------------------------------
+# 4. Helper to run each step script
+# ------------------------------------------------
+function Invoke-MindLabStep {
+    param(
+        [string]$Name,
+        [string]$RelativeScriptPath,
+        [ref]$ExitCodeVar
+    )
 
-Write-Host ''
-Write-Host '=== ALL TESTS PASSED (LOCAL + DOCKER) 🎉 ===' -ForegroundColor Cyan
-exit 0
+    $fullPath = Join-Path $projectRoot $RelativeScriptPath
+
+    Write-Host ""
+    Write-Host "------------------------------------------------" -ForegroundColor DarkGray
+    Write-Host "[STEP] $Name" -ForegroundColor Yellow
+    Write-Host "       Script: $fullPath" -ForegroundColor DarkGray
+    Write-Host "------------------------------------------------" -ForegroundColor DarkGray
+
+    if (-not (Test-Path -LiteralPath $fullPath)) {
+        Write-Host "[ERROR] Script not found: $fullPath" -ForegroundColor Red
+        $ExitCodeVar.Value = 1
+        return
+    }
+
+    & $fullPath
+    $ExitCodeVar.Value = $LASTEXITCODE
+
+    if ($ExitCodeVar.Value -eq 0) {
+        Write-Host "[OK] $Name PASSED." -ForegroundColor Green
+    } else {
+        Write-Host "[WARN] $Name finished with exit code $($ExitCodeVar.Value)." -ForegroundColor Yellow
+    }
+}
+
+# ------------------------------------------------
+# 5. Run the three main steps
+# ------------------------------------------------
+$dailyExit    = 0
+$dailyUiExit  = 0
+$progressExit = 0
+
+Invoke-MindLabStep -Name "Daily routine (backend + routes)" `
+                   -RelativeScriptPath 'run_mindlab_daily_routine.ps1' `
+                   -ExitCodeVar ([ref]$dailyExit)
+
+Invoke-MindLabStep -Name "Daily UI Playwright test (/app/daily)" `
+                   -RelativeScriptPath 'run_daily_ui_test.ps1' `
+                   -ExitCodeVar ([ref]$dailyUiExit)
+
+Invoke-MindLabStep -Name "Progress UI Playwright test (/app/progress)" `
+                   -RelativeScriptPath 'run_progress_ui_test.ps1' `
+                   -ExitCodeVar ([ref]$progressExit)
+
+# ------------------------------------------------
+# 6. Summary and overall exit code
+# ------------------------------------------------
+Write-Host ""
+Write-Host "==================== SUMMARY ====================" -ForegroundColor Cyan
+Write-Host ("Daily routine      exit code: {0}" -f $dailyExit)
+Write-Host ("Daily UI test      exit code: {0}" -f $dailyUiExit)
+Write-Host ("Progress UI test   exit code: {0}" -f $progressExit)
+
+$stackExit = 0
+foreach ($code in @($dailyExit, $dailyUiExit, $progressExit)) {
+    if ($code -ne 0) { $stackExit = 1 }
+}
+
+if ($stackExit -eq 0) {
+    Write-Host "=== run_all.ps1 complete (STACK HEALTHY) ===" -ForegroundColor Green
+} else {
+    Write-Host "=== run_all.ps1 complete (STACK HAD ISSUES – see logs above) ===" -ForegroundColor Yellow
+}
+
+$global:LASTEXITCODE = $stackExit
+exit $stackExit

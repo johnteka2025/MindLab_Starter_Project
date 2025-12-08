@@ -1,0 +1,45 @@
+﻿param(
+    [switch]$KillNode
+)
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "=== MindLab run_all.ps1 ===" -ForegroundColor Cyan
+Write-Host "Project root: $PWD" -ForegroundColor Cyan
+
+# Optional: clean up any stale node processes
+if ($KillNode) {
+    Write-Host "Killing existing node processes..." -ForegroundColor Yellow
+    Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force
+}
+
+# Start backend in a new PowerShell window
+Write-Host "Starting backend (port 8085) in new window..." -ForegroundColor Green
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd `"`C:\Projects\MindLab_Starter_Project`"`; .\run_backend.ps1"
+
+# Small delay to give backend time to boot
+Start-Sleep -Seconds 5
+
+# Start frontend in another PowerShell window
+Write-Host "Starting frontend (port 5177) in new window..." -ForegroundColor Green
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd `"`C:\Projects\MindLab_Starter_Project\frontend`"`; npm run dev -- --port=5177"
+
+Write-Host "Waiting 15 seconds for servers to stabilize..." -ForegroundColor Yellow
+Start-Sleep -Seconds 15
+
+# Quick port sanity checks
+Write-Host "Checking ports 8085 (backend) and 5177 (frontend)..." -ForegroundColor Cyan
+Test-NetConnection localhost -Port 8085
+Test-NetConnection localhost -Port 5177
+
+# Run local sanity
+Write-Host "`nRunning sanity_local.ps1..." -ForegroundColor Cyan
+cd C:\Projects\MindLab_Starter_Project
+.\sanity_local.ps1 -LogToFile
+
+# Run Playwright tests
+Write-Host "`nRunning Playwright e2e tests..." -ForegroundColor Cyan
+cd C:\Projects\MindLab_Starter_Project\frontend
+npx playwright test --trace=on --reporter=list
+
+Write-Host "`n=== run_all.ps1 complete ===" -ForegroundColor Cyan

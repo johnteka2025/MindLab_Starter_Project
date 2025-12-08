@@ -1,0 +1,18 @@
+﻿import { test, expect } from "@playwright/test";
+
+const DAILY_URL = process.env.DAILY_UI_URL ?? "http://localhost:5177/app/daily";
+
+test("Daily challenge page loads", async ({ page }) => {
+  const response = await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+
+  // Basic HTTP sanity: page should not be 4xx/5xx
+  if (response) {
+    const status = response.status();
+    expect(status).toBeLessThan(400);
+  }
+
+  // Required: main Daily heading is visible
+  await expect(
+    page.getByRole("heading", { name: /Daily Challenge/i })
+  ).toBeVisible();
+});

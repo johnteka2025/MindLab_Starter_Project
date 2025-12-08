@@ -1,0 +1,16 @@
+{
+  "requiredSpecs": [
+    "frontend/tests/e2e/mindlab-daily-ui.spec.ts",
+    "frontend/tests/e2e/progress-ui.spec.ts"
+  ],
+  "optionalSpecs": [
+    "frontend/tests/e2e/mindlab-daily-ui-optional.spec.ts"
+  ],
+  "requiredScripts": [
+    "mindlab-daily-ui",
+    "mindlab-progress-ui"
+  ],
+  "optionalScripts": [
+    "mindlab:daily-ui-optional"
+  ]
+}
