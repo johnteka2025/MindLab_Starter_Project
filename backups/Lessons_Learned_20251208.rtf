@@ -1,0 +1,34 @@
+﻿TODAY’S LESSONS-LEARNED SUMMARY (2025-12-08)
+
+1. Duplicate files caused repeated errors:
+   - React imported the wrong components.
+   - Fix: remove/move duplicates before debugging.
+
+2. Wrong imports broke routing and Vite:
+   - One incorrect import can stop the whole UI.
+   - Fix imports FIRST.
+
+3. Daily UI tests failed because the wrong page loaded:
+   - The app was showing Home instead of Daily.
+   - Fix routing, test manually in browser.
+
+4. JSON errors 'Unexpected token <' mean the frontend
+   is talking to Vite instead of backend.
+   - Fix API URLs, confirm backend is running on port 8085.
+
+5. Editing the wrong file wastes time:
+   - Vite error overlays show the real file path.
+   - Always check the path before editing.
+
+6. After cleaning duplicates + fixing imports:
+   - Frontend loaded correctly.
+   - /app/daily worked.
+   - All Playwright tests PASSED.
+   - run_ui_suite.ps1 PASSED.
+
+Future reminder:
+   - Check duplicates
+   - Check real file paths
+   - Verify routing manually
+   - Test backend endpoints directly
+   - THEN run Playwright

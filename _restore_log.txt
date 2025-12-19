@@ -1,0 +1,6 @@
+﻿===== RESTORE RUN: 12/13/2025 13:15:06 =====
+[INFO] backendFile : C:\Projects\MindLab_Starter_Project\backend\src\server.cjs
+[INFO] restoreFrom : C:\Projects\MindLab_Starter_Project\backend\backups\manual_edits\server.cjs_PROGRESS_SOURCE_BACKUP_20251213_124850
+ERROR: Backup not found: C:\Projects\MindLab_Starter_Project\backend\backups\manual_edits\server.cjs_PROGRESS_SOURCE_BACKUP_20251213_124850
+===== AUTO RESTORE RUN: 12/13/2025 13:22:07 =====
+[INFO] Using backup: C:\Projects\MindLab_Starter_Project\backend\backups\manual_edits\server.cjs_PROGRESS_SOURCE_BACKUP_20251213_124824

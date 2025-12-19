@@ -1,0 +1,108 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251218195538
+Username: CT\cteka
+RunAs User: CT\cteka
+Configuration Name: 
+Machine: CT (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Projects\MindLab_Starter_Project\phase_2_2E_one_command_fullcheck.ps1
+Process ID: 24508
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== 1) Backend tests ===
+
+> mindlab-backend@0.1.0 test
+> jest
+
+ PASS  tests/contract/progress_api.contract.test.js
+ PASS  tests/progressRoutes_shape.test.js
+ PASS  tests/puzzles_json.test.js
+
+Test Suites: 3 passed, 3 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        0.922 s, estimated 1 s
+Ran all test suites.
+[OK]  Backend tests GREEN
+=== 2) Frontend unit tests (CI mode) ===
+
+> mindlab-frontend@1.0.0 test
+> vitest --run
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v1.6.1 C:/Projects/MindLab_Starter_Project/frontend
+
+ ✓ src/test/env.test.ts (1)
+ ✓ src/test/smoke.test.ts (1)
+
+ Test Files  2 passed (2)
+      Tests  2 passed (2)
+   Start at  19:55:41
+   Duration  1.07s (transform 59ms, setup 0ms, collect 55ms, tests 5ms, environment 0ms, prepare 388ms)
+[OK]  Frontend unit tests GREEN
+=== 3) Start backend dev server ===
+[OK]  Backend dev server started (PID=14872)
+=== 4) Start frontend dev server (port 5177) ===
+[OK]  Frontend dev server started (PID=25820)
+=== 5) Playwright E2E (LOCAL) ===
+
+> mindlab-frontend@1.0.0 test:e2e
+> playwright test
+
+
+Running 17 tests using 8 workers
+
+  -   1 [chromium] › tests\e2e\daily-challenge.spec.ts:4:6 › Daily Challenge entry point appears on home page
+  -   2 [chromium] › tests\e2e\daily-challenge.spec.ts:13:6 › Daily Challenge page loads and shows puzzle content
+  ok  3 [chromium] › tests\e2e\health-and-puzzles.spec.ts:5:5 › health status and puzzles flow work (6.3s)
+  ok  4 [chromium] › tests\e2e\mindlab-daily-result.spec.ts:12:5 › Daily puzzle result UI shows feedback after answering (6.9s)
+  ok  5 [chromium] › tests\e2e\mindlab-basic.spec.ts:10:5 › MindLab Homepage Loads + Talks to Backend (5.9s)
+  ok  6 [chromium] › tests\e2e\mindlab-daily-solve.spec.ts:12:5 › Daily puzzle solve flow lets the user select an answer (7.0s)
+  ok  7 [chromium] › tests\e2e\mindlab-daily-ui-optional.spec.ts:4:7 › MindLab Daily UI (Optional → Now Enforced) › Daily page shows puzzles list and at least one puzzle item (6.2s)
+  ok  8 [chromium] › tests\e2e\mindlab-daily-ui.spec.ts:5:5 › Daily UI basic smoke test (6.0s)
+  ok  9 [chromium] › tests\e2e\mindlab-daily-ui.spec.ts:13:5 › Daily UI gameplay â€“ open first puzzle and submit wrong answer when supported (6.4s)
+  ok 10 [chromium] › tests\e2e\mindlab-game-flow.spec.ts:13:5 › MindLab Game Flow UI › User can view Home, Daily, and Progress pages without errors (6.3s)
+  ok 11 [chromium] › tests\e2e\mindlab-game-flow.spec.ts:39:5 › MindLab Game Flow UI › User can visit Daily then Progress and see overall progress summary (2.3s)
+  ok 12 [chromium] › tests\e2e\mindlab-health-ui.spec.ts:4:7 › MindLab Health / Home UI › Home dashboard basic smoke test (2.3s)
+  ok 13 [chromium] › tests\e2e\mindlab-progress-ui.spec.ts:4:7 › MindLab Progress UI › Progress page basic smoke test (2.2s)
+Daily UI: no puzzles list found yet; skipping gameplay checks.
+  ok 14 [chromium] › tests\e2e\progress-api.spec.ts:6:5 › Progress API returns valid stats (LOCAL) (51ms)
+  ok 15 [chromium] › tests\e2e\progress-ui.spec.ts:5:5 › Progress UI basic smoke test (2.1s)
+  ok 16 [chromium] › tests\e2e\progress-ui.spec.ts:13:5 › Progress UI optional metrics (total puzzles, solved today, streak) (2.6s)
+  ok 17 [chromium] › tests\e2e\puzzles-navigation.spec.ts:6:5 › user can solve puzzles and go to next question (2.7s)
+Progress UI: no metrics test IDs found yet; skipping metrics checks.
+
+  2 skipped
+  15 passed (12.4s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+[OK]  Playwright LOCAL E2E GREEN
+=== 6) Playwright E2E (PROD) ===
+
+> mindlab-frontend@1.0.0 test:e2e:prod
+> playwright test --config=playwright.prod.config.ts
+
+
+Running 4 tests using 3 workers
+  2 skipped
+  2 passed (16.7s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+[OK]  Playwright PROD E2E GREEN
+[OK]  PHASE 2.2E FULLCHECK COMPLETE Ã¢â‚¬â€ ALL GREEN
+**********************
+Windows PowerShell transcript end
+End time: 20251218195620
+**********************

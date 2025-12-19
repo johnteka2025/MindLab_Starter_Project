@@ -5194,3 +5194,592 @@
 [2025-12-03 16:55:40] [INFO] SUCCESS: Backend /progress -> HTTP 200
 [2025-12-03 16:55:40] [INFO] Checking [Backend /app] at http://localhost:8085/app
 [2025-12-03 16:55:40] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-09 19:32:42] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-09 19:32:42] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-09 19:32:44] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-09 19:32:44] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-09 19:32:44] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-09 19:32:44] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-09 19:32:44] [INFO] Waiting for backend health to be READY...
+[2025-12-09 19:32:44] [INFO] Health URL : http://localhost:8085/health
+[2025-12-09 19:32:44] [INFO] MaxTries   : 30
+[2025-12-09 19:32:44] [INFO] Delay (sec): 5
+[2025-12-09 19:32:44] [INFO] Try 1: /health -> HTTP 200
+[2025-12-09 19:32:44] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-09 19:32:44] [INFO] Backend health is READY.
+[2025-12-09 19:32:44] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-09 19:32:44] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-09 19:32:44] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-09 19:32:44] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-09 19:32:44] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-09 19:32:44] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-09 19:32:44] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-09 19:55:50] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-09 19:55:50] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-09 19:55:52] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-09 19:55:52] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-09 19:55:52] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-09 19:55:52] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-09 19:55:52] [INFO] Waiting for backend health to be READY...
+[2025-12-09 19:55:52] [INFO] Health URL : http://localhost:8085/health
+[2025-12-09 19:55:52] [INFO] MaxTries   : 30
+[2025-12-09 19:55:52] [INFO] Delay (sec): 5
+[2025-12-09 19:55:52] [INFO] Try 1: /health -> HTTP 200
+[2025-12-09 19:55:52] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-09 19:55:52] [INFO] Backend health is READY.
+[2025-12-09 19:55:52] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-09 19:55:52] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-09 19:55:52] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-09 19:55:52] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-09 19:55:52] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-09 19:55:52] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-09 19:55:52] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-09 19:56:48] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-09 19:56:48] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-09 19:56:50] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-09 19:56:50] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-09 19:56:50] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-09 19:56:50] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-09 19:56:50] [INFO] Waiting for backend health to be READY...
+[2025-12-09 19:56:50] [INFO] Health URL : http://localhost:8085/health
+[2025-12-09 19:56:50] [INFO] MaxTries   : 30
+[2025-12-09 19:56:50] [INFO] Delay (sec): 5
+[2025-12-09 19:56:50] [INFO] Try 1: /health -> HTTP 200
+[2025-12-09 19:56:50] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-09 19:56:50] [INFO] Backend health is READY.
+[2025-12-09 19:56:50] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-09 19:56:50] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-09 19:56:50] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-09 19:56:50] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-09 19:56:50] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-09 19:56:50] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-09 19:56:50] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-09 20:05:17] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-09 20:05:17] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-09 20:05:19] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-09 20:05:19] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-09 20:05:20] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-09 20:05:20] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-09 20:05:20] [INFO] Waiting for backend health to be READY...
+[2025-12-09 20:05:20] [INFO] Health URL : http://localhost:8085/health
+[2025-12-09 20:05:20] [INFO] MaxTries   : 30
+[2025-12-09 20:05:20] [INFO] Delay (sec): 5
+[2025-12-09 20:05:20] [INFO] Try 1: /health -> HTTP 200
+[2025-12-09 20:05:20] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-09 20:05:20] [INFO] Backend health is READY.
+[2025-12-09 20:05:20] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-09 20:05:20] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-09 20:05:20] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-09 20:05:20] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-09 20:05:20] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-09 20:05:20] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-09 20:05:20] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-09 20:10:40] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-09 20:10:40] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-09 20:10:42] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-09 20:10:42] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-09 20:10:42] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-09 20:10:42] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-09 20:10:42] [INFO] Waiting for backend health to be READY...
+[2025-12-09 20:10:42] [INFO] Health URL : http://localhost:8085/health
+[2025-12-09 20:10:42] [INFO] MaxTries   : 30
+[2025-12-09 20:10:42] [INFO] Delay (sec): 5
+[2025-12-09 20:10:42] [INFO] Try 1: /health -> HTTP 200
+[2025-12-09 20:10:42] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-09 20:10:42] [INFO] Backend health is READY.
+[2025-12-09 20:10:42] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-09 20:10:42] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-09 20:10:42] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-09 20:10:42] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-09 20:10:42] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-09 20:10:42] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-09 20:10:42] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-10 19:06:17] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-10 19:06:17] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-10 19:06:19] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-10 19:06:19] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-10 19:06:19] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-10 19:06:19] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-10 19:06:19] [INFO] Waiting for backend health to be READY...
+[2025-12-10 19:06:19] [INFO] Health URL : http://localhost:8085/health
+[2025-12-10 19:06:19] [INFO] MaxTries   : 30
+[2025-12-10 19:06:19] [INFO] Delay (sec): 5
+[2025-12-10 19:06:19] [INFO] Try 1: /health -> HTTP 200
+[2025-12-10 19:06:19] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-10 19:06:19] [INFO] Backend health is READY.
+[2025-12-10 19:06:19] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-10 19:06:19] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-10 19:06:19] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-10 19:06:19] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-10 19:06:19] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-10 19:06:19] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-10 19:06:19] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-10 19:59:40] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-10 19:59:40] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-10 19:59:42] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-10 19:59:42] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-10 19:59:42] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-10 19:59:42] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-10 19:59:42] [INFO] Waiting for backend health to be READY...
+[2025-12-10 19:59:42] [INFO] Health URL : http://localhost:8085/health
+[2025-12-10 19:59:42] [INFO] MaxTries   : 30
+[2025-12-10 19:59:42] [INFO] Delay (sec): 5
+[2025-12-10 19:59:42] [INFO] Try 1: /health -> HTTP 200
+[2025-12-10 19:59:42] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-10 19:59:42] [INFO] Backend health is READY.
+[2025-12-10 19:59:42] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-10 19:59:42] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-10 19:59:43] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-10 19:59:43] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-10 19:59:43] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-10 19:59:43] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-10 19:59:43] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 18:59:16] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 18:59:16] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 18:59:18] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 18:59:18] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 18:59:18] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 18:59:18] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 18:59:18] [INFO] Waiting for backend health to be READY...
+[2025-12-11 18:59:18] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 18:59:18] [INFO] MaxTries   : 30
+[2025-12-11 18:59:18] [INFO] Delay (sec): 5
+[2025-12-11 18:59:18] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 18:59:18] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 18:59:18] [INFO] Backend health is READY.
+[2025-12-11 18:59:18] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 18:59:18] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 18:59:18] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 18:59:18] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 18:59:18] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 18:59:18] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 18:59:18] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 20:03:50] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 20:03:50] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 20:03:52] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 20:03:52] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 20:03:52] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 20:03:52] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 20:03:52] [INFO] Waiting for backend health to be READY...
+[2025-12-11 20:03:52] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 20:03:52] [INFO] MaxTries   : 30
+[2025-12-11 20:03:52] [INFO] Delay (sec): 5
+[2025-12-11 20:03:52] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 20:03:52] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 20:03:52] [INFO] Backend health is READY.
+[2025-12-11 20:03:52] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 20:03:52] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 20:03:52] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 20:03:52] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 20:03:52] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 20:03:52] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 20:03:52] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 20:18:44] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 20:18:44] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 20:18:46] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 20:18:46] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 20:18:46] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 20:18:46] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 20:18:46] [INFO] Waiting for backend health to be READY...
+[2025-12-11 20:18:46] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 20:18:46] [INFO] MaxTries   : 30
+[2025-12-11 20:18:46] [INFO] Delay (sec): 5
+[2025-12-11 20:18:47] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 20:18:47] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 20:18:47] [INFO] Backend health is READY.
+[2025-12-11 20:18:47] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 20:18:47] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 20:18:47] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 20:18:47] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 20:18:47] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 20:18:47] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 20:18:47] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 20:42:40] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 20:42:40] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 20:42:42] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 20:42:42] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 20:42:42] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 20:42:42] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 20:42:42] [INFO] Waiting for backend health to be READY...
+[2025-12-11 20:42:42] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 20:42:42] [INFO] MaxTries   : 30
+[2025-12-11 20:42:42] [INFO] Delay (sec): 5
+[2025-12-11 20:42:42] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 20:42:42] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 20:42:42] [INFO] Backend health is READY.
+[2025-12-11 20:42:42] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 20:42:42] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 20:42:42] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 20:42:42] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 20:42:42] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 20:42:42] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 20:42:42] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 20:43:54] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 20:43:54] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 20:43:56] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 20:43:56] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 20:43:56] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 20:43:56] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 20:43:56] [INFO] Waiting for backend health to be READY...
+[2025-12-11 20:43:56] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 20:43:56] [INFO] MaxTries   : 30
+[2025-12-11 20:43:56] [INFO] Delay (sec): 5
+[2025-12-11 20:43:56] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 20:43:56] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 20:43:56] [INFO] Backend health is READY.
+[2025-12-11 20:43:56] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 20:43:56] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 20:43:56] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 20:43:56] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 20:43:56] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 20:43:56] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 20:43:56] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 21:40:56] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 21:40:56] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 21:40:58] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 21:40:58] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 21:40:58] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 21:40:58] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 21:40:58] [INFO] Waiting for backend health to be READY...
+[2025-12-11 21:40:58] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 21:40:58] [INFO] MaxTries   : 30
+[2025-12-11 21:40:58] [INFO] Delay (sec): 5
+[2025-12-11 21:40:58] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 21:40:58] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 21:40:58] [INFO] Backend health is READY.
+[2025-12-11 21:40:58] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 21:40:58] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 21:40:58] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 21:40:58] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 21:40:58] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 21:40:58] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 21:40:58] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-11 22:05:29] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-11 22:05:29] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-11 22:05:31] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-11 22:05:31] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-11 22:05:31] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-11 22:05:31] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-11 22:05:31] [INFO] Waiting for backend health to be READY...
+[2025-12-11 22:05:31] [INFO] Health URL : http://localhost:8085/health
+[2025-12-11 22:05:31] [INFO] MaxTries   : 30
+[2025-12-11 22:05:31] [INFO] Delay (sec): 5
+[2025-12-11 22:05:31] [INFO] Try 1: /health -> HTTP 200
+[2025-12-11 22:05:31] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-11 22:05:31] [INFO] Backend health is READY.
+[2025-12-11 22:05:31] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-11 22:05:31] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-11 22:05:31] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-11 22:05:31] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-11 22:05:31] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-11 22:05:31] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-11 22:05:31] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 18:38:03] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 18:38:03] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 18:38:03] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 18:38:03] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 18:38:03] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 18:38:03] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 18:38:03] [INFO] Waiting for backend health to be READY...
+[2025-12-12 18:38:03] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 18:38:03] [INFO] MaxTries   : 30
+[2025-12-12 18:38:03] [INFO] Delay (sec): 5
+[2025-12-12 18:38:03] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 18:38:03] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 18:38:03] [INFO] Backend health is READY.
+[2025-12-12 18:38:03] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 18:38:03] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 18:38:03] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 18:38:03] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 18:38:03] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 18:38:03] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 18:38:03] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 19:00:56] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 19:00:56] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 19:00:56] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 19:00:56] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 19:00:56] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 19:00:56] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 19:00:56] [INFO] Waiting for backend health to be READY...
+[2025-12-12 19:00:56] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 19:00:56] [INFO] MaxTries   : 30
+[2025-12-12 19:00:56] [INFO] Delay (sec): 5
+[2025-12-12 19:00:56] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 19:00:56] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 19:00:56] [INFO] Backend health is READY.
+[2025-12-12 19:00:56] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 19:00:56] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 19:00:56] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 19:00:56] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 19:00:56] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 19:00:56] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 19:00:56] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 19:27:13] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 19:27:13] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 19:27:15] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 19:27:15] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 19:27:15] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 19:27:15] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 19:27:15] [INFO] Waiting for backend health to be READY...
+[2025-12-12 19:27:15] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 19:27:15] [INFO] MaxTries   : 30
+[2025-12-12 19:27:15] [INFO] Delay (sec): 5
+[2025-12-12 19:27:15] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 19:27:15] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 19:27:15] [INFO] Backend health is READY.
+[2025-12-12 19:27:15] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 19:27:15] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 19:27:15] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 19:27:15] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 19:27:15] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 19:27:15] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 19:27:15] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 19:39:05] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 19:39:05] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 19:39:07] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 19:39:07] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 19:39:07] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 19:39:07] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 19:39:07] [INFO] Waiting for backend health to be READY...
+[2025-12-12 19:39:07] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 19:39:07] [INFO] MaxTries   : 30
+[2025-12-12 19:39:07] [INFO] Delay (sec): 5
+[2025-12-12 19:39:07] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 19:39:08] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 19:39:08] [INFO] Backend health is READY.
+[2025-12-12 19:39:08] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 19:39:08] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 19:39:08] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 19:39:08] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 19:39:08] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 19:39:08] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 19:39:08] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 20:20:31] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 20:20:31] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 20:20:31] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 20:20:31] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 20:20:31] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 20:20:31] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 20:20:31] [INFO] Waiting for backend health to be READY...
+[2025-12-12 20:20:31] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 20:20:31] [INFO] MaxTries   : 30
+[2025-12-12 20:20:31] [INFO] Delay (sec): 5
+[2025-12-12 20:20:31] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 20:20:31] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 20:20:31] [INFO] Backend health is READY.
+[2025-12-12 20:20:31] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 20:20:31] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 20:20:31] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 20:20:31] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 20:20:31] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 20:20:31] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 20:20:31] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 20:36:26] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 20:36:26] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 20:36:28] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 20:36:28] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 20:36:29] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 20:36:29] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 20:36:29] [INFO] Waiting for backend health to be READY...
+[2025-12-12 20:36:29] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 20:36:29] [INFO] MaxTries   : 30
+[2025-12-12 20:36:29] [INFO] Delay (sec): 5
+[2025-12-12 20:36:29] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 20:36:29] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 20:36:29] [INFO] Backend health is READY.
+[2025-12-12 20:36:29] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 20:36:29] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 20:36:29] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 20:36:29] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 20:36:29] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 20:36:29] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 20:36:29] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 20:57:03] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 20:57:03] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 20:57:05] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 20:57:05] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 20:57:05] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 20:57:05] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 20:57:05] [INFO] Waiting for backend health to be READY...
+[2025-12-12 20:57:05] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 20:57:05] [INFO] MaxTries   : 30
+[2025-12-12 20:57:05] [INFO] Delay (sec): 5
+[2025-12-12 20:57:05] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 20:57:05] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 20:57:05] [INFO] Backend health is READY.
+[2025-12-12 20:57:05] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 20:57:05] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 20:57:05] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 20:57:05] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 20:57:05] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 20:57:05] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 20:57:05] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 21:13:10] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 21:13:10] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 21:13:11] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 21:13:11] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 21:13:11] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 21:13:11] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 21:13:11] [INFO] Waiting for backend health to be READY...
+[2025-12-12 21:13:11] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 21:13:11] [INFO] MaxTries   : 30
+[2025-12-12 21:13:11] [INFO] Delay (sec): 5
+[2025-12-12 21:13:11] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 21:13:11] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 21:13:11] [INFO] Backend health is READY.
+[2025-12-12 21:13:11] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 21:13:11] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 21:13:11] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 21:13:11] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 21:13:11] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 21:13:11] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 21:13:11] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 21:53:26] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 21:53:26] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 21:53:26] [WARN] FAILED: Backend /health (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:26] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 21:53:26] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 21:53:26] [WARN] NOTE: Backend /health initial check failed. Will still enter wait loop...
+[2025-12-12 21:53:26] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 21:53:26] [INFO] Waiting for backend health to be READY...
+[2025-12-12 21:53:26] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 21:53:26] [INFO] MaxTries   : 30
+[2025-12-12 21:53:26] [INFO] Delay (sec): 5
+[2025-12-12 21:53:26] [WARN] Try 1: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:31] [WARN] Try 2: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:36] [WARN] Try 3: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:41] [WARN] Try 4: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:46] [WARN] Try 5: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:51] [WARN] Try 6: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:53:56] [WARN] Try 7: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:01] [WARN] Try 8: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:06] [WARN] Try 9: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:11] [WARN] Try 10: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:16] [WARN] Try 11: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:21] [WARN] Try 12: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:26] [WARN] Try 13: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:32] [WARN] Try 14: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:37] [WARN] Try 15: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:42] [WARN] Try 16: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:47] [WARN] Try 17: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:52] [WARN] Try 18: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:54:57] [WARN] Try 19: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:02] [WARN] Try 20: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:07] [WARN] Try 21: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:12] [WARN] Try 22: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:17] [WARN] Try 23: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:22] [WARN] Try 24: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:27] [WARN] Try 25: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:32] [WARN] Try 26: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:37] [WARN] Try 27: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:42] [WARN] Try 28: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:47] [WARN] Try 29: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:52] [WARN] Try 30: /health not ready yet... (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:57] [ERROR] Backend health did not become READY after 30 tries.
+[2025-12-12 21:55:57] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 21:55:57] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 21:55:57] [WARN] FAILED: Backend /puzzles (The remote server returned an error: (404) Not Found.)
+[2025-12-12 21:55:57] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 21:55:57] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 21:55:57] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 21:55:57] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-12 22:42:51] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-12 22:42:51] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-12 22:42:51] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-12 22:42:51] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-12 22:42:51] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-12 22:42:51] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-12 22:42:51] [INFO] Waiting for backend health to be READY...
+[2025-12-12 22:42:51] [INFO] Health URL : http://localhost:8085/health
+[2025-12-12 22:42:51] [INFO] MaxTries   : 30
+[2025-12-12 22:42:51] [INFO] Delay (sec): 5
+[2025-12-12 22:42:51] [INFO] Try 1: /health -> HTTP 200
+[2025-12-12 22:42:51] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-12 22:42:51] [INFO] Backend health is READY.
+[2025-12-12 22:42:51] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-12 22:42:51] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-12 22:42:51] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-12 22:42:51] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-12 22:42:52] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-12 22:42:52] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-12 22:42:52] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-13 10:47:25] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-13 10:47:25] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-13 10:47:25] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-13 10:47:25] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-13 10:47:25] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-13 10:47:25] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-13 10:47:25] [INFO] Waiting for backend health to be READY...
+[2025-12-13 10:47:25] [INFO] Health URL : http://localhost:8085/health
+[2025-12-13 10:47:25] [INFO] MaxTries   : 30
+[2025-12-13 10:47:25] [INFO] Delay (sec): 5
+[2025-12-13 10:47:25] [INFO] Try 1: /health -> HTTP 200
+[2025-12-13 10:47:25] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-13 10:47:25] [INFO] Backend health is READY.
+[2025-12-13 10:47:25] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-13 10:47:25] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-13 10:47:25] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-13 10:47:25] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-13 10:47:25] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-13 10:47:25] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-13 10:47:25] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-13 11:01:03] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-13 11:01:03] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-13 11:01:03] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-13 11:01:03] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-13 11:01:03] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-13 11:01:03] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-13 11:01:03] [INFO] Waiting for backend health to be READY...
+[2025-12-13 11:01:03] [INFO] Health URL : http://localhost:8085/health
+[2025-12-13 11:01:03] [INFO] MaxTries   : 30
+[2025-12-13 11:01:03] [INFO] Delay (sec): 5
+[2025-12-13 11:01:03] [INFO] Try 1: /health -> HTTP 200
+[2025-12-13 11:01:03] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-13 11:01:03] [INFO] Backend health is READY.
+[2025-12-13 11:01:03] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-13 11:01:03] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-13 11:01:03] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-13 11:01:03] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-13 11:01:03] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-13 11:01:03] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-13 11:01:03] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-13 12:24:15] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-13 12:24:15] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-13 12:24:15] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-13 12:24:15] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-13 12:24:15] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-13 12:24:15] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-13 12:24:15] [INFO] Waiting for backend health to be READY...
+[2025-12-13 12:24:15] [INFO] Health URL : http://localhost:8085/health
+[2025-12-13 12:24:15] [INFO] MaxTries   : 30
+[2025-12-13 12:24:15] [INFO] Delay (sec): 5
+[2025-12-13 12:24:15] [INFO] Try 1: /health -> HTTP 200
+[2025-12-13 12:24:15] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-13 12:24:15] [INFO] Backend health is READY.
+[2025-12-13 12:24:15] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-13 12:24:15] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-13 12:24:15] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-13 12:24:15] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-13 12:24:15] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-13 12:24:15] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-13 12:24:15] [INFO] SUCCESS: Backend /app -> HTTP 200
+[2025-12-13 12:26:25] [INFO] STEP 1 — Quick connectivity sanity
+[2025-12-13 12:26:25] [INFO] Checking [Backend /health] at http://localhost:8085/health
+[2025-12-13 12:26:25] [INFO] SUCCESS: Backend /health -> HTTP 200
+[2025-12-13 12:26:25] [INFO] Checking [Frontend page (/app)] at http://localhost:5177
+[2025-12-13 12:26:25] [INFO] SUCCESS: Frontend page (/app) -> HTTP 200
+[2025-12-13 12:26:25] [INFO] STEP 2 — Wait for backend /health to be fully READY
+[2025-12-13 12:26:25] [INFO] Waiting for backend health to be READY...
+[2025-12-13 12:26:25] [INFO] Health URL : http://localhost:8085/health
+[2025-12-13 12:26:25] [INFO] MaxTries   : 30
+[2025-12-13 12:26:25] [INFO] Delay (sec): 5
+[2025-12-13 12:26:25] [INFO] Try 1: /health -> HTTP 200
+[2025-12-13 12:26:25] [INFO] Backend health status is 'ok'. Treating as READY.
+[2025-12-13 12:26:25] [INFO] Backend health is READY.
+[2025-12-13 12:26:25] [INFO] STEP 3 — Business endpoints (/puzzles, /progress, /app)
+[2025-12-13 12:26:25] [INFO] Checking [Backend /puzzles] at http://localhost:8085/puzzles
+[2025-12-13 12:26:25] [INFO] SUCCESS: Backend /puzzles -> HTTP 200
+[2025-12-13 12:26:25] [INFO] Checking [Backend /progress] at http://localhost:8085/progress
+[2025-12-13 12:26:25] [INFO] SUCCESS: Backend /progress -> HTTP 200
+[2025-12-13 12:26:25] [INFO] Checking [Backend /app] at http://localhost:8085/app
+[2025-12-13 12:26:25] [INFO] SUCCESS: Backend /app -> HTTP 200

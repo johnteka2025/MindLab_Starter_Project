@@ -1,0 +1,4 @@
+﻿test("progressRoutes.js loads and exports a function", () => {
+  const mod = require("../src/progressRoutes.js");
+  expect(typeof mod).toBe("function");
+});

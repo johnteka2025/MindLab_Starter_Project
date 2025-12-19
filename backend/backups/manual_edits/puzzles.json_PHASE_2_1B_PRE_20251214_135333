@@ -1,0 +1,17 @@
+const puzzles = [
+  {
+    id: 1,
+    question: "What is 2 + 2?",
+    options: ["3", "4", "5"]
+  },
+  {
+    id: 2,
+    question: "What is the color of the sky?",
+    options: ["Blue", "Green", "Red"]
+  },
+  {
+    id: 3,
+    question: "Which shape has 3 sides?",
+    options: ["Triangle", "Square", "Circle"]
+  }
+];

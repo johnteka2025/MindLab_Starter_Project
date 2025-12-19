@@ -1,0 +1,58 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251217205341
+Username: CT\cteka
+RunAs User: CT\cteka
+Configuration Name: 
+Machine: CT (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Projects\MindLab_Starter_Project\phase_2_2E_one_command_fullcheck.ps1
+Process ID: 29588
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== 1) Backend tests ===
+
+> mindlab-backend@0.1.0 test
+> jest
+
+ FAIL  tests/contract/progress_api.contract.test.js
+  ● Progress API contract: GET /progress returns {total, solved} numbers
+
+    TypeError: fetch failed
+
+      2 |
+      3 | async function getJson(path) {
+    > 4 |   const r = await fetch(`${BASE}${path}`);
+        |             ^
+      5 |   if (!r.ok) throw new Error(`GET failed: ${r.status} ${r.statusText}`);
+      6 |   return await r.json();
+      7 | }
+
+      at getJson (tests/contract/progress_api.contract.test.js:4:13)
+      at Object.<anonymous> (tests/contract/progress_api.contract.test.js:10:16)
+
+    Cause:
+    AggregateError:
+
+
+
+ PASS  tests/progressRoutes_shape.test.js
+ PASS  tests/puzzles_json.test.js
+
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       1 failed, 2 passed, 3 total
+Snapshots:   0 total
+Time:        0.408 s, estimated 1 s
+Ran all test suites.
+[FAIL] Backend npm test failed (exit=1)
+PS>TerminatingError(): "Backend npm test failed (exit=1)"
+**********************
+Windows PowerShell transcript end
+End time: 20251217205342
+**********************

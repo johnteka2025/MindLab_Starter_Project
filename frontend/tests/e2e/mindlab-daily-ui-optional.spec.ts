@@ -1,19 +1,15 @@
 ﻿import { test, expect } from "@playwright/test";
 
-const DAILY_URL = "http://localhost:5177/app/daily";
+test.describe("MindLab Daily UI (Optional → Now Enforced)", () => {
+  test("Daily page shows puzzles list and at least one puzzle item", async ({ page }) => {
+    await page.goto("http://localhost:5177/app/daily", { waitUntil: "domcontentloaded" });
 
-test("Optional Daily UI: puzzles list smoke check", async ({ page }) => {
-  await page.goto(DAILY_URL, { waitUntil: "networkidle" });
+    await expect(page.getByRole("heading", { name: "Daily Challenge" })).toBeVisible();
 
-  // Optional feature: puzzles list on the Daily page.
-  // If it does not exist yet, log and exit without failing the test.
-  const puzzlesList = page.locator('[data-testid="puzzles-list"]');
-  const count = await puzzlesList.count();
+    const list = page.getByTestId("daily-puzzles-list");
+    await expect(list).toBeVisible();
 
-  if (count === 0) {
-    console.warn("Optional Daily UI: no puzzles list found yet (feature may not be implemented).");
-    return;
-  }
-
-  await expect(puzzlesList.first()).toBeVisible();
+    const items = page.getByTestId("daily-puzzle-item");
+    await expect(items.first()).toBeVisible();
+  });
 });

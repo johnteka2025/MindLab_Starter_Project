@@ -1,0 +1,29 @@
+﻿const BACKEND = process.env.BACKEND_URL || 'http://localhost:8085';
+
+async function getJson(path) {
+  const r = await fetch(${BACKEND}C:\Projects\MindLab_Starter_Project\backend\package.json);
+  if (!r.ok) throw new Error(GET failed: );
+  return await r.json();
+}
+
+test('progress contract: GET returns {total, solved} numbers and invariants hold', async () => {
+  const before = await getJson('/progress');
+  expect(typeof before.total).toBe('number');
+  expect(typeof before.solved).toBe('number');
+  expect(before.solved).toBeLessThanOrEqual(before.total);
+
+  // Do one solve
+  const resp = await fetch(${BACKEND}/progress/solve, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ puzzleId: 1 })
+  });
+  expect(resp.ok).toBe(true);
+
+  const after = await getJson('/progress');
+  expect(typeof after.total).toBe('number');
+  expect(typeof after.solved).toBe('number');
+  expect(after.total).toBe(before.total);
+  expect(after.solved).toBeGreaterThanOrEqual(before.solved);
+  expect(after.solved).toBeLessThanOrEqual(after.total);
+}, 15000);

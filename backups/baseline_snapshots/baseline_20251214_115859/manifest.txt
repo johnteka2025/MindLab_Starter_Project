@@ -1,0 +1,13 @@
+﻿MindLab Baseline Snapshot
+Timestamp: 20251214_115859
+ProjectRoot: C:\Projects\MindLab_Starter_Project
+
+Copied items:
+ - backend\.env.example
+ - backend\package.json
+ - backend\package-lock.json
+ - backend\src
+ - frontend\package.json
+ - frontend\package-lock.json
+ - frontend\src
+ - run_daily_check.ps1

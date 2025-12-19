@@ -1,0 +1,31 @@
+MindLab – Daily Status (2025-12-10)
+
+1. Local full-check
+   - Script: frontend\run_all.ps1
+   - Result: Sanity script PASS, Playwright e2e PASS (6 tests).
+
+2. Safety backup
+   - Script: frontend\backup_fullcheck.ps1
+   - Latest backup folder: frontend\backups\fullcheck_20251210_1949
+   - Contents:
+     * Helper scripts (run_all.ps1, etc.).
+     * All key Playwright specs:
+       - daily-challenge.spec.ts, daily-challenge-prod.spec.ts
+       - mindlab-basic.spec.ts, health-and-puzzles.spec.ts
+       - mindlab-daily-ui.spec.ts, mindlab-daily-ui-optional.spec.ts
+       - mindlab-daily-solve.spec.ts, mindlab-daily-result.spec.ts
+       - progress-ui.spec.ts, progress-api.spec.ts, progress-api-prod.spec.ts
+       - puzzles-navigation.spec.ts
+   - Status: Backup completed successfully.
+
+3. Environment
+   - Backend: http://localhost:8085 (health, puzzles, progress, daily = 200).
+   - Frontend: http://localhost:5177/app and /app/daily responding as expected.
+
+4. Notes
+   - Full local sanity + UI stack is stable.
+   - Full-check backup can be repeated via run_fullcheck_backup.ps1 at root.
+
+5. Next steps (high level)
+   - Use run_all.ps1 + backup_fullcheck.ps1 as regular “full stack + backup”.
+   - Start building a simple “start-of-day” script that spins up backend + frontend then runs quick sanity.

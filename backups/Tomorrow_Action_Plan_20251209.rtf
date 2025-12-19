@@ -1,0 +1,36 @@
+﻿TOMORROW’S EXACT STEP-BY-STEP ACTION PLAN (2025-12-09)
+
+PHASE 1 — Morning System Reset
+1. Close all terminals.
+2. Restart backend (go run .).
+3. Restart frontend (npm run dev).
+4. Validate /health, /app, /app/daily.
+
+PHASE 2 — File Integrity Check
+1. Check for duplicate TSX/JS files.
+2. Move duplicates to _legacy_js_backup.
+
+PHASE 3 — UI Routing Validation
+1. Verify App.tsx routes.
+2. Manually test /app, /app/daily, /app/progress.
+
+PHASE 4 — Backend Integration
+1. Open /health, /daily, /progress in browser.
+2. Confirm valid JSON responses.
+
+PHASE 5 — Run Daily UI Tests
+npx playwright test tests/e2e/mindlab-daily-ui.spec.ts --trace=on
+
+PHASE 6 — Run Full UI Test Suite
+.\run_ui_suite.ps1
+
+PHASE 7 — Begin New Feature Work
+1. Add styling framework.
+2. Implement multi-puzzle flow.
+3. Add user session and progress tracking.
+4. Clean folder hierarchy.
+
+PHASE 8 — End-of-Day Tasks
+1. Commit and backup.
+2. Run final test suite.
+3. Generate daily summary.

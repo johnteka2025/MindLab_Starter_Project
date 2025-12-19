@@ -1,0 +1,132 @@
+$ErrorActionPreference = "Stop"
+
+Write-Host "=== PHASE 1.2C — Baseline Snapshot (Rollback Safe Point) ===" -ForegroundColor Cyan
+
+$startDir = Get-Location
+
+try {
+    # 0) Confirm project root (no guessing)
+    $projectRoot = (Get-Location).Path
+
+    $backendDir = Join-Path $projectRoot "backend"
+    $frontendDir = Join-Path $projectRoot "frontend"
+
+    if (-not (Test-Path $backendDir))  { throw "Missing backend folder at: $backendDir" }
+    if (-not (Test-Path $frontendDir)) { throw "Missing frontend folder at: $frontendDir" }
+
+    Write-Host "[OK] Project root confirmed: $projectRoot" -ForegroundColor Green
+
+    # 1) Create snapshot folder
+    $stamp   = Get-Date -Format "yyyyMMdd_HHmmss"
+    $snapRoot = Join-Path $projectRoot "snapshots"
+    $snapDir  = Join-Path $snapRoot ("baseline_" + $stamp)
+
+    New-Item -ItemType Directory -Force -Path $snapDir | Out-Null
+    Write-Host "[OK] Snapshot folder created: $snapDir" -ForegroundColor Green
+
+    # 2) What to copy (minimal but sufficient)
+    $toCopy = @(
+        "backend\src",
+        "backend\static",
+        "backend\package.json",
+        "backend\package-lock.json",
+        "backend\.env",
+        "backend\.env.example",
+        "backend\docker-compose.yml",
+
+        "frontend\src",
+        "frontend\public",
+        "frontend\index.html",
+        "frontend\package.json",
+        "frontend\package-lock.json",
+
+        "tests",
+        "scripts",
+        "run_daily_check.ps1"
+    )
+
+    function Copy-PathIfExists {
+        param([Parameter(Mandatory=$true)][string]$rel)
+
+        $src = Join-Path $projectRoot $rel
+        if (-not (Test-Path $src)) { return }
+
+        $dest = Join-Path $snapDir $rel
+        New-Item -ItemType Directory -Force -Path (Split-Path $dest -Parent) | Out-Null
+
+        if ((Get-Item $src).PSIsContainer) {
+            Copy-Item -Path $src -Destination $dest -Recurse -Force
+        } else {
+            Copy-Item -Path $src -Destination $dest -Force
+        }
+    }
+
+    Write-Host "[INFO] Copying baseline files/folders..." -ForegroundColor Yellow
+    foreach ($rel in $toCopy) { Copy-PathIfExists $rel }
+    Write-Host "[OK] Copy complete." -ForegroundColor Green
+
+    # 3) Manifest (NO here-strings; paste-proof)
+    $manifestPath = Join-Path $snapDir "BASELINE_MANIFEST.txt"
+    $hashPath     = Join-Path $snapDir "BASELINE_HASHES_SHA256.txt"
+
+    $nodeV = "node not found"
+    $npmV  = "npm not found"
+    try { $nodeV = (node -v) } catch {}
+    try { $npmV  = (npm -v)  } catch {}
+
+    $gitHead = "git repo not detected"
+    try {
+        $g = (git rev-parse HEAD 2>$null)
+        if ($g) { $gitHead = $g.Trim() }
+    } catch {}
+
+    $manifestLines = @()
+    $manifestLines += "MindLab Baseline Snapshot"
+    $manifestLines += "------------------------"
+    $manifestLines += "Timestamp   : $stamp"
+    $manifestLines += "ProjectRoot : $projectRoot"
+    $manifestLines += "SnapshotDir : $snapDir"
+    $manifestLines += "Machine     : $env:COMPUTERNAME"
+    $manifestLines += "User        : $env:USERNAME"
+    $manifestLines += "OS          : $([System.Environment]::OSVersion.VersionString)"
+    $manifestLines += ""
+    $manifestLines += "NodeVersion : $nodeV"
+    $manifestLines += "NpmVersion  : $npmV"
+    $manifestLines += "GitHead     : $gitHead"
+    $manifestLines += ""
+    $manifestLines += "Included (high level):"
+    $manifestLines += "- backend\src + backend configs"
+    $manifestLines += "- frontend\src + frontend configs"
+    $manifestLines += "- tests, scripts, run_daily_check.ps1 (if present)"
+    $manifestLines += ""
+    $manifestLines += "Copied paths requested:"
+    $manifestLines += ($toCopy | ForEach-Object { "  - $_" })
+
+    Set-Content -Path $manifestPath -Value $manifestLines -Encoding UTF8
+    Write-Host "[OK] Manifest created: $manifestPath" -ForegroundColor Green
+
+    # 4) Hash everything in snapshot
+    Write-Host "[INFO] Generating SHA256 hashes..." -ForegroundColor Yellow
+    $files = Get-ChildItem -Path $snapDir -Recurse -File
+
+    $hashLines = foreach ($f in $files) {
+        $h = Get-FileHash -Algorithm SHA256 -Path $f.FullName
+        $relPath = $f.FullName.Substring($snapDir.Length).TrimStart("\")
+        "{0}  {1}" -f $h.Hash, $relPath
+    }
+
+    Set-Content -Path $hashPath -Value $hashLines -Encoding UTF8
+    Write-Host "[OK] Hash file created: $hashPath" -ForegroundColor Green
+
+    # 5) Proof
+    Write-Host ""
+    Write-Host "=== SNAPSHOT PROOF ===" -ForegroundColor Cyan
+    Write-Host "Snapshot: $snapDir" -ForegroundColor Gray
+    Write-Host "Files hashed: $($files.Count)" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "NEXT: Proceed to PHASE 2 — New test coverage." -ForegroundColor Yellow
+}
+finally {
+    Set-Location $startDir
+    Write-Host "[INFO] Returned to: $($startDir.Path)" -ForegroundColor Cyan
+}

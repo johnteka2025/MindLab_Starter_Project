@@ -1,0 +1,14 @@
+﻿const BASE = process.env.BACKEND_URL || "http://localhost:8085";
+
+async function getJson(path) {
+  const r = await fetch(`${BASE}${path}`);
+  if (!r.ok) throw new Error(`GET failed: ${r.status} ${r.statusText}`);
+  return await r.json();
+}
+
+test("Progress API contract: GET /progress returns {total, solved} numbers", async () => {
+  const data = await getJson("/progress");
+  expect(typeof data.total).toBe("number");
+  expect(typeof data.solved).toBe("number");
+  expect(data.solved).toBeLessThanOrEqual(data.total);
+});

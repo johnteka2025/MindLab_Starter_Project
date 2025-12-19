@@ -1,0 +1,15 @@
+﻿const fs = require('fs');
+const path = require('path');
+
+test('puzzles.json is valid JSON and has at least 1 puzzle with id/question', () => {
+  const puzzlesPath = path.join(__dirname, '..', 'src', 'puzzles.json');
+  const raw = fs.readFileSync(puzzlesPath, 'utf8').replace(/^\uFEFF/, '');
+  const data = JSON.parse(raw);
+
+  expect(Array.isArray(data)).toBe(true);
+  expect(data.length).toBeGreaterThan(0);
+
+  const p = data[0];
+  expect(p).toHaveProperty('id');
+  expect(p).toHaveProperty('question');
+});

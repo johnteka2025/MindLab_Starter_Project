@@ -1,0 +1,565 @@
+﻿// C:\Projects\MindLab_Starter_Project\backend\src\server.cjs
+
+
+// MindLab backend — /api/health and /api/puzzles (6 puzzles: easy/medium/hard)
+
+
+
+
+
+"use strict";
+
+
+
+
+
+const express = require("express");
+
+
+const cors = require("cors");
+
+
+
+
+
+const app = express();
+require("./progressRoutes.cjs")(app);
+
+
+
+// --- DEV CORS: allow Vite frontend (5177) to call backend (8085) ---
+
+
+app.use((req, res, next) => {
+
+
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5177");
+
+
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
+
+
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+
+
+  next();
+
+
+});
+
+
+// -------------------------------------------------------------------
+
+
+
+
+
+
+
+
+// --- runtime fingerprint (added by PATCH_10) ---
+
+
+app.get("/_runtime", (req, res) => {
+
+
+  res.json({
+
+
+    file: "backend/src/server.cjs",
+
+
+    pid: process.pid,
+
+
+    node: process.version,
+
+
+    time: new Date().toISOString(),
+
+
+  });
+
+
+});
+
+
+// ---- FORCE-ADDED baseline endpoints (health + puzzles) ----
+
+
+const __PUZZLES = [
+
+
+  { id: 1, question: "What is 2 + 2?", options: ["3","4","5"], correctIndex: 1 },
+
+
+  { id: 2, question: "What is the color of the sky?", options: ["Blue","Green","Red"], correctIndex: 0 }
+
+
+];
+
+
+
+
+
+app.get('/health', (req, res) => {
+
+
+  res.json({ status: 'ok' });
+
+
+});
+
+
+
+
+
+app.get('/puzzles', (req, res) => {
+
+
+  res.json(__PUZZLES);
+
+
+});
+
+
+
+
+
+// Make puzzles visible to other modules if they want it
+
+
+try { app.locals.puzzles = __PUZZLES; } catch (_) {}
+
+
+// ---- END FORCE-ADDED baseline endpoints ----
+
+
+
+
+
+
+
+
+// Runtime fingerprint (debug)
+
+
+app.get('/__runtime', (req, res) => {
+
+
+  res.json({
+
+
+    file: 'backend/src/server.cjs',
+
+
+    pid: process.pid,
+
+
+    node: process.version,
+
+
+    time: new Date().toISOString()
+
+
+  });
+
+
+});
+
+
+
+
+
+
+
+
+// Register progress endpoints
+
+
+require('./progressRoutes.cjs')(app);
+
+
+
+
+
+const PORT = process.env.PORT || 8085;
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// Middleware
+
+
+// ------------------------------------------------------------
+
+
+app.use(cors());
+
+
+app.use(express.json());
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// Helper: send JSON without Express auto-adding charset
+
+
+// ------------------------------------------------------------
+
+
+function sendPureJson(res, obj) {
+
+
+  const body = JSON.stringify(obj);
+
+
+  res.writeHead(200, {
+
+
+    "Content-Type": "application/json",
+
+
+    "Content-Length": Buffer.byteLength(body)
+
+
+  });
+
+
+  res.end(body);
+
+
+}
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// GET /api/health
+
+
+// ------------------------------------------------------------
+
+
+app.get("/api/health", (req, res) => {
+
+
+  sendPureJson(res, { ok: true });
+
+
+});
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// In-memory puzzles (easy/medium/hard)
+
+
+// ------------------------------------------------------------
+
+
+const PUZZLES = [
+
+
+  // EASY
+
+
+  {
+
+
+    id: "easy-1",
+
+
+    question: "What is 2 + 2?",
+
+
+    options: ["1", "2", "4", "5"],
+
+
+    correctIndex: 2,
+
+
+    difficulty: "easy"
+
+
+  },
+
+
+  {
+
+
+    id: "easy-2",
+
+
+    question: "Which shape has 3 sides?",
+
+
+    options: ["Square", "Triangle", "Circle"],
+
+
+    correctIndex: 1,
+
+
+    difficulty: "easy"
+
+
+  },
+
+
+
+
+
+  // MEDIUM
+
+
+  {
+
+
+    id: "medium-1",
+
+
+    question: "What is the capital of France?",
+
+
+    options: ["Rome", "Madrid", "Paris", "Berlin"],
+
+
+    correctIndex: 2,
+
+
+    difficulty: "medium"
+
+
+  },
+
+
+  {
+
+
+    id: "medium-2",
+
+
+    question: "Which planet is known as the Red Planet?",
+
+
+    options: ["Earth", "Mars", "Venus", "Jupiter"],
+
+
+    correctIndex: 1,
+
+
+    difficulty: "medium"
+
+
+  },
+
+
+
+
+
+  // HARD
+
+
+  {
+
+
+    id: "hard-1",
+
+
+    question: "Solve: 12 × 12 = ?",
+
+
+    options: ["124", "144", "112", "132"],
+
+
+    correctIndex: 1,
+
+
+    difficulty: "hard"
+
+
+  },
+
+
+  {
+
+
+    id: "hard-2",
+
+
+    question: "What is the square root of 169?",
+
+
+    options: ["11", "12", "13", "14"],
+
+
+    correctIndex: 2,
+
+
+    difficulty: "hard"
+
+
+  }
+
+
+];
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// GET /api/puzzles
+
+
+// ------------------------------------------------------------
+
+
+app.get("/api/puzzles", (req, res) => {
+
+
+  sendPureJson(res, { puzzles: PUZZLES });
+
+
+});
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// Optional root route
+
+
+// ------------------------------------------------------------
+
+
+app.get("/", (req, res) => {
+
+
+  const body = "MindLab backend is running";
+
+
+  res.writeHead(200, {
+
+
+    "Content-Type": "text/plain; charset=utf-8",
+
+
+    "Content-Length": Buffer.byteLength(body)
+
+
+  });
+
+
+  res.end(body);
+
+
+});
+
+
+
+
+
+// ------------------------------------------------------------
+
+
+// Start server
+
+
+// ------------------------------------------------------------
+
+
+app.listen(PORT, () => {
+
+
+  console.log(`MindLab backend running on ${PORT}`);
+
+
+});
+
+
+
+
+
+module.exports = app;
+
+
+// === Frontend static hosting for MindLab ===
+
+
+const pathLib = require("path");
+
+
+
+
+
+// Serve all built frontend assets from backend/static
+
+
+app.use(express.static(pathLib.join(__dirname, "..", "static")));
+
+
+
+
+
+// SPA entrypoint at /app – serves the React index.html
+
+
+app.get("/app", (req, res) => {
+
+
+  res.sendFile(pathLib.join(__dirname, "..", "static", "index.html"));
+
+
+});
+
+
+// === End frontend static hosting block ===
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// --- progress fallback (added by PATCH_10) ---
+
+
+let __progress = { total: 2, solved: 0 };
+
+
+
+// --- Record a solved puzzle (minimal v1) ---
+// --------------------------------------------
+
+

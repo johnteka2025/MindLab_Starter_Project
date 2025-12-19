@@ -1,0 +1,59 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251217183159
+Username: CT\cteka
+RunAs User: CT\cteka
+Configuration Name: 
+Machine: CT (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Projects\MindLab_Starter_Project\phase_2_2E_one_command_fullcheck.ps1
+Process ID: 22976
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== 1) Backend tests ===
+
+> mindlab-backend@0.1.0 test
+> jest
+
+ PASS  tests/contract/progress_api.contract.test.js
+ PASS  tests/progressRoutes_shape.test.js
+ PASS  tests/puzzles_json.test.js
+
+Test Suites: 3 passed, 3 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        0.414 s, estimated 1 s
+Ran all test suites.
+[OK]  Backend tests GREEN
+=== 2) Frontend unit tests (CI mode) ===
+
+> mindlab-frontend@1.0.0 test
+> vitest --run
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+ RUN  v1.6.1 C:/Projects/MindLab_Starter_Project/frontend
+
+ ✓ src/test/env.test.ts (1)
+ ✓ src/test/smoke.test.ts (1)
+
+ Test Files  2 passed (2)
+      Tests  2 passed (2)
+   Start at  18:32:01
+   Duration  798ms (transform 49ms, setup 0ms, collect 56ms, tests 4ms, environment 0ms, prepare 271ms)
+[OK]  Frontend unit tests GREEN
+=== 3) Start backend dev server ===
+[OK]  Backend dev server started (PID=8908)
+=== 4) Start frontend dev server (port 5177) ===
+[FAIL] Frontend dev server exited immediately.
+PS>TerminatingError(): "Frontend dev server exited immediately."
+**********************
+Windows PowerShell transcript end
+End time: 20251217183208
+**********************

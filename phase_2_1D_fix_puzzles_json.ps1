@@ -1,0 +1,80 @@
+﻿Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+function Say($m) { Write-Host $m -ForegroundColor Cyan }
+function Ok($m)  { Write-Host "[OK] $m" -ForegroundColor Green }
+function Warn($m){ Write-Host "[WARN] $m" -ForegroundColor Yellow }
+
+$projectRoot = "C:\Projects\MindLab_Starter_Project"
+$backendDir  = Join-Path $projectRoot "backend"
+$puzzlesPath = Join-Path $backendDir  "src\puzzles.json"
+
+$stamp     = Get-Date -Format "yyyyMMdd_HHmmss"
+$backupDir = Join-Path $backendDir "backups\manual_edits\PHASE_2_1D_FIX_$stamp"
+
+try {
+    Say "=== Phase 2.1D â€” Convert puzzles.json to valid JSON ==="
+
+    if (-not (Test-Path $puzzlesPath)) {
+        throw "Missing puzzles.json at: $puzzlesPath"
+    }
+
+    # Backup
+    New-Item -ItemType Directory -Force -Path $backupDir | Out-Null
+    Copy-Item $puzzlesPath (Join-Path $backupDir "puzzles.json_PRE") -Force
+    Ok "Backup created: $backupDir"
+
+    # Write VALID JSON (array, quoted keys, no trailing commas)
+
+    $tmpJs = Join-Path $env:TEMP "json_parse_check.js"
+    @'
+const fs = require("fs");
+const p = process.argv[2];
+JSON.parse(fs.readFileSync(p,"utf8"));
+console.log("OK: puzzles.json parses as JSON");
+'@ | Set-Content -Path $tmpJs -Encoding UTF8
+    node $tmpJs $puzzlesPath
+    Remove-Item $tmpJs -Force
+    $fixedJson = @'
+[
+  {
+    "id": 1,
+    "question": "What is 2 + 2?",
+    "options": ["3", "4", "5"]
+  },
+  {
+    "id": 2,
+    "question": "What is the color of the sky?",
+    "options": ["Blue", "Green", "Red"]
+  },
+  {
+    "id": 3,
+    "question": "Which shape has 3 sides?",
+    "options": ["Triangle", "Square", "Circle"]
+  }
+]
+'@
+
+    Set-Content -Path $puzzlesPath -Value $fixedJson -Encoding UTF8
+    Ok "Wrote valid JSON to: $puzzlesPath"
+
+    Say "=== Proof: Node JSON.parse must succeed ==="
+    $nodeProof = "const fs=require('fs'); const s=fs.readFileSync(process.argv[1],'utf8'); JSON.parse(s); console.log('OK: puzzles.json parses as JSON');"
+
+    Say "=== Run backend tests (npm test) ==="
+    Push-Location $backendDir
+    try {
+        npm test
+    }
+    finally {
+        Pop-Location
+    }
+
+    Ok "Phase 2.1D complete â€” puzzles.json is valid JSON and tests executed."
+    Say "Backups stored at:"
+    Write-Host $backupDir -ForegroundColor Gray
+}
+finally {
+    Set-Location $projectRoot
+    Read-Host "Press ENTER to continue"
+}

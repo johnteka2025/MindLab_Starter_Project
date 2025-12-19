@@ -1,0 +1,129 @@
+﻿import React, { useEffect, useState } from "react";
+
+type Puzzle = {
+  id: number;
+  question: string;
+  options: string[];
+  correctIndex: number;
+};
+
+export default function Daily() {
+  const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
+  const [selectedPuzzle, setSelectedPuzzle] = useState<Puzzle | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [feedback, setFeedback] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const [saving, setSaving] = useState<boolean>(false);
+
+  async function loadPuzzles() {
+    try {
+      setError(null);
+      // Use relative path so Vite proxy can route to backend
+      const res = await fetch("/puzzles");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data: Puzzle[] = await res.json();
+      setPuzzles(Array.isArray(data) ? data : []);
+    } catch (err: any) {
+      console.error("Failed to load puzzles:", err);
+      setError("Failed to load puzzles.");
+      setPuzzles([]);
+    }
+  }
+
+  useEffect(() => {
+    loadPuzzles();
+  }, []);
+
+  async function submitAnswer() {
+    if (!selectedPuzzle || selectedIndex === null) return;
+
+    const correct = selectedIndex === selectedPuzzle.correctIndex;
+    setFeedback(correct ? "✅ Correct!" : "❌ Incorrect. Try again!");
+
+    // Always attempt to save progress; backend only counts correct=true anyway.
+    setSaving(true);
+    try {
+      const resp = await fetch("/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ puzzleId: selectedPuzzle.id, correct }),
+      });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      setFeedback((prev) => prev + "\n✅ Progress saved.");
+    } catch (e) {
+      console.error("Failed to save progress:", e);
+      setFeedback((prev) => prev + "\n⚠️ Progress save failed.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div style={{ padding: "1.5rem" }}>
+      <h1>Daily Challenge</h1>
+      <p>Daily Challenge</p>
+
+      {error && (
+        <p style={{ color: "red" }} data-testid="daily-error">
+          {error}
+        </p>
+      )}
+
+      <h2>Puzzles</h2>
+
+      <ul data-testid="puzzles-list">
+        {puzzles.map((p) => (
+          <li key={p.id}>
+            <button
+              data-testid={`puzzle-select-${p.id}`}
+              onClick={() => {
+                setSelectedPuzzle(p);
+                setSelectedIndex(null);
+                setFeedback("");
+              }}
+            >
+              {p.question}
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {selectedPuzzle && (
+        <div style={{ marginTop: "1rem" }}>
+          <h2 data-testid="puzzle-question">{selectedPuzzle.question}</h2>
+
+          <div data-testid="puzzle-options">
+            {selectedPuzzle.options.map((opt, idx) => (
+              <label key={idx} style={{ display: "block", margin: "0.25rem 0" }}>
+                <input
+                  type="radio"
+                  name="answer"
+                  value={idx}
+                  checked={selectedIndex === idx}
+                  onChange={() => setSelectedIndex(idx)}
+                  data-testid={`puzzle-option-${idx}`}
+                />
+                {opt}
+              </label>
+            ))}
+          </div>
+
+          <button
+            style={{ marginTop: "0.5rem" }}
+            data-testid="puzzle-submit-button"
+            onClick={submitAnswer}
+            disabled={saving}
+          >
+            Submit
+          </button>
+
+          {feedback && (
+            <pre data-testid="answer-feedback" style={{ marginTop: "0.5rem" }}>
+              {feedback}
+            </pre>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

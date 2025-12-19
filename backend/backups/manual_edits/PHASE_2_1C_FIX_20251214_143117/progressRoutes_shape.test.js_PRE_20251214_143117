@@ -1,0 +1,6 @@
+﻿const path = require('path');
+
+test('progressRoutes module loads and exports a function', () => {
+  const mod = require(path.join(__dirname, '..', 'src', 'progressRoutes'));
+  expect(typeof mod).toBe('function');
+});

@@ -1,0 +1,35 @@
+﻿const BACKEND = process.env.BACKEND_BASE_URL || 'http://localhost:8085';
+
+async function jget(path) {
+  const r = await fetch(\\\\);
+  if (!r.ok) throw new Error(\GET failed: \\);
+  return r.json();
+}
+
+async function jpost(path, body) {
+  const r = await fetch(\\\\, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) throw new Error(\POST failed: \\);
+  return r.json();
+}
+
+test('Progress API contract: solve increments solved and never exceeds total', async () => {
+  const before = await jget('/progress');
+  const afterSolve = await jpost('/progress/solve', { puzzleId: 1 });
+  const after = await jget('/progress');
+
+  expect(typeof before.total).toBe('number');
+  expect(typeof before.solved).toBe('number');
+  expect(typeof after.total).toBe('number');
+  expect(typeof after.solved).toBe('number');
+
+  expect(after.total).toBe(before.total);
+  expect(after.solved).toBeGreaterThanOrEqual(before.solved);
+  expect(after.solved).toBeLessThanOrEqual(after.total);
+
+  // Optional: response shape check
+  expect(afterSolve).toHaveProperty('ok');
+});
