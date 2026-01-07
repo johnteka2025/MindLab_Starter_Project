@@ -1,0 +1,81 @@
+﻿// frontend/src/api.ts
+// Canonical API helpers for MindLab frontend.
+//
+// GOAL (aggressive): Never hard-crash the app at module-load due to env flakiness.
+// We will read env safely, support both VITE_API_BASE_URL and VITE_API_BASE,
+// and fall back to localhost in DEV only.
+
+export type Progress = {
+  total: number;
+  solved: number;
+  totalPuzzles?: number;
+  solvedPuzzles?: number;
+};
+
+function readEnvString(key: string): string | undefined {
+  try {
+    const v = (import.meta as any)?.env?.[key];
+    if (typeof v === "string" && v.trim()) return v.trim();
+  } catch {
+    // ignore
+  }
+  return undefined;
+}
+
+function getApiBase(): string {
+  // Prefer the exact requested key, but also accept the alternate key we know exists.
+  const fromUrl = readEnvString("VITE_API_BASE_URL");
+  const fromAlt = readEnvString("VITE_API_BASE");
+
+  const chosen = fromUrl ?? fromAlt;
+
+  if (chosen) return chosen;
+
+    
+  
+  // DEV-only fallback so the UI never bricks.
+  // Warn only when BOTH env vars are missing.
+  if (!fromUrl && !fromAlt) {
+    console.warn(
+      "[api.ts] Missing VITE_API_BASE_URL / VITE_API_BASE. Falling back to http://localhost:8085 (DEV only)."
+    );
+  }
+
+  return "http://localhost:8085";
+}
+
+function joinUrl(base: string, path: string): string {
+  const b = base.replace(/\/+$/, "");
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${b}${p}`;
+}
+
+export async function apiGet<T>(path: string, opts: RequestInit = {}): Promise<T> {
+  const base = getApiBase();
+  const res = await fetch(joinUrl(base, path), { method: "GET", ...opts });
+  if (!res.ok) throw new Error(`GET ${path} failed: ${res.status}`);
+  return (await res.json()) as T;
+}
+
+export async function apiPost<T>(
+  path: string,
+  body: unknown,
+  opts: RequestInit = {}
+): Promise<T> {
+  const base = getApiBase();
+  const res = await fetch(joinUrl(base, path), {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...(opts.headers || {}) },
+    body: JSON.stringify(body),
+    ...opts,
+  });
+  if (!res.ok) throw new Error(`POST ${path} failed: ${res.status}`);
+  return (await res.json()) as T;
+}
+
+// Convenience exports (backward-compatible with old imports)
+export function API_BASE(): string {
+  return getApiBase();
+}
+
+

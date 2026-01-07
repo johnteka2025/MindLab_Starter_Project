@@ -1,0 +1,12 @@
+﻿Time: 12/31/2025 10:26:44
+Root: C:\Projects\MindLab_Starter_Project
+Backend: http://localhost:8085
+Frontend: http://localhost:5177
+/puzzles status: 200
+/progress status: 200
+/progress/solve OPTIONS: 204
+Frontend status: 200
+Router file: C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx
+Home links file: C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx
+Puzzle data file: C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json
+Progress store file: C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json

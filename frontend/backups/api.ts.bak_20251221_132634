@@ -1,0 +1,133 @@
+﻿// frontend/src/api.ts
+// Single source of truth for backend API calls.
+// Designed to be backward-compatible with existing imports across the frontend.
+
+export type ApiOptions = {
+  signal?: AbortSignal;
+};
+
+export type HealthResponse = {
+  status: string; // backend returns "ok"
+  uptime?: number;
+};
+
+export type Puzzle = {
+  // Many UI files treat id as string, while backend may store it as number.
+  // We normalize to string at the API layer for compatibility.
+  id: string;
+  question: string;
+  options: string[];
+  correctIndex: number;
+};
+
+// Some parts of the UI historically used totalPuzzles/solvedPuzzles.
+// Backend returns { total, solved }.
+// We expose BOTH shapes to keep everything compiling.
+export type Progress = {
+  total: number;
+  solved: number;
+  totalPuzzles: number;
+  solvedPuzzles: number;
+};
+
+// Vite env support. Keep a safe default.
+function readEnvBase(): string | undefined {
+  try {
+    const v = (import.meta as any)?.env?.VITE_API_BASE_URL;
+    if (typeof v === "string" && v.trim()) return v.trim();
+  } catch {
+    // ignore
+  }
+  return undefined;
+}
+
+// Default to 127.0.0.1 to avoid any localhost->IPv6 edge cases.
+export const API_BASE: string = readEnvBase() ?? "http://127.0.0.1:8085";
+
+function joinUrl(base: string, path: string): string {
+  const b = base.replace(/\/+$/, "");
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${b}${p}`;
+}
+
+// LOW-LEVEL GET helper (some components import apiGet)
+export async function apiGet<T>(path: string, opts: ApiOptions = {}): Promise<T> {
+  const res = await fetch(joinUrl(API_BASE, path), { method: "GET", signal: opts.signal });
+  if (!res.ok) throw new Error(`GET ${path} failed: ${res.status}`);
+  return (await res.json()) as T;
+}
+
+// LOW-LEVEL POST helper
+export async function apiPost<T>(
+  path: string,
+  body: unknown,
+  opts: ApiOptions = {}
+): Promise<T> {
+  const res = await fetch(joinUrl(API_BASE, path), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    signal: opts.signal,
+  });
+  if (!res.ok) throw new Error(`POST ${path} failed: ${res.status}`);
+  return (await res.json()) as T;
+}
+
+// Provide a callable "api" for legacy code that does: await api('/progress')
+export async function api(path: string, opts: ApiOptions = {}): Promise<any> {
+  return apiGet<any>(path, opts);
+}
+
+// High-level API
+export async function getHealth(opts: ApiOptions = {}): Promise<HealthResponse> {
+  return apiGet<HealthResponse>("/health", opts);
+}
+
+function normalizePuzzle(raw: any): Puzzle {
+  return {
+    id: String(raw?.id ?? ""),
+    question: String(raw?.question ?? ""),
+    options: Array.isArray(raw?.options) ? raw.options.map((x: any) => String(x)) : [],
+    correctIndex: Number.isFinite(raw?.correctIndex) ? Number(raw.correctIndex) : 0,
+  };
+}
+
+export async function getPuzzles(opts: ApiOptions = {}): Promise<Puzzle[]> {
+  const raw = await apiGet<any>("/puzzles", opts);
+  const arr = Array.isArray(raw) ? raw : [];
+  return arr.map(normalizePuzzle);
+}
+
+export async function getProgress(opts: ApiOptions = {}): Promise<Progress> {
+  const raw = await apiGet<any>("/progress", opts);
+  const total = Number.isFinite(raw?.total) ? Number(raw.total) : 0;
+  const solved = Number.isFinite(raw?.solved) ? Number(raw.solved) : 0;
+
+  // Return both shapes (new + legacy)
+  return {
+    total,
+    solved,
+    totalPuzzles: total,
+    solvedPuzzles: solved,
+  };
+}
+
+// Accept string or number, convert to number for backend payload.
+export async function solvePuzzle(puzzleId: string | number, opts: ApiOptions = {}): Promise<any> {
+  const n = Number(puzzleId);
+  if (!Number.isFinite(n)) throw new Error(`Invalid puzzleId: ${puzzleId}`);
+  return apiPost<any>("/progress/solve", { puzzleId: n }, opts);
+}
+
+// Default export (optional convenience)
+const apiClient = {
+  API_BASE,
+  apiGet,
+  apiPost,
+  api,
+  getHealth,
+  getPuzzles,
+  getProgress,
+  solvePuzzle,
+};
+export default apiClient;

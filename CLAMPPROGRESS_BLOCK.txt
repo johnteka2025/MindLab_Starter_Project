@@ -1,0 +1,21 @@
+﻿function clampProgress() {
+    const p = globalThis.__mindlabProgress;
+
+    const computedTotal = readPuzzlesCount();
+    p.total = typeof computedTotal === "number" ? computedTotal : 2;
+
+    if (typeof p.solved !== "number") p.solved = 0;
+
+    if (p.total < 0) p.total = 0;
+    if (p.solved < 0) p.solved = 0;
+    if (p.solved > p.total) p.solved = p.total;
+
+    if (typeof p.solvedToday !== "number") p.solvedToday = 0;
+    if (typeof p.totalSolved !== "number") p.totalSolved = 0;
+    if (typeof p.streak !== "number") p.streak = 0;
+    if (typeof p.lastSolvedDate !== "string") p.lastSolvedDate = "";
+    if (!p.solvedPuzzleIds || typeof p.solvedPuzzleIds !== "object") {
+      p.solvedPuzzleIds = {};
+    }
+  }
+

@@ -1,0 +1,117 @@
+# PHASE_4D_create_contract_docs.ps1
+# Golden Rule: Always run from project root. Always return to project root.
+# Creates/updates contract docs for API + persistence + UI.
+
+$ErrorActionPreference = "Stop"
+
+function Assert-Path([string]$p, [string]$label) {
+  if (-not (Test-Path $p)) { throw "Missing required ${label}: $p" }
+}
+
+function Ensure-Dir([string]$dir) {
+  if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
+}
+
+$ROOT = "C:\Projects\MindLab_Starter_Project"
+Set-Location $ROOT
+
+Write-Host "=== PHASE 4D: Create Contract Docs ===" -ForegroundColor Cyan
+Write-Host "Project root: $ROOT" -ForegroundColor DarkCyan
+
+# --- Sanity: required paths ---
+$DOCS = Join-Path $ROOT "docs"
+$BACKEND_PROGRESS = Join-Path $ROOT "backend\src\data\progress.json"
+$BACKEND_SERVER = Join-Path $ROOT "backend\src\server.cjs"
+
+Ensure-Dir $DOCS
+Assert-Path $BACKEND_PROGRESS "backend progress.json"
+Assert-Path $BACKEND_SERVER "backend server.cjs"
+
+# --- File targets ---
+$F_API  = Join-Path $DOCS "API_CONTRACT_progress.md"
+$F_DATA = Join-Path $DOCS "DATA_CONTRACT_progress.json.md"
+$F_UI   = Join-Path $DOCS "UI_CONTRACT_daily_challenge.md"
+
+# --- Build contents ---
+$api = @"
+# API Contract — Progress & Daily Challenge
+
+**Scope:** MindLab Daily Challenge and Progress endpoints  
+**Base URL (local):** http://localhost:8085
+
+## Endpoints
+
+### GET /health
+**200 OK** (JSON)
+- status: string ("ok")
+- uptime: number
+
+### GET /puzzles
+**200 OK** (JSON array)
+Each puzzle:
+- id: number|string (backend currently returns numeric ids in puzzles)
+- question: string
+- options: string[]
+- correctIndex: number (0-based)
+
+### GET /progress
+**200 OK** (JSON)
+- total: number (puzzles count)
+- solved: number (today)
+- solvedIds: string[] (canonical list for UI; derived from solvedPuzzleIds keys)
+Optional/extended (may exist):
+- solvedToday: number
+- totalSolved: number
+- streak: number
+
+**Invariants**
+- solved <= total
+- solvedIds contains unique ids (no duplicates)
+- solvedIds MUST equal sorted keys of solvedPuzzleIds (persistence source of truth)
+
+### POST /progress/reset
+**200 OK** (JSON)
+- ok: true
+- total: number
+- solved: number
+- solvedIds: string[]
+
+### POST /progress/solve
+Request: JSON
+- puzzleId: string (example: "demo-1")
+
+**200 OK** (JSON)
+- ok: true
+- puzzleId: string
+- progress: object containing:
+  - total, solved, solvedToday, totalSolved, streak, solvedIds
+
+## Notes
+- Frontend uses /progress to mark [SOLVED] labels and show completion banner.
+- Completion banner shows only when solved == total.
+"@
+
+$data = @"
+# Data Contract — backend\src\data\progress.json
+
+**File path:** backend\src\data\progress.json  
+**Purpose:** Durable state for Daily Challenge progress (survives server restart)
+
+## Source of Truth
+- `solvedPuzzleIds` is the canonical persisted structure.
+- `solvedIds` on disk MUST always be derived from the keys of `solvedPuzzleIds`.
+
+## Expected JSON Shape
+
+```json
+{
+  "total": 3,
+  "solved": 1,
+  "solvedToday": 1,
+  "totalSolved": 1,
+  "streak": 0,
+  "solvedIds": ["demo-1"],
+  "solvedPuzzleIds": {
+    "demo-1": true
+  }
+}

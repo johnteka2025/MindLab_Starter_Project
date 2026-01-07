@@ -1,0 +1,6 @@
+﻿Healthcheck Time: 12/30/2025 18:51:18
+Backend /progress Status: 200
+Backend /puzzles  Status: 200
+Frontend URL: http://localhost:5177/
+Puzzles File: C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json
+Progress File: C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json

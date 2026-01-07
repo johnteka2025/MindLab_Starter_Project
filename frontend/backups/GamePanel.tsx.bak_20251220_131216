@@ -1,0 +1,128 @@
+﻿import React, { useEffect, useMemo, useState } from "react";
+import { getPuzzles, solvePuzzle, type Puzzle } from "./api";
+
+/**
+ * GamePanel (SOURCE OF TRUTH)
+ * - Reads puzzles from backend: GET /puzzles
+ * - When user answers correctly, records it: POST /progress/solve
+ * - Keeps UI simple + deterministic.
+ *
+ * NOTE:
+ * Backend puzzle objects currently provide { id, question, options }.
+ * Backend does not (yet) provide correct answers, so we use a small
+ * deterministic local correctness rule for the demo set.
+ */
+
+function isCorrectAnswer(p: Puzzle, optionText: string): boolean {
+  const q = (p.question || "").toLowerCase();
+  const o = (optionText || "").toLowerCase();
+
+  // Demo rules for the starter puzzles you showed:
+  if (q.includes("2 + 2")) return optionText.trim() === "4";
+  if (q.includes("color of the sky")) return o.includes("blue");
+  if (q.includes("shape has 3 sides")) return o.includes("triangle");
+
+  // Unknown puzzle => do not auto-solve.
+  return false;
+}
+
+const GamePanel: React.FC = () => {
+  const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const currentPuzzle = useMemo(() => puzzles[currentIndex], [puzzles, currentIndex]);
+
+  async function loadPuzzles() {
+    setLoading(true);
+    setStatus(null);
+    try {
+      const list = await getPuzzles();
+      setPuzzles(Array.isArray(list) ? list : []);
+      setCurrentIndex(0);
+      if (!list || (Array.isArray(list) && list.length === 0)) {
+        setStatus("No puzzles available.");
+      }
+    } catch (e) {
+      setStatus("Failed to load puzzles.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    // Load once on mount
+    loadPuzzles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleOptionClick(optionText: string) {
+    if (!currentPuzzle) return;
+
+    const ok = isCorrectAnswer(currentPuzzle, optionText);
+    if (!ok) {
+      setStatus("Try again.");
+      return;
+    }
+
+    setStatus("Correct!");
+    // Record progress only when the user is correct.
+    try {
+      await solvePuzzle(String(currentPuzzle.id ?? "unknown"));
+    } catch {
+      // Golden Rule: UI must not crash because backend write fails.
+      // We still show correct locally; progress page may not increment if backend failed.
+    }
+  }
+
+  function nextPuzzle() {
+    if (!puzzles.length) return;
+    setStatus(null);
+    setCurrentIndex((i) => (i + 1) % puzzles.length);
+  }
+
+  return (
+    <section aria-label="Puzzles section">
+      <h2>Puzzles</h2>
+
+      {loading && <div aria-live="polite">Loading puzzles…</div>}
+
+      {!loading && !currentPuzzle && (
+        <div aria-live="polite">
+          <p>No puzzle loaded.</p>
+          <button type="button" onClick={loadPuzzles}>
+            Reload puzzles
+          </button>
+        </div>
+      )}
+
+      {!loading && currentPuzzle && (
+        <>
+          <p>{currentPuzzle.question}</p>
+          <ul>
+            {currentPuzzle.options.map((opt, idx) => (
+              <li key={idx}>
+                <button type="button" onClick={() => handleOptionClick(opt)}>
+                  {opt}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <button type="button" onClick={nextPuzzle}>
+            Next puzzle
+          </button>
+        </>
+      )}
+
+      {status && (
+        <div role="status" aria-live="polite" style={{ marginTop: 12 }}>
+          {status}
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default GamePanel;

@@ -1,0 +1,181 @@
+=== MindLab Canonical Paths Report (Critical + Inventory) ===
+Generated: 2026-01-01 13:18:04
+
+Project Root:
+  OK  -> C:\Projects\MindLab_Starter_Project
+
+Top-level directories:
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend
+  OK  -> C:\Projects\MindLab_Starter_Project\backend
+
+Frontend critical files:
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\package.json
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\.env
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\.env.local
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\vite.config.ts
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx
+  OK  -> C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx
+
+Backend critical files:
+  OK  -> C:\Projects\MindLab_Starter_Project\backend\package.json
+  OK  -> C:\Projects\MindLab_Starter_Project\backend\.env
+  NOT FOUND -> C:\Projects\MindLab_Starter_Project\backend\.env.local
+  OK  -> C:\Projects\MindLab_Starter_Project\backend\src
+  NOT FOUND -> C:\Projects\MindLab_Starter_Project\backend\src\index.ts
+  NOT FOUND -> C:\Projects\MindLab_Starter_Project\backend\src\server.ts
+  NOT FOUND -> C:\Projects\MindLab_Starter_Project\backend\src\app.ts
+  OK  -> C:\Projects\MindLab_Starter_Project\backend\src\routes
+  NOT FOUND -> C:\Projects\MindLab_Starter_Project\backend\src\controllers
+
+Frontend Inventory (frontend\src) FULL LIST
+  Root: C:\Projects\MindLab_Starter_Project\frontend\src
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\api.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\App.backup.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\App.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\auth.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\dailyChallengeApi.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\DailyChallengeDetailPage.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\DailyChallengeHomeCard.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\ErrorBanner.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\ErrorBoundary.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\GamePanel.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\HealthPanel.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\main.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\models.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\ProgressPanel.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\ResultBanner.js
+  C:\Projects\MindLab_Starter_Project\frontend\src\api.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.backup.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.css
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251230_192922
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251230_213805
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251230_215304
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251231_104745
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251231_110131
+  C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx.bak_20251231_111800
+  C:\Projects\MindLab_Starter_Project\frontend\src\assets
+  C:\Projects\MindLab_Starter_Project\frontend\src\assets\react.svg
+  C:\Projects\MindLab_Starter_Project\frontend\src\auth.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\components
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\DailyCompletionCard.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\ErrorBanner.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\ErrorBoundary.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\GamePanel.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251230_201756
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251230_202353
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251231_110131
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251231_120525
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251231_122010
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx.bak_20251231_124849
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\ProgressPanel.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\components\ResultBanner.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\dailyChallengeApi.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_20251231_144810
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_status_20251224_150509
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeHomeCard.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\models.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\env.d.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\env_probe.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\index.css
+  C:\Projects\MindLab_Starter_Project\frontend\src\lib
+  C:\Projects\MindLab_Starter_Project\frontend\src\lib\api.QUARANTINED.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\lib\auth.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx.bak_20251231_111800
+  C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx.bak_20251231_112946
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\Daily.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\Dashboard.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx.bak_status_20251224_150630
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\PuzzlesPlay.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx.bak_20251231_125517
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx.bak_20251231_131205
+  C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx.bak_20260101_120521
+  C:\Projects\MindLab_Starter_Project\frontend\src\progress
+  C:\Projects\MindLab_Starter_Project\frontend\src\progress\ProgressPage.tsx
+  C:\Projects\MindLab_Starter_Project\frontend\src\puzzles
+  C:\Projects\MindLab_Starter_Project\frontend\src\puzzles\phase5
+  C:\Projects\MindLab_Starter_Project\frontend\src\puzzles\phase5\phase5.registry.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\test
+  C:\Projects\MindLab_Starter_Project\frontend\src\test\env.test.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\test\setup.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\test\smoke.test.ts
+  C:\Projects\MindLab_Starter_Project\frontend\src\vite-env.d.ts
+
+Backend Inventory (backend\src) FULL LIST
+  Root: C:\Projects\MindLab_Starter_Project\backend\src
+  C:\Projects\MindLab_Starter_Project\backend\src\_quarantine
+  C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.backup.js
+  C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js
+  C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.ts
+  C:\Projects\MindLab_Starter_Project\backend\src\contentEngine.js
+  C:\Projects\MindLab_Starter_Project\backend\src\daily-challenge
+  C:\Projects\MindLab_Starter_Project\backend\src\daily-challenge\dailyChallengeEngine.cjs
+  C:\Projects\MindLab_Starter_Project\backend\src\daily-challenge\dailyChallengeEngine.ts
+  C:\Projects\MindLab_Starter_Project\backend\src\daily-challenge\dailyChallengeRoutes.cjs
+  C:\Projects\MindLab_Starter_Project\backend\src\daily-challenge\dailyChallengeRoutes.ts
+  C:\Projects\MindLab_Starter_Project\backend\src\data
+  C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json
+  C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json.bak_20251230_185417
+  C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json.bak_20251231_102723
+  C:\Projects\MindLab_Starter_Project\backend\src\data\progress.json.bak_fix_solvedIds_20251225_130916
+  C:\Projects\MindLab_Starter_Project\backend\src\db.js
+  C:\Projects\MindLab_Starter_Project\backend\src\PASTE_PATH_FROM_STEP_1.txt
+  C:\Projects\MindLab_Starter_Project\backend\src\progressPersistence.cjs
+  C:\Projects\MindLab_Starter_Project\backend\src\progressPersistence.cjs.bak_fix_pathdup_20251225_120917
+  C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs
+  C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles.json
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\_legacy
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\_legacy\puzzles.json
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\_legacy\README.md
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json.bak_20251228_122952
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json.bak_20251228_123421
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json.bak_20251230_185138
+  C:\Projects\MindLab_Starter_Project\backend\src\puzzles\index.json.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\backend\src\routes
+  C:\Projects\MindLab_Starter_Project\backend\src\routes\progress.ts
+  C:\Projects\MindLab_Starter_Project\backend\src\server.cjs
+  C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_20251231_102707
+  C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_persist_20251225_112048
+  C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_phase5_extend_20251226_133414
+  C:\Projects\MindLab_Starter_Project\backend\src\server_before_daily_20251126_203932.cjs
+  C:\Projects\MindLab_Starter_Project\backend\src\uxhelpers.js
+
+Frontend top-level config files (non-recursive):
+  C:\Projects\MindLab_Starter_Project\frontend\.env
+  C:\Projects\MindLab_Starter_Project\frontend\package.before_mindlab_daily_ui_20251206.json
+  C:\Projects\MindLab_Starter_Project\frontend\package.json
+  C:\Projects\MindLab_Starter_Project\frontend\package-lock.json
+  C:\Projects\MindLab_Starter_Project\frontend\playwright.config.ts
+  C:\Projects\MindLab_Starter_Project\frontend\playwright.prod.config.ts
+  C:\Projects\MindLab_Starter_Project\frontend\server.js
+  C:\Projects\MindLab_Starter_Project\frontend\tsconfig.app.json
+  C:\Projects\MindLab_Starter_Project\frontend\tsconfig.json
+  C:\Projects\MindLab_Starter_Project\frontend\tsconfig.node.json
+  C:\Projects\MindLab_Starter_Project\frontend\vite.config.ts
+  C:\Projects\MindLab_Starter_Project\frontend\vitest.config.ts
+
+Backend top-level config files (non-recursive):
+  C:\Projects\MindLab_Starter_Project\backend\.env
+  C:\Projects\MindLab_Starter_Project\backend\nodemon.json
+  C:\Projects\MindLab_Starter_Project\backend\package.json
+  C:\Projects\MindLab_Starter_Project\backend\package-lock.json
+  C:\Projects\MindLab_Starter_Project\backend\server.js
+
+=== End of Report ===

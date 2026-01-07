@@ -1,0 +1,180 @@
+﻿DAY CLOSE INVENTORY - 2025-12-25
+Project Root: C:\Projects\MindLab_Starter_Project
+
+--- PATCH scripts found in root ---
+C:\Projects\MindLab_Starter_Project\PATCH_01_add_runtime_fingerprint.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_02_restore_health_and_puzzles.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_03_FORCE_add_health_and_puzzles.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_04_fix_progress_ui_FULL.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_05_frontend_daily_unify_api.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_06_fix_DailyChallengeDetailPage_build.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_08_daily_use_backend_solvedIds.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_09A_fix_puzzle_text_encoding_SAFE.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_10_backend_baseline_endpoints_SERVER_CJS.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_10_fix_frontend_mojibake_ascii.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_11_backend_progress_persistence.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_12_frontend_add_reset_progress_button.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_12B_frontend_add_reset_progress_button_autodetect.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_13_daily_completion_banner.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_14_daily_add_status_label.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_15_progress_add_status_label.ps1
+C:\Projects\MindLab_Starter_Project\patch_backend_progress.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_FORCE_GOOD_backend_src_puzzles_json.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_POLICYA_quarantine_puzzlesjson_FULL.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_real_correctness_FULL.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_REBUILD_backend_src_puzzles_json.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_STRICT_fix_puzzles_json_ALL.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_STRICT_fix_puzzles_json_ALL_BOMLESS.ps1
+C:\Projects\MindLab_Starter_Project\PATCH_PHASE1_STRICT_fix_puzzles_json_ALL_v2.ps1
+
+--- Backup files (.bak*) under project (top 200) ---
+2025-12-24 14:55:57 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_status_20251224_150509
+2025-12-24 14:36:33 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx.bak_status_20251224_150630
+2025-12-24 14:20:33 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_banner_20251224_145557
+2025-12-24 13:36:20 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_ascii_20251224_142033
+2025-12-24 13:36:20 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeDetailPage.tsx.bak_ascii_20251224_142033
+2025-12-24 13:24:43 | C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs.bak_solvedIds_20251224_132955
+2025-12-24 13:24:43 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\progressRoutes.cjs.bak_solvedIds_20251224_132955
+2025-12-24 12:25:53 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeDetailPage.tsx.bak_backendSolvedIds_20251224_133620
+2025-12-24 12:25:53 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_backendSolvedIds_20251224_133620
+2025-12-24 12:17:58 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_fix_20251224_122553
+2025-12-24 12:17:58 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeDetailPage.tsx.bak_fix_20251224_122553
+2025-12-24 12:17:58 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeHomeCard.tsx.bak_ascii_20251224_142033
+2025-12-24 12:17:58 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeHomeCard.tsx.bak_ascii_20251224_142033
+2025-12-24 12:04:38 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\progressRoutes.cjs.bak_phase3_solvedIds_20251224_132335
+2025-12-24 12:04:38 | C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs.bak_phase3_solvedIds_20251224_132335
+2025-12-24 11:39:12 | C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs.bak_phase3_20251224_115938
+2025-12-24 11:39:12 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\progressRoutes.cjs.bak_phase3_20251224_115938
+2025-12-24 11:32:47 | C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs.bak_totalfix_20251224_113826
+2025-12-24 11:32:47 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\progressRoutes.cjs.bak_totalfix_20251224_113826
+2025-12-24 10:30:53 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\dailyChallengeApi.ts.bak_20251224_121758
+2025-12-24 10:30:53 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\dailyChallengeApi.ts.bak_20251224_121758
+2025-12-22 19:23:32 | C:\Projects\MindLab_Starter_Project\frontend\.env.local.bak_20251223_203422
+2025-12-21 12:16:46 | C:\Projects\MindLab_Starter_Project\frontend\backups\api.ts.bak_20251221_132634
+2025-12-21 10:36:22 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Progress.tsx.bak_resetbtn_20251224_143633
+2025-12-21 10:36:22 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx.bak_resetbtn_20251224_143633
+2025-12-21 10:35:52 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeDetailPage.tsx.bak_20251224_121758
+2025-12-21 10:35:52 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak_20251224_121758
+2025-12-20 16:05:43 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP1_stability_gate_FULL.ps1.bak_20251220_160849
+2025-12-20 13:54:34 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_154444
+2025-12-20 13:44:44 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_134902
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\index.json.bak_20251220_132842
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\index.json.bak_20251220_135434
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\index.json.bak_20251220_132814
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_135434
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_132842
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_132814
+2025-12-20 13:12:16 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_134444
+2025-12-20 12:59:01 | C:\Projects\MindLab_Starter_Project\frontend\backups\GamePanel.tsx.bak_20251220_131216
+2025-12-20 12:20:04 | C:\Projects\MindLab_Starter_Project\frontend\backups\api.ts.bak_20251220_130042
+2025-12-20 12:20:04 | C:\Projects\MindLab_Starter_Project\frontend\backups\api.ts.bak_20251220_131216
+2025-12-20 11:10:48 | C:\Projects\MindLab_Starter_Project\backend\backups\server.cjs.bak_20251220_154444
+2025-12-20 10:49:35 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\progressRoutes.cjs.bak_20251224_113132
+2025-12-20 10:49:35 | C:\Projects\MindLab_Starter_Project\backend\src\progressRoutes.cjs.bak_20251224_113132
+2025-12-14 16:10:48 | C:\Projects\MindLab_Starter_Project\backend\backups\puzzles.json.bak_20251220_131216
+2025-12-12 23:24:37 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\pages\Progress.tsx.bak_20251212_234142
+2025-12-12 23:24:37 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx.bak_20251212_234142
+2025-12-12 23:24:37 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Progress.tsx.bak_20251212_234142
+2025-12-12 23:24:37 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\pages\Progress.tsx.bak_20251212_234142
+2025-12-12 22:40:09 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_baseline_20251212_233442
+2025-12-12 22:40:09 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_baseline_20251212_233442
+2025-12-12 22:40:09 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_baseline_20251212_233442
+2025-12-12 22:40:09 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_baseline_20251212_233442
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_force_health_puzzles_20251212_224009
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_force_health_puzzles_20251212_224009
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_restore_routes_20251212_222656
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_restore_routes_20251212_222656
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_restore_routes_20251212_222656
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_force_health_puzzles_20251212_224009
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_force_health_puzzles_20251212_224009
+2025-12-12 22:25:20 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_restore_routes_20251212_222656
+2025-12-12 21:52:26 | C:\Projects\MindLab_Starter_Project\frontend\backups\manual_edits\Daily.tsx.bak
+2025-12-12 21:33:42 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_fingerprint_20251212_222520
+2025-12-12 21:33:42 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_fingerprint_20251212_222520
+2025-12-12 21:33:42 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_fingerprint_20251212_222520
+2025-12-12 21:33:42 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_fingerprint_20251212_222520
+2025-12-12 20:33:19 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\pages\Daily.tsx.bak_20251212_215204
+2025-12-12 20:33:19 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\pages\Daily.tsx.bak_20251212_215204
+2025-12-12 20:33:19 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Daily.tsx.bak_20251212_215204
+2025-12-12 20:33:19 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Daily.tsx.bak_20251212_215204
+2025-12-12 20:17:47 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\pages\Daily.tsx.bak_20251212_203249
+2025-12-12 20:17:47 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Daily.tsx.bak_20251212_203249
+2025-12-12 20:17:47 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\pages\Daily.tsx.bak_20251212_203249
+2025-12-12 20:17:47 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Daily.tsx.bak_20251212_203249
+2025-12-12 19:37:41 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Daily.tsx.bak_20251212_201718
+2025-12-12 19:37:41 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Daily.tsx.bak_20251212_201718
+2025-12-12 19:37:41 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\pages\Daily.tsx.bak_20251212_201718
+2025-12-12 19:37:41 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\pages\Daily.tsx.bak_20251212_201718
+2025-12-09 18:59:36 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\progress\ProgressPage.tsx.bak_20251212_231250
+2025-12-09 18:59:36 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\progress\ProgressPage.tsx.bak_20251212_231250
+2025-12-09 18:59:36 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\progress\ProgressPage.tsx.bak_20251212_231250
+2025-12-09 18:59:36 | C:\Projects\MindLab_Starter_Project\frontend\src\progress\ProgressPage.tsx.bak_20251212_231250
+2025-12-07 14:02:30 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Progress.tsx.bak_20251212_232437
+2025-12-07 14:02:30 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx.bak_20251212_232437
+2025-12-07 14:02:30 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\pages\Progress.tsx.bak_20251212_232437
+2025-12-07 14:02:30 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\pages\Progress.tsx.bak_20251212_232437
+2025-12-07 14:02:00 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\pages\Daily.tsx.bak_20251212_193722
+2025-12-07 14:02:00 | C:\Projects\MindLab_Starter_Project\frontend\src\pages\Daily.tsx.bak_20251212_193722
+2025-12-07 14:02:00 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\pages\Daily.tsx.bak_20251212_193722
+2025-12-07 14:02:00 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\pages\Daily.tsx.bak_20251212_193722
+2025-12-07 13:34:17 | C:\Projects\MindLab_Starter_Project\frontend\backups\manual_edits\mindlab-daily-ui-optional.spec.ts.bak
+2025-12-03 22:07:56 | C:\Projects\MindLab_Starter_Project\frontend\package.json.bak_20251204
+2025-11-29 12:47:32 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\components\DailyCompletionCard.tsx.bak-20251129131139
+2025-11-29 12:47:32 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\components\DailyCompletionCard.tsx.bak-20251129131139
+2025-11-29 12:47:32 | C:\Projects\MindLab_Starter_Project\frontend\src\components\DailyCompletionCard.tsx.bak-20251129131139
+2025-11-29 12:47:32 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\components\DailyCompletionCard.tsx.bak-20251129131139
+2025-11-28 16:21:53 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\components\DailyCompletionCard.tsx.bak-20251129124732
+2025-11-28 16:21:53 | C:\Projects\MindLab_Starter_Project\frontend\src\components\DailyCompletionCard.tsx.bak-20251129124732
+2025-11-28 16:21:53 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\components\DailyCompletionCard.tsx.bak-20251129124732
+2025-11-28 16:21:53 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\components\DailyCompletionCard.tsx.bak-20251129124732
+2025-11-28 16:21:53 | C:\Projects\MindLab_Starter_Project\backups\MindLab_Snapshot_2025-11-29_1306\src\components\DailyCompletionCard.tsx.bak-20251129124732
+2025-11-28 14:21:50 | C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\mindlab-daily-solve.spec.ts.bak-20251128143254
+2025-11-28 11:38:27 | C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\mindlab-basic.spec.ts.bak-2025-11-28-url8085
+2025-11-28 11:20:25 | C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\mindlab-basic.spec.ts.bak-2025-11-28
+2025-11-27 13:35:15 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak-20251128170922
+2025-11-27 13:35:15 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeDetailPage.tsx.bak-20251128170922
+2025-11-27 13:35:15 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeDetailPage.tsx.bak-20251128170922
+2025-11-27 13:35:15 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\daily-challenge\DailyChallengeDetailPage.tsx.bak-20251128170922
+2025-11-27 13:35:15 | C:\Projects\MindLab_Starter_Project\backups\MindLab_Snapshot_2025-11-29_1306\src\daily-challenge\DailyChallengeDetailPage.tsx.bak-20251128170922
+2025-11-26 22:24:46 | C:\Projects\MindLab_Starter_Project\frontend\src\daily-challenge\DailyChallengeHomeCard.tsx.bak_20251224_121758
+2025-11-26 22:24:46 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\daily-challenge\DailyChallengeHomeCard.tsx.bak_20251224_121758
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_20251212_212345
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak-20251129110646
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_20251212_212345
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_20251212_212345
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak-20251129110646
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak-20251129110646
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_20251212_212345
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak-20251129110646
+2025-11-26 21:41:12 | C:\Projects\MindLab_Starter_Project\backups\MindLab_Snapshot_2025-11-29_1306\src\server.cjs.bak-20251129110646
+2025-11-24 19:06:55 | C:\Projects\MindLab_Starter_Project\frontend\tests\e2e\mindlab-prod.spec.ts.bak-2025-11-28-prod
+2025-11-23 13:01:07 | C:\Projects\MindLab_Starter_Project\run_all.ps1.bak
+2025-11-22 16:16:48 | C:\Projects\MindLab_Starter_Project\frontend\vite.config.ts.bak-20251128152338
+2025-11-22 16:16:48 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\vite.config.ts.bak-20251128152338
+2025-11-22 01:23:52 | C:\Projects\MindLab_Starter_Project\frontend\backups\GamePanel.tsx.bak_20251220_125901
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_require_20251212_213342
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backend_backup_phase12_20251126_202223\server.cjs.bak_health
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_health
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_require_20251212_213342
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_health
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backups\MindLab_Snapshot_2025-11-29_1306\src\server.cjs.bak_health
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_require_20251212_213342
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_health
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_require_20251212_213342
+2025-11-19 21:42:36 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_health
+2025-11-19 19:44:05 | C:\Projects\MindLab_Starter_Project\backend_backup_phase12_20251126_202223\server.cjs.bak_frontend
+2025-11-19 19:44:05 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.cjs.bak_frontend
+2025-11-19 19:44:05 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.cjs.bak_frontend
+2025-11-19 19:44:05 | C:\Projects\MindLab_Starter_Project\backups\MindLab_Snapshot_2025-11-29_1306\src\server.cjs.bak_frontend
+2025-11-19 19:44:05 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.cjs.bak_frontend
+2025-11-19 19:44:05 | C:\Projects\MindLab_Starter_Project\backend\src\server.cjs.bak_frontend
+2025-11-17 20:45:22 | C:\Projects\MindLab_Starter_Project\backend\src\server.js.bak_20251212_211027
+2025-11-17 20:45:22 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\backend_src\server.js.bak_20251212_211027
+2025-11-17 20:45:22 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\backend\src\server.js.bak_20251212_211027
+2025-11-17 20:45:22 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\backend_src\server.js.bak_20251212_211027
+2025-11-17 19:01:55 | C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\main.tsx.bak_phase13_5_20251127_114354
+2025-11-17 19:01:55 | C:\Projects\MindLab_Starter_Project\_snapshots\phase2_complete_20251224_144242\frontend_src\main.tsx.bak_phase13_5_20251127_114354
+2025-11-17 19:01:55 | C:\Projects\MindLab_Starter_Project\backups\PHASE2_STEP2_manual_20251221_100326\frontend_src\main.tsx.bak_phase13_5_20251127_114354
+2025-11-17 19:01:55 | C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx.bak_phase13_5_20251127_114354
+2025-11-17 19:01:55 | C:\Projects\MindLab_Starter_Project\backups\MindLab_Snapshot_2025-11-29_1306\src\main.tsx.bak_phase13_5_20251127_114354
+2025-11-08 16:09:38 | C:\Projects\MindLab_Starter_Project\backend\server.js.bak

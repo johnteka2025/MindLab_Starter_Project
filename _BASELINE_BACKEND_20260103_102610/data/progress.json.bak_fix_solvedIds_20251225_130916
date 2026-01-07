@@ -1,0 +1,11 @@
+{
+  "total": 3,
+  "solved": 1,
+  "solvedToday": 1,
+  "totalSolved": 1,
+  "streak": 0,
+  "solvedIds": [],
+  "solvedPuzzleIds": {
+    "demo-1": true
+  }
+}

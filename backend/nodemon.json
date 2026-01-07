@@ -1,0 +1,7 @@
+﻿{
+  "watch": ["src"],
+  "ignore": [
+    "data/progress.json",
+    "src/data/progress.json"
+  ]
+}

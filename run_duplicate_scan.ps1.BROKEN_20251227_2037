@@ -1,0 +1,130 @@
+# ============================================================
+# MindLab Duplicate File Scan
+# Parsing-Safe | Golden Rules Compliant | Daily Closeout Ready
+# ============================================================
+
+$ErrorActionPreference = "Stop"
+
+# ------------------------------------------------------------
+# STEP 1 — Confirm Project Root (NO ASSUMPTIONS)
+# ------------------------------------------------------------
+$root = "C:\Projects\MindLab_Starter_Project"
+
+if (-not (Test-Path -LiteralPath $root)) {
+    Write-Host "ERROR: Project root not found:" -ForegroundColor Red
+    Write-Host $root -ForegroundColor Yellow
+    exit 1
+}
+
+Set-Location -LiteralPath $root
+
+# ------------------------------------------------------------
+# STEP 2 — Wrong-Path Guard (Basic Sanity Check)
+# ------------------------------------------------------------
+$expectedFolders = @("frontend", "backend")
+
+foreach ($folder in $expectedFolders) {
+    if (-not (Test-Path -LiteralPath (Join-Path $root $folder))) {
+        Write-Host "WARNING: Expected folder missing -> $folder" -ForegroundColor Yellow
+        Write-Host "Confirm project root before proceeding." -ForegroundColor Yellow
+    }
+}
+
+# ------------------------------------------------------------
+# STEP 3 — Create Documentation Folder
+# ------------------------------------------------------------
+$docPath = Join-Path $root "daily_closeout_docs"
+New-Item -ItemType Directory -Force -Path $docPath | Out-Null
+
+# ------------------------------------------------------------
+# STEP 4 — Output File (Date Stamped)
+# ------------------------------------------------------------
+$date = Get-Date -Format "yyyy-MM-dd"
+$outFile = Join-Path $docPath "Duplicate_Scan_Result_$date.txt"
+
+# ------------------------------------------------------------
+# STEP 5 — Exclusion Rules (Dependency / Noise Folders)
+# ------------------------------------------------------------
+$excludeDirs = @(
+    "node_modules",
+    ".git",
+    ".venv",
+    "dist",
+    "build",
+    ".next",
+    ".cache",
+    "coverage",
+    "out",
+    "tmp",
+    "temp",
+    ".vscode",
+    ".idea"
+)
+
+$excludeRegex = "\\(" + ($excludeDirs | ForEach-Object { [Regex]::Escape($_) } -join "|") + ")\\"
+
+# ------------------------------------------------------------
+# STEP 6 — Write Report Header
+# ------------------------------------------------------------
+"MindLab Duplicate File Scan" | Out-File $outFile -Encoding UTF8
+"Date: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" | Out-File $outFile -Append
+"Project Root: $root" | Out-File $outFile -Append
+"User: $env:USERNAME" | Out-File $outFile -Append
+"Machine: $env:COMPUTERNAME" | Out-File $outFile -Append
+"Excluded folders:" | Out-File $outFile -Append
+
+foreach ($d in $excludeDirs) {
+    "  - $d" | Out-File $outFile -Append
+}
+
+"------------------------------------------------------------" | Out-File $outFile -Append
+
+# ------------------------------------------------------------
+# STEP 7 — Collect Files (Safe Enumeration)
+# ------------------------------------------------------------
+$files = Get-ChildItem -LiteralPath $root -Recurse -File -ErrorAction SilentlyContinue |
+    Where-Object { $_.FullName -notmatch $excludeRegex }
+
+if (-not $files) {
+    "RESULT: ⚠️ NO FILES FOUND OR ACCESS DENIED" | Out-File $outFile -Append
+    "END OF SCAN" | Out-File $outFile -Append
+    notepad $outFile
+    exit 0
+}
+
+# ------------------------------------------------------------
+# STEP 8 — Detect Duplicates (By File Name)
+# ------------------------------------------------------------
+$duplicates = $files |
+    Group-Object Name |
+    Where-Object { $_.Count -gt 1 } |
+    Sort-Object Count -Descending
+
+if ($duplicates.Count -eq 0) {
+    "RESULT: ✅ NO DUPLICATE FILES FOUND" | Out-File $outFile -Append
+} else {
+    "RESULT: ❗ DUPLICATE FILES FOUND" | Out-File $outFile -Append
+    "NOTE: Review each duplicate to confirm authoritative source." | Out-File $outFile -Append
+
+    foreach ($group in $duplicates) {
+        "" | Out-File $outFile -Append
+        "DUPLICATE FILE NAME: $($group.Name)" | Out-File $outFile -Append
+        "COUNT: $($group.Count)" | Out-File $outFile -Append
+        "LOCATIONS:" | Out-File $outFile -Append
+
+        foreach ($file in $group.Group) {
+            "  - $($file.FullName)" | Out-File $outFile -Append
+        }
+    }
+}
+
+# ------------------------------------------------------------
+# STEP 9 — Close Report
+# ------------------------------------------------------------
+"------------------------------------------------------------" | Out-File $outFile -Append
+"END OF SCAN" | Out-File $outFile -Append
+
+# ------------------------------------------------------------
+# STEP 10 — Open in Notepad
+# ------------------------------------------------------------
+notepad $outFile

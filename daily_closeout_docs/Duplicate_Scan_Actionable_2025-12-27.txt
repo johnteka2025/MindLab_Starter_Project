@@ -1,0 +1,1740 @@
+﻿MindLab Duplicate File Scan (ACTIONABLE)
+D a t e :   1 2 / 2 7 / 2 0 2 5   2 0 : 2 5 : 3 0 
+ 
+ P r o j e c t   R o o t :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t 
+ 
+ E x c l u d e d   p a t t e r n s : 
+ 
+     -   \ n o d e _ m o d u l e s \ 
+ 
+     -   \ . v e n v \ 
+ 
+     -   \ d i s t \ 
+ 
+     -   \ b u i l d \ 
+ 
+     -   \ . c a c h e \ 
+ 
+     -   \ b a c k u p s \ 
+ 
+     -   \ A R C H I V E _ 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . j s 
+ 
+ C O U N T :   7 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a p i \ s e r v e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s e r v e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ _ q u a r a n t i n e \ s e r v e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ s e r v e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ b a c k e n d \ s e r v e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s e r v e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ _ q u a r a n t i n e \ s e r v e r . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p a c k a g e . j s o n 
+ 
+ C O U N T :   6 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a p i \ p a c k a g e . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ p a c k a g e . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ b a c k e n d \ p a c k a g e . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ p a c k a g e . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ p a c k a g e . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ w e b \ p a c k a g e . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p u z z l e s . j s o n 
+ 
+ C O U N T :   6 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ d a t a \ p u z z l e s . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ p u z z l e s . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ p u z z l e s \ _ l e g a c y \ p u z z l e s . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ p u z z l e s . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p u z z l e s . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p u z z l e s \ _ l e g a c y \ p u z z l e s . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   R E A D M E . m d 
+ 
+ C O U N T :   5 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ R E A D M E . m d 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ p u z z l e s \ _ l e g a c y \ R E A D M E . m d 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ R E A D M E . m d 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ R E A D M E . m d 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p u z z l e s \ _ l e g a c y \ R E A D M E . m d 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s u m m a r y . j s o n 
+ 
+ C O U N T :   5 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ c o r e _ 2 0 2 5 1 1 1 1 _ 1 7 3 6 3 9 \ s u m m a r y . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ c o r e _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 2 5 \ s u m m a r y . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ c o r e _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 3 8 \ s u m m a r y . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ o r c h e s t r a t o r _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 2 5 \ s u m m a r y . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ o r c h e s t r a t o r _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 3 8 \ s u m m a r y . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   a u t h . t s 
+ 
+ C O U N T :   5 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ a u t h . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ l i b \ a u t h . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ a u t h . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ a u t h . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ l i b \ a u t h . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   i n d e x . h t m l 
+ 
+ C O U N T :   5 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s t a t i c \ i n d e x . h t m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ f r o n t e n d \ i n d e x . h t m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ i n d e x . h t m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ p l a y w r i g h t - r e p o r t \ i n d e x . h t m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ i n d e x . h t m l 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   . e n v 
+ 
+ C O U N T :   5 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ . e n v 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ . e n v 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ p r o d \ . e n v 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ . e n v 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ . e n v 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   G a m e P a n e l . t s x 
+ 
+ C O U N T :   4 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ G a m e P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ G a m e P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ G a m e P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ G a m e P a n e l . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D o c k e r f i l e 
+ 
+ C O U N T :   4 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ D o c k e r f i l e 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a p i \ D o c k e r f i l e 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ b a c k e n d \ D o c k e r f i l e 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ w e b \ D o c k e r f i l e 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p a c k a g e - l o c k . j s o n 
+ 
+ C O U N T :   4 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ p a c k a g e - l o c k . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ p a c k a g e - l o c k . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ p a c k a g e - l o c k . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ p a c k a g e - l o c k . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s P a n e l . t s x 
+ 
+ C O U N T :   4 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ P r o g r e s s P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ P r o g r e s s P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ P r o g r e s s P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ P r o g r e s s P a n e l . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e E n g i n e . t s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e E n g i n e . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e E n g i n e . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e E n g i n e . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   A p p . t s x 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ A p p . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ A p p . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ A p p . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   A p p . c s s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ A p p . c s s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ A p p . c s s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ A p p . c s s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ s e r v e r . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ s e r v e r . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   u x h e l p e r s . j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ u x h e l p e r s . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ u x h e l p e r s . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ u x h e l p e r s . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e E n g i n e . c j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e E n g i n e . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e E n g i n e . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e E n g i n e . c j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   v i t e . s v g 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s t a t i c \ v i t e . s v g 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ p u b l i c \ v i t e . s v g 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ p u b l i c \ v i t e . s v g 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . t s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ _ q u a r a n t i n e \ s e r v e r . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ s e r v e r . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ _ q u a r a n t i n e \ s e r v e r . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ h e a l t h 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ h e a l t h 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ s e r v e r . c j s . b a k _ h e a l t h 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ h e a l t h 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ f r o n t e n d 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ f r o n t e n d 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ s e r v e r . c j s . b a k _ f r o n t e n d 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ f r o n t e n d 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e R o u t e s . t s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e R o u t e s . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e R o u t e s . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e R o u t e s . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e R o u t e s . c j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e R o u t e s . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e R o u t e s . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e R o u t e s . c j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . b a c k u p . j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ _ q u a r a n t i n e \ s e r v e r . b a c k u p . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ s e r v e r . b a c k u p . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ _ q u a r a n t i n e \ s e r v e r . b a c k u p . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   a p i . t s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ a p i . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ a p i . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ a p i . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d b . j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d b . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ d b . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ d b . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s a n i t y . p s 1 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ s a n i t y . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ t o o l s \ s a n i t y . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t e s t s \ s a n i t y . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . t s x 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   E r r o r B a n n e r . t s x 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ E r r o r B a n n e r . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ c o m p o n e n t s \ E r r o r B a n n e r . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ E r r o r B a n n e r . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   i n d e x . c s s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ i n d e x . c s s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ i n d e x . c s s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ i n d e x . c s s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C o m p l e t i o n C a r d . t s x 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ D a i l y C o m p l e t i o n C a r d . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ D a i l y C o m p l e t i o n C a r d . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ D a i l y C o m p l e t i o n C a r d . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d o c k e r - c o m p o s e . y m l 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d o c k e r - c o m p o s e . y m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ d o c k e r - c o m p o s e . y m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ d o c k e r - c o m p o s e . y m l 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   m a i n . t s x 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ m a i n . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ m a i n . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ m a i n . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   r e a c t . s v g 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ a s s e t s \ r e a c t . s v g 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ s r c \ a s s e t s \ r e a c t . s v g 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ a s s e t s \ r e a c t . s v g 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   f r o n t e n d . t x t 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s \ f r o n t e n d . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 1 7 4 4 4 4 \ f r o n t e n d . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 2 1 0 3 0 2 \ f r o n t e n d . t x t 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   c o n t e n t E n g i n e . j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ c o n t e n t E n g i n e . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 \ c o n t e n t E n g i n e . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ c o n t e n t E n g i n e . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s c r i p t . j s 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ k 6 _ 2 0 2 5 1 1 1 1 _ 1 7 3 6 5 3 \ s c r i p t . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ k 6 _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 5 1 \ s c r i p t . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t e s t s \ k 6 \ s c r i p t . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   r e s u l t s . c s v 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ c o r e _ 2 0 2 5 1 1 1 1 _ 1 7 3 6 3 9 \ r e s u l t s . c s v 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ c o r e _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 2 5 \ r e s u l t s . c s v 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ c o r e _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 3 8 \ r e s u l t s . c s v 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   b a c k e n d . t x t 
+ 
+ C O U N T :   3 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s \ b a c k e n d . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 1 7 4 4 4 4 \ b a c k e n d . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 2 1 0 3 0 2 \ b a c k e n d . t x t 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   E r r o r B o u n d a r y . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ E r r o r B o u n d a r y . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ E r r o r B o u n d a r y . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s R o u t e s . c j s . b a k _ p h a s e 3 _ 2 0 2 5 1 2 2 4 _ 1 1 5 9 3 8 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ p h a s e 3 _ 2 0 2 5 1 2 2 4 _ 1 1 5 9 3 8 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ p h a s e 3 _ 2 0 2 5 1 2 2 4 _ 1 1 5 9 3 8 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s R o u t e s . c j s . b a k _ t o t a l f i x _ 2 0 2 5 1 2 2 4 _ 1 1 3 8 2 6 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ t o t a l f i x _ 2 0 2 5 1 2 2 4 _ 1 1 3 8 2 6 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ t o t a l f i x _ 2 0 2 5 1 2 2 4 _ 1 1 3 8 2 6 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s R o u t e s . c j s . b a k _ p h a s e 3 _ s o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 2 3 3 5 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ p h a s e 3 _ s o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 2 3 3 5 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ p h a s e 3 _ s o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 2 3 3 5 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s R o u t e s . c j s . b a k _ 2 0 2 5 1 2 2 4 _ 1 1 3 1 3 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ 2 0 2 5 1 2 2 4 _ 1 1 3 1 3 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ 2 0 2 5 1 2 2 4 _ 1 1 3 1 3 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s P a n e l . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ P r o g r e s s P a n e l . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ P r o g r e s s P a n e l . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   R e s u l t B a n n e r . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ R e s u l t B a n n e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ R e s u l t B a n n e r . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   . l a s t - r u n . j s o n 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ t e s t - r e s u l t s \ . l a s t - r u n . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t e s t - r e s u l t s \ . l a s t - r u n . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   m o d e l s . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ m o d e l s . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ m o d e l s . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   G a m e P a n e l . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ G a m e P a n e l . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ G a m e P a n e l . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   H e a l t h P a n e l . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ H e a l t h P a n e l . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ H e a l t h P a n e l . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   m a i n . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ m a i n . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ m a i n . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d o c k e r . t x t 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 1 7 4 4 4 4 \ d o c k e r . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 2 1 0 3 0 2 \ d o c k e r . t x t 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . j s . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 1 0 2 7 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . j s . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 1 0 2 7 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . j s . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 1 0 2 7 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   m a i n . t s x . b a k _ p h a s e 1 3 _ 5 _ 2 0 2 5 1 1 2 7 _ 1 1 4 3 5 4 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ f r o n t e n d \ s r c \ m a i n . t s x . b a k _ p h a s e 1 3 _ 5 _ 2 0 2 5 1 1 2 7 _ 1 1 4 3 5 4 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ m a i n . t s x . b a k _ p h a s e 1 3 _ 5 _ 2 0 2 5 1 1 2 7 _ 1 1 4 3 5 4 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s P a g e . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 1 2 5 0 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ f r o n t e n d \ s r c \ p r o g r e s s \ P r o g r e s s P a g e . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 1 2 5 0 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p r o g r e s s \ P r o g r e s s P a g e . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 1 2 5 0 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s R o u t e s . c j s . b a k _ s o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 2 9 5 5 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ s o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 2 9 5 5 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ b a c k e n d \ s r c \ p r o g r e s s R o u t e s . c j s . b a k _ s o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 2 9 5 5 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   e n v . t x t 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 1 7 4 4 4 4 \ e n v . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 2 1 0 3 0 2 \ e n v . t x t 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   h t t p . t x t 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 1 7 4 4 4 4 \ h t t p . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 2 1 0 3 0 2 \ h t t p . t x t 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   n e t s t a t . t x t 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 1 7 4 4 4 4 \ n e t s t a t . t x t 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s _ 2 0 2 5 1 1 0 4 _ 2 1 0 3 0 2 \ n e t s t a t . t x t 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e H o m e C a r d . t s x . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e H o m e C a r d . t s x . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e H o m e C a r d . t s x . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e H o m e C a r d . t s x . b a k _ a s c i i _ 2 0 2 5 1 2 2 4 _ 1 4 2 0 3 3 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e H o m e C a r d . t s x . b a k _ a s c i i _ 2 0 2 5 1 2 2 4 _ 1 4 2 0 3 3 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e H o m e C a r d . t s x . b a k _ a s c i i _ 2 0 2 5 1 2 2 4 _ 1 4 2 0 3 3 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 1 9 3 7 2 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 1 9 3 7 2 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 1 9 3 7 2 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ a s c i i _ 2 0 2 5 1 2 2 4 _ 1 4 2 0 3 3 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ a s c i i _ 2 0 2 5 1 2 2 4 _ 1 4 2 0 3 3 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ a s c i i _ 2 0 2 5 1 2 2 4 _ 1 4 2 0 3 3 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ b a c k e n d S o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 3 6 2 0 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ b a c k e n d S o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 3 6 2 0 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ b a c k e n d S o l v e d I d s _ 2 0 2 5 1 2 2 4 _ 1 3 3 6 2 0 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ f i x _ 2 0 2 5 1 2 2 4 _ 1 2 2 5 5 3 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ f i x _ 2 0 2 5 1 2 2 4 _ 1 2 2 5 5 3 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ f i x _ 2 0 2 5 1 2 2 4 _ 1 2 2 5 5 3 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 2 4 3 7 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ P r o g r e s s . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 2 4 3 7 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ P r o g r e s s . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 2 4 3 7 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 4 1 4 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ P r o g r e s s . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 4 1 4 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ P r o g r e s s . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 3 4 1 4 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s . t s x . b a k _ r e s e t b t n _ 2 0 2 5 1 2 2 4 _ 1 4 3 6 3 3 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ P r o g r e s s . t s x . b a k _ r e s e t b t n _ 2 0 2 5 1 2 2 4 _ 1 4 3 6 3 3 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ P r o g r e s s . t s x . b a k _ r e s e t b t n _ 2 0 2 5 1 2 2 4 _ 1 4 3 6 3 3 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 0 1 7 1 8 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 0 1 7 1 8 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 0 1 7 1 8 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 0 3 2 4 9 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 0 3 2 4 9 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 0 3 2 4 9 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 5 2 0 4 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 5 2 0 4 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ D a i l y . t s x . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 5 2 0 4 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ f i n g e r p r i n t _ 2 0 2 5 1 2 1 2 _ 2 2 2 5 2 0 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ f i n g e r p r i n t _ 2 0 2 5 1 2 1 2 _ 2 2 2 5 2 0 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ f i n g e r p r i n t _ 2 0 2 5 1 2 1 2 _ 2 2 2 5 2 0 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ f o r c e _ h e a l t h _ p u z z l e s _ 2 0 2 5 1 2 1 2 _ 2 2 4 0 0 9 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ f o r c e _ h e a l t h _ p u z z l e s _ 2 0 2 5 1 2 1 2 _ 2 2 4 0 0 9 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ f o r c e _ h e a l t h _ p u z z l e s _ 2 0 2 5 1 2 1 2 _ 2 2 4 0 0 9 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ r e q u i r e _ 2 0 2 5 1 2 1 2 _ 2 1 3 3 4 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ r e q u i r e _ 2 0 2 5 1 2 1 2 _ 2 1 3 3 4 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ r e q u i r e _ 2 0 2 5 1 2 1 2 _ 2 1 3 3 4 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k - 2 0 2 5 1 1 2 9 1 1 0 6 4 6 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k - 2 0 2 5 1 1 2 9 1 1 0 6 4 6 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k - 2 0 2 5 1 1 2 9 1 1 0 6 4 6 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 2 3 4 5 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 2 3 4 5 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ 2 0 2 5 1 2 1 2 _ 2 1 2 3 4 5 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ b a s e l i n e _ 2 0 2 5 1 2 1 2 _ 2 3 3 4 4 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ b a s e l i n e _ 2 0 2 5 1 2 1 2 _ 2 3 3 4 4 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ b a s e l i n e _ 2 0 2 5 1 2 1 2 _ 2 3 3 4 4 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e A p i . t s . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e A p i . t s . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e A p i . t s . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k - 2 0 2 5 1 1 2 8 1 7 0 9 2 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k - 2 0 2 5 1 1 2 8 1 7 0 9 2 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k - 2 0 2 5 1 1 2 8 1 7 0 9 2 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x . b a k _ 2 0 2 5 1 2 2 4 _ 1 2 1 7 5 8 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r . c j s . b a k _ r e s t o r e _ r o u t e s _ 2 0 2 5 1 2 1 2 _ 2 2 2 6 5 6 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ b a c k e n d \ s r c \ s e r v e r . c j s . b a k _ r e s t o r e _ r o u t e s _ 2 0 2 5 1 2 1 2 _ 2 2 2 6 5 6 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r . c j s . b a k _ r e s t o r e _ r o u t e s _ 2 0 2 5 1 2 1 2 _ 2 2 2 6 5 6 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C o m p l e t i o n C a r d . t s x . b a k - 2 0 2 5 1 1 2 9 1 2 4 7 3 2 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ c o m p o n e n t s \ D a i l y C o m p l e t i o n C a r d . t s x . b a k - 2 0 2 5 1 1 2 9 1 2 4 7 3 2 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ D a i l y C o m p l e t i o n C a r d . t s x . b a k - 2 0 2 5 1 1 2 9 1 2 4 7 3 2 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C o m p l e t i o n C a r d . t s x . b a k - 2 0 2 5 1 1 2 9 1 3 1 1 3 9 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 6 _ 1 1 5 4 4 8 \ _ q u a r a n t i n e \ d u p l i c a t e s _ 2 0 2 5 1 2 2 5 _ 1 1 0 6 0 5 \ f r o n t e n d \ s r c \ c o m p o n e n t s \ D a i l y C o m p l e t i o n C a r d . t s x . b a k - 2 0 2 5 1 1 2 9 1 3 1 1 3 9 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ D a i l y C o m p l e t i o n C a r d . t s x . b a k - 2 0 2 5 1 1 2 9 1 3 1 1 3 9 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   i n d e x - D t n 6 2 X m o . c s s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s t a t i c \ a s s e t s \ i n d e x - D t n 6 2 X m o . c s s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ a s s e t s \ i n d e x - D t n 6 2 X m o . c s s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d o c k e r - c o m p o s e . p r o d . y m l 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ d o c k e r - c o m p o s e . p r o d . y m l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ p r o d \ d o c k e r - c o m p o s e . p r o d . y m l 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p h a s e 1 6 _ r u n _ p u b l i s h e d . p s 1 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ p h a s e 1 6 _ r u n _ p u b l i s h e d . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t o o l s \ p h a s e 1 6 _ r u n _ p u b l i s h e d . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e r v e r _ b e f o r e _ d a i l y _ 2 0 2 5 1 1 2 6 _ 2 0 3 9 3 2 . c j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ s e r v e r _ b e f o r e _ d a i l y _ 2 0 2 5 1 1 2 6 _ 2 0 3 9 3 2 . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ s e r v e r _ b e f o r e _ d a i l y _ 2 0 2 5 1 1 2 6 _ 2 0 3 9 3 2 . c j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   i n d e x . j s o n 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ p u z z l e s \ i n d e x . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p u z z l e s \ i n d e x . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ r o u t e s \ p r o g r e s s . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ r o u t e s \ p r o g r e s s . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   v i t e . c o n f i g . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ v i t e . c o n f i g . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ v i t e . c o n f i g . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   A p p . b a c k u p . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ A p p . b a c k u p . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ A p p . b a c k u p . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   e n v . d . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ e n v . d . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ e n v . d . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   t s c o n f i g . a p p . j s o n 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ t s c o n f i g . a p p . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ t s c o n f i g . a p p . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   t s c o n f i g . j s o n 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ t s c o n f i g . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ t s c o n f i g . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   t s c o n f i g . n o d e . j s o n 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ t s c o n f i g . n o d e . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ t s c o n f i g . n o d e . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   r u n _ a l l . p s 1 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ r u n _ a l l . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ r u n _ a l l . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   r u n _ f r o n t e n d . p s 1 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ r u n _ f r o n t e n d . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ r u n _ f r o n t e n d . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   r u n _ t e s t s . p s 1 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ r u n _ t e s t s . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t e s t s \ r u n _ t e s t s . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   . e n v . l o c a l 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ . e n v . l o c a l 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ . e n v . l o c a l 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   . g i t i g n o r e 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ . g i t i g n o r e 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 \ . g i t i g n o r e 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   l o g s . p s 1 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ l o g s . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ d e p l o y \ t o o l s \ l o g s . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   . e n v . e x a m p l e 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ . e n v . e x a m p l e 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ . e n v . e x a m p l e 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s . j s o n 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ d a t a \ p r o g r e s s . j s o n 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d a t a \ p r o g r e s s . j s o n 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   p r o g r e s s R o u t e s . c j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ p r o g r e s s R o u t e s . c j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ b a c k e n d _ s r c \ p r o g r e s s R o u t e s . c j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s a n i t y . p s 1 . p s 1 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ s a n i t y . p s 1 . p s 1 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t o o l s \ S a n i t y . p s 1 . p s 1 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d r e d d . c o n s o l e . l o g 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ d r e d d _ 2 0 2 5 1 1 1 1 _ 1 7 3 6 5 2 \ d r e d d . c o n s o l e . l o g 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ d r e d d _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 5 0 \ d r e d d . c o n s o l e . l o g 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   k 6 . c o n s o l e . l o g 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ k 6 _ 2 0 2 5 1 1 1 1 _ 1 7 3 6 5 3 \ k 6 . c o n s o l e . l o g 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ a r t i f a c t s \ k 6 _ 2 0 2 5 1 1 1 1 _ 1 7 3 7 5 1 \ k 6 . c o n s o l e . l o g 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s m o k e . t e s t . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ t e s t \ s m o k e . t e s t . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ t e s t \ s m o k e . t e s t . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   a p i . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ a p i . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ a p i . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   A p p . b a c k u p . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ A p p . b a c k u p . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ A p p . b a c k u p . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s P a g e . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ p r o g r e s s \ P r o g r e s s P a g e . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p r o g r e s s \ P r o g r e s s P a g e . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   e n v . t e s t . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ t e s t \ e n v . t e s t . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ t e s t \ e n v . t e s t . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   s e t u p . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ t e s t \ s e t u p . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ t e s t \ s e t u p . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e D e t a i l P a g e . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ D a i l y C h a l l e n g e D e t a i l P a g e . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ D a i l y C h a l l e n g e D e t a i l P a g e . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e H o m e C a r d . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ D a i l y C h a l l e n g e H o m e C a r d . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ D a i l y C h a l l e n g e H o m e C a r d . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   E r r o r B a n n e r . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ E r r o r B a n n e r . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ E r r o r B a n n e r . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   A p p . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ A p p . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ A p p . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   a u t h . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ a u t h . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ a u t h . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e A p i . j s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ d a i l y C h a l l e n g e A p i . j s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ _ l e g a c y _ j s _ b a c k u p _ 2 0 2 5 1 2 0 8 \ d a i l y C h a l l e n g e A p i . j s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   H e a l t h P a n e l . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ H e a l t h P a n e l . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ H e a l t h P a n e l . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   R e s u l t B a n n e r . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ R e s u l t B a n n e r . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ R e s u l t B a n n e r . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   d a i l y C h a l l e n g e A p i . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e A p i . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ d a i l y C h a l l e n g e A p i . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   e n v _ p r o b e . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ e n v _ p r o b e . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ e n v _ p r o b e . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   v i t e - e n v . d . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ v i t e - e n v . d . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ v i t e - e n v . d . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   E r r o r B o u n d a r y . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ c o m p o n e n t s \ E r r o r B o u n d a r y . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ c o m p o n e n t s \ E r r o r B o u n d a r y . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ p a g e s \ D a i l y . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ D a i l y . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a s h b o a r d . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ p a g e s \ D a s h b o a r d . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ D a s h b o a r d . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   P r o g r e s s . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ p a g e s \ P r o g r e s s . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ p a g e s \ P r o g r e s s . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   D a i l y C h a l l e n g e H o m e C a r d . t s x 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e H o m e C a r d . t s x 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ D a i l y C h a l l e n g e H o m e C a r d . t s x 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   m o d e l s . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ d a i l y - c h a l l e n g e \ m o d e l s . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ d a i l y - c h a l l e n g e \ m o d e l s . t s 
+ 
+ 
+ 
+ D U P L I C A T E   F I L E   N A M E :   a p i . Q U A R A N T I N E D . t s 
+ 
+ C O U N T :   2 
+ 
+ L O C A T I O N S : 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ l i b \ a p i . Q U A R A N T I N E D . t s 
+ 
+     -   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ _ s n a p s h o t s \ p h a s e 2 _ c o m p l e t e _ 2 0 2 5 1 2 2 4 _ 1 4 4 2 4 2 \ f r o n t e n d _ s r c \ l i b \ a p i . Q U A R A N T I N E D . t s 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ E N D   O F   S C A N 
+ 
+ 

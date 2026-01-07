@@ -1,0 +1,11 @@
+﻿{
+  "default": "medium",
+  "levels": ["easy", "medium", "hard"],
+  "map": {
+    "1": "easy",
+    "2": "medium",
+    "3": "hard",
+    "4": "medium",
+    "5": "easy"
+  }
+}

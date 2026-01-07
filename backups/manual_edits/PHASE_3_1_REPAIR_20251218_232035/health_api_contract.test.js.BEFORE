@@ -1,0 +1,37 @@
+const http = require('http');
+const { app } = require('../../src/server.cjs');
+
+function startServer(port = 0) {
+  return new Promise((resolve, reject) => {
+    const server = http.createServer(app);
+    server.listen(port, '127.0.0.1', () => {
+      const addr = server.address();
+      resolve({ server, port: addr.port, baseUrl: http://127.0.0.1: });
+    });
+    server.on('error', reject);
+  });
+}
+
+describe('Health API contract', () => {
+  let server;
+  let baseUrl;
+
+  beforeAll(async () => {
+    const started = await startServer(0);
+    server = started.server;
+    baseUrl = started.baseUrl;
+  });
+
+  afterAll(async () => {
+    if (!server) return;
+    await new Promise((resolve) => server.close(resolve));
+  });
+
+  test('GET /health returns { ok: true }', async () => {
+    const res = await fetch(${baseUrl}/health);
+    expect(res.ok).toBe(true);
+    const json = await res.json();
+    expect(json).toEqual({ ok: true });
+  });
+});
+

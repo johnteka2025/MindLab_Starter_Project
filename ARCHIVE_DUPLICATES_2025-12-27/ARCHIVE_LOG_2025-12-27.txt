@@ -1,0 +1,58 @@
+﻿Archive Duplicates Log
+D a t e :   2 0 2 5 - 1 2 - 2 7   2 1 : 2 0 : 2 0 
+ 
+ P r o j e c t   R o o t :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t 
+ 
+ A r c h i v e   R o o t :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ f r o n t e n d _ 2 0 2 5 1 0 2 9 _ 0 9 0 7 2 7 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ b a c k e n d _ b a c k u p _ p h a s e 1 2 _ 2 0 2 5 1 1 2 6 _ 2 0 2 2 2 3 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ P r o g r e s s P a n e l . t s x 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ f r o n t e n d \ s r c \ P r o g r e s s P a n e l . t s x 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ f r o n t e n d \ s r c \ G a m e P a n e l . t s x 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ f r o n t e n d \ s r c \ G a m e P a n e l . t s x 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ D a i l y C h a l l e n g e D e t a i l P a g e . t s x 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ s r c \ d a t a \ p r o g r e s s . j s o n 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ b a c k e n d \ s r c \ d a t a \ p r o g r e s s . j s o n 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ d a t a \ p u z z l e s . j s o n 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ b a c k e n d \ d a t a \ p u z z l e s . j s o n 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ b a c k e n d \ r u n _ f r o n t e n d . p s 1 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ b a c k e n d \ r u n _ f r o n t e n d . p s 1 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t e s t s \ r u n _ t e s t s . p s 1 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ t e s t s \ r u n _ t e s t s . p s 1 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ t o o l s \ S a n i t y . p s 1 . p s 1 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ t o o l s \ S a n i t y . p s 1 . p s 1 
+ 
+ M O V E :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ . e n v . l o c a l 
+ 
+     T O :   C : \ P r o j e c t s \ M i n d L a b _ S t a r t e r _ P r o j e c t \ A R C H I V E _ D U P L I C A T E S _ 2 0 2 5 - 1 2 - 2 7 \ . e n v . l o c a l 
+ 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ 
+ D O N E 
+ 
+ 

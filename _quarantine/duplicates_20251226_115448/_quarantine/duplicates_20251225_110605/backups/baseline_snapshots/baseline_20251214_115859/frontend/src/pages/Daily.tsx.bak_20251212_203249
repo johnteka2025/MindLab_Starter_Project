@@ -1,0 +1,176 @@
+﻿import React, { useEffect, useMemo, useState } from "react";
+
+type Puzzle = {
+  id: string | number;
+  question: string;
+  answer: string;
+};
+
+type ProgressResponse = any;
+
+export default function Daily() {
+  const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
+  const [selectedPuzzle, setSelectedPuzzle] = useState<Puzzle | null>(null);
+  const [answer, setAnswer] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const [saving, setSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
+
+  const puzzlesUrl = useMemo(() => "http://localhost:8085/puzzles", []);
+  const progressUrl = useMemo(() => "http://localhost:8085/progress", []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadPuzzles() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const res = await fetch(puzzlesUrl);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const data = (await res.json()) as Puzzle[];
+        if (!Array.isArray(data)) throw new Error("Invalid response: expected array");
+
+        if (!cancelled) setPuzzles(data);
+      } catch (err: any) {
+        console.error("Failed to load puzzles:", err);
+        if (!cancelled) {
+          setError("Error loading puzzles list.");
+          setPuzzles([]);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    loadPuzzles();
+    return () => {
+      cancelled = true;
+    };
+  }, [puzzlesUrl]);
+
+  async function writeProgress(puzzleId: string | number, correct: boolean) {
+    setSaving(true);
+    setSaveStatus(null);
+
+    try {
+      const res = await fetch(progressUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ puzzleId, correct }),
+      });
+
+      if (!res.ok) {
+        const txt = await res.text().catch(() => "");
+        throw new Error(`HTTP ${res.status} ${txt}`.trim());
+      }
+
+      const data = (await res.json()) as ProgressResponse;
+      setSaveStatus("✅ Progress saved.");
+      return data;
+    } catch (err: any) {
+      console.error("Failed to write progress:", err);
+      setSaveStatus("❌ Progress save failed.");
+      return null;
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function submitAnswer() {
+    if (!selectedPuzzle) return;
+
+    const correctAnswer = String(selectedPuzzle.answer ?? "").toLowerCase().trim();
+    const guess = String(answer ?? "").toLowerCase().trim();
+
+    if (guess.length === 0) {
+      setFeedback("⚠️ Please enter an answer.");
+      return;
+    }
+
+    const isCorrect = guess === correctAnswer;
+
+    if (isCorrect) setFeedback("✅ Correct!");
+    else setFeedback("❌ Incorrect. Try again!");
+
+    // Record progress (game loop)
+    await writeProgress(selectedPuzzle.id, isCorrect);
+  }
+
+  return (
+    <div style={{ padding: "1.5rem" }}>
+      <h1>Daily Challenge</h1>
+      <p>Daily Challenge</p>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {/* Daily puzzles list (stable selectors for Playwright) */}
+      <div style={{ marginTop: "1rem" }}>
+        <h2 style={{ marginBottom: "0.5rem" }}>Puzzles</h2>
+
+        {loading && <p>Loading puzzles…</p>}
+
+        <ul data-testid="daily-puzzles-list">
+          {puzzles.map((p) => (
+            <li key={p.id}>
+              <button
+                type="button"
+                data-testid="daily-puzzle-item"
+                onClick={() => {
+                  setSelectedPuzzle(p);
+                  setFeedback("");
+                  setAnswer("");
+                  setSaveStatus(null);
+                }}
+                style={{ marginBottom: "0.5rem" }}
+              >
+                {p.question ? p.question : `Puzzle #${p.id}`}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {!loading && !error && puzzles.length === 0 && <p>No puzzles available yet.</p>}
+      </div>
+
+      {/* Selected puzzle + answer area */}
+      {selectedPuzzle && (
+        <div style={{ marginTop: "1rem" }}>
+          <h2 data-testid="puzzle-question">{selectedPuzzle.question}</h2>
+
+          <input
+            data-testid="puzzle-answer-input"
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+          />
+
+          <button
+            style={{ marginLeft: "0.5rem" }}
+            data-testid="puzzle-submit-button"
+            onClick={submitAnswer}
+            disabled={saving}
+          >
+            {saving ? "Saving..." : "Submit"}
+          </button>
+
+          {feedback && (
+            <p data-testid="answer-feedback" style={{ marginTop: "0.5rem" }}>
+              {feedback}
+            </p>
+          )}
+
+          {saveStatus && (
+            <p data-testid="progress-save-status" style={{ marginTop: "0.5rem" }}>
+              {saveStatus}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

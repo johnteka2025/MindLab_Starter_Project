@@ -1,0 +1,177 @@
+﻿import { useEffect, useMemo, useState } from "react";
+
+type Puzzle = {
+  id: number;
+  question: string;
+  options: string[];
+  correctIndex: number;
+};
+
+type Progress = { total: number; solved: number };
+
+const API = (import.meta as any).env?.VITE_API_BASE_URL || "http://localhost:8085";
+
+async function fetchJson<T>(path: string): Promise<T> {
+  const res = await fetch(`${API}${path}`);
+  if (!res.ok) throw new Error(`${path} failed: ${res.status}`);
+  return (await res.json()) as T;
+}
+
+async function postJson<T>(path: string, body: any): Promise<T> {
+  const res = await fetch(`${API}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body ?? {}),
+  });
+  if (!res.ok) throw new Error(`${path} failed: ${res.status}`);
+  return (await res.json()) as T;
+}
+
+export default function SolvePuzzle() {
+  const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
+  const [progress, setProgress] = useState<Progress | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState<string | null>(null);
+
+  const [pickedPuzzleId, setPickedPuzzleId] = useState<number | "">("");
+  const [pickedOptionIndex, setPickedOptionIndex] = useState<number | "">("");
+  const [resultMsg, setResultMsg] = useState<string>("");
+
+  const selectedPuzzle = useMemo(
+    () => puzzles.find(p => p.id === pickedPuzzleId) || null,
+    [puzzles, pickedPuzzleId]
+  );
+
+  async function loadAll() {
+    setLoading(true);
+    setErr(null);
+    try {
+         const puzzlesRes = await fetchJson<any>("/puzzles");
+         const list: Puzzle[] = Array.isArray(puzzlesRes)
+         ? puzzlesRes
+         : Array.isArray(puzzlesRes?.puzzles)
+         ? puzzlesRes.puzzles
+         : [];
+
+     setPuzzles(list);
+
+      const prog = await fetchJson<Progress>("/progress");
+      setProgress(prog);
+    } catch (e: any) {
+      setErr(e?.message || "Failed to load");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadAll();
+  }, []);
+
+  async function solve() {
+    setResultMsg("");
+    setErr(null);
+
+    if (pickedPuzzleId === "" || pickedOptionIndex === "") {
+      setErr("Pick a puzzle and an answer first.");
+      return;
+    }
+
+    try {
+      // backend currently supports OPTIONS existence check; we assume POST is implemented in your progressRoutes.cjs
+      const res = await postJson<any>("/progress/solve", {
+        puzzleId: pickedPuzzleId,
+        answerIndex: pickedOptionIndex,
+      });
+
+      // refresh progress regardless of response shape
+      const prog = await fetchJson<Progress>("/progress");
+      setProgress(prog);
+
+      // optional message
+      if (res?.correct === true) setResultMsg("✅ Correct!");
+      else if (res?.correct === false) setResultMsg("❌ Incorrect.");
+      else setResultMsg("✅ Submitted.");
+    } catch (e: any) {
+      setErr(e?.message || "Solve failed");
+    }
+  }
+
+  if (loading) return <div style={{ padding: "1rem" }}>Loading…</div>;
+
+  return (
+    <div style={{ padding: "1rem", maxWidth: 720 }}>
+      <h1>Solve a Puzzle</h1>
+
+      <p>
+        Backend: <code>{API}</code>
+      </p>
+
+      {err && <p style={{ color: "red" }}>{err}</p>}
+      {resultMsg && <p>{resultMsg}</p>}
+
+      <section style={{ marginTop: "1rem" }}>
+        <h2>Pick a puzzle</h2>
+        <select
+          value={pickedPuzzleId}
+          onChange={e => {
+            const v = e.target.value ? Number(e.target.value) : "";
+            setPickedPuzzleId(v);
+            setPickedOptionIndex("");
+            setResultMsg("");
+          }}
+        >
+          <option value="">-- Select --</option>
+          {puzzles.map(p => (
+            <option key={p.id} value={p.id}>
+              #{p.id}: {p.question.slice(0, 60)}
+            </option>
+          ))}
+        </select>
+
+        {selectedPuzzle && (
+          <div style={{ marginTop: "1rem" }}>
+            <h3>Question</h3>
+            <p>{selectedPuzzle.question}</p>
+
+            <h3>Choose an answer</h3>
+            {selectedPuzzle.options.map((opt, idx) => (
+              <label key={idx} style={{ display: "block", margin: "0.25rem 0" }}>
+                <input
+                  type="radio"
+                  name="answer"
+                  checked={pickedOptionIndex === idx}
+                  onChange={() => setPickedOptionIndex(idx)}
+                />{" "}
+                {opt}
+              </label>
+            ))}
+
+            <button style={{ marginTop: "0.75rem" }} onClick={solve}>
+              Submit Answer
+            </button>
+          </div>
+        )}
+      </section>
+
+      <section style={{ marginTop: "1.5rem" }}>
+        <h2>Progress</h2>
+        <p>
+          {progress ? (
+            <>
+              {progress.solved} of {progress.total} solved
+            </>
+          ) : (
+            "No progress loaded"
+          )}
+        </p>
+
+        <button onClick={loadAll}>Refresh</button>
+      </section>
+
+      <p style={{ marginTop: "1.5rem" }}>
+        <a href="/">← Back to Home</a>
+      </p>
+    </div>
+  );
+}

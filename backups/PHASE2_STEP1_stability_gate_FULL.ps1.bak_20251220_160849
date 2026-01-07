@@ -1,0 +1,146 @@
+﻿$ErrorActionPreference = "Stop"
+
+$ROOT = "C:\Projects\MindLab_Starter_Project"
+$FRONTEND = Join-Path $ROOT "frontend"
+$BACKEND  = Join-Path $ROOT "backend"
+
+function Assert-Path($p, $label) {
+  if (-not (Test-Path $p)) { throw "Missing ${label}: ${p}" }
+}
+
+function Write-Section($t) {
+  Write-Host ""
+  Write-Host "================================================================="
+  Write-Host $t
+  Write-Host "================================================================="
+}
+
+function Get-ListeningPidOnPort([int]$port) {
+  $line = (netstat -ano | Select-String -SimpleMatch ":$port" | Select-Object -First 1)
+  if (-not $line) { return $null }
+  $parts = ($line -split "\s+") | Where-Object { $_ -ne "" }
+  $pid = $parts[-1]
+  if ($pid -match "^\d+$") { return [int]$pid }
+  return $null
+}
+
+function Stop-PortProcess([int]$port) {
+  $pid = Get-ListeningPidOnPort $port
+  if ($null -eq $pid) {
+    Write-Host "Port ${port}: not LISTENING (OK)"
+    return
+  }
+  Write-Host "Port ${port}: LISTENING by PID ${pid}. Stopping it..."
+  Stop-Process -Id $pid -Force
+  Start-Sleep -Milliseconds 500
+  $pid2 = Get-ListeningPidOnPort $port
+  if ($pid2) { throw "Port ${port} still LISTENING by PID ${pid2} after stop attempt." }
+  Write-Host "Port ${port}: stopped and now free."
+}
+
+function Http-Get([string]$url) {
+  Invoke-WebRequest -UseBasicParsing -TimeoutSec 10 -Uri $url
+}
+
+function Http-PostJson([string]$url, [object]$bodyObj) {
+  $json = ($bodyObj | ConvertTo-Json -Depth 20)
+  Invoke-WebRequest -UseBasicParsing -TimeoutSec 10 -Uri $url -Method Post -ContentType "application/json" -Body $json
+}
+
+Write-Section "PHASE 2 — STEP 1: Stability Gate starting"
+
+Assert-Path $ROOT "Project root"
+Assert-Path $FRONTEND "frontend folder"
+Assert-Path $BACKEND "backend folder"
+
+cd $ROOT
+Write-Host "Root: $(Get-Location)"
+
+Write-Section "A) Preflight: confirm puzzle source-of-truth files exist"
+$indexJson = Join-Path $BACKEND "src\puzzles\index.json"
+Assert-Path $indexJson "backend/src/puzzles/index.json (SOURCE OF TRUTH)"
+Write-Host "OK: ${indexJson} exists."
+
+Write-Section "B) Ports: ensure 8085 (backend) and 5177 (frontend) are free before clean start"
+Stop-PortProcess 8085
+Stop-PortProcess 5177
+
+Write-Section "C) Start backend + frontend (NEW windows recommended)"
+Write-Host "Open TWO new PowerShell windows and run:"
+Write-Host ""
+Write-Host "  [Backend window]"
+Write-Host "  cd $BACKEND"
+Write-Host "  npm run dev"
+Write-Host ""
+Write-Host "  [Frontend window]"
+Write-Host "  cd $FRONTEND"
+Write-Host "  npm run dev"
+Write-Host ""
+Write-Host "After both are running, come back here and press ENTER to continue..."
+[void](Read-Host)
+
+Write-Section "D) Runtime sanity: backend endpoints must respond and /puzzles must be valid schema"
+$healthUrl   = "http://127.0.0.1:8085/health"
+$puzzlesUrl  = "http://127.0.0.1:8085/puzzles"
+$progressUrl = "http://127.0.0.1:8085/progress"
+$solveUrl    = "http://127.0.0.1:8085/progress/solve"
+
+$r1 = Http-Get $healthUrl
+Write-Host "GET /health -> $($r1.StatusCode)"
+if ($r1.StatusCode -ne 200) { throw "/health not 200" }
+
+$r2 = Http-Get $puzzlesUrl
+Write-Host "GET /puzzles -> $($r2.StatusCode)"
+if ($r2.StatusCode -ne 200) { throw "/puzzles not 200" }
+
+$puzzles = $r2.Content | ConvertFrom-Json
+if (-not ($puzzles -is [System.Array])) { throw "/puzzles did not return an array" }
+if ($puzzles.Count -lt 1) { throw "/puzzles returned empty array" }
+
+for ($i=0; $i -lt $puzzles.Count; $i++) {
+  $p = $puzzles[$i]
+  foreach ($k in @("id","question","options","correctIndex")) {
+    if (-not ($p.PSObject.Properties.Name -contains $k)) {
+      throw "/puzzles[$i] missing field '${k}'"
+    }
+  }
+  if (-not ($p.options -is [System.Array])) { throw "/puzzles[$i].options is not array" }
+  if ($p.options.Count -lt 2) { throw "/puzzles[$i].options must have >= 2" }
+  if (($p.correctIndex -lt 0) -or ($p.correctIndex -ge $p.options.Count)) {
+    throw "/puzzles[$i].correctIndex out of range. correctIndex=$($p.correctIndex), optionsCount=$($p.options.Count)"
+  }
+}
+Write-Host "OK: /puzzles schema validated. Count=$($puzzles.Count)"
+
+$r3 = Http-Get $progressUrl
+Write-Host "GET /progress -> $($r3.StatusCode)"
+if ($r3.StatusCode -ne 200) { throw "/progress not 200" }
+
+Write-Section "E) Functional sanity: mark one known puzzle as solved via API"
+$pid = $puzzles[0].id
+Write-Host "POST /progress/solve for puzzleId=$pid"
+$r4 = Http-PostJson $solveUrl @{ puzzleId = $pid }
+Write-Host "POST /progress/solve -> $($r4.StatusCode)"
+if ($r4.StatusCode -lt 200 -or $r4.StatusCode -ge 300) { throw "/progress/solve not 2xx" }
+
+$r5 = Http-Get $progressUrl
+Write-Host "GET /progress (after solve) -> $($r5.StatusCode)"
+if ($r5.StatusCode -ne 200) { throw "/progress after solve not 200" }
+Write-Host "Progress body (first 200 chars): $($r5.Content.Substring(0,[Math]::Min(200,$r5.Content.Length)))"
+
+Write-Section "F) Test sanity: backend tests + frontend tests (no emit)"
+Write-Host "Backend tests..."
+cd $BACKEND
+npm test
+
+Write-Host "Frontend typecheck + tests..."
+cd $FRONTEND
+npx tsc -p .\tsconfig.json --noEmit
+npm test
+
+Write-Section "G) GOLDEN RULE: return to project root"
+cd $ROOT
+Write-Host "Returned to: $(Get-Location)"
+
+Write-Host ""
+Write-Host "✅ PHASE 2 — STEP 1 Stability Gate COMPLETE (all checks passed)."

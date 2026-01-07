@@ -1,0 +1,75 @@
+﻿import React, { useEffect, useState } from "react";
+import { apiGet } from "../api";
+
+type Health = { status: string; uptime?: number };
+
+export default function HealthPanel() {
+  const [health, setHealth] = useState<Health | null>(null);
+  const [puzzlesCount, setPuzzlesCount] = useState<number | null>(null);
+  const [progress, setProgress] = useState<{ total: number; solved: number } | null>(null);
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      setError("");
+      try {
+        const h = await apiGet<Health>("/health");
+        const puzzles = await apiGet<any[]>("/puzzles");
+        const prog = await apiGet<{ total: number; solved: number }>("/progress");
+
+        if (cancelled) return;
+        setHealth(h);
+        setPuzzlesCount(Array.isArray(puzzles) ? puzzles.length : 0);
+        setProgress(prog);
+      } catch (e: any) {
+        if (cancelled) return;
+        setError(e?.message || "Failed to reach backend");
+        setHealth(null);
+        setPuzzlesCount(null);
+        setProgress(null);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return (
+    <div>
+       <h2>Health</h2>
+           {error ? (
+              <p style={{ color: "crimson" }}>Failed to reach backend: {error}</p>
+                    ) : (
+                    <p>Status: {health?.status || "…"}</p>
+                     )}
+
+                      <h2>Choose an area:</h2>
+                      <ul>
+                       <li>
+                        <a href="/daily">Daily UI</a>
+                       </li>
+                        <li>
+                        <a href="/progress">Progress</a>
+                        </li>
+                         <li>
+                         <a href="/solve">Solve a Puzzle</a>
+                         </li>
+                         </ul>
+      <h2>Puzzles</h2>
+      <p>{puzzlesCount === null ? "Failed to load puzzles." : `Loaded: ${puzzlesCount}`}</p>
+
+      <h2>Progress</h2>
+      {progress ? (
+        <p>
+          {progress.solved} of {progress.total} puzzles solved.
+        </p>
+      ) : (
+        <p>{error ? "Error: Failed to fetch" : "…"}</p>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,137 @@
+# run_duplicate_scan.ps1
+# MindLab - Duplicate Scan (Parsing-safe, documentation-safe)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+param(
+  [switch]$IncludeArchives,
+  [switch]$IncludeNodeModules
+)
+
+# -----------------------------
+# Config
+# -----------------------------
+$root = 'C:\Projects\MindLab_Starter_Project'
+
+$defaultExcludeDirNames = @(
+  'node_modules',
+  'backups',
+  '_snapshots',
+  '_quarantine',
+  'dist',
+  'build',
+  '.git'
+)
+
+# -----------------------------
+# Helpers
+# -----------------------------
+function Assert-Path([string]$p, [string]$label) {
+  if (-not (Test-Path -LiteralPath $p)) {
+    throw ("Missing required path ({0}): {1}" -f $label, $p)
+  }
+}
+
+function Get-ParserErrors([string]$filePath) {
+  $tokens = $null
+  $errors = $null
+  [System.Management.Automation.Language.Parser]::ParseFile($filePath, [ref]$tokens, [ref]$errors) | Out-Null
+  return $errors
+}
+
+# -----------------------------
+# Pre-flight checks (Golden Rules)
+# -----------------------------
+Assert-Path $root 'ProjectRoot'
+
+$thisScript = $MyInvocation.MyCommand.Path
+$parseErrors = Get-ParserErrors $thisScript
+
+if ($parseErrors.Count -gt 0) {
+  $msg = ($parseErrors | ForEach-Object { $_.Message }) -join "`n"
+  throw ("PowerShell parser errors detected in {0}`n{1}" -f $thisScript, $msg)
+}
+
+$startLocation = Get-Location
+
+try {
+  Set-Location -LiteralPath $root
+
+  # Documentation folder
+  $docPath = Join-Path -Path $root -ChildPath 'daily_closeout_docs'
+  New-Item -ItemType Directory -Force -Path $docPath | Out-Null
+
+  $date = Get-Date -Format 'yyyy-MM-dd'
+  $mode = @()
+  if ($IncludeArchives) { $mode += 'IncludeArchives' } else { $mode += 'LiveOnly' }
+  if ($IncludeNodeModules) { $mode += 'IncludeNodeModules' } else { $mode += 'NoNodeModules' }
+  $modeTag = ($mode -join '_')
+
+  $outFile = Join-Path -Path $docPath -ChildPath ("Duplicate_Scan_Result_{0}_{1}.txt" -f $date, $modeTag)
+
+  # Build exclusion set based on parameters
+  $exclude = New-Object System.Collections.Generic.HashSet[string]([StringComparer]::OrdinalIgnoreCase)
+  foreach ($d in $defaultExcludeDirNames) { [void]$exclude.Add($d) }
+
+  if ($IncludeArchives) {
+    [void]$exclude.Remove('backups')
+    [void]$exclude.Remove('_snapshots')
+    [void]$exclude.Remove('_quarantine')
+  }
+  if ($IncludeNodeModules) {
+    [void]$exclude.Remove('node_modules')
+  }
+
+  # Write header
+  "MindLab Duplicate File Scan" | Out-File -FilePath $outFile -Encoding UTF8
+  ("Date: {0}" -f (Get-Date)) | Out-File -FilePath $outFile -Append -Encoding UTF8
+  ("Project Root: {0}" -f $root) | Out-File -FilePath $outFile -Append -Encoding UTF8
+  ("Mode: {0}" -f $modeTag) | Out-File -FilePath $outFile -Append -Encoding UTF8
+  "------------------------------------------------------------" | Out-File -FilePath $outFile -Append -Encoding UTF8
+
+  # Enumerate files and exclude directories by name
+  $files =
+    Get-ChildItem -LiteralPath $root -Recurse -File -Force -ErrorAction SilentlyContinue |
+    Where-Object {
+      $dir = $_.Directory
+      while ($null -ne $dir) {
+        if ($exclude.Contains($dir.Name)) { return $false }
+        $dir = $dir.Parent
+      }
+      return $true
+    }
+
+  $duplicates =
+    $files |
+    Group-Object -Property Name |
+    Where-Object { $_.Count -gt 1 } |
+    Sort-Object -Property Count -Descending
+
+  if ($duplicates.Count -eq 0) {
+    "RESULT: ✅ NO DUPLICATE FILES FOUND (in selected mode)" | Out-File -FilePath $outFile -Append -Encoding UTF8
+  }
+  else {
+    foreach ($group in $duplicates) {
+      "" | Out-File -FilePath $outFile -Append -Encoding UTF8
+      ("DUPLICATE FILE NAME: {0}" -f $group.Name) | Out-File -FilePath $outFile -Append -Encoding UTF8
+      ("COUNT: {0}" -f $group.Count) | Out-File -FilePath $outFile -Append -Encoding UTF8
+      "LOCATIONS:" | Out-File -FilePath $outFile -Append -Encoding UTF8
+      foreach ($f in $group.Group) {
+        ("  - {0}" -f $f.FullName) | Out-File -FilePath $outFile -Append -Encoding UTF8
+      }
+    }
+  }
+
+  "------------------------------------------------------------" | Out-File -FilePath $outFile -Append -Encoding UTF8
+  "END OF SCAN" | Out-File -FilePath $outFile -Append -Encoding UTF8
+
+  notepad $outFile
+
+  Write-Host ""
+  Write-Host ("Wrote scan results to: {0}" -f $outFile)
+  Write-Host ("Duplicate groups found: {0}" -f $duplicates.Count)
+}
+finally {
+  Set-Location -LiteralPath $startLocation
+}

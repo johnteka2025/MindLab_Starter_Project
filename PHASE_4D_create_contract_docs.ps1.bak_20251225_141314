@@ -1,0 +1,105 @@
+﻿# PHASE_4D_create_contract_docs.ps1
+# Creates Phase 4 persistence contract docs (ASCII-only / no here-strings inside code generation)
+
+$ErrorActionPreference = "Stop"
+
+function Assert-Path([string]$p, [string]$label) {
+  if (-not (Test-Path $p)) { throw ("Missing required {0}: {1}" -f $label, $p) }
+}
+
+try {
+  $root = "C:\Projects\MindLab_Starter_Project"
+  Set-Location $root
+
+  $docsDir = Join-Path $root "docs"
+  if (-not (Test-Path $docsDir)) { New-Item -ItemType Directory -Path $docsDir | Out-Null }
+
+  $progressFile = Join-Path $root "backend\src\data\progress.json"
+  $persistenceModule = Join-Path $root "backend\src\progressPersistence.cjs"
+  $nodemonCfg = Join-Path $root "backend\nodemon.json"
+
+  Assert-Path $progressFile "progress.json"
+  Assert-Path $persistenceModule "progressPersistence.cjs"
+
+  $outDoc = Join-Path $docsDir "PHASE_4_PERSISTENCE_CONTRACTS.md"
+
+  $lines = New-Object System.Collections.Generic.List[string]
+
+  $lines.Add("# Phase 4 - Persistence Contracts")
+  $lines.Add("")
+  $lines.Add("## Data Contract - backend\src\data\progress.json")
+  $lines.Add("")
+  $lines.Add("File path: backend\src\data\progress.json")
+  $lines.Add("Purpose: Durable state for Daily Challenge progress (survives server restart)")
+  $lines.Add("")
+  $lines.Add("### Source of Truth (Golden Rule)")
+  $lines.Add("- solvedPuzzleIds is the canonical persisted structure.")
+  $lines.Add("- solvedIds on disk MUST always be derived from the keys of solvedPuzzleIds.")
+  $lines.Add("")
+  $lines.Add("### Expected JSON Shape")
+  $lines.Add("```json")
+  $lines.Add("{")
+  $lines.Add('  "total": 3,')
+  $lines.Add('  "solved": 1,')
+  $lines.Add('  "solvedToday": 1,')
+  $lines.Add('  "totalSolved": 1,')
+  $lines.Add('  "streak": 0,')
+  $lines.Add('  "solvedIds": ["demo-1"],')
+  $lines.Add('  "solvedPuzzleIds": { "demo-1": true }')
+  $lines.Add("}")
+  $lines.Add("```")
+  $lines.Add("")
+  $lines.Add("### Invariants")
+  $lines.Add("- solved equals the count of keys in solvedPuzzleIds.")
+  $lines.Add("- solvedIds equals Object.keys(solvedPuzzleIds).")
+  $lines.Add("- On reset: solvedPuzzleIds -> {}, solvedIds -> [], solved -> 0.")
+  $lines.Add("")
+  $lines.Add("---")
+  $lines.Add("")
+  $lines.Add("## API Contract (Progress)")
+  $lines.Add("")
+  $lines.Add("GET /progress returns:")
+  $lines.Add("```json")
+  $lines.Add('{ "total": 3, "solved": 1, "solvedIds": ["demo-1"] }')
+  $lines.Add("```")
+  $lines.Add("")
+  $lines.Add("POST /progress/reset returns:")
+  $lines.Add("```json")
+  $lines.Add('{ "ok": true, "total": 3, "solved": 0, "solvedIds": [] }')
+  $lines.Add("```")
+  $lines.Add("")
+  $lines.Add("POST /progress/solve body:")
+  $lines.Add("```json")
+  $lines.Add('{ "puzzleId": "demo-1" }')
+  $lines.Add("```")
+  $lines.Add("")
+  $lines.Add("POST /progress/solve returns:")
+  $lines.Add("```json")
+  $lines.Add('{ "ok": true, "puzzleId": "demo-1", "progress": { "total": 3, "solved": 1, "solvedToday": 1, "totalSolved": 1, "streak": 0, "solvedIds": ["demo-1"] } }')
+  $lines.Add("```")
+  $lines.Add("")
+  $lines.Add("---")
+  $lines.Add("")
+  $lines.Add("## Nodemon Contract (Avoid Restart Loop)")
+  $lines.Add("")
+  $lines.Add("If the server writes backend\src\data\progress.json, nodemon must ignore it.")
+  $lines.Add("Expected backend\nodemon.json:")
+  $lines.Add("```json")
+  $lines.Add("{")
+  $lines.Add('  "watch": ["src"],')
+  $lines.Add('  "ignore": [')
+  $lines.Add('    "data/progress.json",')
+  $lines.Add('    "src/data/progress.json"')
+  $lines.Add("  ]")
+  $lines.Add("}")
+  $lines.Add("```")
+
+  Set-Content -Path $outDoc -Value $lines -Encoding UTF8
+
+  Write-Host ("PHASE_4D GREEN: wrote {0}" -f $outDoc) -ForegroundColor Green
+  Write-Host ("Returned to project root: {0}" -f $root) -ForegroundColor Green
+}
+catch {
+  Write-Host ("PHASE_4D ERROR: {0}" -f $_.Exception.Message) -ForegroundColor Red
+  throw
+}
