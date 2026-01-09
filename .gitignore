@@ -12,3 +12,9 @@ snapshots/*.zip
 *.zip
 *.pdf
 _archive/
+
+# Generated artifacts
+backend/coverage/
+frontend/coverage/
+_quarantine/
+
