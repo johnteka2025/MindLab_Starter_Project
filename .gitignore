@@ -30,3 +30,9 @@ backend/coverage/
 frontend/coverage/
 _quarantine/
 
+
+# Generated artifacts
+backend/coverage/
+frontend/coverage/
+_quarantine/
+
