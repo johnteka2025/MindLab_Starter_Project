@@ -63,13 +63,14 @@ const registerProgressRoutes = require("./progressRoutes.cjs");
 const registerPuzzlesRoutes = require("./puzzlesRoutes.cjs");
 const difficultyRoutes = require("./difficultyRoutes.cjs");
 registerProgressRoutes(app);
+const { createDailyChallengeRouter } = require("./daily-challenge/dailyChallengeRoutes.cjs");
 app.use("/difficulty", difficultyRoutes);
 registerPuzzlesRoutes(app);
 
 // Enable JSON persistence for progress (Phase 4B)
 const initProgressPersistence = require("./progressPersistence.cjs");
 initProgressPersistence();
-
+app.use("/", createDailyChallengeRouter());
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
