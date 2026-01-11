@@ -40,3 +40,4 @@ _quarantine/
 # Local notes (never tracked)
 Action Items/
 
+backend/src/data/progress.json
