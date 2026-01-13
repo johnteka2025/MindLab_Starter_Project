@@ -1,46 +1,55 @@
-﻿import { apiGet } from "../api";
+﻿import { apiGet, apiPost } from "../api";
 
-export type DailyChallengeStatus = {
-  challengeDate: string; // YYYY-MM-DD
-  band: number;
-  status: "not_started" | "in_progress" | "completed";
-  puzzlesCompletedToday: number;
-  totalPuzzlesForToday: number;
-  streakCount: number;
+export type DailyChallengeBand = "A" | "B" | "C";
+export type DailyChallengeStatusValue = "not_started" | "in_progress" | "completed";
+
+export type DailyPuzzleSummary = {
+  id: string;
+  prompt: string;
+  // Optional fields may be present depending on backend puzzle type
+  choices?: string[];
 };
 
-/**
- * We do not yet have a dedicated /daily/status endpoint on the backend.
- * So we derive a simple status from /puzzles + /progress to keep UI stable.
- */
-export async function fetchDailyStatus(): Promise<DailyChallengeStatus> {
-  const puzzles = await apiGet<any[]>("/puzzles").catch(() => []);
-  const progress = await apiGet<{ total?: number; solved?: number }>("/progress").catch(() => ({}));
+export type DailyGetResponse = {
+  dailyChallengeId: string;
+  band: DailyChallengeBand;
+  status: DailyChallengeStatusValue;
+  puzzles: DailyPuzzleSummary[];
+};
 
-  const total = typeof progress.total === "number"
-    ? progress.total
-    : (Array.isArray(puzzles) ? puzzles.length : 0);
+export type DailyStatusResponse = {
+  dailyChallengeId: string;
+  band: DailyChallengeBand;
+  status: DailyChallengeStatusValue;
+  progress: number;
+  total: number;
+  streak: number;
+};
 
-  const solved = typeof progress.solved === "number" ? progress.solved : 0;
+export type DailyAnswerResponse = {
+  ok: boolean;
+  dailyChallengeId: string;
+  progress: number;
+  streak: number;
+  status: DailyChallengeStatusValue;
+  error?: string;
+  message?: string;
+};
 
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const dd = String(today.getDate()).padStart(2, "0");
+export async function fetchDaily(): Promise<DailyGetResponse> {
+  return apiGet<DailyGetResponse>("/daily");
+}
 
-  const puzzlesCompletedToday = solved;
-  const totalPuzzlesForToday = total;
+export async function fetchDailyStatus(): Promise<DailyStatusResponse> {
+  return apiGet<DailyStatusResponse>("/daily/status");
+}
 
-  let status: DailyChallengeStatus["status"] = "not_started";
-  if (puzzlesCompletedToday > 0 && puzzlesCompletedToday < totalPuzzlesForToday) status = "in_progress";
-  if (totalPuzzlesForToday > 0 && puzzlesCompletedToday >= totalPuzzlesForToday) status = "completed";
-
-  return {
-    challengeDate: ${yyyy}--,
-    band: 1,
-    status,
-    puzzlesCompletedToday,
-    totalPuzzlesForToday,
-    streakCount: 0,
-  };
+export async function submitDailyAnswer(params: {
+  answer: string;
+  dailyChallengeId?: string;
+}): Promise<DailyAnswerResponse> {
+  return apiPost<DailyAnswerResponse>("/daily/answer", {
+    answer: params.answer,
+    dailyChallengeId: params.dailyChallengeId,
+  });
 }

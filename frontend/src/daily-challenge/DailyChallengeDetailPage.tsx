@@ -1,126 +1,64 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { apiGet, apiPost } from "../api";
+import {
+  fetchDaily,
+  fetchDailyStatus,
+  submitDailyAnswer,
+  type DailyGetResponse,
+  type DailyStatusResponse,
+  type DailyPuzzleSummary,
+} from "./dailyChallengeApi";
 
-type Puzzle = {
-  id: number | string;
-  question: string;
-  options?: string[];
-  correctIndex?: number;
-};
-
-type ProgressState = {
-  total: number;
-  solved: number;
-  streak: number;
-  solvedIds?: Array<string | number>;
-};
-
-type ProgressSolveResponse = {
-  ok?: boolean;
-  puzzleId?: string | number | null;
-  progress?: {
-    total: number;
-    solved: number;
-    solvedToday?: number;
-    totalSolved?: number;
-    streak?: number;
-    solvedIds?: Array<string | number>;
-  };
-};
-
-type DifficultyLevel = "easy" | "medium" | "hard";
-type DifficultyFilter = "all" | DifficultyLevel;
-
-type DifficultyData = {
-  default: DifficultyLevel;
-  levels: DifficultyLevel[];
-  map: Record<string, DifficultyLevel>;
-};
-
-function normalizeIds(ids: Array<string | number> | undefined | null): Record<string, boolean> {
-  const map: Record<string, boolean> = {};
-  (ids || []).forEach((id) => {
-    map[String(id)] = true;
-  });
-  return map;
-}
-
-function toDifficultyMap(data: DifficultyData | null): Map<string, DifficultyLevel> {
-  const m = new Map<string, DifficultyLevel>();
-  if (!data?.map) return m;
-  for (const [k, v] of Object.entries(data.map)) {
-    m.set(String(k), v);
-  }
-  return m;
+function safeString(v: unknown): string {
+  return typeof v === "string" ? v : "";
 }
 
 export default function DailyChallengeDetailPage() {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
-  const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
+  const [daily, setDaily] = useState<DailyGetResponse | null>(null);
+  const [status, setStatus] = useState<DailyStatusResponse | null>(null);
+
   const [selectedId, setSelectedId] = useState<string>("");
+  const selectedPuzzle: DailyPuzzleSummary | null = useMemo(() => {
+    if (!daily || !daily.puzzles?.length) return null;
+    const found = daily.puzzles.find((p) => String(p.id) === selectedId);
+    return found ?? daily.puzzles[0] ?? null;
+  }, [daily, selectedId]);
 
-  const [solveLoading, setSolveLoading] = useState(false);
-  const [solveError, setSolveError] = useState<string | null>(null);
-  const [solveOk, setSolveOk] = useState<string | null>(null);
+  const [answer, setAnswer] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitOk, setSubmitOk] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  // Solved state + progress from backend
-  const [solvedMap, setSolvedMap] = useState<Record<string, boolean>>({});
-  const [progress, setProgress] = useState<ProgressState | null>(null);
+  async function refreshDailyAndStatus() {
+    const [d, s] = await Promise.all([fetchDaily(), fetchDailyStatus()]);
+    setDaily(d);
+    setStatus(s);
 
-  // Difficulty (optional enrichment; fail-open)
-  const [difficulty, setDifficulty] = useState<DifficultyData | null>(null);
-
-  // Phase 4: difficulty filter (frontend-only)
-  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("all");
-
-  async function refreshProgress() {
-    const p = await apiGet<ProgressState>("/progress");
-    setProgress(p);
-    setSolvedMap(normalizeIds(p?.solvedIds));
-    return p;
+    const nextSelected =
+      d.puzzles?.some((p) => String(p.id) === selectedId) ? selectedId : String(d.puzzles?.[0]?.id ?? "");
+    setSelectedId(nextSelected);
   }
 
   useEffect(() => {
     let cancelled = false;
 
-    async function load() {
+    (async () => {
       setLoading(true);
-      setError(null);
+      setLoadError(null);
 
       try {
-        const [puzzlesRes] = await Promise.all([apiGet<Puzzle[]>("/puzzles"), refreshProgress()]);
+        await refreshDailyAndStatus();
         if (cancelled) return;
-
-        const list = Array.isArray(puzzlesRes) ? puzzlesRes : [];
-        setPuzzles(list);
-
-        // Fetch difficulty in parallel AFTER initial essentials are set (fail-open)
-        // Do not block Daily UI if difficulty endpoint is missing
-        try {
-          const diff = await apiGet<DifficultyData>("/difficulty");
-          if (!cancelled) setDifficulty(diff);
-        } catch {
-          if (!cancelled) setDifficulty(null);
-        }
-
-        // Preserve selected if possible, else select first puzzle
-        if (list.length > 0) {
-          const existing = list.find((p) => String(p.id) === selectedId);
-          setSelectedId(existing ? String(existing.id) : String(list[0].id));
-        } else {
-          setSelectedId("");
-        }
       } catch (e: any) {
-        if (!cancelled) setError(e?.message ?? "Failed to load daily challenge data.");
+        if (cancelled) return;
+        setLoadError(e?.message ?? "Failed to load Daily Challenge.");
       } finally {
         if (!cancelled) setLoading(false);
       }
-    }
-
-    load();
+    })();
 
     return () => {
       cancelled = true;
@@ -128,268 +66,191 @@ export default function DailyChallengeDetailPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const diffMap = useMemo(() => toDifficultyMap(difficulty), [difficulty]);
+  async function onSubmitAnswer() {
+    if (isSubmitting) return;
 
-  const filteredPuzzles = useMemo(() => {
-    if (difficultyFilter === "all") return puzzles;
-
-    // If difficulty data is missing, fail-open: do not filter (prevents “empty list” confusion)
-    if (!difficulty) return puzzles;
-
-    const target = difficultyFilter;
-    return puzzles.filter((p) => {
-      const d = diffMap.get(String(p.id)) ?? difficulty.default ?? "medium";
-      return d === target;
-    });
-  }, [puzzles, difficultyFilter, difficulty, diffMap]);
-
-  // Keep selection valid when filter changes
-  useEffect(() => {
-    if (filteredPuzzles.length === 0) {
-      setSelectedId("");
+    const trimmed = answer.trim();
+    if (!trimmed) {
+      setSubmitError("Please enter an answer.");
       return;
     }
-    if (!selectedId) {
-      setSelectedId(String(filteredPuzzles[0].id));
-      return;
-    }
-    const exists = filteredPuzzles.some((p) => String(p.id) === selectedId);
-    if (!exists) {
-      setSelectedId(String(filteredPuzzles[0].id));
-    }
-  }, [difficultyFilter, difficulty, filteredPuzzles, selectedId]);
 
-  const selectedPuzzle = useMemo(() => {
-    if (!selectedId) return null;
-    return puzzles.find((p) => String(p.id) === selectedId) ?? null;
-  }, [puzzles, selectedId]);
-
-  const selectedIsSolved = selectedPuzzle ? !!solvedMap[String(selectedPuzzle.id)] : false;
-
-  const selectedDifficulty = useMemo(() => {
-    if (!selectedPuzzle || !difficulty) return null;
-    return diffMap.get(String(selectedPuzzle.id)) ?? difficulty.default ?? "medium";
-  }, [selectedPuzzle, difficulty, diffMap]);
-
-  const total = typeof progress?.total === "number" ? progress!.total : 0;
-  const solved = typeof progress?.solved === "number" ? progress!.solved : 0;
-  const streak = typeof progress?.streak === "number" ? progress!.streak : 0;
-  const isComplete = total > 0 && solved === total;
-
-  const statusText =
-    total <= 0
-      ? "Status: Unknown"
-      : solved <= 0
-        ? "Status: Not started"
-        : solved < total
-          ? "Status: In progress"
-          : "Status: Complete";
-
-  async function markSolved() {
-    if (!selectedPuzzle) return;
-
-    setSolveLoading(true);
-    setSolveError(null);
-    setSolveOk(null);
+    setIsSubmitting(true);
+    setSubmitOk(null);
+    setSubmitError(null);
 
     try {
-      const res = await apiPost<ProgressSolveResponse>("/progress/solve", {
-        puzzleId: selectedPuzzle.id,
+      const res = await submitDailyAnswer({
+        answer: trimmed,
+        dailyChallengeId: status?.dailyChallengeId ?? daily?.dailyChallengeId,
       });
 
-      // Prefer progress returned by POST; otherwise refresh
-      const returned = res?.progress;
-      if (returned && typeof returned.total === "number" && typeof returned.solved === "number") {
-        setProgress({
-          total: returned.total,
-          solved: returned.solved,
-          streak: typeof returned.streak === "number" ? returned.streak : streak,
-          solvedIds: returned.solvedIds || [],
-        });
-        setSolvedMap(normalizeIds(returned.solvedIds));
-      } else {
-        await refreshProgress();
+      if (!res?.ok) {
+        const msg = res?.message ?? res?.error ?? "Answer not accepted.";
+        setSubmitError(msg);
+        return;
       }
 
-      const solvedNow = returned?.solved;
-      const totalNow = returned?.total;
+      // Re-fetch immediately (single source of truth)
+      await refreshDailyAndStatus();
 
-      const suffix =
-        typeof solvedNow === "number" && typeof totalNow === "number"
-          ? ` (progress: ${solvedNow}/${totalNow})`
-          : "";
-
-      setSolveOk(`Solved recorded for puzzleId=${selectedPuzzle.id}${suffix}`);
+      setAnswer("");
+      setSubmitOk("Answer submitted.");
     } catch (e: any) {
-      setSolveError(e?.message ?? "Failed to record solve.");
+      setSubmitError(e?.message ?? "Failed to submit answer.");
     } finally {
-      setSolveLoading(false);
+      setIsSubmitting(false);
     }
+  }
+
+  const progressText = useMemo(() => {
+    if (!status) return "Status: Unknown";
+    const suffix = typeof status.total === "number" && status.total > 0 ? ` (${status.progress}/${status.total})` : "";
+    const s =
+      status.status === "completed" ? "Complete" : status.status === "in_progress" ? "In progress" : "Not started";
+    return `Status: ${s}${suffix} · Streak: ${status.streak ?? 0}`;
+  }, [status]);
+
+  if (loading) {
+    return (
+      <div style={{ padding: 16 }}>
+        <h1>Daily Challenge</h1>
+        <p data-testid="daily-loading">Loading...</p>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div style={{ padding: 16 }}>
+        <h1>Daily Challenge</h1>
+        <p data-testid="daily-error" style={{ color: "crimson" }}>
+          {loadError}
+        </p>
+        <p>
+          <Link to="/">← Back to Home</Link>
+        </p>
+      </div>
+    );
   }
 
   return (
     <div style={{ padding: 16 }}>
       <h1>Daily Challenge</h1>
 
-      {/* Completion banner (shows ONLY when solved === total) */}
-      {!loading && !error && isComplete && (
-        <div
-          data-testid="daily-complete-banner"
-          style={{
-            border: "1px solid #2f855a",
-            borderRadius: 12,
-            padding: 12,
-            marginBottom: 12,
-            background: "#f0fff4",
+      <p data-testid="daily-status" style={{ marginTop: 0 }}>
+        {progressText}
+      </p>
+
+      <div style={{ margin: "10px 0 16px" }}>
+        <button
+          type="button"
+          onClick={() => {
+            setLoadError(null);
+            setSubmitOk(null);
+            setSubmitError(null);
+            setLoading(true);
+            refreshDailyAndStatus()
+              .catch((e: any) => setLoadError(e?.message ?? "Failed to refresh Daily Challenge."))
+              .finally(() => setLoading(false));
           }}
+          disabled={loading || isSubmitting}
         >
-          <p style={{ margin: 0, fontWeight: 700 }}>Daily Challenge Complete!</p>
-          <p style={{ margin: "6px 0 0 0" }}>
-            You solved all {total} puzzle{total === 1 ? "" : "s"} today.
-          </p>
+          Refresh
+        </button>
+      </div>
+
+      <h2>Puzzles</h2>
+
+      <ul
+        data-testid="daily-puzzles-list"
+        style={{ border: "1px solid #ddd", borderRadius: 8, padding: 12, margin: 0, maxWidth: 720 }}
+      >
+        {!daily?.puzzles?.length ? (
+          <li data-testid="daily-puzzles-empty">No puzzles available.</li>
+        ) : (
+          daily.puzzles.map((p) => {
+            const id = String(p.id);
+            const isSelected = id === selectedId;
+            return (
+              <li key={id} style={{ marginBottom: 6 }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedId(id);
+                    setSubmitOk(null);
+                    setSubmitError(null);
+                  }}
+                  data-testid="daily-puzzle-item"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                    textAlign: "left",
+                    fontWeight: isSelected ? "bold" : "normal",
+                  }}
+                >
+                  {safeString(p.prompt) || `Puzzle ${id}`}
+                </button>
+              </li>
+            );
+          })
+        )}
+      </ul>
+
+      {selectedPuzzle && (
+        <div style={{ marginTop: 16, maxWidth: 720 }}>
+          <h3>Selected</h3>
+          <p data-testid="daily-selected-question">{safeString(selectedPuzzle.prompt)}</p>
+
+          {!!selectedPuzzle.choices?.length && (
+            <div style={{ marginTop: 8 }}>
+              <div style={{ fontWeight: 700, marginBottom: 6 }}>Choices</div>
+              <ul style={{ marginTop: 0 }}>
+                {selectedPuzzle.choices.map((c, idx) => (
+                  <li key={`${idx}-${c}`}>{c}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div style={{ marginTop: 12 }}>
+            <label>
+              Answer:{" "}
+              <input
+                data-testid="daily-answer-input"
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                disabled={isSubmitting}
+                style={{ width: 320, maxWidth: "100%" }}
+              />
+            </label>
+          </div>
+
+          <div style={{ marginTop: 10 }}>
+            <button data-testid="daily-submit-answer" type="button" onClick={onSubmitAnswer} disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit answer"}
+            </button>
+          </div>
+
+          {submitOk && (
+            <p data-testid="daily-submit-ok" style={{ marginTop: 10 }}>
+              {submitOk}
+            </p>
+          )}
+
+          {submitError && (
+            <p data-testid="daily-submit-error" style={{ marginTop: 10, color: "crimson" }}>
+              {submitError}
+            </p>
+          )}
         </div>
       )}
 
-      {loading && <p data-testid="daily-loading">Loading...</p>}
-
-      {!loading && error && (
-        <p data-testid="daily-error" style={{ color: "crimson" }}>
-          Failed to load daily challenge. ({error})
-        </p>
-      )}
-
-      {!loading && !error && (
-        <>
-          <p style={{ marginTop: 0 }}>
-            Progress: <strong>{solved}</strong> / <strong>{total}</strong> {" | "} Streak:{" "}
-            <strong>{streak}</strong>{" "}
-            <button
-              type="button"
-              onClick={() => {
-                void refreshProgress();
-              }}
-            >
-              Refresh Progress
-            </button>
-          </p>
-
-          <p data-testid="daily-status" style={{ marginTop: 0 }}>
-            {statusText}
-          </p>
-
-          <h2>Puzzles</h2>
-
-          {/* Phase 4: Filter UI */}
-          <div style={{ margin: "8px 0 10px 0" }}>
-            <label>
-              Difficulty filter:{" "}
-              <select
-                value={difficultyFilter}
-                onChange={(e) => setDifficultyFilter(e.target.value as DifficultyFilter)}
-                disabled={!difficulty}
-              >
-                <option value="all">All</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-              </select>
-            </label>
-            {!difficulty && (
-              <span style={{ marginLeft: 10, opacity: 0.75 }}>
-                (difficulty data unavailable — filter disabled)
-              </span>
-            )}
-          </div>
-
-          <ul
-            data-testid="daily-puzzles-list"
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: 8,
-              padding: 12,
-              listStylePosition: "inside",
-              margin: 0,
-              maxWidth: 720,
-            }}
-          >
-            {filteredPuzzles.length === 0 ? (
-              <li data-testid="daily-puzzles-empty">No puzzles available.</li>
-            ) : (
-              filteredPuzzles.map((p) => {
-                const isSelected = String(p.id) === selectedId;
-                const isSolved = !!solvedMap[String(p.id)];
-
-                const d: DifficultyLevel | null = difficulty
-                  ? diffMap.get(String(p.id)) ?? difficulty.default ?? "medium"
-                  : null;
-
-                return (
-                  <li key={String(p.id)} style={{ marginBottom: 6 }}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedId(String(p.id));
-                        setSolveOk(null);
-                        setSolveError(null);
-                      }}
-                      data-testid="daily-puzzle-item"
-                      style={{
-                        background: "transparent",
-                        border: "none",
-                        padding: 0,
-                        cursor: "pointer",
-                        textAlign: "left",
-                        fontWeight: isSelected ? "bold" : "normal",
-                      }}
-                    >
-                      {p.question} {isSolved ? "[SOLVED]" : ""} {d ? `[${d}]` : ""}
-                    </button>
-                  </li>
-                );
-              })
-            )}
-          </ul>
-
-          {selectedPuzzle && (
-            <div style={{ marginTop: 16, maxWidth: 720 }}>
-              <h3>Selected</h3>
-              <p data-testid="daily-selected-question">{selectedPuzzle.question}</p>
-
-              {selectedDifficulty && (
-                <p style={{ marginTop: 6, opacity: 0.85 }}>
-                  Difficulty: <strong>{selectedDifficulty}</strong>
-                </p>
-              )}
-
-              <button
-                data-testid="daily-mark-solved"
-                onClick={markSolved}
-                disabled={solveLoading || selectedIsSolved}
-                title={selectedIsSolved ? "Already solved" : solveLoading ? "Saving..." : "Mark as solved"}
-              >
-                {selectedIsSolved ? "Solved" : solveLoading ? "Saving..." : "Mark Solved"}
-              </button>
-
-              {solveOk && (
-                <p data-testid="daily-solve-ok" style={{ marginTop: 10 }}>
-                  {solveOk}
-                </p>
-              )}
-              {solveError && (
-                <p data-testid="daily-solve-error" style={{ marginTop: 10, color: "crimson" }}>
-                  {solveError}
-                </p>
-              )}
-
-              <p style={{ marginTop: 12 }}>Tip: Click Refresh Progress to update totals.</p>
-
-              <p style={{ marginTop: 12 }}>
-                <Link to="/">← Back to Home</Link>
-              </p>
-            </div>
-          )}
-        </>
-      )}
+      <p style={{ marginTop: 18 }}>
+        <Link to="/">← Back to Home</Link>
+      </p>
     </div>
   );
 }
