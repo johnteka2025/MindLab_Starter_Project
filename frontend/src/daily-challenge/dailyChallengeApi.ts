@@ -1,36 +1,25 @@
 ﻿import { apiGet, apiPost } from "../api";
 
 export type DailyChallengePuzzleSummary = {
-  id: string | number;
+  id: number | string;
   question: string;
-  options?: string[];
-  correctIndex?: number;
 };
 
 export type DailyChallengeInstance = {
-  dailyChallengeId?: string;
+  dailyChallengeId: string; // e.g. daily-YYYYMMDD (backend returns this)
+  status: "not_started" | "in_progress" | "completed";
   puzzles: DailyChallengePuzzleSummary[];
-  [k: string]: unknown;
 };
 
 export type DailyChallengeStatus = {
-  challengeDate: string; // YYYY-MM-DD
-  band: number;
   status: "not_started" | "in_progress" | "completed";
-  puzzlesCompletedToday: number;
-  totalPuzzlesForToday: number;
-  streakCount: number;
+  progress: number;
+  streak: number;
+  dailyChallengeId: string;
 };
 
 export type DailyAnswerResponse = {
   ok: boolean;
-  correct?: boolean;
-  message?: string;
-  dailyChallengeId?: string;
-  progress?: number;
-  streak?: number;
-  status?: string;
-  [k: string]: unknown;
 };
 
 export async function fetchDaily(): Promise<DailyChallengeInstance> {
@@ -41,11 +30,21 @@ export async function fetchDailyStatus(): Promise<DailyChallengeStatus> {
   return apiGet<DailyChallengeStatus>("/daily/status");
 }
 
-export async function submitDailyAnswer(
-  answer: string,
-  puzzleId?: string | number
-): Promise<DailyAnswerResponse> {
-  const payload: Record<string, unknown> = { answer };
-  if (puzzleId !== undefined && puzzleId !== null && String(puzzleId).length > 0) payload.puzzleId = puzzleId;
+/**
+ * Backend requires:
+ * - dailyChallengeId (must match today)
+ * - puzzleId (required)
+ * - answer (currently ignored by backend, but we send it for forward-compat)
+ */
+export async function submitDailyAnswer(args: {
+  dailyChallengeId: string;
+  puzzleId: string;
+  answer: string;
+}): Promise<DailyAnswerResponse> {
+  const payload = {
+    dailyChallengeId: args.dailyChallengeId,
+    puzzleId: args.puzzleId,
+    answer: args.answer,
+  };
   return apiPost<DailyAnswerResponse>("/daily/answer", payload);
 }

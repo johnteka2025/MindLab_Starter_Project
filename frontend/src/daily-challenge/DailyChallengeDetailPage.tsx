@@ -1,66 +1,40 @@
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-
 import {
   fetchDaily,
   fetchDailyStatus,
   submitDailyAnswer,
   type DailyChallengeInstance,
   type DailyChallengeStatus,
-  type DailyChallengePuzzleSummary,
-  type DailyAnswerResponse,
 } from "./dailyChallengeApi";
-
-type DifficultyLevel = "easy" | "medium" | "hard";
-
-type DifficultyData = {
-  default: DifficultyLevel;
-  levels: DifficultyLevel[];
-  map: Record<string, DifficultyLevel>;
-};
-
-type DifficultyFilter = "all" | DifficultyLevel;
-
-function toDifficultyMap(data: DifficultyData | null): Map<string, DifficultyLevel> {
-  const m = new Map<string, DifficultyLevel>();
-  if (!data?.map) return m;
-  for (const [k, v] of Object.entries(data.map)) {
-    m.set(String(k), v);
-  }
-  return m;
-}
-
-function safeString(v: unknown): string {
-  return typeof v === "string" ? v : "";
-}
 
 export default function DailyChallengeDetailPage() {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const [instance, setInstance] = useState<DailyChallengeInstance | null>(null);
   const [status, setStatus] = useState<DailyChallengeStatus | null>(null);
 
-  // UI selection + input
   const [selectedId, setSelectedId] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
 
-  // In-flight guard for submit
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Submit UX
   const [submitOk, setSubmitOk] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  // Optional difficulty (fail-open)
-  const [difficulty, setDifficulty] = useState<DifficultyData | null>(null);
-  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("all");
-
   async function refreshAll() {
-    const [inst, st] = await Promise.all([fetchDaily(), fetchDailyStatus()]);
-    setInstance(inst);
-    setStatus(st);
-    return { inst, st };
+    const [dailyRes, statusRes] = await Promise.all([fetchDaily(), fetchDailyStatus()]);
+    setInstance(dailyRes);
+    setStatus(statusRes);
+
+    // Keep selection stable if possible
+    const list = Array.isArray(dailyRes.puzzles) ? dailyRes.puzzles : [];
+    if (list.length > 0) {
+      const exists = list.some((p) => String(p.id) === selectedId);
+      if (!selectedId || !exists) setSelectedId(String(list[0].id));
+    } else {
+      setSelectedId("");
+    }
   }
 
   useEffect(() => {
@@ -68,112 +42,60 @@ export default function DailyChallengeDetailPage() {
 
     (async () => {
       setLoading(true);
-      setError(null);
-
+      setLoadError(null);
       try {
-        const { inst } = await refreshAll();
-        if (cancelled) return;
-
-        // Set initial selection
-        const firstId = inst?.puzzles?.[0]?.id != null ? String(inst.puzzles[0].id) : "";
-        setSelectedId(firstId);
-        setAnswer("");
+        await refreshAll();
       } catch (e: any) {
-        if (!cancelled) setError(e?.message ?? "Failed to load daily challenge.");
+        if (!cancelled) setLoadError(e?.message ?? "Failed to load daily challenge.");
       } finally {
         if (!cancelled) setLoading(false);
-      }
-
-      // Difficulty is optional; do not block Daily page
-      try {
-        const res = await fetch("/difficulty");
-        if (!res.ok) throw new Error("difficulty endpoint unavailable");
-        const d = (await res.json()) as DifficultyData;
-        if (!cancelled) setDifficulty(d);
-      } catch {
-        if (!cancelled) setDifficulty(null);
       }
     })();
 
     return () => {
       cancelled = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const diffMap = useMemo(() => toDifficultyMap(difficulty), [difficulty]);
-
-  const puzzles = instance?.puzzles ?? [];
-
-  const filteredPuzzles = useMemo(() => {
-    if (difficultyFilter === "all") return puzzles;
-    if (!difficulty) return puzzles; // fail-open (do not filter if difficulty missing)
-
-    const target = difficultyFilter;
-    return puzzles.filter((p: DailyChallengePuzzleSummary) => {
-      const pid = String(p.id);
-      const d = diffMap.get(pid) ?? difficulty.default ?? "medium";
-      return d === target;
-    });
-  }, [puzzles, difficultyFilter, difficulty, diffMap]);
-
-  // Keep selection valid when filter changes
-  useEffect(() => {
-    if (filteredPuzzles.length === 0) {
-      setSelectedId("");
-      setAnswer("");
-      return;
-    }
-    if (!selectedId) {
-      setSelectedId(String(filteredPuzzles[0].id));
-      setAnswer("");
-      return;
-    }
-    const exists = filteredPuzzles.some((p) => String(p.id) === selectedId);
-    if (!exists) {
-      setSelectedId(String(filteredPuzzles[0].id));
-      setAnswer("");
-    }
-  }, [filteredPuzzles, selectedId]);
-
+  const puzzles = useMemo(() => instance?.puzzles ?? [], [instance]);
   const selectedPuzzle = useMemo(() => {
     if (!selectedId) return null;
     return puzzles.find((p) => String(p.id) === selectedId) ?? null;
   }, [puzzles, selectedId]);
 
-  const statusText = useMemo(() => {
-    const s = status?.status;
-    if (!s) return "Status: Unknown";
-    if (s === "not_started") return "Status: Not started";
-    if (s === "in_progress") return "Status: In progress";
-    if (s === "completed") return "Status: Complete";
-    return "Status: Unknown";
-  }, [status]);
-
-  async function onSubmit() {
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
     if (isSubmitting) return;
-    if (!selectedPuzzle) return;
 
-    setIsSubmitting(true);
     setSubmitOk(null);
     setSubmitError(null);
 
+    const dailyId = instance?.dailyChallengeId ?? "";
+    const puzzleId = selectedPuzzle ? String(selectedPuzzle.id) : "";
+
+    if (!dailyId) {
+      setSubmitError("Missing dailyChallengeId (reload /daily).");
+      return;
+    }
+    if (!puzzleId) {
+      setSubmitError("Missing puzzleId (select a puzzle).");
+      return;
+    }
+
+    setIsSubmitting(true);
     try {
-      const res: DailyAnswerResponse = await submitDailyAnswer({
-        puzzleId: selectedPuzzle.id,
-        answer: answer,
+      await submitDailyAnswer({
+        dailyChallengeId: dailyId,
+        puzzleId,
+        answer: answer.trim(),
       });
 
-      // Re-fetch from canonical endpoints (single source of truth)
-      const { st } = await refreshAll();
-
-      const ok = !!res?.ok;
-      if (ok) {
-        setSubmitOk(`Answer submitted. Status: ${safeString(st?.status) || "unknown"}`);
-      } else {
-        setSubmitError("Answer rejected.");
-      }
-    } catch (e: any) {
-      setSubmitError(e?.message ?? "Failed to submit answer.");
+      // Immediately re-fetch (single source of truth)
+      await refreshAll();
+      setSubmitOk("Submitted. Status refreshed.");
+    } catch (err: any) {
+      setSubmitError(err?.message ?? "POST /daily/answer failed.");
     } finally {
       setIsSubmitting(false);
     }
@@ -185,36 +107,17 @@ export default function DailyChallengeDetailPage() {
 
       {loading && <p data-testid="daily-loading">Loading...</p>}
 
-      {!loading && error && (
+      {!loading && loadError && (
         <p data-testid="daily-error" style={{ color: "crimson" }}>
-          {`Failed to load daily challenge. (${error})`}
+          Failed to load daily challenge. ({loadError})
         </p>
       )}
 
-      {!loading && !error && (
+      {!loading && !loadError && (
         <>
-          <p data-testid="daily-status">{statusText}</p>
-
-          <div style={{ marginTop: 12, marginBottom: 12 }}>
-            <label>
-              Difficulty filter:{" "}
-              <select
-                value={difficultyFilter}
-                onChange={(e) => setDifficultyFilter(e.target.value as DifficultyFilter)}
-                disabled={!difficulty}
-              >
-                <option value="all">All</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-              </select>
-            </label>
-            {!difficulty && (
-              <span style={{ marginLeft: 10, opacity: 0.75 }}>
-                (difficulty data unavailable — filter disabled)
-              </span>
-            )}
-          </div>
+          <p style={{ marginTop: 0 }}>
+            Status: <strong>{status?.status ?? "unknown"}</strong>
+          </p>
 
           <h2>Puzzles</h2>
 
@@ -229,26 +132,19 @@ export default function DailyChallengeDetailPage() {
               maxWidth: 720,
             }}
           >
-            {filteredPuzzles.length === 0 ? (
+            {puzzles.length === 0 ? (
               <li data-testid="daily-puzzles-empty">No puzzles available.</li>
             ) : (
-              filteredPuzzles.map((p) => {
-                const pid = String(p.id);
-                const isSelected = pid === selectedId;
-
-                const d: DifficultyLevel | null = difficulty
-                  ? diffMap.get(pid) ?? difficulty.default ?? "medium"
-                  : null;
-
+              puzzles.map((p) => {
+                const isSelected = String(p.id) === selectedId;
                 return (
-                  <li key={pid} style={{ marginBottom: 6 }}>
+                  <li key={String(p.id)} style={{ marginBottom: 6 }}>
                     <button
                       type="button"
                       onClick={() => {
-                        setSelectedId(pid);
+                        setSelectedId(String(p.id));
                         setSubmitOk(null);
                         setSubmitError(null);
-                        setAnswer("");
                       }}
                       data-testid="daily-puzzle-item"
                       style={{
@@ -260,7 +156,7 @@ export default function DailyChallengeDetailPage() {
                         fontWeight: isSelected ? "bold" : "normal",
                       }}
                     >
-                      {p.question} {d ? `[${d}]` : ""}
+                      {p.question}
                     </button>
                   </li>
                 );
@@ -268,54 +164,52 @@ export default function DailyChallengeDetailPage() {
             )}
           </ul>
 
-          {selectedPuzzle && (
-            <div style={{ marginTop: 16, maxWidth: 720 }}>
-              <h3>Selected</h3>
-              <p data-testid="daily-selected-question">{selectedPuzzle.question}</p>
+          <div style={{ marginTop: 16, maxWidth: 720 }}>
+            <h3>Selected</h3>
 
-              <div style={{ marginTop: 10 }}>
+            {!selectedPuzzle ? (
+              <p data-testid="daily-selected-empty">Select a puzzle to answer.</p>
+            ) : (
+              <form onSubmit={onSubmit}>
+                <p data-testid="daily-selected-question">{selectedPuzzle.question}</p>
+
                 <label>
                   Answer:{" "}
                   <input
-                    data-testid="daily-answer"
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}
-                    style={{ width: 320 }}
+                    style={{ width: 260 }}
                     disabled={isSubmitting}
                   />
-                </label>
-
+                </label>{" "}
                 <button
-                  type="button"
-                  onClick={onSubmit}
+                  type="submit"
                   disabled={isSubmitting}
                   data-testid="daily-submit"
-                  style={{ marginLeft: 10 }}
                 >
-                  {isSubmitting ? "Submitting…" : "Submit"}
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
-              </div>
 
-              {submitOk && (
-                <p data-testid="daily-submit-ok" style={{ marginTop: 10 }}>
-                  {submitOk}
-                </p>
-              )}
+                {submitOk && (
+                  <p data-testid="daily-submit-ok" style={{ marginTop: 10 }}>
+                    {submitOk}
+                  </p>
+                )}
+                {submitError && (
+                  <p
+                    data-testid="daily-submit-error"
+                    style={{ marginTop: 10, color: "crimson" }}
+                  >
+                    {submitError}
+                  </p>
+                )}
+              </form>
+            )}
 
-              {submitError && (
-                <p
-                  data-testid="daily-submit-error"
-                  style={{ marginTop: 10, color: "crimson" }}
-                >
-                  {submitError}
-                </p>
-              )}
-            </div>
-          )}
-
-          <p style={{ marginTop: 12 }}>
-            <Link to="/">← Back to Home</Link>
-          </p>
+            <p style={{ marginTop: 12 }}>
+              <Link to="/">← Back to Home</Link>
+            </p>
+          </div>
         </>
       )}
     </div>
