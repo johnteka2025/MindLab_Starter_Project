@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 type Puzzle = {
@@ -78,7 +78,6 @@ export default function SolvePuzzle() {
   const [resultMsg, setResultMsg] = useState<string>("");
 
   const solvedSet = useMemo(() => normalizeSolvedIds(progress?.solvedIds), [progress]);
-
   const diffMap = useMemo(() => toDifficultyMap(difficulty), [difficulty]);
 
   const visiblePuzzles = useMemo(() => {
@@ -133,13 +132,15 @@ export default function SolvePuzzle() {
     try {
       // Keep existing /puzzles behavior intact (supports both array or { puzzles } shape)
       const d = String(difficultyFilter || "all").trim().toLowerCase();
-const qp = (d && d !== "all") ? ("?difficulty=" + encodeURIComponent(d)) : "";
-const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
+      const qp = d && d !== "all" ? "?difficulty=" + encodeURIComponent(d) : "";
+      const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
+
       const list = Array.isArray(puzzlesRes)
         ? puzzlesRes
         : Array.isArray(puzzlesRes?.puzzles)
           ? puzzlesRes.puzzles
           : [];
+
       setPuzzles(list);
 
       const prog = await fetchJson<Progress>("/progress");
@@ -161,6 +162,7 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
 
   useEffect(() => {
     loadAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function solve() {
@@ -173,7 +175,7 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
     }
 
     if (isSelectedSolved) {
-      setResultMsg("Ã¢â€žÂ¹Ã¯Â¸Â This puzzle is already solved. Pick another one.");
+      setResultMsg("This puzzle is already solved. Pick another one.");
       return;
     }
 
@@ -187,15 +189,15 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
       const prog = await fetchJson<Progress>("/progress");
       setProgress(prog);
 
-      if (res?.correct === true) setResultMsg("Ã¢Å“â€¦ Correct!");
-      else if (res?.correct === false) setResultMsg("Ã¢ÂÅ’ Incorrect.");
-      else setResultMsg("Ã¢Å“â€¦ Submitted.");
+      if (res?.correct === true) setResultMsg("Correct!");
+      else if (res?.correct === false) setResultMsg("Incorrect.");
+      else setResultMsg("Submitted.");
     } catch (e: any) {
       setErr(e?.message || "Solve failed");
     }
   }
 
-  if (loading) return <div style={{ padding: "1rem" }}>LoadingÃ¢â‚¬Â¦</div>;
+  if (loading) return <div style={{ padding: "1rem" }}>Loading...</div>;
 
   return (
     <div style={{ padding: "1rem", maxWidth: 720 }}>
@@ -213,21 +215,21 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
         <h2>Difficulty</h2>
 
         <div style={{ marginTop: 12 }}>
-<select
-          value={difficultyFilter}
-          onChange={(e) => setDifficultyFilter(e.target.value as DifficultyFilter)}
-          style={{ marginBottom: "0.75rem" }}
-        >
-          <option value="all">All</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-</div>
+          <select
+            value={difficultyFilter}
+            onChange={(e) => setDifficultyFilter(e.target.value as DifficultyFilter)}
+            style={{ marginBottom: "0.75rem" }}
+          >
+            <option value="all">All</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
 
         {!difficulty && (
           <p style={{ marginTop: "0.25rem", opacity: 0.85 }}>
-            Ã¢â€žÂ¹Ã¯Â¸Â Difficulty data not available. Showing all puzzles.
+            Difficulty data not available. Showing all puzzles.
           </p>
         )}
       </section>
@@ -236,28 +238,28 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
         <h2>Pick a puzzle</h2>
 
         <div style={{ marginTop: 12 }}>
-<select
-          value={pickedPuzzleId}
-          onChange={(e) => {
-            const v = e.target.value ? Number(e.target.value) : "";
-            setPickedPuzzleId(v);
-            setPickedOptionIndex("");
-            setResultMsg("");
-            setDifficultyWarn(null);
-          }}
-        >
-          <option value="">-- Select --</option>
-          {visiblePuzzles.map((p) => {
-            const d = difficulty ? diffMap.get(p.id) ?? difficulty.default ?? "medium" : null;
-            return (
-              <option key={p.id} value={p.id}>
-                #{p.id}: {p.question.slice(0, 60)}
-                {d ? ` [${d}]` : ""}
-              </option>
-            );
-          })}
-        </select>
-</div>
+          <select
+            value={pickedPuzzleId}
+            onChange={(e) => {
+              const v = e.target.value ? Number(e.target.value) : "";
+              setPickedPuzzleId(v);
+              setPickedOptionIndex("");
+              setResultMsg("");
+              setDifficultyWarn(null);
+            }}
+          >
+            <option value="">-- Select --</option>
+            {visiblePuzzles.map((p) => {
+              const d = difficulty ? diffMap.get(p.id) ?? difficulty.default ?? "medium" : null;
+              return (
+                <option key={p.id} value={p.id}>
+                  #{p.id}: {p.question.slice(0, 60)}
+                  {d ? ` [${d}]` : ""}
+                </option>
+              );
+            })}
+          </select>
+        </div>
 
         {selectedPuzzle && (
           <div style={{ marginTop: "1rem" }}>
@@ -285,9 +287,7 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
             ))}
 
             {isSelectedSolved && (
-              <p style={{ marginTop: "0.5rem" }}>
-                Ã¢Å“â€¦ Already solved. Select a different puzzle.
-              </p>
+              <p style={{ marginTop: "0.5rem" }}>Already solved. Select a different puzzle.</p>
             )}
 
             <button
@@ -317,7 +317,7 @@ const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
       </section>
 
       <p style={{ marginTop: "1.5rem" }}>
-        <Link to="/">Ã¢â€ Â Back to Home</Link>
+        <Link to="/">Back to Home</Link>
       </p>
     </div>
   );
