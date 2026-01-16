@@ -41,3 +41,4 @@ _quarantine/
 Action Items/
 
 backend/src/data/progress.json
+*.bak.*
