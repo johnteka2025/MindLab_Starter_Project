@@ -17,7 +17,8 @@ import {
 
 type DailyChallengeState = {
   instanceByDate: Record<string, DailyChallengeInstance>;
-  streakCount: number;  answeredByDate: Record<string, Record<string, boolean>>;
+  streakCount: number;
+  answeredByDate: Record<string, Record<string, boolean>>;
 };
 
 const userStore: Record<string, DailyChallengeState> = {};
@@ -145,7 +146,32 @@ export function createDailyChallengeRouter(): Router {
     const band = getBandForUser(req);
     const puzzles = getDailyPuzzlesForBand(band);
     instance = createDailyChallengeInstance(userKey, band, dateKey, puzzles);
+    // Rule (4): challenge already completed -> 409
+if (instance.completedCount >= instance.totalPuzzles) {
+  return res.status(409).json({
+    error: "ChallengeCompleted",
+    message: "challenge already completed",
+  });
+}
+// Rule (5): puzzleId not found in today's puzzles -> 404
+const puzzleExists = instance.puzzles?.some((p: any) => p.id === puzzleId);
+if (!puzzleExists) {
+  return res.status(404).json({
+    error: "PuzzleNotFound",
+    message: "puzzleId not found in today's puzzles",
+  }); }
+// Rule (3): puzzle already answered -> 409
+if (!state.answeredByDate[dateKey]) state.answeredByDate[dateKey] = {};
+if (state.answeredByDate[dateKey][puzzleId]) {
+  return res.status(409).json({
+    error: "PuzzleAlreadyAnswered",
+    message: "puzzle already answered",
+  });
+}
     state.instanceByDate[dateKey] = instance;
+   // Mark puzzle as answered (enforces Rule 3 on subsequent calls)
+state.answeredByDate[dateKey][puzzleId] = true;
+
   }
 
   const body: any = req.body ?? {};
