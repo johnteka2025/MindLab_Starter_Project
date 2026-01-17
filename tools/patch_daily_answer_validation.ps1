@@ -1,7 +1,6 @@
 cd "C:\Projects\MindLab_Starter_Project"
-New-Item -ItemType Directory -Force ".\tools" | Out-Null
 
-@'
+$script = @'
 $ErrorActionPreference = "Stop"
 
 $repoRoot = "C:\Projects\MindLab_Starter_Project"
@@ -10,13 +9,12 @@ Set-Location $repoRoot
 $file = ".\backend\src\daily-challenge\dailyChallengeRoutes.ts"
 if (-not (Test-Path $file)) { throw "STOP: target file not found: $file" }
 
-# Backup (local + temp)
+# Backup
 Copy-Item $file "$env:TEMP\dailyChallengeRoutes.ts.prePatch.backup" -Force
 
 $src = Get-Content $file -Raw
 
 # --- 1) Ensure DailyChallengeState has answeredByDate ---
-# Replace the DailyChallengeState block if it matches the simple shape
 $statePattern = 'type\s+DailyChallengeState\s*=\s*\{\s*instanceByDate:\s*Record<string,\s*DailyChallengeInstance>;\s*streakCount:\s*number;\s*\};'
 $stateReplacement = @'
 type DailyChallengeState = {
@@ -30,21 +28,22 @@ type DailyChallengeState = {
 
 $src2 = [regex]::Replace($src, $statePattern, $stateReplacement, "Singleline")
 if ($src2 -eq $src) {
-  # If the exact simple pattern doesn't match, do a safer insertion if answeredByDate is missing
   if ($src -notmatch 'answeredByDate') {
     $insertPattern = 'type\s+DailyChallengeState\s*=\s*\{'
     if ($src -notmatch $insertPattern) { throw "STOP: Could not locate DailyChallengeState type block." }
-    $src2 = [regex]::Replace($src, $insertPattern, 'type DailyChallengeState = {', 1)
-    # Insert property after opening brace
+
     $src2 = [regex]::Replace(
-      $src2,
+      $src,
       '(type\s+DailyChallengeState\s*=\s*\{\s*)',
       "`$1`r`n  instanceByDate: Record<string, DailyChallengeInstance>;`r`n  streakCount: number;`r`n`r`n  // Tracks whether a puzzleId was already answered for a given UTC dateKey.`r`n  answeredByDate: Record<string, Record<string, true>>;`r`n",
       1,
       [System.Text.RegularExpressions.RegexOptions]::Singleline
     )
-    # Remove duplicated original fields if we just inserted (guard: keep if already present)
-    $src2 = [regex]::Replace($src2, '(\r?\n)\s*instanceByDate:\s*Record<string,\s*DailyChallengeInstance>;\s*(\r?\n)\s*streakCount:\s*number;\s*(\r?\n)\s*\};', "`$1};", "Singleline")
+
+    # Close type if not already closed properly
+    if ($src2 -notmatch 'type\s+DailyChallengeState[\s\S]*\};') {
+      throw "STOP: DailyChallengeState type structure invalid after insertion."
+    }
   } else {
     $src2 = $src
   }
@@ -52,7 +51,6 @@ if ($src2 -eq $src) {
 
 # --- 2) Ensure getOrCreateUserState initializes answeredByDate ---
 if ($src2 -match 'answeredByDate') {
-  # If initialization doesn't exist, add it in the state object literal
   if ($src2 -notmatch 'answeredByDate:\s*\{\s*\}') {
     $src2 = [regex]::Replace(
       $src2,
@@ -63,8 +61,7 @@ if ($src2 -match 'answeredByDate') {
   }
 }
 
-# --- 3) Patch ONLY the /daily/answer route with required rules ---
-# Find the /daily/answer handler block
+# --- 3) Patch ONLY the /daily/answer route block ---
 $answerBlockPattern = 'router\.post\("\/daily\/answer"\s*,\s*\(req:\s*Request,\s*res:\s*Response\)\s*=>\s*\{[\s\S]*?\}\);'
 if ($src2 -notmatch $answerBlockPattern) { throw "STOP: /daily/answer route block not found (layout changed)." }
 
@@ -132,7 +129,7 @@ router.post("/daily/answer", (req: Request, res: Response) => {
   state.instanceByDate[dateKey] = result.instance;
   state.streakCount = result.streakCount;
 
-  // Mark puzzle as answered (enforces Rule 3 on subsequent calls)
+  // Mark puzzle as answered
   state.answeredByDate[dateKey][puzzleId] = true;
 
   return res.status(200).json({
@@ -149,14 +146,19 @@ router.post("/daily/answer", (req: Request, res: Response) => {
 
 $src3 = [regex]::Replace($src2, $answerBlockPattern, $answerReplacement, 1)
 
-# --- Write UTF8 no BOM (PowerShell-safe; no -Encoding required) ---
+# --- Write UTF8 no BOM (no -Encoding dependency) ---
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 [System.IO.File]::WriteAllText((Resolve-Path $file), $src3, $utf8NoBom)
 
-# Sanity checks
+# Sanity
 if (-not (Test-Path $file)) { throw "STOP: write failed; file missing after patch" }
 Select-String -Path $file -Pattern 'router\.post\("\/daily\/answer"' -SimpleMatch | Out-Null
 
 Write-Host "OK: patched $file"
 Write-Host "Backup: $env:TEMP\dailyChallengeRoutes.ts.prePatch.backup"
-'@ | Set-Content -NoNewline -Path ".\tools\patch_daily_answer_validation.ps1"
+'@
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText((Resolve-Path ".\tools\patch_daily_answer_validation.ps1"), $script, $utf8NoBom)
+
+Test-Path ".\tools\patch_daily_answer_validation.ps1"
