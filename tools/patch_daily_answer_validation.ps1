@@ -1,136 +1,131 @@
-cd "C:\Projects\MindLab_Starter_Project"
-
-$script = @'
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$repoRoot = "C:\Projects\MindLab_Starter_Project"
-Set-Location $repoRoot
+# Always end at repo root
+$repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
+Push-Location $repoRoot
+try {
+  $file = ".\backend\src\daily-challenge\dailyChallengeRoutes.ts"
+  if (-not (Test-Path -LiteralPath $file)) { throw "STOP: missing target file: $file" }
 
-$file = ".\backend\src\daily-challenge\dailyChallengeRoutes.ts"
-if (-not (Test-Path $file)) { throw "STOP: target file not found: $file" }
+  $backup = Join-Path $env:TEMP "dailyChallengeRoutes.ts.prePatch.backup"
+  Copy-Item -LiteralPath $file -Destination $backup -Force
 
-# Backup
-Copy-Item $file "$env:TEMP\dailyChallengeRoutes.ts.prePatch.backup" -Force
+  $src = Get-Content -LiteralPath $file -Raw
 
-$src = Get-Content $file -Raw
+  # Find route start
+  $needle1 = 'router.post("/daily/answer"'
+  $needle2 = "router.post('/daily/answer'"
+  $start = $src.IndexOf($needle1)
+  if ($start -lt 0) { $start = $src.IndexOf($needle2) }
+  if ($start -lt 0) { throw "STOP: cannot find /daily/answer route anchor." }
 
-# --- 1) Ensure DailyChallengeState has answeredByDate ---
-$statePattern = 'type\s+DailyChallengeState\s*=\s*\{\s*instanceByDate:\s*Record<string,\s*DailyChallengeInstance>;\s*streakCount:\s*number;\s*\};'
-$stateReplacement = @'
-type DailyChallengeState = {
-  instanceByDate: Record<string, DailyChallengeInstance>;
-  streakCount: number;
+  # Find handler open brace after =>
+  $arrow = $src.IndexOf("=>", $start)
+  if ($arrow -lt 0) { throw "STOP: cannot find '=>' after /daily/answer anchor." }
 
-  // Tracks whether a puzzleId was already answered for a given UTC dateKey.
-  answeredByDate: Record<string, Record<string, true>>;
-};
-'@
+  $openBrace = $src.IndexOf("{", $arrow)
+  if ($openBrace -lt 0) { throw "STOP: cannot find handler '{' after '=>'." }
 
-$src2 = [regex]::Replace($src, $statePattern, $stateReplacement, "Singleline")
-if ($src2 -eq $src) {
-  if ($src -notmatch 'answeredByDate') {
-    $insertPattern = 'type\s+DailyChallengeState\s*=\s*\{'
-    if ($src -notmatch $insertPattern) { throw "STOP: Could not locate DailyChallengeState type block." }
-
-    $src2 = [regex]::Replace(
-      $src,
-      '(type\s+DailyChallengeState\s*=\s*\{\s*)',
-      "`$1`r`n  instanceByDate: Record<string, DailyChallengeInstance>;`r`n  streakCount: number;`r`n`r`n  // Tracks whether a puzzleId was already answered for a given UTC dateKey.`r`n  answeredByDate: Record<string, Record<string, true>>;`r`n",
-      1,
-      [System.Text.RegularExpressions.RegexOptions]::Singleline
-    )
-
-    # Close type if not already closed properly
-    if ($src2 -notmatch 'type\s+DailyChallengeState[\s\S]*\};') {
-      throw "STOP: DailyChallengeState type structure invalid after insertion."
+  # Walk braces to find handler close brace
+  $depth = 0
+  $closeBrace = -1
+  for ($i = $openBrace; $i -lt $src.Length; $i++) {
+    $ch = $src[$i]
+    if ($ch -eq "{") { $depth++ }
+    elseif ($ch -eq "}") {
+      $depth--
+      if ($depth -eq 0) { $closeBrace = $i; break }
     }
-  } else {
-    $src2 = $src
   }
-}
+  if ($closeBrace -lt 0) { throw "STOP: failed to find matching '}' for /daily/answer handler." }
 
-# --- 2) Ensure getOrCreateUserState initializes answeredByDate ---
-if ($src2 -match 'answeredByDate') {
-  if ($src2 -notmatch 'answeredByDate:\s*\{\s*\}') {
-    $src2 = [regex]::Replace(
-      $src2,
-      '(state\s*=\s*\{\s*[\s\S]*?instanceByDate:\s*\{\s*\},\s*[\s\S]*?streakCount:\s*0,?)',
-      "`$1`r`n      answeredByDate: {},",
-      1
-    )
-  }
-}
+  # Find route terminator ');' after handler
+  $end = $src.IndexOf(");", $closeBrace)
+  if ($end -lt 0) { throw "STOP: failed to find route terminator ');' after handler." }
+  $end = $end + 2
 
-# --- 3) Patch ONLY the /daily/answer route block ---
-$answerBlockPattern = 'router\.post\("\/daily\/answer"\s*,\s*\(req:\s*Request,\s*res:\s*Response\)\s*=>\s*\{[\s\S]*?\}\);'
-if ($src2 -notmatch $answerBlockPattern) { throw "STOP: /daily/answer route block not found (layout changed)." }
-
-$answerReplacement = @'
+  # Replacement route (single-quote-safe)
+  $replacement = @"
 router.post("/daily/answer", (req: Request, res: Response) => {
   const userKey = getUserKey(req);
-  const band = getBandForUser(req);
   const dateKey = getTodayKey();
+  const state = getOrCreateUserState(userKey);
 
-  const { state, instance } = getOrCreateInstanceForToday(userKey, band, dateKey);
-
-  const body: any = req.body ?? {};
-  const dailyChallengeId: string | undefined = body.dailyChallengeId;
-  const puzzleId: string | undefined = body.puzzleId;
-
-  // Rule (1): puzzleId missing -> 400
-  if (!puzzleId) {
-    return res.status(400).json({
-      error: "ValidationError",
-      message: "puzzleId is required",
-    });
+  // Ensure today's instance exists
+  let instance = state.instanceByDate[dateKey];
+  if (!instance) {
+    const band = getBandForUser(req);
+    const puzzles = getDailyPuzzlesForBand(band);
+    instance = createDailyChallengeInstance(userKey, band, dateKey, puzzles);
+    state.instanceByDate[dateKey] = instance;
   }
 
-  // Rule (2): dailyChallengeId provided but does not match today -> 400
-  if (dailyChallengeId && dailyChallengeId !== instance.dailyChallengeId) {
+  const body: any = req.body ?? {};
+
+  // Rule (1): puzzleId missing -> 400
+  const puzzleIdRaw = body.puzzleId;
+  if (puzzleIdRaw === undefined || puzzleIdRaw === null) {
+    return res.status(400).json({ error: "PuzzleIdMissing", message: "puzzleId is required" });
+  }
+  const puzzleId = String(puzzleIdRaw);
+
+  // Rule (2): dailyChallengeId provided but not today's -> 400
+  const dailyChallengeIdRaw = body.dailyChallengeId;
+  const providedDailyChallengeId =
+    dailyChallengeIdRaw === undefined || dailyChallengeIdRaw === null ? undefined : String(dailyChallengeIdRaw);
+
+  if (providedDailyChallengeId && providedDailyChallengeId !== instance.dailyChallengeId) {
     return res.status(400).json({
       error: "DailyChallengeNotFound",
       message: "dailyChallengeId does not match today's challenge",
+      dailyChallengeId: instance.dailyChallengeId,
     });
   }
 
   // Rule (4): challenge already completed -> 409
   if (instance.status === "completed") {
     return res.status(409).json({
-      error: "DailyChallengeCompleted",
+      error: "ChallengeCompleted",
       message: "daily challenge already completed",
+      dailyChallengeId: instance.dailyChallengeId,
     });
   }
 
-  // Rule (5): puzzleId not in today's puzzles -> 404
-  const puzzleExists = Array.isArray(instance.puzzles) && instance.puzzles.some((p: any) => p && p.id === puzzleId);
-  if (!puzzleExists) {
+  // Rule (5): puzzleId not found in today's puzzles -> 404
+  const hasPuzzle = Array.isArray(instance.puzzles) && instance.puzzles.some((p: any) => String(p.id) === puzzleId);
+  if (!hasPuzzle) {
     return res.status(404).json({
       error: "PuzzleNotFound",
       message: "puzzleId not found in today's puzzles",
+      dailyChallengeId: instance.dailyChallengeId,
+      puzzleId,
     });
   }
 
+  // Ensure answered-by-date index exists
+  if (!(state as any).answeredByDate) (state as any).answeredByDate = {};
+  if (!(state as any).answeredByDate[dateKey]) (state as any).answeredByDate[dateKey] = {};
+
   // Rule (3): puzzle already answered -> 409
-  state.answeredByDate = state.answeredByDate ?? {};
-  state.answeredByDate[dateKey] = state.answeredByDate[dateKey] ?? {};
-  if (state.answeredByDate[dateKey][puzzleId]) {
+  if ((state as any).answeredByDate[dateKey][puzzleId]) {
     return res.status(409).json({
       error: "PuzzleAlreadyAnswered",
       message: "puzzle already answered",
+      dailyChallengeId: instance.dailyChallengeId,
+      puzzleId,
     });
   }
 
-  // Accept answer -> 200 (placeholder correctness)
+  // Accept answer -> 200
   const correct = true;
+  const result = applyAnswer(instance, puzzleId, correct, (state as any).streakCount);
 
-  const result = applyAnswer(instance, puzzleId, correct, state.streakCount);
-
-  // Persist updated instance + streak in the in-memory store
   state.instanceByDate[dateKey] = result.instance;
-  state.streakCount = result.streakCount;
+  (state as any).streakCount = result.streakCount;
 
-  // Mark puzzle as answered
-  state.answeredByDate[dateKey][puzzleId] = true;
+  // Mark answered AFTER applyAnswer succeeds
+  (state as any).answeredByDate[dateKey][puzzleId] = true;
 
   return res.status(200).json({
     dailyChallengeId: result.instance.dailyChallengeId,
@@ -142,23 +137,31 @@ router.post("/daily/answer", (req: Request, res: Response) => {
     streakCount: result.streakCount,
   });
 });
-'@
+"@
 
-$src3 = [regex]::Replace($src2, $answerBlockPattern, $answerReplacement, 1)
+  # Replace route block
+  $before = $src.Substring(0, $start)
+  $after  = $src.Substring($end)
+  $patched = $before + $replacement + $after
 
-# --- Write UTF8 no BOM (no -Encoding dependency) ---
-$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-[System.IO.File]::WriteAllText((Resolve-Path $file), $src3, $utf8NoBom)
+  if ($patched -eq $src) { throw "STOP: patch produced no changes." }
 
-# Sanity
-if (-not (Test-Path $file)) { throw "STOP: write failed; file missing after patch" }
-Select-String -Path $file -Pattern 'router\.post\("\/daily\/answer"' -SimpleMatch | Out-Null
+  # Write UTF-8 without BOM
+  $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+  [System.IO.File]::WriteAllText((Resolve-Path $file), $patched, $utf8NoBom)
 
-Write-Host "OK: patched $file"
-Write-Host "Backup: $env:TEMP\dailyChallengeRoutes.ts.prePatch.backup"
-'@
+  # Sanity checks (must-pass)
+  if (-not (Test-Path -LiteralPath $file)) { throw "STOP: target missing after write" }
+  Select-String -Path $file -Pattern 'router.post("/daily/answer"' -SimpleMatch | Out-Null
+  Select-String -Path $file -Pattern "PuzzleAlreadyAnswered" -SimpleMatch | Out-Null
+  Select-String -Path $file -Pattern "ChallengeCompleted" -SimpleMatch | Out-Null
+  Select-String -Path $file -Pattern "PuzzleNotFound" -SimpleMatch | Out-Null
+  Select-String -Path $file -Pattern "answeredByDate" -SimpleMatch | Out-Null
 
-$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-[System.IO.File]::WriteAllText((Resolve-Path ".\tools\patch_daily_answer_validation.ps1"), $script, $utf8NoBom)
-
-Test-Path ".\tools\patch_daily_answer_validation.ps1"
+  Write-Host "OK: patched $file"
+  Write-Host "Backup: $backup"
+}
+finally {
+  Pop-Location
+  Set-Location $repoRoot
+}
