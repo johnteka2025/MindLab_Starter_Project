@@ -1,17 +1,60 @@
-const express = require("express");
+﻿const express = require("express");
 const { buildDailyChallengeState } = require("./dailyChallengeEngine.cjs");
 
 let state = null;
 
 function getState() {
   if (!state) state = buildDailyChallengeState();
+  // Ensure internal tracking exists (backward compatible)
+  if (!state._solved) state._solved = new Set();
+  if (!state._allAnswers) state._allAnswers = {};
+  if (!Array.isArray(state.puzzles)) state.puzzles = [];
+  if (typeof state.status !== "string") state.status = "active";
+  if (typeof state.progress !== "number") state.progress = 0;
+  if (typeof state.streak !== "number") state.streak = 0;
+  if (typeof state.dailyChallengeId !== "string") state.dailyChallengeId = "daily";
   return state;
+}
+
+function normalizeBody(req) {
+  let body = (req && req.body != null) ? req.body : null;
+
+  // If express.json() is active, body should already be object.
+  // Be defensive for string body.
+  if (typeof body === "string") {
+    try { body = JSON.parse(body); } catch (_) { body = null; }
+  }
+
+  if (!body || typeof body !== "object") return null;
+  return body;
+}
+
+function normalizePuzzleId(body) {
+  const raw = (body && (body.puzzleId ?? body.puzzleID ?? body.puzzle_id));
+  if (typeof raw === "string") {
+    const t = raw.trim();
+    return t.length ? t : null;
+  }
+  if (typeof raw === "number" && Number.isFinite(raw)) return String(raw);
+  return null;
 }
 
 function createDailyChallengeRouter() {
   const router = express.Router();
 
-   // GET /daily/status
+  // GET /daily  (contract uses this)
+  router.get("/daily", (req, res) => {
+    const s = getState();
+    return res.status(200).json({
+      dailyChallengeId: s.dailyChallengeId,
+      puzzles: s.puzzles,
+      status: s.status,
+      progress: s.progress,
+      streak: s.streak,
+    });
+  });
+
+  // GET /daily/status
   router.get("/daily/status", (req, res) => {
     const s = getState();
     return res.status(200).json({
@@ -23,25 +66,16 @@ function createDailyChallengeRouter() {
   });
 
   // POST /daily/answer
-  router.post("/daily/answer", (req, res) => { 
-      // POST /daily/answer
   router.post("/daily/answer", (req, res) => {
     const s = getState();
 
-    // --- normalize body (express.json should already parse, but be defensive) ---
-    let body = (req && req.body != null) ? req.body : {};
-    if (typeof body === "string") {
-      try { body = JSON.parse(body); } catch (_) { body = {}; }
+    const body = normalizeBody(req);
+    if (!body) {
+      // Contract allows 400/415 for missing body; use 400 consistently
+      return res.status(400).json({ error: "BadRequest", message: "Missing JSON body" });
     }
-    if (!body || typeof body !== "object") body = {};
 
-    // --- inputs (contract sends JSON: { puzzleId }) ---
     const providedDailyChallengeId = body.dailyChallengeId;
-
-    const pidRaw = (body.puzzleId ?? body.puzzleID ?? body.puzzle_id);
-    const answerRaw = body.answer;
-
-    // --- dailyChallengeId mismatch -> 404 ---
     if (typeof providedDailyChallengeId === "string" && providedDailyChallengeId !== s.dailyChallengeId) {
       return res.status(404).json({
         error: "DailyChallengeNotFound",
@@ -50,46 +84,34 @@ function createDailyChallengeRouter() {
       });
     }
 
-    // --- normalize puzzleId to non-empty string ---
-    let pid = null;
-    if (typeof pidRaw === "string") {
-      const t = pidRaw.trim();
-      pid = t.length > 0 ? t : null;
-    } else if (typeof pidRaw === "number" && Number.isFinite(pidRaw)) {
-      pid = String(pidRaw);
-    }
-
-    // contract: first call MUST be 200 when puzzleId present
+    const pid = normalizePuzzleId(body);
     if (!pid) {
       return res.status(400).json({ error: "PuzzleIdMissing", message: "puzzleId is required" });
     }
 
-    // contract: puzzle must exist in today's set
+    // Must exist in today's puzzles
     if (!(pid in s._allAnswers)) {
       return res.status(404).json({ error: "PuzzleNotFound", message: "puzzleId not found in today's puzzles" });
     }
 
-    // contract: reject answers after challenge completed -> 409
+    // After completion => 409
     if (s.status === "completed") {
       return res.status(409).json({ error: "ChallengeCompleted", message: "daily challenge already completed" });
     }
 
-    // contract: reject answering same puzzle twice -> 409
-    if (s._solved && s._solved.has(pid)) {
+    // Same puzzle twice => 409
+    if (s._solved.has(pid)) {
       return res.status(409).json({ error: "PuzzleAlreadyAnswered", message: "puzzle already answered" });
     }
 
-    // answer is OPTIONAL for contract path; if missing, treat as correct (demo behavior)
+    // For contract: answer may be omitted; treat as correct to allow progress completion
     let correct = true;
-    if (typeof answerRaw === "string") {
-      correct = (String(s._allAnswers[pid] ?? "").toLowerCase().trim() === answerRaw.toLowerCase().trim());
+    if (typeof body.answer === "string") {
+      correct = (String(s._allAnswers[pid] ?? "").toLowerCase().trim() === body.answer.toLowerCase().trim());
     }
 
-    // apply progress only on correct
     if (correct) {
-      if (!s._solved) s._solved = new Set();
       s._solved.add(pid);
-
       s.progress = Math.min(s.puzzles.length, s._solved.size);
 
       if (s.progress >= s.puzzles.length) {
@@ -101,12 +123,11 @@ function createDailyChallengeRouter() {
     return res.status(200).json({
       ok: correct,
       dailyChallengeId: s.dailyChallengeId,
+      puzzleId: pid,
+      status: s.status,
       progress: s.progress,
       streak: s.streak,
-      status: s.status,
     });
-  });
-
   });
 
   return router;
