@@ -1,3 +1,4 @@
+@'
 param(
   [Parameter(Mandatory=$false)]
   [string]$RepoRoot = "C:\Projects\MindLab_Starter_Project"
@@ -6,21 +7,18 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-function Fail([string]$msg) {
-  Write-Host "FAIL: $msg" -ForegroundColor Red
-  exit 1
-}
-
-function Ok([string]$msg) {
-  Write-Host "OK: $msg" -ForegroundColor Green
-}
+function Fail([string]$msg) { Write-Host "FAIL: $msg" -ForegroundColor Red; exit 1 }
+function Ok([string]$msg)   { Write-Host "OK: $msg" -ForegroundColor Green }
 
 function WriteUtf8NoBom([string]$path, [string]$content) {
   $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
   [System.IO.File]::WriteAllText($path, $content, $utf8NoBom)
 }
 
-# Always operate from repo root
+function MatchCount([string]$text, [string]$regexPattern) {
+  return [regex]::Matches($text, $regexPattern).Count
+}
+
 Push-Location $RepoRoot
 try {
   if (!(Test-Path $RepoRoot)) { Fail "Repo root not found: $RepoRoot" }
@@ -28,10 +26,12 @@ try {
   $target = Join-Path $RepoRoot "backend\src\daily-challenge\dailyChallengeRoutes.ts"
   if (!(Test-Path $target)) { Fail "Target file not found: $target" }
 
-  # Route must exist exactly once BEFORE patch
-  $pattern = 'router\.post\(\"\/daily\/answer\"'
-  $matches = Select-String -Path $target -Pattern $pattern
-  if ($matches.Count -ne 1) { Fail "Expected exactly 1 /daily/answer route BEFORE patch, found $($matches.Count)" }
+  $routeRegex = 'router\.post\(\"\/daily\/answer\"'
+
+  # Always force Select-String into an array to make counting safe
+  $routeMatches = @(Select-String -Path $target -Pattern $routeRegex)
+  $preCount = $routeMatches.Length
+  if ($preCount -ne 1) { Fail "Expected exactly 1 /daily/answer route BEFORE patch, found $preCount" }
   Ok "Found exactly 1 /daily/answer route BEFORE patch"
 
   # Backup
@@ -40,20 +40,18 @@ try {
   if (!(Test-Path $bak)) { Fail "Backup failed: $bak" }
   Ok "Backup created: $bak"
 
-  # Load file (raw)
+  # Load file
   $content = Get-Content -Path $target -Raw -Encoding UTF8
   $content = $content -replace "`r`n","`n"
 
-  # Find route start token
   $token = 'router.post("/daily/answer"'
   $startIdx = $content.IndexOf($token)
   if ($startIdx -lt 0) { Fail "Could not find token: $token" }
 
-  # Find opening brace after token
   $openBraceIdx = $content.IndexOf("{", $startIdx)
-  if ($openBraceIdx -lt 0) { Fail "Could not find opening brace for route block" }
+  if ($openBraceIdx -lt 0) { Fail "Could not find opening brace for /daily/answer route block" }
 
-  # Brace-count scan to locate the end of the route block and its closing ');'
+  # Brace-count scan to end of route, then close on ');'
   $depth = 0
   $inString = $false
   $stringChar = ''
@@ -86,7 +84,6 @@ try {
 
   if ($endIdx -lt 0) { Fail "Failed to determine end of /daily/answer route block" }
 
-  # Replacement block (ONLY /daily/answer route)
   $replacement = @'
   // POST /daily/answer
   router.post("/daily/answer", (req: Request, res: Response) => {
@@ -148,16 +145,17 @@ try {
   $after  = $content.Substring($endIdx)
   $newContent = $before + $replacement + $after
 
-  # Route must exist exactly once AFTER patch
-  $countAfter = ([regex]::Matches($newContent, $pattern)).Count
-  if ($countAfter -ne 1) { Fail "Post-patch sanity failed: expected 1 /daily/answer route AFTER patch, found $countAfter" }
+  $postCount = MatchCount $newContent $routeRegex
+  if ($postCount -ne 1) { Fail "Post-patch sanity failed: expected 1 /daily/answer route AFTER patch, found $postCount" }
   Ok "Confirmed exactly 1 /daily/answer route AFTER patch"
 
   WriteUtf8NoBom $target $newContent
   Ok "Patched file written successfully"
+  Ok "Backup at: $bak"
 
-} catch {
+ catch {
   Fail $_.Exception.Message
 } finally {
   Pop-Location
 }
+'@ | Set-Content -Path $Patch -Encoding UTF8'
