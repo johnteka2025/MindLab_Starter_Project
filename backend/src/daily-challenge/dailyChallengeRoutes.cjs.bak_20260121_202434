@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 const express = require("express");
 
@@ -96,12 +96,22 @@ function createDailyChallengeRouter() {
       question: toQuestion(p),
     }));
 
-    return res.status(200).json({ ok: Boolean(correct) });});
+    return res.status(200).json({
+      dailyChallengeId: state.dailyChallengeId,
+      puzzles: puzzlesOut,
+    });
+  });
 
   // GET /daily/status (contract expects status + progress + streak + dailyChallengeId)
   router.get("/daily/status", (req, res) => {
     ensureToday();
-    return res.status(200).json({ ok: Boolean(correct) });});
+    return res.status(200).json({
+      status: state.status,
+      progress: state.progress,
+      streak: state.streak,
+      dailyChallengeId: state.dailyChallengeId,
+    });
+  });
 
   // POST /daily/answer
   router.post("/daily/answer", (req, res) => {
@@ -159,8 +169,15 @@ function createDailyChallengeRouter() {
     }
 
     // Contract allows 200 or 204; return 200 w/ stable JSON
-    
-return res.status(200).json({ ok: Boolean(correct) });});
+    return res.status(200).json({
+      dailyChallengeId: state.dailyChallengeId,
+      puzzleId: puzzleIdStr,
+      correct,
+      progress: state.progress,
+      status: state.status,
+      streak: state.streak,
+    });
+  });
 
   return router;
 }
