@@ -1,37 +1,44 @@
-﻿[CmdletBinding()]
-param()
+﻿param()
 
 $ErrorActionPreference = "Stop"
 
-$root = (Get-Location).Path
-$preflight = Join-Path $root "tools\preflight.ps1"
-$runner    = Join-Path $root "tools\run_contract_clean.ps1"
+# Resolve repo root and tool paths deterministically
+$RepoRoot   = Resolve-Path (Join-Path $PSScriptRoot "..")
+$ToolsDir   = Resolve-Path $PSScriptRoot
 
-if (-not (Test-Path $preflight)) { throw "Missing: $preflight" }
-if (-not (Test-Path $runner)) { throw "Missing: $runner" }
+$Preflight  = Join-Path $ToolsDir "preflight.ps1"
+$GuardNoPm  = Join-Path $ToolsDir "guard_no_pm.ps1"
+$Contracts  = Join-Path $ToolsDir "run_contract_clean.ps1"
 
-# 0) Guard against forbidden tokens
-powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path \ "tools\guard_no_pm.ps1")
-# 1) Preflight
-powershell -NoProfile -ExecutionPolicy Bypass -File $preflight
+function Invoke-PSFile([string]$Path) {
+  if (-not (Test-Path $Path)) { throw "Missing required script: $Path" }
+  powershell -NoProfile -ExecutionPolicy Bypass -File $Path
+  if ($LASTEXITCODE -ne 0) { throw "Script failed (exit $LASTEXITCODE): $Path" }
+}
 
-# 2) Unit tests (run inside backend; NEVER use --prefix)
+Write-Host ""
+Write-Host "== Guard (no pm) =="
+
+Invoke-PSFile $GuardNoPm
+
+Write-Host ""
+Write-Host "== Preflight =="
+
+Invoke-PSFile $Preflight
+
 Write-Host ""
 Write-Host "== Unit tests =="
 
-Push-Location (Join-Path $root "backend")
+Push-Location (Join-Path $RepoRoot "backend")
 try {
   npm.cmd test
   if ($LASTEXITCODE -ne 0) { throw "Unit tests failed (exit $LASTEXITCODE)" }
-}
-finally { Pop-Location }
+} finally { Pop-Location }
 
-# 3) Contract tests (deterministic runner)
 Write-Host ""
 Write-Host "== Contract tests =="
 
-powershell -NoProfile -ExecutionPolicy Bypass -File $runner
+Invoke-PSFile $Contracts
 
 Write-Host ""
 Write-Host "ALL TESTS GREEN" -ForegroundColor Green
-

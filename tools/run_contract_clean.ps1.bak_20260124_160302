@@ -8,8 +8,6 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-
-$npmCmd = (Get-Command npm.cmd -ErrorAction Stop).Source
 function Stop-PortProcess {
   param([int]$P)
   try {
@@ -104,4 +102,3 @@ if ($failed -gt 0) {
 
 Write-Host ""
 Write-Host "== All contract tests green ==" -ForegroundColor Green
-
