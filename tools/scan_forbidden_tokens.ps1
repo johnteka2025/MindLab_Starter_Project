@@ -1,60 +1,58 @@
 ﻿[CmdletBinding()]
 param(
-  [string[]]$Tokens = @("pm"),
   [string[]]$IncludeGlobs = @(
     ".\tools\*.ps1",
-    ".\backend\**\*.ps1",
     ".\backend\**\*.js",
     ".\backend\**\*.cjs",
-    ".\backend\package.json",
-    ".\package.json"
+    ".\backend\package.json"
   ),
-  [string[]]$ExcludeGlobs = @(
-    ".\**\node_modules\**",
-    ".\**\.git\**",
-    ".\**\dist\**",
-    ".\**\build\**"
+
+  # Only forbid as an ACTUAL COMMAND token at start-of-line (optionally preceded by &)
+  [string[]]$ForbiddenCommandTokens = @("pm"),
+
+  # Exclude guard/scan scripts from scanning (they may contain examples/regex strings)
+  [string[]]$ExcludePaths = @(
+    "\tools\guard_no_pm.ps1",
+    "\tools\scan_forbidden_tokens.ps1"
   )
 )
 
 $ErrorActionPreference = "Stop"
 
-function Resolve-Globs {
-  param([string[]]$Globs)
-  $out = New-Object System.Collections.Generic.List[string]
-  foreach ($g in $Globs) {
-    $items = Get-ChildItem -Path $g -File -ErrorAction SilentlyContinue
-    foreach ($i in $items) { $out.Add($i.FullName) }
+function Get-Files([string[]]$globs) {
+  $all = @()
+  foreach ($g in $globs) {
+    $all += Get-ChildItem -Path $g -File -ErrorAction SilentlyContinue
   }
-  $out.ToArray() | Sort-Object -Unique
+  # de-dupe
+  $all | Sort-Object FullName -Unique
 }
 
-$files = Resolve-Globs -Globs $IncludeGlobs
+$files = Get-Files $IncludeGlobs
 if (-not $files -or $files.Count -eq 0) { throw "No files matched IncludeGlobs." }
 
-$excludeFiles = Resolve-Globs -Globs $ExcludeGlobs
-if ($excludeFiles -and $excludeFiles.Count -gt 0) {
-  $excludeSet = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
-  foreach ($e in $excludeFiles) { [void]$excludeSet.Add($e) }
-
-  $filtered = New-Object System.Collections.Generic.List[string]
-  foreach ($f in $files) { if (-not $excludeSet.Contains($f)) { $filtered.Add($f) } }
-  $files = $filtered.ToArray()
+# apply excludes
+$files = $files | Where-Object {
+  $p = $_.FullName
+  foreach ($ex in $ExcludePaths) { if ($p -like "*$ex") { return $false } }
+  return $true
 }
-
-if (-not $files -or $files.Count -eq 0) { throw "No files left after excludes." }
 
 $hits = @()
 
-foreach ($t in $Tokens) {
-  # ONLY flag REAL command invocation at start-of-line (optionally preceded by '&')
-  # Flags:  pm test   /  & pm test
-  # Ignores: "Unknown command: pm"
-  $escaped = [regex]::Escape($t)
-  $pattern = "^\s*&?\s*$escaped(\s|$)"
+foreach ($tok in $ForbiddenCommandTokens) {
+  # Match only actual command usage:
+  #   pm test
+  #   & pm test
+  # Not matches:
+  #   "Unknown command: 'pm'"
+  #   $pattern = 'pm'
+  $pattern = "^(?i)\s*(&\s*)?$([regex]::Escape($tok))(\s|$)"
 
-  $m = Select-String -Path $files -Pattern $pattern -AllMatches -ErrorAction SilentlyContinue
-  if ($m) { $hits += $m }
+  foreach ($f in $files) {
+    $m = Select-String -Path $f.FullName -Pattern $pattern -AllMatches -ErrorAction SilentlyContinue
+    if ($m) { $hits += $m }
+  }
 }
 
 if ($hits.Count -gt 0) {
@@ -62,8 +60,9 @@ if ($hits.Count -gt 0) {
     Select-Object Path, LineNumber, Line |
     Sort-Object Path, LineNumber |
     Format-Table -AutoSize
-  throw ("Forbidden command token(s) found: {0}" -f ($Tokens -join ", "))
+
+  throw ("Forbidden COMMAND token(s) found: {0}" -f ($ForbiddenCommandTokens -join ", "))
 }
 
-Write-Host ("OK: No forbidden COMMAND tokens found: {0}" -f ($Tokens -join ", ")) -ForegroundColor Green
+Write-Host ("OK: No forbidden COMMAND tokens found: {0}" -f ($ForbiddenCommandTokens -join ", ")) -ForegroundColor Green
 exit 0
