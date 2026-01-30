@@ -42,3 +42,9 @@ Action Items/
 
 backend/src/data/progress.json
 *.bak.*
+
+# MindLab local artifacts
+_logs/
+tools/*.bak_*
+*.bak_*
+tools/*.bak*
