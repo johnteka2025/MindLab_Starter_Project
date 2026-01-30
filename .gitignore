@@ -48,3 +48,5 @@ _logs/
 tools/*.bak_*
 *.bak_*
 tools/*.bak*
+tools/run_contract_wrapper.ps1
+# MindLab local artifacts (never commit)
