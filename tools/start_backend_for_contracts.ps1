@@ -26,7 +26,8 @@ if (-not (Test-Path $jest)) {
 # Logging + PID file
 $logDir  = Join-Path $env:TEMP "mindlab_contract_logs"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-$logFile = Join-Path $logDir ("backend_contract_{0}.log" -f (Get-Date -Format "yyyyMMdd_HHmmss"))
+$logOut  = Join-Path $logDir ("backend_contract_{0}.out.log" -f (Get-Date -Format "yyyyMMdd_HHmmss"))
+$logErr  = Join-Path $logDir ("backend_contract_{0}.err.log" -f (Get-Date -Format "yyyyMMdd_HHmmss"))
 $pidFile = Join-Path $logDir "backend_contract.pid"
 
 # Set env for server
@@ -35,7 +36,7 @@ $env:NODE_ENV = "test"
 
 # Start server via npm start
 $p = Start-Process -FilePath $npm -ArgumentList @("--prefix",$backend,"start") -PassThru -WindowStyle Hidden `
-  -RedirectStandardOutput $logFile -RedirectStandardError $logFile
+  -RedirectStandardOutput $logOut -RedirectStandardError $logErr
 
 Set-Content -Encoding ASCII -Path $pidFile -Value $p.Id
 
@@ -56,10 +57,13 @@ try {
   if ($r2.StatusCode -ne 200) { throw "not-200" }
 } catch {
   try { Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue } catch {}
-  throw "STOP: Backend not healthy on $base. LOG: $logFile"
+  throw "STOP: Backend not healthy on $base. LOGS: $logOut ; $logErr"
 }
 
 Write-Host ("OK: Backend ready: {0}" -f $base) -ForegroundColor Green
 Write-Host ("PID: {0}" -f $p.Id) -ForegroundColor Cyan
 Write-Host ("PIDFILE: {0}" -f $pidFile) -ForegroundColor Cyan
-Write-Host ("LOG: {0}" -f $logFile) -ForegroundColor Cyan
+
+Write-Host ("LOG_OUT: {0}" -f $logOut) -ForegroundColor Cyan
+Write-Host ("LOG_ERR: {0}" -f $logErr) -ForegroundColor CyanWrite-Host ("LOG: {0}" -f $logFile) -ForegroundColor Cyan
+
