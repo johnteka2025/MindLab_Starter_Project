@@ -7,9 +7,21 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$npmExe = (Get-Command npm.cmd -ErrorAction SilentlyContinue).Source; if (-not $npmExe) { $npmExe = (Get-Command npm -ErrorAction Stop).Source }
 
 
-$npmCmd = (Get-Command npm.cmd -ErrorAction Stop).Source
+function Finish {
+  param(
+    [Parameter(Mandatory=$true)][int]$Code,
+    [Parameter(Mandatory=$true)][string]$Message
+  )
+  if ($Code -ne 0) { Write-Host $Message -ForegroundColor Red } else { Write-Host $Message -ForegroundColor Green }
+  $global:LASTEXITCODE = $Code
+  return
+}
+
+
+
 function Stop-PortProcess {
   param([int]$P)
   try {
@@ -87,7 +99,12 @@ foreach ($t in $tests) {
     }
     Write-Host "OK: Backend health=200"
 
-    & npm --prefix $backend test -- --runInBand --runTestsByPath $t
+& $npmExe --prefix $backend test -- --runInBand --runTestsByPath $t
+    $npmExit = $LASTEXITCODE
+    if ($npmExit -ne 0) {
+      $failed++
+      Write-Host ("FAIL: npm test exited with code: {0}" -f $npmExit) -ForegroundColor Red
+    }
   } catch {
     $failed++
     Write-Host ("FAIL: " + $_.Exception.Message) -ForegroundColor Red
@@ -99,9 +116,9 @@ foreach ($t in $tests) {
 }
 
 if ($failed -gt 0) {
-  throw "Contract run finished with failures: $failed"
+  Finish 1 ("STOP: Contract run finished with failures: {0}" -f $failed)
 }
 
 Write-Host ""
 Write-Host "== All contract tests green ==" -ForegroundColor Green
-
+Finish 0 "OK: Contract tests green."
