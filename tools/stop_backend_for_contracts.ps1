@@ -19,13 +19,14 @@ if (-not $pidText) {
   return
 }
 
-$pid = [int]$pidText
+$backendPid = [int]$pidText
 try {
-  Stop-Process -Id $pid -Force -ErrorAction Stop
-  Write-Host ("OK: Stopped backend PID {0}" -f $pid) -ForegroundColor Green
+  Stop-Process -Id $backendPid -Force -ErrorAction Stop
+  Write-Host ("OK: Stopped backend PID {0}" -f $backendPid) -ForegroundColor Green
 } catch {
-  Write-Host ("NOTE: Could not stop PID {0} (may already be stopped)." -f $pid) -ForegroundColor Yellow
+  Write-Host ("NOTE: Could not stop PID {0} (may already be stopped)." -f $backendPid) -ForegroundColor Yellow
 }
 
 Remove-Item -Force $pidFile -ErrorAction SilentlyContinue
 Write-Host ("OK: Removed PID file {0}" -f $pidFile) -ForegroundColor Green
+
