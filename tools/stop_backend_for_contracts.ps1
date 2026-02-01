@@ -1,49 +1,71 @@
 ﻿[CmdletBinding()]
 param(
-  [Parameter(Mandatory=$false)]
-  [int]$Port = 3000
+  [Parameter(Mandatory=$false)][int]$Port = 8085
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$logDir = Join-Path $env:TEMP "mindlab_contract_logs"
+$logDir  = Join-Path $env:TEMP "mindlab_contract_logs"
+$pidFile = Join-Path $logDir "backend_contract.pid"
 
-# Support BOTH pid styles (old/new)
-$pidFiles = @(
-  (Join-Path $logDir "backend.pid"),
-  (Join-Path $logDir "backend_contract.pid")
-)
+function Get-PidFromFile {
+  if (-not (Test-Path $pidFile)) { return $null }
+  $txt = (Get-Content -Raw -ErrorAction SilentlyContinue $pidFile)
+  if (-not $txt) { return $null }
+  $txt = $txt.Trim()
+  if (-not $txt) { return $null }
+  $pid = 0
+  if ([int]::TryParse($txt, [ref]$pid)) { return $pid }
+  return $null
+}
 
-foreach ($pf in $pidFiles) {
-  if (Test-Path $pf) {
-    $pidText = (Get-Content -Encoding ASCII $pf -ErrorAction SilentlyContinue | Select-Object -First 1)
-    if ($pidText) { $pidText = $pidText.Trim() }
+function Stop-Pid {
+  param([int]$ProcessId)
+  if (-not $ProcessId -or $ProcessId -le 0) { return $false }
+  $p = Get-Process -Id $ProcessId -ErrorAction SilentlyContinue
+  if (-not $p) { return $false }
+  Stop-Process -Id $ProcessId -Force -ErrorAction SilentlyContinue
+  Start-Sleep -Milliseconds 250
+  return $true
+}
 
-    if ($pidText -match '^\d+$') {
-      $pidToStop = [int]$pidText
-      try { Stop-Process -Id $pidToStop -Force -ErrorAction Stop } catch {}
+function Stop-ByPidFile {
+  $killed = $false
+  $pid = Get-PidFromFile
+  if ($pid) {
+    $killed = Stop-Pid -ProcessId $pid
+  }
+  if (Test-Path $pidFile) { Remove-Item -Force $pidFile -ErrorAction SilentlyContinue }
+  return $killed
+}
+
+function Stop-ByPortOwner {
+  $killedAny = $false
+  $conns = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue
+  if ($conns) {
+    $pids = $conns | Select-Object -ExpandProperty OwningProcess -Unique
+    foreach ($p in $pids) {
+      if ($p -and $p -gt 0) {
+        if (Stop-Pid -ProcessId $p) { $killedAny = $true }
+      }
     }
-
-    Remove-Item -Force $pf -ErrorAction SilentlyContinue
   }
+  Start-Sleep -Milliseconds 250
+  return $killedAny
 }
 
-# Belt+suspenders: stop any LISTENING process on the port
-$conns = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue | Where-Object { $_.State -eq "Listen" }
-foreach ($c in $conns) {
-  if ($c.OwningProcess -and $c.OwningProcess -gt 0) {
-    try { Stop-Process -Id $c.OwningProcess -Force -ErrorAction Stop } catch {}
-  }
-}
+Write-Host ("=== STOP BACKEND (Port={0}) ===" -f $Port) -ForegroundColor Cyan
 
-Start-Sleep -Milliseconds 300
+$k1 = Stop-ByPidFile
+$k2 = Stop-ByPortOwner
 
-# Sanity: port must be free
-$still = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue |
-         Where-Object { $_.State -eq "Listen" } | Select-Object -First 1
+# Verify port is free
+$still = Get-NetTCPConnection -LocalPort $Port -ErrorAction SilentlyContinue
 if ($still) {
-  throw ("STOP: Port {0} still LISTENING (OwningProcess={1})." -f $Port, $still.OwningProcess)
+  Write-Host "=== STILL LISTENING ===" -ForegroundColor Red
+  $still | Select-Object -First 10 | Format-Table -AutoSize | Out-Host
+  throw ("STOP: Port {0} still in use after stop." -f $Port)
 }
 
-Write-Host ("OK: Backend stopped. Port={0} is free." -f $Port) -ForegroundColor Green
+Write-Host ("OK: Backend stopped. Port={0} is free. (pidfileKilled={1}; portKilled={2})" -f $Port,$k1,$k2) -ForegroundColor Green
