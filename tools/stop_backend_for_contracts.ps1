@@ -92,11 +92,20 @@ if ($still) {
 }
 
 # netstat verification (secondary)
+# netstat verification (secondary) - IGNORE TIME_WAIT (does not block binding)
 $net = & netstat -ano 2>$null | Select-String -Pattern (":$Port\s") -ErrorAction SilentlyContinue
 if ($net) {
-  Write-Host "=== STILL LISTENING (netstat) ===" -ForegroundColor Red
-  $net | Select-Object -First 10 | Out-Host
-  throw ("STOP: Port {0} still in use after stop (netstat)." -f $Port)
+  $bad = @()
+  foreach ($m in $net) {
+    if ($m.Line -match '\sTIME_WAIT\s') { continue }  # benign
+    $bad += $m
+  }
+  if ($bad.Count -gt 0) {
+    Write-Host "=== STILL LISTENING (netstat non-TIME_WAIT) ===" -ForegroundColor Red
+    $bad | Select-Object -First 10 | Out-Host
+    throw ("STOP: Port {0} still in use after stop (netstat non-TIME_WAIT)." -f $Port)
+  }
 }
 
 Write-Host ("OK: Backend stopped. Port={0} free. (pidfileKilled={1}; portKilled={2})" -f $Port,$killedPidFile,$killedPort) -ForegroundColor Green
+
