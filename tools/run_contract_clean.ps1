@@ -103,7 +103,7 @@ foreach ($t in $tests) {
     $npmExit = $LASTEXITCODE
     if ($npmExit -ne 0) {
       $failed++
-      Write-Host ("FAIL: npm test exited with code: {0}" -f $npmExit) -ForegroundColor Red
+      Write-Host ("FAIL: npm run test:contract:contract exited with code: {0}" -f $npmExit) -ForegroundColor Red
     }
   } catch {
     $failed++
@@ -122,3 +122,7 @@ if ($failed -gt 0) {
 Write-Host ""
 Write-Host "== All contract tests green ==" -ForegroundColor Green
 Finish 0 "OK: Contract tests green."
+
+
+
+
