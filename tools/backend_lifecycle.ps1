@@ -16,11 +16,13 @@ $ErrorActionPreference = "Continue"
 function Stop-Line([string]$m){
   Write-Host $m -ForegroundColor Red
   $global:LASTEXITCODE = 1
-  return
+  return $false
 }
 
 function Ok-Line([string]$m){
   Write-Host $m -ForegroundColor Green
+  $global:LASTEXITCODE = 0
+  return $true
 }
 
 function Info([string]$m){
@@ -40,8 +42,8 @@ function Wait-ForHealth([string]$Url,[int]$TimeoutSec){
 }
 
 try {
-  if (-not (Test-Path (Join-Path $RepoRoot ".git"))) { Stop-Line "STOP: RepoRoot invalid (.git missing)."; return }
-  if (-not (Test-Path $BackendDir)) { Stop-Line "STOP: BackendDir missing."; return }
+  if (-not (Test-Path (Join-Path $RepoRoot ".git"))) { Stop-Line "STOP: RepoRoot invalid (.git missing)." | Out-Null; return }
+  if (-not (Test-Path $BackendDir)) { Stop-Line "STOP: BackendDir missing." | Out-Null; return }
 
   $pidFile = Join-Path $RepoRoot "tools\.backend_pid"
   $logFile = Join-Path $RepoRoot "tools\.backend_log.txt"
@@ -50,10 +52,9 @@ try {
     Info "=== START BACKEND ==="
 
     if (Test-Path $pidFile) {
-      $pid = (Get-Content $pidFile -ErrorAction SilentlyContinue)
-      if ($pid -and (Get-Process -Id $pid -ErrorAction SilentlyContinue)) {
-        Ok-Line "OK: Backend already running."
-        $global:LASTEXITCODE = 0
+      $backendPid = (Get-Content $pidFile -ErrorAction SilentlyContinue)
+      if ($backendPid -and (Get-Process -Id $backendPid -ErrorAction SilentlyContinue)) {
+        Ok-Line "OK: Backend already running." | Out-Null
         return
       } else {
         Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
@@ -73,12 +74,11 @@ try {
 
     $ok = Wait-ForHealth -Url $HealthUrl -TimeoutSec $HealthTimeoutSeconds
     if (-not $ok) {
-      Stop-Line "STOP: Backend did not become healthy within timeout."
+      Stop-Line "STOP: Backend did not become healthy within timeout." | Out-Null
       return
     }
 
-    Ok-Line "OK: Backend started and healthy."
-    $global:LASTEXITCODE = 0
+    Ok-Line "OK: Backend started and healthy." | Out-Null
     return
   }
 
@@ -86,33 +86,30 @@ try {
     Info "=== STOP BACKEND ==="
 
     if (-not (Test-Path $pidFile)) {
-      Ok-Line "OK: No backend PID file (already stopped)."
-      $global:LASTEXITCODE = 0
+      Ok-Line "OK: No backend PID file (already stopped)." | Out-Null
       return
     }
 
-    $pid = Get-Content $pidFile -ErrorAction SilentlyContinue
-    if (-not $pid) {
+    $backendPid = Get-Content $pidFile -ErrorAction SilentlyContinue
+    if (-not $backendPid) {
       Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
-      Ok-Line "OK: PID file empty; treated as stopped."
-      $global:LASTEXITCODE = 0
+      Ok-Line "OK: PID file empty; treated as stopped." | Out-Null
       return
     }
 
-    $proc = Get-Process -Id $pid -ErrorAction SilentlyContinue
+    $proc = Get-Process -Id $backendPid -ErrorAction SilentlyContinue
     if ($proc) {
-      try { Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue } catch {}
+      try { Stop-Process -Id $backendPid -Force -ErrorAction SilentlyContinue } catch {}
       Start-Sleep -Seconds 1
     }
 
     Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
-    Ok-Line "OK: Backend stopped."
-    $global:LASTEXITCODE = 0
+    Ok-Line "OK: Backend stopped." | Out-Null
     return
   }
 
-  Stop-Line "STOP: Unsupported Mode."
+  Stop-Line "STOP: Unsupported Mode." | Out-Null
 }
 catch {
-  Stop-Line ("STOP: backend_lifecycle crashed: {0}" -f $_.Exception.Message)
+  Stop-Line ("STOP: backend_lifecycle crashed: {0}" -f $_.Exception.Message) | Out-Null
 }
