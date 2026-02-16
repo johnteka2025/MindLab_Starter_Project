@@ -4,6 +4,9 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
+
+const testRoutes = require("./routes/__test__.cjs");
+app.use(testRoutes);
 const PORT = process.env.PORT || 8085;
 
 app.use(cors());
@@ -78,4 +81,5 @@ if (require.main === module) {
 }
 
 module.exports = app;
+
 

@@ -1,4 +1,5 @@
-﻿const base = process.env.CONTRACT_BASE_URL || "http://localhost:8085";
+const { resetServerState } = require('./_reset.contract.helper');
+const base = process.env.CONTRACT_BASE_URL || "http://localhost:8085";
 
 async function jget(path) {
   const res = await fetch(`${base}${path}`);
@@ -21,6 +22,9 @@ async function jpost(path, body) {
 }
 
 describe("daily challenge api contract", () => {
+  beforeEach(async () => {
+    await resetServerState();
+  });
   test("GET /daily returns instance with puzzles", async () => {
     const { res, json } = await jget("/daily");
     expect(res.status).toBe(200);

@@ -1,4 +1,4 @@
-﻿node_modules/
+node_modules/
 dist/
 backend/static/
 frontend/dist/
@@ -52,3 +52,5 @@ tools/run_contract_wrapper.ps1
 # MindLab local artifacts (never commit)
 tools/.backend_pid
 tools/.backend_log.txt
+backend/data/progress.json
+backend/.jest_showConfig.txt

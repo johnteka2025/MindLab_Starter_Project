@@ -1,35 +1,34 @@
-﻿param(
+param(
   [Parameter(Mandatory=$true)]
   [ValidateSet("start","stop")]
   [string]$Mode,
 
   [string]$RepoRoot = "C:\Projects\MindLab_Starter_Project",
-  [string]$BackendDir = "C:\Projects\MindLab_Starter_Project\backend",
+  [string]$BackendDir = "C:\Projects\MindLab_Starter_Project\backend",  [AllowEmptyString()][string]$HealthUrl = "",
+  [int]$HealthTimeoutSeconds = 60,
 
-  [string]$HealthUrl = "http://localhost:3000/health",
-  [int]$HealthTimeoutSeconds = 30
+  [switch]$TestMode
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Continue"
 
-function Stop-Line([string]$m){
+function Fail([string]$m){
   Write-Host $m -ForegroundColor Red
   $global:LASTEXITCODE = 1
-  return $false
+  return
 }
-
-function Ok-Line([string]$m){
+function Ok([string]$m){
   Write-Host $m -ForegroundColor Green
   $global:LASTEXITCODE = 0
-  return $true
+  return
 }
-
 function Info([string]$m){
   Write-Host $m -ForegroundColor Cyan
 }
 
 function Wait-ForHealth([string]$Url,[int]$TimeoutSec){
+  if (-not $Url) { return $true } # no health check configured
   $deadline = (Get-Date).AddSeconds($TimeoutSec)
   while ((Get-Date) -lt $deadline) {
     try {
@@ -42,8 +41,8 @@ function Wait-ForHealth([string]$Url,[int]$TimeoutSec){
 }
 
 try {
-  if (-not (Test-Path (Join-Path $RepoRoot ".git"))) { Stop-Line "STOP: RepoRoot invalid (.git missing)." | Out-Null; return }
-  if (-not (Test-Path $BackendDir)) { Stop-Line "STOP: BackendDir missing." | Out-Null; return }
+  if (-not (Test-Path (Join-Path $RepoRoot ".git"))) { Fail "STOP: RepoRoot invalid (.git missing)."; return }
+  if (-not (Test-Path $BackendDir)) { Fail "STOP: BackendDir missing."; return }
 
   $pidFile = Join-Path $RepoRoot "tools\.backend_pid"
   $logFile = Join-Path $RepoRoot "tools\.backend_log.txt"
@@ -54,15 +53,17 @@ try {
     if (Test-Path $pidFile) {
       $backendPid = (Get-Content $pidFile -ErrorAction SilentlyContinue)
       if ($backendPid -and (Get-Process -Id $backendPid -ErrorAction SilentlyContinue)) {
-        Ok-Line "OK: Backend already running." | Out-Null
+        Ok "OK: Backend already running."
         return
-      } else {
-        Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
       }
+      Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
     }
 
+    $cmd = "npm start"
+    if ($TestMode) { $cmd = "set MINDLAB_TEST_MODE=1&& npm start" }
+
     $p = Start-Process -FilePath "cmd.exe" `
-      -ArgumentList "/d /c npm start 1> `"$logFile`" 2>&1" `
+      -ArgumentList ("/d /c " + $cmd + " 1> `"$logFile`" 2>&1") `
       -WorkingDirectory $BackendDir `
       -WindowStyle Hidden `
       -PassThru
@@ -70,30 +71,25 @@ try {
     $p.Id | Set-Content -Encoding ASCII $pidFile
 
     Info ("PID => {0}" -f $p.Id)
-    Info ("HealthUrl => {0}" -f $HealthUrl)
+    if ($TestMode) { Info "MINDLAB_TEST_MODE=1" }
+    if ($HealthUrl) { Info ("HealthUrl => {0}" -f $HealthUrl) } else { Info "HealthUrl => (skipped)" }
 
     $ok = Wait-ForHealth -Url $HealthUrl -TimeoutSec $HealthTimeoutSeconds
-    if (-not $ok) {
-      Stop-Line "STOP: Backend did not become healthy within timeout." | Out-Null
-      return
-    }
+    if (-not $ok) { Fail "STOP: Backend did not become healthy within timeout."; return }
 
-    Ok-Line "OK: Backend started and healthy." | Out-Null
+    Ok "OK: Backend started."
     return
   }
 
   if ($Mode -eq "stop") {
     Info "=== STOP BACKEND ==="
 
-    if (-not (Test-Path $pidFile)) {
-      Ok-Line "OK: No backend PID file (already stopped)." | Out-Null
-      return
-    }
+    if (-not (Test-Path $pidFile)) { Ok "OK: No backend PID file (already stopped)."; return }
 
     $backendPid = Get-Content $pidFile -ErrorAction SilentlyContinue
     if (-not $backendPid) {
       Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
-      Ok-Line "OK: PID file empty; treated as stopped." | Out-Null
+      Ok "OK: PID file empty; treated as stopped."
       return
     }
 
@@ -104,12 +100,13 @@ try {
     }
 
     Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
-    Ok-Line "OK: Backend stopped." | Out-Null
+    Ok "OK: Backend stopped."
     return
   }
 
-  Stop-Line "STOP: Unsupported Mode." | Out-Null
+  Fail "STOP: Unsupported Mode."
 }
 catch {
-  Stop-Line ("STOP: backend_lifecycle crashed: {0}" -f $_.Exception.Message) | Out-Null
+  Fail ("STOP: backend_lifecycle crashed: {0}" -f $_.Exception.Message)
 }
+

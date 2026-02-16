@@ -1,4 +1,5 @@
-﻿const path = require("path");
+const __MINDLAB_TEST_MODE__ = String(process.env.MINDLAB_TEST_MODE || "").toLowerCase() === "1" || String(process.env.MINDLAB_TEST_MODE || "").toLowerCase() === "true";
+const path = require("path");
 const fs = require("fs");
 
 // Persist file lives OUTSIDE src so nodemon won't restart on writes
@@ -83,6 +84,10 @@ function deepProxy(target, onChange, seen = new WeakMap()) {
 }
 
 module.exports = function initProgressPersistence(options = {}) {
+  if (__MINDLAB_TEST_MODE__) {
+    console.log('[progressPersistence] TEST MODE: disabled');
+    return { enabled: false };
+  }
   const dataFile = options.dataFile || path.join(__dirname, "data", "progress.json");
   ensureDir(path.dirname(dataFile));
 
@@ -157,4 +162,29 @@ module.exports = function initProgressPersistence(options = {}) {
 
 // Ensure persistence file exists once at startup
 ensureFile();
+
+
+
+
+async function resetProgressPersistence() {
+  try {
+    const fs = require("fs");
+    // Use the real persistence path used by this module
+    const p = DATA_FILE;
+    if (p && fs.existsSync(p)) {
+      fs.unlinkSync(p);
+    }
+    // recreate empty baseline file
+    ensureFile();
+  } catch {}
+}
+
+
+try {
+  if (typeof module.exports === "function") {
+    module.exports.resetProgressPersistence = resetProgressPersistence;
+  } else if (module.exports && typeof module.exports === "object") {
+    module.exports.resetProgressPersistence = resetProgressPersistence;
+  }
+} catch {}
 

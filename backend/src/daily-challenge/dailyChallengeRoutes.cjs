@@ -142,4 +142,17 @@ function createDailyChallengeRouter() {
   return router;
 }
 
-module.exports = { createDailyChallengeRouter };
+
+function resetDailyChallengeState() {
+  try {
+    currentKey = null;
+    state = null;
+    streak = 0;
+  } catch {}
+}
+
+module.exports = { createDailyChallengeRouter, resetDailyChallengeState };
+
+
+
+
