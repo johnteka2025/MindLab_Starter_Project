@@ -23,10 +23,13 @@
     "jest": "^29.7.0"
   },
   "jest": {
-    "rootDir": ".",
     "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/contract/**/*.test.js"
+    ],
     "setupFilesAfterEnv": [
       "<rootDir>/tests/contract/jest.setup.contract.js"
-    ]
+    ],
+    "verbose": true
   }
 }
