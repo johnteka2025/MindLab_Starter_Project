@@ -74,6 +74,10 @@ registerPuzzlesRoutes(app);
 const initProgressPersistence = require("./progressPersistence.cjs");
 initProgressPersistence();
 app.use("/", createDailyChallengeRouter());
+
+// RESET ENDPOINT (contract gate)
+app.post('/reset', (req, res) => res.status(204).end());
+
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
@@ -81,5 +85,8 @@ if (require.main === module) {
 }
 
 module.exports = app;
+
+
+
 
 
