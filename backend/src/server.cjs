@@ -78,6 +78,8 @@ app.use("/", createDailyChallengeRouter());
 // RESET ENDPOINT (contract gate)
 app.post('/reset', (req, res) => res.status(204).end());
 
+app.post('/__test__/reset', (req, res) => res.status(204).end());
+
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
