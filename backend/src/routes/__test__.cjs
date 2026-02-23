@@ -77,7 +77,15 @@ if (!dailyRoutes || typeof dailyRoutes.resetDailyChallengeState !== "function") 
 if (router) {
   router.post("/__test__/reset", async (req, res) => {
     if (!isTestMode()) return res.status(404).end();
-    try { await doReset(); return res.status(204).end(); }
+    try { await doReset(); return 
+// CLEAR_DAILY_ANSWERED_STATE (contract gate)
+try{
+  const daily = require('../daily-challenge/dailyChallengeRoutes.cjs');
+  if (daily && typeof daily.__clearDailyAnsweredState === 'function') {
+    daily.__clearDailyAnsweredState();
+  }
+} catch (_) { /* ignore */ }
+res.status(204).end(); }
     catch { return res.status(500).json({ error: "reset_failed" }); }
   });
 
