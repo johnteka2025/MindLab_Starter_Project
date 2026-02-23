@@ -156,3 +156,6 @@ module.exports = { createDailyChallengeRouter, resetDailyChallengeState };
 
 
 
+
+function __clearDailyAnsweredState(){ try{ s.answered.clear(); }catch(_){ } }
+module.exports.__clearDailyAnsweredState = __clearDailyAnsweredState;
