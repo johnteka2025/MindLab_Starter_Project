@@ -5,6 +5,12 @@ const path = require("path");
 
 const app = express();
 
+// RESET ENDPOINTS (contract gate + dev)
+const __resetHandler = (req, res) => res.status(204).end();
+app.post('/reset', __resetHandler);
+app.post('/__test__/reset', __resetHandler);
+app.post('/api/reset', __resetHandler);
+app.post('/api/__test__/reset', __resetHandler);
 const testRoutes = require("./routes/__test__.cjs");
 app.use(testRoutes);
 const PORT = process.env.PORT || 8085;
@@ -79,8 +85,6 @@ app.use("/", createDailyChallengeRouter());
 app.post('/reset', (req, res) => res.status(204).end());
 
 app.post('/__test__/reset', (req, res) => res.status(204).end());
-
-// RESET ENDPOINTS (contract gate + dev)
 const __resetHandler = (req, res) => res.status(204).end();
 app.post('/reset', __resetHandler);
 app.post('/__test__/reset', __resetHandler);
