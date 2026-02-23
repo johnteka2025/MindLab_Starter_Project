@@ -97,3 +97,5 @@ module.exports = app;
 
 
 
+
+console.log('[ROUTE-PRINT] reset routes registered: /reset, /__test__/reset');
