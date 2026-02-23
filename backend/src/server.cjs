@@ -4,7 +4,6 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-
 // RESET ENDPOINTS (contract gate + dev)
 const __resetHandler = (req, res) => res.status(204).end();
 app.post('/reset', __resetHandler);
@@ -82,13 +81,6 @@ initProgressPersistence();
 app.use("/", createDailyChallengeRouter());
 
 // RESET ENDPOINT (contract gate)
-app.post('/reset', (req, res) => res.status(204).end());
-
-app.post('/__test__/reset', (req, res) => res.status(204).end());
-const __resetHandler = (req, res) => res.status(204).end();
-app.post('/reset', __resetHandler);
-app.post('/__test__/reset', __resetHandler);
-
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
@@ -96,10 +88,3 @@ if (require.main === module) {
 }
 
 module.exports = app;
-
-
-
-
-
-
-console.log('[ROUTE-PRINT] reset routes registered: /reset, /__test__/reset');
