@@ -80,6 +80,11 @@ app.post('/reset', (req, res) => res.status(204).end());
 
 app.post('/__test__/reset', (req, res) => res.status(204).end());
 
+// RESET ENDPOINTS (contract gate + dev)
+const __resetHandler = (req, res) => res.status(204).end();
+app.post('/reset', __resetHandler);
+app.post('/__test__/reset', __resetHandler);
+
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
