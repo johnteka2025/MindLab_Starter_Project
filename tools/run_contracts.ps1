@@ -57,7 +57,7 @@ try{
   $env:PORT="$port"
 
   # Start backend directly (NO cmd window)
-  $p = Start-Process -FilePath $node -ArgumentList @($server) -WorkingDirectory $backend -PassThru -RedirectStandardOutput $log -RedirectStandardError $log
+  $p = Start-Process -FilePath $node -ArgumentList @($server) -WorkingDirectory $backend -PassThru -RedirectStandardOutput $log
   if(-not $p){ throw "STOP: failed to start backend." }
   Write-Host ("BACKEND_PID: " + $p.Id) -ForegroundColor Cyan
 
