@@ -6,9 +6,7 @@ function Stop-NodeOnPort([int]$Port){
   foreach($c in $conns){
     $pidOnPort = $c.OwningProcess
     $p = Get-Process -Id $pidOnPort -ErrorAction SilentlyContinue
-    if($p -and $p.ProcessName -match "node"){
-      Stop-Process -Id $pidOnPort -Force -ErrorAction SilentlyContinue
-    }
+    if($p -and $p.ProcessName -match "node"){ Stop-Process -Id $pidOnPort -Force -ErrorAction SilentlyContinue }
   }
 }
 
@@ -23,66 +21,71 @@ function Wait-Health([string]$Base,[int]$Tries=80){
   return $false
 }
 
-function Tail-Log([string]$Path,[int]$Lines=250){
+function Tail([string]$Path,[int]$Lines=200){
   if(Test-Path $Path){
-    Write-Host ("--- LAST " + $Lines + " LINES: " + $Path + " ---") -ForegroundColor Cyan
+    Write-Host ("--- TAIL " + $Lines + ": " + $Path + " ---") -ForegroundColor Cyan
     Get-Content $Path -Tail $Lines | Out-Host
   } else {
-    Write-Host ("LOG MISSING: " + $Path) -ForegroundColor Yellow
+    Write-Host ("MISSING: " + $Path) -ForegroundColor Yellow
   }
 }
 
+$backendProc=$null
 try{
   $REPO="C:\Projects\MindLab_Starter_Project"
   $backend=Join-Path $REPO "backend"
   $logs=Join-Path $REPO "tools\logs"
-  New-Item -ItemType Directory -Force -Path $logs | Out-Null
 
   $port=8085
   $base="http://127.0.0.1:$port"
 
+  Write-Host "STEP: kill old listeners on 8085" -ForegroundColor Cyan
   Stop-NodeOnPort -Port $port
 
   $stamp=Get-Date -Format "yyyyMMdd_HHmmss"
-  $log=Join-Path $logs ("backend_dev_" + $stamp + ".log")
-  Write-Host ("LOG: " + $log) -ForegroundColor Cyan
+  $outLog=Join-Path $logs ("backend_dev_" + $stamp + ".out.log")
+  $errLog=Join-Path $logs ("backend_dev_" + $stamp + ".err.log")
+
+  Write-Host ("OUT_LOG: " + $outLog) -ForegroundColor Cyan
+  Write-Host ("ERR_LOG: " + $errLog) -ForegroundColor Cyan
 
   $node=(Get-Command node -ErrorAction Stop).Source
-  if(-not (Test-Path $node)){ throw "STOP: node not found." }
-
   $server=Join-Path $backend "src\server.cjs"
   if(-not (Test-Path $server)){ throw "STOP: Missing server => $server" }
 
   $env:NODE_ENV="test"
   $env:PORT="$port"
 
-  # Start backend directly (NO cmd window)
-  $p = Start-Process -FilePath $node -ArgumentList @($server) -WorkingDirectory $backend -PassThru -RedirectStandardOutput $log
-  if(-not $p){ throw "STOP: failed to start backend." }
-  Write-Host ("BACKEND_PID: " + $p.Id) -ForegroundColor Cyan
+  Write-Host "STEP: start backend (node server.cjs)" -ForegroundColor Cyan
+  $backendProc = Start-Process -FilePath $node -ArgumentList @($server) -WorkingDirectory $backend -PassThru `
+    -RedirectStandardOutput $outLog -RedirectStandardError $errLog
+  if(-not $backendProc){ throw "STOP: failed to start backend." }
 
+  Write-Host ("BACKEND_PID: " + $backendProc.Id) -ForegroundColor Cyan
+
+  Write-Host "STEP: wait /health" -ForegroundColor Cyan
   if(-not (Wait-Health -Base $base)){
-    Tail-Log -Path $log -Lines 250
-    Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+    Tail $outLog 250
+    Tail $errLog 250
     throw "STOP: /health not reachable."
   }
   Write-Host "OK: /health reachable." -ForegroundColor Green
 
+  Write-Host "STEP: POST /__test__/reset" -ForegroundColor Cyan
   Invoke-WebRequest -Method Post "$base/__test__/reset" -UseBasicParsing -TimeoutSec 5 | Out-Null
-  Write-Host "OK: /__test__/reset posted." -ForegroundColor Green
+  Write-Host "OK: reset posted." -ForegroundColor Green
 
+  Write-Host "STEP: run contracts" -ForegroundColor Cyan
   cd $backend
   $npm="C:\Program Files\nodejs\npm.cmd"
   if(-not (Test-Path $npm)){ throw "STOP: Missing npm => $npm" }
-
   $env:CONTRACT_BASE_URL=$base
   & $npm run test:contract | Out-Host
   $code=$LASTEXITCODE
 
-  Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
-
   if($code -ne 0){
-    Tail-Log -Path $log -Lines 250
+    Tail $outLog 250
+    Tail $errLog 250
     throw "STOP: contracts failed."
   }
 
@@ -94,5 +97,8 @@ catch{
   exit 1
 }
 finally{
+  if($backendProc){
+    Stop-Process -Id $backendProc.Id -Force -ErrorAction SilentlyContinue
+  }
   Read-Host "Press ENTER to exit"
 }
