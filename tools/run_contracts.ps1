@@ -4,10 +4,10 @@ $ErrorActionPreference="Stop"
 function Stop-NodeOnPort([int]$Port){
   $conns = Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object { $_.LocalPort -eq $Port }
   foreach($c in $conns){
-    $portPid = $c.OwningProcess
-    $proc = Get-Process -Id $portPid -ErrorAction SilentlyContinue
-    if($proc -and $proc.ProcessName -match "node"){
-      Stop-Process -Id $portPid -Force -ErrorAction SilentlyContinue
+    $pidOnPort = $c.OwningProcess
+    $p = Get-Process -Id $pidOnPort -ErrorAction SilentlyContinue
+    if($p -and $p.ProcessName -match "node"){
+      Stop-Process -Id $pidOnPort -Force -ErrorAction SilentlyContinue
     }
   }
 }
@@ -21,6 +21,15 @@ function Wait-Health([string]$Base,[int]$Tries=80){
     Start-Sleep -Milliseconds 500
   }
   return $false
+}
+
+function Tail-Log([string]$Path,[int]$Lines=300){
+  if(Test-Path $Path){
+    Write-Host ("--- LAST " + $Lines + " LINES: " + $Path + " ---") -ForegroundColor Cyan
+    Get-Content $Path -Tail $Lines | Out-Host
+  } else {
+    Write-Host ("LOG MISSING: " + $Path) -ForegroundColor Yellow
+  }
 }
 
 try{
@@ -37,22 +46,33 @@ try{
 
   $stamp=Get-Date -Format "yyyyMMdd_HHmmss"
   $log=Join-Path $logs ("backend_dev_" + $stamp + ".log")
+  Write-Host ("LOG: " + $log) -ForegroundColor Cyan
 
   $cmdLine="cd /d `"$backend`" && set NODE_ENV=test && set PORT=$port && `"$npm`" run dev >> `"$log`" 2>&1"
-  Start-Process cmd.exe -ArgumentList @("/k",$cmdLine) | Out-Null
+  Start-Process cmd.exe -ArgumentList @("/c",$cmdLine) | Out-Null
 
-  if(-not (Wait-Health -Base $base)){ throw "STOP: /health not reachable. Log=$log" }
+  if(-not (Wait-Health -Base $base)){
+    Tail-Log -Path $log -Lines 300
+    throw "STOP: /health not reachable."
+  }
 
-  # CONTRACT RESET TARGET
   Invoke-WebRequest -Method Post "$base/__test__/reset" -UseBasicParsing -TimeoutSec 5 | Out-Null
 
   cd $backend
   $env:CONTRACT_BASE_URL=$base
   & $npm run test:contract | Out-Host
-  if($LASTEXITCODE -ne 0){ throw "STOP: contracts failed. Log=$log" }
+  if($LASTEXITCODE -ne 0){
+    Tail-Log -Path $log -Lines 300
+    throw "STOP: contracts failed."
+  }
 
   Write-Host "OK: contracts green." -ForegroundColor Green
-  Write-Host ("LOG: " + $log) -ForegroundColor Cyan
+  exit 0
 }
-catch{ Write-Host $_ -ForegroundColor Red }
-finally{ Read-Host "Press ENTER to exit" }
+catch{
+  Write-Host $_ -ForegroundColor Red
+  exit 1
+}
+finally{
+  Read-Host "Press ENTER to exit"
+}
