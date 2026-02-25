@@ -35,12 +35,8 @@ function Tail-Log([string]$Path,[int]$Lines=250){
 try{
   $REPO="C:\Projects\MindLab_Starter_Project"
   $backend=Join-Path $REPO "backend"
-  $npm="C:\Program Files\nodejs\npm.cmd"
   $logs=Join-Path $REPO "tools\logs"
   New-Item -ItemType Directory -Force -Path $logs | Out-Null
-
-  if(-not (Test-Path $npm)){ throw "STOP: Missing npm => $npm" }
-  if(-not (Test-Path $backend)){ throw "STOP: Missing backend dir => $backend" }
 
   $port=8085
   $base="http://127.0.0.1:$port"
@@ -51,11 +47,18 @@ try{
   $log=Join-Path $logs ("backend_dev_" + $stamp + ".log")
   Write-Host ("LOG: " + $log) -ForegroundColor Cyan
 
-  $cmdLine="cd /d `"$backend`" && set NODE_ENV=test && set PORT=$port && `"$npm`" run dev >> `"$log`" 2>&1"
+  $node=(Get-Command node -ErrorAction Stop).Source
+  if(-not (Test-Path $node)){ throw "STOP: node not found." }
 
-  # KEEP process alive so server stays up
-  $p = Start-Process cmd.exe -ArgumentList @("/k",$cmdLine) -PassThru
-  if(-not $p){ throw "STOP: failed to start backend process." }
+  $server=Join-Path $backend "src\server.cjs"
+  if(-not (Test-Path $server)){ throw "STOP: Missing server => $server" }
+
+  $env:NODE_ENV="test"
+  $env:PORT="$port"
+
+  # Start backend directly (NO cmd window)
+  $p = Start-Process -FilePath $node -ArgumentList @($server) -WorkingDirectory $backend -PassThru -RedirectStandardOutput $log -RedirectStandardError $log
+  if(-not $p){ throw "STOP: failed to start backend." }
   Write-Host ("BACKEND_PID: " + $p.Id) -ForegroundColor Cyan
 
   if(-not (Wait-Health -Base $base)){
@@ -69,6 +72,9 @@ try{
   Write-Host "OK: /__test__/reset posted." -ForegroundColor Green
 
   cd $backend
+  $npm="C:\Program Files\nodejs\npm.cmd"
+  if(-not (Test-Path $npm)){ throw "STOP: Missing npm => $npm" }
+
   $env:CONTRACT_BASE_URL=$base
   & $npm run test:contract | Out-Host
   $code=$LASTEXITCODE
