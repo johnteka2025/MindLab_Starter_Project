@@ -85,6 +85,20 @@ try{
     daily.__clearDailyAnsweredState();
   }
 } catch (_) { /* ignore */ }
+  // CLEAR_DAILY_ANSWERED_AND_PROGRESS
+  try {
+    const daily = require("../daily-challenge/dailyChallengeRoutes.cjs");
+    if (daily && typeof daily.__clearDailyAnsweredState === "function") {
+      daily.__clearDailyAnsweredState();
+    }
+  } catch (_) { /* ignore */ }
+
+  try {
+    const fs = require("fs");
+    const path = require("path");
+    const p = path.join(__dirname, "..", "data", "progress.json");
+    if (fs.existsSync(p)) fs.unlinkSync(p);
+  } catch (_) { /* ignore */ }
 res.status(204).end(); }
     catch { return res.status(500).json({ error: "reset_failed" }); }
   });
