@@ -4,20 +4,6 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-// RESET ENDPOINTS (contract gate + dev)
-const __resetHandler = (req, res) => {
-  // RESET_CLEARS_DAILY_STATE
-  try{
-    if (dailyRoutes && typeof dailyRoutes.__clearDailyAnsweredState === 'function') {
-      dailyRoutes.__clearDailyAnsweredState();
-    }
-  } catch (_) { /* ignore */ }
-  return res.status(204).end();
-};
-app.post('/reset', __resetHandler);
-app.post('/__test__/reset', __resetHandler);
-app.post('/api/reset', __resetHandler);
-app.post('/api/__test__/reset', __resetHandler);
 const testRoutes = require("./routes/__test__.cjs");
 app.use(testRoutes);
 const PORT = process.env.PORT || 8085;
