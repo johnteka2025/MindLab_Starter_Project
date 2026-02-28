@@ -1,4 +1,4 @@
-﻿param(
+param(
   [ValidateSet("test")]
   [string]$Mode="test",
   [int]$BackendPort=8085,
