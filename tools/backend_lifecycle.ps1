@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory=$true)]
   [ValidateSet("start","stop")]
   [string]$Mode,
@@ -109,4 +109,5 @@ try {
 catch {
   Fail ("STOP: backend_lifecycle crashed: {0}" -f $_.Exception.Message)
 }
+
 
