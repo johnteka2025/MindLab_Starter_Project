@@ -56,3 +56,7 @@ backend/data/progress.json
 backend/.jest_showConfig.txt
 tools/logs/
 tools/logs/**
+
+tools/pids/
+
+tools/backups/
