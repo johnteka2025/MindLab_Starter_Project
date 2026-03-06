@@ -8,7 +8,7 @@ try{
   Set-Location $REPO
   if(-not (Test-Path ".git")){ Stop-With "STOP: not a git repository" }
 
-  # Only clean runtime artifacts (do NOT delete backend\node_modules)
+  # Preserve source/features. Clean runtime only.
   $runtimeDirs=@(
     "$REPO\tools\logs",
     "$REPO\tools\pids"
@@ -16,12 +16,13 @@ try{
 
   foreach($d in $runtimeDirs){
     if(Test-Path $d){
-      Remove-Item $d -Recurse -Force -ErrorAction SilentlyContinue
+      Get-ChildItem -Path $d -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+    } else {
+      New-Item -ItemType Directory -Force -Path $d | Out-Null
     }
-    New-Item -ItemType Directory -Force -Path $d | Out-Null
   }
 
-  # Clean node runtime junk safely
+  # Safe cleanup for runtime junk only
   $junk=@(
     "$REPO\backend\npm-debug.log",
     "$REPO\backend\yarn-error.log"
@@ -30,10 +31,7 @@ try{
     if(Test-Path $f){ Remove-Item $f -Force -ErrorAction SilentlyContinue }
   }
 
-  # Remove untracked artifacts ONLY inside tools runtime dirs (if any)
-  & git clean -fd -- tools/logs tools/pids 2>$null | Out-Host
-
-  Write-Host "OK: CLEAN_REPO completed (node_modules preserved)" -ForegroundColor Green
+  Write-Host "OK: CLEAN_REPO completed (feature files preserved)" -ForegroundColor Green
 }
 catch{ Write-Host $_ -ForegroundColor Red; throw }
 finally{ Read-Host "Press ENTER (PowerShell stays open)" }
