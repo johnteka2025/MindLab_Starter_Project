@@ -60,3 +60,6 @@ tools/logs/**
 tools/pids/
 
 tools/backups/
+
+docs/*.docx
+
