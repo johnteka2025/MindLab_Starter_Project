@@ -1,43 +1,86 @@
 ﻿Set-StrictMode -Version Latest
 $ErrorActionPreference="Stop"
-
-function Stop-With([string]$msg){ Write-Host $msg -ForegroundColor Red; throw $msg }
+function Stop-With([string]$m){ Write-Host $m -ForegroundColor Red; throw $m }
 
 try{
   $REPO="C:\Projects\MindLab_Starter_Project"
   $BACKEND="$REPO\backend"
   $TOOLS="$REPO\tools"
+  $LOGDIR="$TOOLS\logs"
 
-  Set-Location $REPO
+  if(!(Test-Path $BACKEND)){ Stop-With "STOP: missing backend -> $BACKEND" }
 
-  # Repo clean (protect tool scripts)
-  git restore --worktree --staged .
-  git clean -fd -e tools/logs/ -e tools/pids/ -e tools/backups/ -e tools/*.ps1 -e tools/*.psm1
-  $s=git status --porcelain
-  if($s){ $s | Out-Host; Stop-With "STOP: repo not clean" }
+  & "$TOOLS\CLEAN_REPO.ps1"
 
-  # Critical files
-  $files=@(
-    "$REPO\.gitattributes",
-    "$TOOLS\ONE_BUTTON_GUARD.ps1",
-    "$TOOLS\CONTRACT_TEST.ps1",
-    "$REPO\backend\src\routes\daily.cjs",
-    "$REPO\backend\src\server.cjs"
-  )
-  foreach($f in $files){ if(!(Test-Path $f)){ Stop-With "STOP: missing critical file -> $f" } }
+  Push-Location $BACKEND
 
-  # Node syntax
-  & cmd.exe /d /c "cd /d ""$BACKEND"" && node -c ""src\server.cjs"""
+  if(!(Test-Path "$BACKEND\node_modules")){
+    & cmd.exe /d /c "npm install" | Out-Host
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: npm install failed" }
+  }
+
+  if(!(Test-Path "$BACKEND\node_modules\.bin\nodemon.cmd")){
+    & cmd.exe /d /c "npm install --save-dev nodemon" | Out-Host
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: nodemon install failed" }
+  }
+
+  & node -c "src\server.cjs"
   if($LASTEXITCODE -ne 0){ Stop-With "STOP: node -c failed (server.cjs)" }
 
-  & cmd.exe /d /c "cd /d ""$BACKEND"" && node -c ""src\routes\daily.cjs"""
-  if($LASTEXITCODE -ne 0){ Stop-With "STOP: node -c failed (daily.cjs)" }
+  if(Test-Path "src\routes\daily.cjs"){
+    & node -c "src\routes\daily.cjs"
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: node -c failed (daily.cjs)" }
+  }
 
-  # Guard + contracts
-  & "$TOOLS\ONE_BUTTON_GUARD.ps1"
-  & "$TOOLS\CONTRACT_TEST.ps1"
+  if(Test-Path "src\engine\dailyPuzzle.cjs"){
+    & node -c "src\engine\dailyPuzzle.cjs"
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: node -c failed (dailyPuzzle.cjs)" }
+  }
+
+  if(Test-Path "src\engine\answerValidation.cjs"){
+    & node -c "src\engine\answerValidation.cjs"
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: node -c failed (answerValidation.cjs)" }
+  }
+
+  if(Test-Path "scripts\engine_smoke.cjs"){
+    & node -c "scripts\engine_smoke.cjs"
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: node -c failed (engine_smoke.cjs)" }
+    & node "scripts\engine_smoke.cjs" | Out-Host
+    if($LASTEXITCODE -ne 0){ Stop-With "STOP: engine smoke failed" }
+  }
+
+  Pop-Location
+
+  if(Test-Path "$TOOLS\BAN_PID_SCAN.ps1"){
+    & "$TOOLS\BAN_PID_SCAN.ps1"
+  }
+
+  if(Test-Path "$TOOLS\PHASE2_SMOKE.ps1"){
+    & "$TOOLS\PHASE2_SMOKE.ps1"
+  }
+
+  & "$TOOLS\BACKEND_DEV_STOP.ps1"  | Out-Null
+  & "$TOOLS\BACKEND_DEV_START.ps1" | Out-Null
+
+  try{
+    & "$TOOLS\HEALTH_CHECK.ps1" | Out-Null
+  } catch {
+    if(Test-Path $LOGDIR){
+      $latest = Get-ChildItem $LOGDIR -Filter "backend_dev_*.err.log" -ErrorAction SilentlyContinue |
+        Sort-Object LastWriteTime -Descending | Select-Object -First 1
+      if($latest){
+        Write-Host ("ERR_LOG=" + $latest.FullName) -ForegroundColor Cyan
+        Get-Content $latest.FullName -Tail 120 | Out-Host
+      }
+    }
+    throw
+  }
+
+  Set-Location $REPO
+  $s = git status --porcelain
+  if($s){ $s | Out-Host; Stop-With "STOP: repo became dirty after gates" }
 
   Write-Host "OK: RUN_ALL_GATES PASSED" -ForegroundColor Green
 }
-catch{ Write-Host $_ -ForegroundColor Red }
-finally{ Read-Host "Press ENTER to exit" }
+catch{ Write-Host $_ -ForegroundColor Red; throw }
+finally{ Read-Host "Press ENTER (PowerShell stays open)" }
