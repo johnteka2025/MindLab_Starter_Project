@@ -15,4 +15,8 @@ const contracts = {
     }
 };
 
-console.log(JSON.stringify(contracts, null, 2));
+module.exports = contracts;
+
+if (require.main === module) {
+    console.log(JSON.stringify(contracts, null, 2));
+}
