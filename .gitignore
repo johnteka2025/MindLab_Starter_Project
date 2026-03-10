@@ -63,3 +63,6 @@ tools/backups/
 
 docs/*.docx
 
+
+backend/artifacts/
+

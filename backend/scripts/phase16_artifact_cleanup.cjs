@@ -3,7 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const targetFile = path.join(__dirname, "..", "artifacts", "phase16_client_snapshot.json");
+const targetDir = path.join(__dirname, "..", "artifacts");
+const targetFile = path.join(targetDir, "phase16_client_snapshot.json");
 
 function main() {
     if (fs.existsSync(targetFile)) {
@@ -13,7 +14,19 @@ function main() {
         console.log("OK PHASE16 ARTIFACT CLEANUP NO FILE");
     }
 
-    console.log(targetFile);
+    if (fs.existsSync(targetDir)) {
+        const remaining = fs.readdirSync(targetDir);
+        if (remaining.length === 0) {
+            fs.rmdirSync(targetDir);
+            console.log("OK PHASE16 ARTIFACT CLEANUP REMOVED DIR");
+        } else {
+            console.log("OK PHASE16 ARTIFACT CLEANUP DIR NOT EMPTY");
+        }
+    } else {
+        console.log("OK PHASE16 ARTIFACT CLEANUP NO DIR");
+    }
+
+    console.log(targetDir);
 }
 
 main();
