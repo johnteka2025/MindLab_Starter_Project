@@ -60,6 +60,9 @@ async function main() {
 
         assert(sessionResponse.statusCode === 200, "game-session status mismatch");
         assert(sessionResponse.body.ok === true, "game-session top-level ok mismatch");
+        assert(sessionResponse.body.result.ok === true, "game-session result ok mismatch");
+        assert(sessionResponse.body.result.player === "Maya", "game-session player mismatch");
+        assert(sessionResponse.body.result.difficulty === "medium", "game-session difficulty mismatch");
 
         const matchResponse = await postJson(8132, "/game/multiplayer-match", {
             matchId: "match-200",
@@ -72,6 +75,12 @@ async function main() {
 
         assert(matchResponse.statusCode === 200, "multiplayer-match status mismatch");
         assert(matchResponse.body.ok === true, "multiplayer-match top-level ok mismatch");
+        assert(matchResponse.body.result.ok === true, "multiplayer-match result ok mismatch");
+        assert(matchResponse.body.result.matchId === "match-200", "multiplayer-match id mismatch");
+        assert(matchResponse.body.result.hostPlayer === "Maya", "multiplayer-match host mismatch");
+        assert(matchResponse.body.result.guestPlayer === "Noah", "multiplayer-match guest mismatch");
+        assert(matchResponse.body.result.category === "science", "multiplayer-match category mismatch");
+        assert(matchResponse.body.result.questionCount === 12, "multiplayer-match questionCount mismatch");
 
         const aiResponse = await postJson(8132, "/game/ai-difficulty-calibration", {
             playerAccuracy: 90,
@@ -80,6 +89,9 @@ async function main() {
 
         assert(aiResponse.statusCode === 200, "ai-difficulty-calibration status mismatch");
         assert(aiResponse.body.ok === true, "ai-difficulty-calibration top-level ok mismatch");
+        assert(aiResponse.body.result.ok === true, "ai-difficulty-calibration result ok mismatch");
+        assert(aiResponse.body.result.playerAccuracy === 90, "ai playerAccuracy mismatch");
+        assert(aiResponse.body.result.responseTimeMs === 7000, "ai responseTimeMs mismatch");
         assert(aiResponse.body.result.recommendedDifficulty === "hard", "ai difficulty mismatch");
 
         console.log("OK PHASE15 ROUTE REGRESSION SMOKE PASSED");
