@@ -32,4 +32,8 @@ function main() {
     console.log("OK PHASE16 FRONTEND HANDOFF PACKAGE VERIFIER PASSED");
 }
 
-main();
+module.exports = { main };
+
+if (require.main === module) {
+    main();
+}
