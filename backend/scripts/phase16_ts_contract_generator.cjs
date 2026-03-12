@@ -13,7 +13,14 @@ function main() {
     }
 
     lines.push("};");
-    console.log(lines.join("\n"));
+
+    const output = lines.join("\n");
+    console.log(output);
+    return output;
 }
 
-main();
+module.exports = { main };
+
+if (require.main === module) {
+    main();
+}
