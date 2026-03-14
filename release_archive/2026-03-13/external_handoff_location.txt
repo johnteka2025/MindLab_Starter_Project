@@ -1,0 +1,5 @@
+﻿EXTERNAL HANDOFF LOCATION
+DATE=2026-03-14
+FOLDER=C:\MindLab_External_Handoff\2026-03-14
+ZIP=C:\MindLab_External_Handoff\MindLab_External_Handoff_2026-03-14.zip
+REPO_STATE=CLEAN
