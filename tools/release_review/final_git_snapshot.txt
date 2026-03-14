@@ -1,0 +1,22 @@
+﻿BRANCH=phase11/daily-answer-validation
+HEAD=ba664680cdc1b0e3fd4649ea63d75dd6577c0bd4
+
+RECENT_COMMITS
+ba66468 feat: add Phase26 final release adapter and verifiers
+d75ff54 feat: add Phase25 deployment adapter and verifiers
+a7eb289 feat: add Phase24 packaging adapter and verifiers
+7bc68c0 feat: add Phase23 frontend client adapter and verifiers
+a94b903 feat: Phase22 telemetry system
+aa78bae feat: add Phase21 replay adapter and verifiers
+ffa5c79 feat: add Phase20 leaderboard adapter and verifiers
+866b2f4 feat: add Phase19 session persistence adapter and verifiers
+32ef415 feat: add Phase18 AI runtime adapter and difficulty verifiers
+834a018 feat: add Phase17 multiplayer orchestration skeleton and verifiers
+32cdb8d feat: finalize Phase16 TypeScript writer and end-to-end smoke tooling
+72c64ae feat: complete Phase16 TS writer and end-to-end smoke block
+e21c240 fix: export frontend handoff main functions for smoke runner
+09b6974 feat: add response type generator and frontend handoff guards
+246c610 feat: add frontend handoff TypeScript generators and package writer
+
+STATUS
+?? tools/release_review/
