@@ -1,0 +1,21 @@
+﻿CI OPERATIONS CHECKLIST
+DATE=2026-03-15
+STATE=READY
+
+CHECKLIST
+1. Verify repository clean before CI runs
+2. Verify .github\workflows\mindlab-ci.yml exists
+3. Verify tools\RUN_ALL_GATES.ps1 exists
+4. Verify tools\MASTER_CONTINUATION_CONTROL.ps1 exists
+5. Verify tools\EXPORT_RELEASE_PACKAGE.ps1 exists
+6. Run RUN_ALL_GATES manually before major changes
+7. Confirm release export zip exists when required
+8. Confirm archival notes are committed
+9. Confirm release tag exists
+10. Confirm repo returns to clean state after all gates
+
+CRITICAL PATHS
+C:\Projects\MindLab_Starter_Project\.github\workflows\mindlab-ci.yml
+C:\Projects\MindLab_Starter_Project\tools\RUN_ALL_GATES.ps1
+C:\Projects\MindLab_Starter_Project\tools\MASTER_CONTINUATION_CONTROL.ps1
+C:\Projects\MindLab_Starter_Project\tools\EXPORT_RELEASE_PACKAGE.ps1

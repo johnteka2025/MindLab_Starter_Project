@@ -1,0 +1,23 @@
+﻿RELEASE EXPORT CHECKLIST
+DATE=2026-03-15
+ZIP=C:\MindLab_Release_Export\MindLab_Release_Export_2026-03-15.zip
+ZIP_SIZE=3648
+ZIP_LAST_WRITE=03/15/2026 16:30:15
+
+CHECKLIST
+1. Verify release export zip exists
+2. Verify export script exists
+3. Verify archive notes exist
+4. Verify final review files exist
+5. Verify handoff bundle exists
+6. Verify repo clean before export
+7. Verify repo clean after export
+8. Verify release tag exists
+9. Verify RUN_ALL_GATES passed
+10. Verify export artifacts are outside repo when possible
+
+CRITICAL PATHS
+C:\MindLab_Release_Export\MindLab_Release_Export_2026-03-15.zip
+C:\Projects\MindLab_Starter_Project\tools\EXPORT_RELEASE_PACKAGE.ps1
+C:\Projects\MindLab_Starter_Project\release_archive\2026-03-13\archival_handoff_manifest.txt
+C:\Projects\MindLab_Starter_Project\release_archive\2026-03-13\master_control_validation.txt
