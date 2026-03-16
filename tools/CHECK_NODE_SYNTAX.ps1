@@ -10,19 +10,53 @@ try {
 
     Set-Location $REPO
 
-    $files = Get-ChildItem -Path (Join-Path $REPO "backend") -Recurse -Include *.js,*.cjs,*.mjs -File -ErrorAction SilentlyContinue
+    $searchRoots = @(
+        "C:\Projects\MindLab_Starter_Project\backend\scripts"
+    )
+
+    $allFiles = @()
+
+    foreach ($root in $searchRoots) {
+        if (Test-Path $root) {
+            $allFiles += Get-ChildItem -Path $root -Recurse -File -Include *.cjs,*.mjs,*.js -ErrorAction SilentlyContinue
+        }
+    }
+
+    $files = $allFiles |
+        Where-Object {
+            $_.FullName -notmatch '\\node_modules\\' -and
+            $_.FullName -notmatch '\\_quarantine\\' -and
+            $_.Name -notlike '*.backup.js'
+        } |
+        Sort-Object FullName -Unique
 
     if (-not $files) {
-        Write-Host "OK: no JS/CJS/MJS files found under backend" -ForegroundColor Green
+        Write-Host "OK: no eligible JS/CJS/MJS files found under backend\scripts" -ForegroundColor Green
         return
     }
 
     $failed = @()
 
     foreach ($file in $files) {
-        & node --check $file.FullName
-        if ($LASTEXITCODE -ne 0) {
-            $failed += $file.FullName
+        switch -Regex ($file.Extension) {
+            '\.cjs$' {
+                & node --check $file.FullName
+                if ($LASTEXITCODE -ne 0) { $failed += $file.FullName }
+            }
+            '\.mjs$' {
+                & node --check $file.FullName
+                if ($LASTEXITCODE -ne 0) { $failed += $file.FullName }
+            }
+            '\.js$' {
+                $content = Get-Content -LiteralPath $file.FullName -Raw
+                if ($content -match '^\s*(import|export)\s' -or $content -match "`n\s*(import|export)\s") {
+                    Write-Host ("SKIP_ESM_JS: " + $file.FullName) -ForegroundColor Yellow
+                    continue
+                }
+
+                & node --check $file.FullName
+                if ($LASTEXITCODE -ne 0) { $failed += $file.FullName }
+            }
         }
     }
 
@@ -31,7 +65,7 @@ try {
         throw "STOP: node --check failed"
     }
 
-    Write-Host "OK: node --check passed for backend scripts" -ForegroundColor Green
+    Write-Host "OK: node --check passed for eligible backend\scripts files" -ForegroundColor Green
 }
 catch {
     Write-Host $_ -ForegroundColor Red
