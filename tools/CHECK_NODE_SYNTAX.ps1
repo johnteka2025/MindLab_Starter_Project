@@ -1,13 +1,9 @@
 ﻿Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$global:LASTEXITCODE = 0
 
 try {
     $REPO = "C:\Projects\MindLab_Starter_Project"
-
-    if (!(Test-Path $REPO)) {
-        throw "STOP: repo missing"
-    }
-
     Set-Location $REPO
 
     $searchRoots = @(
@@ -32,7 +28,7 @@ try {
 
     if (-not $files) {
         Write-Host "OK: no eligible JS/CJS/MJS files found under backend\scripts" -ForegroundColor Green
-        return
+        exit 0
     }
 
     $failed = @()
@@ -66,9 +62,11 @@ try {
     }
 
     Write-Host "OK: node --check passed for eligible backend\scripts files" -ForegroundColor Green
+    exit 0
 }
 catch {
     Write-Host $_ -ForegroundColor Red
+    exit 1
 }
 finally {
     Read-Host "Press ENTER (PowerShell stays open)"
