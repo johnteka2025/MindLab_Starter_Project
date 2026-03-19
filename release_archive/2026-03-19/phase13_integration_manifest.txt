@@ -1,0 +1,15 @@
+﻿PHASE13 INTEGRATION MANIFEST
+DATE=2026-03-19
+STATUS=CREATED
+
+FILES
+- backend/scripts/phase13_integration_adapter.cjs
+- backend/scripts/phase13_runtime_bridge.cjs
+- backend/scripts/phase13_validation_gateway.cjs
+- backend/scripts/phase13_core_smoke.cjs
+- backend/scripts/phase13_core_reconcile_verifier.cjs
+
+NEXT_TARGET
+- phase13 integration validation
+- commit phase13 integration
+- confirm clean health + pre-flight
