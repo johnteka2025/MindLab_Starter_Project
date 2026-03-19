@@ -15,6 +15,9 @@ const required = [
   "phase13_integration_adapter.cjs",
   "phase13_runtime_bridge.cjs",
   "phase13_validation_gateway.cjs",
+  "phase13_completion_coordinator.cjs",
+  "phase13_release_checkpoint.cjs",
+  "phase13_completion_audit.cjs",
   "phase13_core_smoke.cjs"
 ];
 
@@ -25,4 +28,4 @@ for (const file of required) {
   }
 }
 
-console.log("OK: PHASE13_RECONCILE_VERIFIER integration passed");
+console.log("OK: PHASE13_RECONCILE_VERIFIER completion passed");

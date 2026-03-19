@@ -11,6 +11,9 @@ const { normalizePhase13Output } = require("./phase13_output_normalizer.cjs");
 const { createPhase13IntegrationAdapter } = require("./phase13_integration_adapter.cjs");
 const { createPhase13RuntimeBridge } = require("./phase13_runtime_bridge.cjs");
 const { runPhase13ValidationGateway } = require("./phase13_validation_gateway.cjs");
+const { createPhase13CompletionCoordinator } = require("./phase13_completion_coordinator.cjs");
+const { createPhase13ReleaseCheckpoint } = require("./phase13_release_checkpoint.cjs");
+const { runPhase13CompletionAudit } = require("./phase13_completion_audit.cjs");
 
 const scope = getPhase13Scope();
 const contract = getPhase13ScopeContract();
@@ -19,58 +22,46 @@ const snapshotManager = createPhase13StateSnapshotManager();
 const orchestrator = createPhase13ExecutionOrchestrator();
 const adapter = createPhase13IntegrationAdapter();
 const bridge = createPhase13RuntimeBridge();
+const completion = createPhase13CompletionCoordinator();
+const releaseCheckpoint = createPhase13ReleaseCheckpoint();
 
-if (!scope || scope.phase !== "phase13") {
-  throw new Error("STOP: phase13 scope invalid");
-}
+if (!scope || scope.phase !== "phase13") throw new Error("STOP: phase13 scope invalid");
+if (!contract || contract.phase !== "phase13") throw new Error("STOP: phase13 contract invalid");
 
-if (!contract || contract.phase !== "phase13") {
-  throw new Error("STOP: phase13 contract invalid");
-}
+const routed = routePhase13Request({ route: "completion", payload: { mode: "test" } });
+if (!routed.ok) throw new Error("STOP: phase13 request router failed");
 
-const routed = routePhase13Request({ route: "integration", payload: { mode: "test" } });
-if (!routed.ok) {
-  throw new Error("STOP: phase13 request router failed");
-}
-
-const pipelineResult = controller.run({ mode: "integration-check", routed });
-if (!pipelineResult.ok) {
-  throw new Error("STOP: phase13 pipeline controller failed");
-}
+const pipelineResult = controller.run({ mode: "completion-check", routed });
+if (!pipelineResult.ok) throw new Error("STOP: phase13 pipeline controller failed");
 
 const integrated = adapter.connect({ pipelineResult });
-if (!integrated.ok) {
-  throw new Error("STOP: phase13 integration adapter failed");
-}
+if (!integrated.ok) throw new Error("STOP: phase13 integration adapter failed");
 
 const bridged = bridge.bridge({ integrated });
-if (!bridged.ok) {
-  throw new Error("STOP: phase13 runtime bridge failed");
-}
+if (!bridged.ok) throw new Error("STOP: phase13 runtime bridge failed");
 
 const executed = orchestrator.execute({ bridged });
-if (!executed.ok) {
-  throw new Error("STOP: phase13 execution orchestrator failed");
-}
+if (!executed.ok) throw new Error("STOP: phase13 execution orchestrator failed");
 
-const snapshot = snapshotManager.takeSnapshot({ phase: "phase13", status: "integration" });
-if (!snapshot.ok) {
-  throw new Error("STOP: phase13 snapshot manager failed");
-}
+const snapshot = snapshotManager.takeSnapshot({ phase: "phase13", status: "completion" });
+if (!snapshot.ok) throw new Error("STOP: phase13 snapshot manager failed");
 
 const formatted = formatPhase13Result({ executed, snapshot });
-if (!formatted.ok) {
-  throw new Error("STOP: phase13 result formatter failed");
-}
+if (!formatted.ok) throw new Error("STOP: phase13 result formatter failed");
 
 const normalized = normalizePhase13Output(formatted);
-if (!normalized.ok) {
-  throw new Error("STOP: phase13 output normalizer failed");
-}
+if (!normalized.ok) throw new Error("STOP: phase13 output normalizer failed");
 
 const validated = runPhase13ValidationGateway(normalized);
-if (!validated.ok) {
-  throw new Error("STOP: phase13 validation gateway failed");
-}
+if (!validated.ok) throw new Error("STOP: phase13 validation gateway failed");
 
-console.log("OK: PHASE13_CORE_SMOKE integration passed");
+const finalized = completion.finalize({ validated });
+if (!finalized.ok) throw new Error("STOP: phase13 completion coordinator failed");
+
+const checkpointed = releaseCheckpoint.checkpoint({ finalized });
+if (!checkpointed.ok) throw new Error("STOP: phase13 release checkpoint failed");
+
+const audited = runPhase13CompletionAudit({ checkpointed });
+if (!audited.ok) throw new Error("STOP: phase13 completion audit failed");
+
+console.log("OK: PHASE13_CORE_SMOKE completion passed");
