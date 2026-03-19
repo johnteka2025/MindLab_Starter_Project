@@ -1,0 +1,16 @@
+﻿PHASE13 PREP CHECKLIST
+DATE=2026-03-19
+STATUS=READY_TO_START
+
+REQUIRED_START_CONDITIONS
+- repo clean
+- health passing on http://127.0.0.1:8085/health
+- pre-flight passing
+- latest clean backup exists
+
+NEXT POSSIBLE TASKS
+1. define Phase 13 scope
+2. create Phase 13 script placeholders
+3. add Phase 13 smoke verifier
+4. add Phase 13 reconcile verifier
+5. validate targeted checks before backend operations
