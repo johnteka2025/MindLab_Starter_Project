@@ -5,6 +5,10 @@ const path = require("path");
 
 const required = [
   "phase14_scope_placeholder.cjs",
+  "phase14_scope_contract.cjs",
+  "phase14_pipeline_controller.cjs",
+  "phase14_state_snapshot_manager.cjs",
+  "phase14_result_formatter.cjs",
   "phase14_core_smoke.cjs"
 ];
 
@@ -15,4 +19,4 @@ for (const file of required) {
   }
 }
 
-console.log("OK: PHASE14_RECONCILE_VERIFIER placeholder passed");
+console.log("OK: PHASE14_RECONCILE_VERIFIER foundation passed");
