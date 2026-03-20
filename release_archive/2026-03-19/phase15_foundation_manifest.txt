@@ -1,0 +1,16 @@
+﻿PHASE15 FOUNDATION MANIFEST
+DATE=2026-03-19
+STATUS=CREATED
+
+FILES
+- backend/scripts/phase15_scope_contract.cjs
+- backend/scripts/phase15_pipeline_controller.cjs
+- backend/scripts/phase15_state_snapshot_manager.cjs
+- backend/scripts/phase15_result_formatter.cjs
+- backend/scripts/phase15_core_smoke.cjs
+- backend/scripts/phase15_core_reconcile_verifier.cjs
+
+NEXT_TARGET
+- phase15 foundation validation
+- commit phase15 foundation
+- confirm clean health + pre-flight
