@@ -9,6 +9,9 @@ const required = [
   "phase14_pipeline_controller.cjs",
   "phase14_state_snapshot_manager.cjs",
   "phase14_result_formatter.cjs",
+  "phase14_request_router.cjs",
+  "phase14_execution_orchestrator.cjs",
+  "phase14_output_normalizer.cjs",
   "phase14_core_smoke.cjs"
 ];
 
@@ -19,4 +22,4 @@ for (const file of required) {
   }
 }
 
-console.log("OK: PHASE14_RECONCILE_VERIFIER foundation passed");
+console.log("OK: PHASE14_RECONCILE_VERIFIER implementation passed");
