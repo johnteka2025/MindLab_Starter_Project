@@ -1,37 +1,27 @@
-﻿"use strict";
-
+"use strict";
 const { getPhase15Scope } = require("./phase15_scope_placeholder.cjs");
 const { getPhase15ScopeContract } = require("./phase15_scope_contract.cjs");
 const { createPhase15PipelineController } = require("./phase15_pipeline_controller.cjs");
 const { createPhase15StateSnapshotManager } = require("./phase15_state_snapshot_manager.cjs");
 const { formatPhase15Result } = require("./phase15_result_formatter.cjs");
+const { routePhase15Request } = require("./phase15_request_router.cjs");
+const { createPhase15ExecutionOrchestrator } = require("./phase15_execution_orchestrator.cjs");
+const { normalizePhase15Output } = require("./phase15_output_normalizer.cjs");
 
 const scope = getPhase15Scope();
-const contract = getPhase15ScopeContract();
+if (!scope || scope.phase !== "phase15") throw new Error("STOP");
+
+const routed = routePhase15Request({mode:"impl"});
 const controller = createPhase15PipelineController();
-const snapshotManager = createPhase15StateSnapshotManager();
+const result = controller.run(routed);
 
-if (!scope || scope.phase !== "phase15") {
-  throw new Error("STOP: phase15 scope invalid");
-}
+const orchestrator = createPhase15ExecutionOrchestrator();
+const executed = orchestrator.execute(result);
 
-if (!contract || contract.phase !== "phase15") {
-  throw new Error("STOP: phase15 contract invalid");
-}
+const snapshot = createPhase15StateSnapshotManager().takeSnapshot(executed);
+const formatted = formatPhase15Result(snapshot);
+const normalized = normalizePhase15Output(formatted);
 
-const pipelineResult = controller.run({ mode: "foundation-check" });
-if (!pipelineResult.ok) {
-  throw new Error("STOP: phase15 pipeline controller failed");
-}
+if (!normalized.ok) throw new Error("STOP");
 
-const snapshot = snapshotManager.takeSnapshot({ phase: "phase15", status: "testing" });
-if (!snapshot.ok) {
-  throw new Error("STOP: phase15 snapshot manager failed");
-}
-
-const formatted = formatPhase15Result({ pipelineResult, snapshot });
-if (!formatted.ok) {
-  throw new Error("STOP: phase15 result formatter failed");
-}
-
-console.log("OK: PHASE15_CORE_SMOKE foundation passed");
+console.log("OK: PHASE15 IMPLEMENTATION SMOKE");
