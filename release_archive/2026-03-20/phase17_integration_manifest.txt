@@ -1,0 +1,15 @@
+﻿PHASE17 INTEGRATION MANIFEST
+DATE=2026-03-20
+STATUS=CREATED
+
+FILES
+- backend/scripts/phase17_integration_adapter.cjs
+- backend/scripts/phase17_runtime_bridge.cjs
+- backend/scripts/phase17_validation_gateway.cjs
+- backend/scripts/phase17_core_smoke.cjs
+- backend/scripts/phase17_core_reconcile_verifier.cjs
+
+NEXT_TARGET
+- phase17 integration validation
+- commit phase17 integration
+- confirm clean health + pre-flight
