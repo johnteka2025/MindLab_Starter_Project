@@ -1,0 +1,16 @@
+﻿PHASE17 FOUNDATION MANIFEST
+DATE=2026-03-20
+STATUS=CREATED
+
+FILES
+- backend/scripts/phase17_scope_contract.cjs
+- backend/scripts/phase17_pipeline_controller.cjs
+- backend/scripts/phase17_state_snapshot_manager.cjs
+- backend/scripts/phase17_result_formatter.cjs
+- backend/scripts/phase17_core_smoke.cjs
+- backend/scripts/phase17_core_reconcile_verifier.cjs
+
+NEXT_TARGET
+- phase17 foundation validation
+- commit phase17 foundation
+- confirm clean health + pre-flight
