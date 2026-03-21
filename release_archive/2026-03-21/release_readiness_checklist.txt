@@ -1,0 +1,9 @@
+﻿RELEASE READINESS CHECKLIST
+DATE=2026-03-21
+STATUS=READY
+- gameplay gates
+- save/load validation
+- performance validation
+- UI/UX/audio/accessibility validation
+- release candidate build
+- release candidate gates
