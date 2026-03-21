@@ -9,6 +9,9 @@ const required = [
   "phase18_pipeline_controller.cjs",
   "phase18_state_snapshot_manager.cjs",
   "phase18_result_formatter.cjs",
+  "phase18_request_router.cjs",
+  "phase18_execution_orchestrator.cjs",
+  "phase18_output_normalizer.cjs",
   "phase18_core_smoke.cjs"
 ];
 
@@ -17,4 +20,4 @@ for (const file of required) {
   if (!fs.existsSync(full)) throw new Error("STOP: missing " + full);
 }
 
-console.log("OK: PHASE18_RECONCILE_VERIFIER foundation passed");
+console.log("OK: PHASE18_RECONCILE_VERIFIER implementation passed");
