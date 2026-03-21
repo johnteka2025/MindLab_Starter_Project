@@ -1,44 +1,25 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
-    $urls = @(
-        "http://127.0.0.1:8085/health",
-        "http://localhost:8085/health",
-        "http://127.0.0.1:8085/",
-        "http://localhost:8085/",
-        "http://127.0.0.1:3000/health",
-        "http://localhost:3000/health",
-        "http://127.0.0.1:5000/health",
-        "http://localhost:5000/health",
-        "http://127.0.0.1:8000/health",
-        "http://localhost:8000/health",
-        "http://127.0.0.1:3000/",
-        "http://localhost:3000/",
-        "http://127.0.0.1:5000/",
-        "http://localhost:5000/",
-        "http://127.0.0.1:8000/",
-        "http://localhost:8000/"
-    )
+    $url = "http://127.0.0.1:8085/health"
+    $r = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 10
 
-    foreach ($url in $urls) {
-        try {
-            $resp = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 8
-            if ($resp.StatusCode -ge 200 -and $resp.StatusCode -lt 500) {
-                Write-Host "OK: reachable -> $($resp.StatusCode) ($url)" -ForegroundColor Green
-                exit 0
-            }
-        }
-        catch {
-        }
+    if ($r.StatusCode -lt 200 -or $r.StatusCode -ge 300) {
+        throw "STOP: unreachable -> $($r.StatusCode) ($url)"
     }
 
-    throw "STOP: backend endpoint unreachable"
+    Write-Host ("OK: reachable -> " + $r.StatusCode + " (" + $url + ")") -ForegroundColor Green
+    Complete-Step -Code 0 -Message "OK: health check passed"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) { Wait-ForUser }
 }

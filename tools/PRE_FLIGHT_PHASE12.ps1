@@ -1,41 +1,43 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
-    $REPO = "C:\Projects\MindLab_Starter_Project"
+    $Repo = "C:\Projects\MindLab_Starter_Project"
+    Set-Location $Repo
 
-    if (!(Test-Path $REPO)) {
-        throw "STOP: repo missing"
-    }
-
-    Set-Location $REPO
-
-    $critical = @(
-        "C:\Projects\MindLab_Starter_Project\.github\workflows\mindlab-ci.yml",
-        "C:\Projects\MindLab_Starter_Project\tools\RUN_ALL_GATES.ps1",
-        "C:\Projects\MindLab_Starter_Project\tools\MASTER_CONTINUATION_CONTROL.ps1",
-        "C:\Projects\MindLab_Starter_Project\tools\EXPORT_RELEASE_PACKAGE.ps1",
-        "C:\Projects\MindLab_Starter_Project\tools\CI_RELEASE_AUTOMATION_README.md"
+    $required = @(
+        "$Repo\backend\scripts\phase18_scope_placeholder.cjs",
+        "$Repo\backend\scripts\phase18_scope_contract.cjs",
+        "$Repo\backend\scripts\phase18_pipeline_controller.cjs",
+        "$Repo\backend\scripts\phase18_state_snapshot_manager.cjs",
+        "$Repo\backend\scripts\phase18_result_formatter.cjs"
     )
 
-    foreach ($f in $critical) {
-        if (!(Test-Path $f)) {
-            throw "STOP: missing critical file $f"
+    foreach ($file in $required) {
+        if (!(Test-Path $file)) {
+            throw "STOP: missing critical file $file"
         }
     }
 
     $status = git status --porcelain
     if ($status) {
+        Write-Host "STOP: repository not clean before Phase 12" -ForegroundColor Yellow
         $status | Out-Host
-        throw "STOP: repository dirty before Phase 12"
+        Complete-Step -Code 2 -Message "STOP: repository not clean before Phase 12"
+        return
     }
 
     Write-Host "OK: critical files verified" -ForegroundColor Green
-    Write-Host "OK: repository clean before Phase 12" -ForegroundColor Green
+    Complete-Step -Code 0 -Message "OK: repository clean before Phase 12"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) { Wait-ForUser }
 }
