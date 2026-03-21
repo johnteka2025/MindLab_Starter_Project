@@ -1,0 +1,7 @@
+﻿DELIVERY ONLY LOCK
+DATE=2026-03-21
+STATUS=ACTIVE
+RULES:
+- no further feature changes
+- no scaffold changes
+- only delivery, archive, and verified restore actions allowed
