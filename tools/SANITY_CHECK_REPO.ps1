@@ -1,5 +1,10 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     Set-Location "C:\Projects\MindLab_Starter_Project"
@@ -10,7 +15,8 @@ try {
     if ($status) {
         Write-Host "STOP: repo dirty" -ForegroundColor Yellow
         $status | Out-Host
-        exit 2
+        Complete-Step -Code 2 -Message "STOP: repo dirty"
+        return
     }
 
     & "C:\Projects\MindLab_Starter_Project\tools\CHECK_HEALTH.ps1"
@@ -19,13 +25,11 @@ try {
     & "C:\Projects\MindLab_Starter_Project\tools\PRE_FLIGHT_PHASE12.ps1"
     if ($LASTEXITCODE -ne 0) { throw "STOP: pre-flight failed" }
 
-    Write-Host "OK: sanity check passed" -ForegroundColor Green
-    exit 0
+    Complete-Step -Code 0 -Message "OK: sanity check passed"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) { Wait-ForUser }
 }

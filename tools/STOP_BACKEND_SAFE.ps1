@@ -4,6 +4,7 @@
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     Set-Location "C:\Projects\MindLab_Starter_Project"
@@ -31,15 +32,11 @@ try {
         try { Stop-Process -Id $proc.ProcessId -Force -ErrorAction Stop } catch {}
     }
 
-    Write-Host "OK: backend stop routine completed" -ForegroundColor Green
-    exit 0
+    Complete-Step -Code 0 -Message "OK: backend stop routine completed"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    if (-not $NoPause) {
-        Read-Host "Press ENTER (PowerShell stays open)"
-    }
+    if (-not $NoPause) { Wait-ForUser }
 }

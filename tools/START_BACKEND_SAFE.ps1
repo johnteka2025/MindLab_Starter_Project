@@ -4,6 +4,7 @@
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     $Repo = "C:\Projects\MindLab_Starter_Project"
@@ -22,10 +23,11 @@ try {
     $entry = $entryCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $entry) { throw "STOP: backend entry file not found" }
 
-    $logDir = "$Repo\release_archive\2026-03-21"
+    $logDir = Join-Path $env:TEMP "MindLab_Runtime_Logs"
     New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-    $stdout = "$logDir\backend_stdout.log"
-    $stderr = "$logDir\backend_stderr.log"
+
+    $stdout = Join-Path $logDir "backend_stdout.log"
+    $stderr = Join-Path $logDir "backend_stderr.log"
 
     if (Test-Path $stdout) { Remove-Item $stdout -Force -ErrorAction SilentlyContinue }
     if (Test-Path $stderr) { Remove-Item $stderr -Force -ErrorAction SilentlyContinue }
@@ -40,19 +42,19 @@ try {
     if ($proc.HasExited) {
         Write-Host "STOP: backend exited early" -ForegroundColor Yellow
         if (Test-Path $stderr) { Get-Content $stderr -ErrorAction SilentlyContinue | Out-Host }
-        exit 2
+        Complete-Step -Code 2 -Message "STOP: backend exited early"
+        return
     }
 
-    Write-Host "OK: backend started" -ForegroundColor Green
-    Write-Host "PID=$($proc.Id)" -ForegroundColor Cyan
-    exit 0
+    Write-Host ("PID=" + $proc.Id) -ForegroundColor Cyan
+    Write-Host ("STDOUT=" + $stdout) -ForegroundColor Cyan
+    Write-Host ("STDERR=" + $stderr) -ForegroundColor Cyan
+
+    Complete-Step -Code 0 -Message "OK: backend started"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    if (-not $NoPause) {
-        Read-Host "Press ENTER (PowerShell stays open)"
-    }
+    if (-not $NoPause) { Wait-ForUser }
 }

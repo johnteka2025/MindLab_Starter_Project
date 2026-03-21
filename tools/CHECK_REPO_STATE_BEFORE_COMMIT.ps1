@@ -4,6 +4,7 @@
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     Set-Location "C:\Projects\MindLab_Starter_Project"
@@ -14,21 +15,21 @@ try {
     $staged = git diff --cached --name-only
 
     if (-not $status -and -not $staged) {
-        Write-Host "STOP: nothing to commit; repo already clean" -ForegroundColor Yellow
-        exit 2
+        Complete-Step -Code 2 -Message "STOP: nothing to commit; repo already clean"
+        return
     }
 
-    Write-Host "OK: pending changes detected" -ForegroundColor Green
+    Write-Host "STATUS:" -ForegroundColor Cyan
     if ($status) { $status | Out-Host }
+
+    Write-Host "STAGED:" -ForegroundColor Cyan
     if ($staged) { $staged | Out-Host }
-    exit 0
+
+    Complete-Step -Code 0 -Message "OK: pending changes detected"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    if (-not $NoPause) {
-        Read-Host "Press ENTER (PowerShell stays open)"
-    }
+    if (-not $NoPause) { Wait-ForUser }
 }

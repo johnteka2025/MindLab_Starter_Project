@@ -4,6 +4,7 @@
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     & "C:\Projects\MindLab_Starter_Project\tools\STOP_BACKEND_SAFE.ps1" -NoPause
@@ -18,15 +19,11 @@ try {
     powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Projects\MindLab_Starter_Project\tools\SANITY_CHECK_REPO.ps1"
     if ($LASTEXITCODE -ne 0) { throw "STOP: sanity check failed after backend recovery" }
 
-    Write-Host "OK: backend recovered and sanity passed" -ForegroundColor Green
-    exit 0
+    Complete-Step -Code 0 -Message "OK: backend recovered and sanity passed"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    if (-not $NoPause) {
-        Read-Host "Press ENTER (PowerShell stays open)"
-    }
+    if (-not $NoPause) { Wait-ForUser }
 }
