@@ -1,4 +1,8 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 try {
@@ -23,6 +27,9 @@ try {
     $stdout = "$logDir\backend_stdout.log"
     $stderr = "$logDir\backend_stderr.log"
 
+    if (Test-Path $stdout) { Remove-Item $stdout -Force -ErrorAction SilentlyContinue }
+    if (Test-Path $stderr) { Remove-Item $stderr -Force -ErrorAction SilentlyContinue }
+
     $proc = Start-Process -FilePath "node" -ArgumentList "`"$entry`"" -WorkingDirectory $Repo -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
     if (-not $proc) { throw "STOP: backend failed to start" }
 
@@ -45,5 +52,7 @@ catch {
     exit 1
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) {
+        Read-Host "Press ENTER (PowerShell stays open)"
+    }
 }

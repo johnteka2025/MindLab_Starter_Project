@@ -1,4 +1,8 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 try {
@@ -35,5 +39,7 @@ catch {
     exit 1
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) {
+        Read-Host "Press ENTER (PowerShell stays open)"
+    }
 }
