@@ -1,20 +1,25 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     Set-Location "C:\Projects\MindLab_Starter_Project"
 
     $staged = git diff --cached --name-only
     if ($staged) {
-        Write-Host "OK: staged files exist" -ForegroundColor Green
         $staged | Out-Host
-        exit 0
+        Complete-Step -Code 0 -Message "OK: staged files exist"
+        return
     }
 
     $status = git status --porcelain
     if (-not $status) {
-        Write-Host "STOP: nothing to commit; repo already clean" -ForegroundColor Yellow
-        exit 2
+        Complete-Step -Code 2 -Message "STOP: nothing to commit; repo already clean"
+        return
     }
 
     git add -A
@@ -25,14 +30,12 @@ try {
         throw "STOP: files exist but nothing staged after git add -A"
     }
 
-    Write-Host "OK: staged all pending changes" -ForegroundColor Green
     $stagedAfter | Out-Host
-    exit 0
+    Complete-Step -Code 0 -Message "OK: staged all pending changes"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) { Wait-ForUser }
 }

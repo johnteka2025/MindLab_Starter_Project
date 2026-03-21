@@ -1,5 +1,10 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
     Set-Location "C:\Projects\MindLab_Starter_Project"
@@ -14,17 +19,15 @@ try {
 
     $status = git status --porcelain
     if ($status) {
-        Write-Host $status -ForegroundColor Yellow
+        $status | Out-Host
         throw "STOP: repo still dirty after cleanup"
     }
 
-    Write-Host "OK: repo cleaned to HEAD" -ForegroundColor Green
-    exit 0
+    Complete-Step -Code 0 -Message "OK: repo cleaned to HEAD"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) { Wait-ForUser }
 }
