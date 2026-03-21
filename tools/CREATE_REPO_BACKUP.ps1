@@ -1,63 +1,51 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
-    $REPO  = "C:\Projects\MindLab_Starter_Project"
-    $BKDIR = "C:\MindLab_Backups"
-    $TEMP  = Join-Path $env:TEMP ("MindLab_Backup_Work_" + (Get-Date -Format "yyyyMMdd_HHmmss"))
+    $Repo = "C:\Projects\MindLab_Starter_Project"
+    $BackupRoot = "C:\MindLab_Backups"
 
-    if (!(Test-Path $REPO)) {
-        throw "STOP: repo missing"
-    }
-
-    New-Item -ItemType Directory -Force -Path $BKDIR | Out-Null
-    New-Item -ItemType Directory -Force -Path $TEMP  | Out-Null
+    New-Item -ItemType Directory -Force -Path $BackupRoot | Out-Null
 
     $stamp = Get-Date -Format "yyyyMMdd_HHmmss"
-    $zip   = Join-Path $BKDIR ("MindLab_Backup_" + $stamp + ".zip")
+    $zipPath = Join-Path $BackupRoot ("MindLab_Backup_" + $stamp + ".zip")
+    $tempCopy = Join-Path $env:TEMP ("MindLab_Backup_Work_" + $stamp)
 
-    $allFiles = Get-ChildItem -Path $REPO -Recurse -File -Force -ErrorAction Stop | Where-Object {
-        $_.FullName -notmatch '\\\.git\\' -and
-        $_.FullName -notmatch '\\node_modules\\' -and
-        $_.FullName -notmatch '\\tools\\logs\\' -and
-        $_.Extension -ne ".log"
+    if (Test-Path $tempCopy) {
+        Remove-Item $tempCopy -Recurse -Force -ErrorAction SilentlyContinue
     }
 
-    if (-not $allFiles) {
-        throw "STOP: no files available for backup"
+    New-Item -ItemType Directory -Force -Path $tempCopy | Out-Null
+
+    robocopy $Repo $tempCopy /MIR /XD ".git" "node_modules" > $null
+    $robocopyCode = $LASTEXITCODE
+    if ($robocopyCode -ge 8) { throw "STOP: robocopy backup prep failed" }
+
+    if (Test-Path $zipPath) {
+        Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
     }
 
-    foreach ($src in $allFiles) {
-        $relative = $src.FullName.Substring($REPO.Length).TrimStart('\')
-        $dest = Join-Path $TEMP $relative
-        $destDir = Split-Path $dest -Parent
+    Compress-Archive -Path (Join-Path $tempCopy "*") -DestinationPath $zipPath -Force
 
-        if (!(Test-Path $destDir)) {
-            New-Item -ItemType Directory -Force -Path $destDir | Out-Null
-        }
+    if (!(Test-Path $zipPath)) { throw "STOP: backup zip missing" }
 
-        Copy-Item -LiteralPath $src.FullName -Destination $dest -Force -ErrorAction Stop
-    }
+    Get-Item $zipPath | Select-Object FullName, Length, LastWriteTime | Format-Table -AutoSize | Out-Host
 
-    if (!(Test-Path $TEMP)) {
-        throw "STOP: backup staging folder missing"
-    }
+    Remove-Item $tempCopy -Recurse -Force -ErrorAction SilentlyContinue
 
-    Compress-Archive -Path (Join-Path $TEMP "*") -DestinationPath $zip -Force
-
-    if (!(Test-Path $zip)) {
-        throw "STOP: backup zip not created"
-    }
-
-    Get-Item $zip | Select-Object FullName,Length,LastWriteTime | Out-Host
-    Write-Host "OK: backup created" -ForegroundColor Green
+    Complete-Step -Code 0 -Message "OK: backup created"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    if ($TEMP -and (Test-Path $TEMP)) {
-        Remove-Item -LiteralPath $TEMP -Recurse -Force -ErrorAction SilentlyContinue
+    if (Test-Path $tempCopy) {
+        Remove-Item $tempCopy -Recurse -Force -ErrorAction SilentlyContinue
     }
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (-not $NoPause) { Wait-ForUser }
 }

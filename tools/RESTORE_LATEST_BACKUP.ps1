@@ -1,58 +1,47 @@
-﻿Set-StrictMode -Version Latest
+﻿param(
+    [switch]$NoPause
+)
+
+Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+. "C:\Projects\MindLab_Starter_Project\tools\COMMON_SAFE_RUNNER.ps1"
 
 try {
-    $REPO  = "C:\Projects\MindLab_Starter_Project"
-    $BKDIR = "C:\MindLab_Backups"
+    $Repo = "C:\Projects\MindLab_Starter_Project"
+    $BackupRoot = "C:\MindLab_Backups"
 
-    Set-Location "C:\"
+    if (!(Test-Path $BackupRoot)) { throw "STOP: backup root missing" }
 
-    $latest = Get-ChildItem -Path $BKDIR -Filter "MindLab_Backup_*.zip" -ErrorAction Stop |
+    $latest = Get-ChildItem -Path $BackupRoot -Filter "MindLab_Backup_*.zip" |
         Sort-Object LastWriteTime -Descending |
         Select-Object -First 1
 
-    if (-not $latest) {
-        throw "STOP: no backup zip available"
+    if (-not $latest) { throw "STOP: no backup zip found" }
+
+    $extractRoot = Join-Path $env:TEMP ("MindLab_Restore_" + (Get-Date -Format "yyyyMMdd_HHmmss"))
+
+    if (Test-Path $extractRoot) {
+        Remove-Item $extractRoot -Recurse -Force -ErrorAction SilentlyContinue
     }
 
-    $brokenName = "MindLab_Starter_Project_BROKEN_" + (Get-Date -Format "yyyyMMdd_HHmmss")
-    $brokenPath = Join-Path "C:\Projects" $brokenName
+    New-Item -ItemType Directory -Force -Path $extractRoot | Out-Null
+    Expand-Archive -Path $latest.FullName -DestinationPath $extractRoot -Force
 
-    if (Test-Path $REPO) {
-        Rename-Item -Path $REPO -NewName $brokenName -ErrorAction Stop
-    }
+    robocopy $extractRoot $Repo /MIR /XD ".git" > $null
+    $robocopyCode = $LASTEXITCODE
+    if ($robocopyCode -ge 8) { throw "STOP: restore robocopy failed" }
 
-    New-Item -ItemType Directory -Force -Path $REPO | Out-Null
-    Expand-Archive -Path $latest.FullName -DestinationPath $REPO -Force
+    Remove-Item $extractRoot -Recurse -Force -ErrorAction SilentlyContinue
 
-    $verifyPaths = @(
-        "C:\Projects\MindLab_Starter_Project\tools",
-        "C:\Projects\MindLab_Starter_Project\backend"
-    )
-
-    $verifyHit = $false
-    foreach ($p in $verifyPaths) {
-        if (Test-Path $p) {
-            $verifyHit = $true
-        }
-    }
-
-    if (-not $verifyHit) {
-        throw "STOP: restore verification failed"
-    }
-
-    Write-Host "OK: latest backup restored" -ForegroundColor Green
-    Write-Host ("RESTORED_FROM=" + $latest.FullName) -ForegroundColor Green
-    if (Test-Path $brokenPath) {
-        Write-Host ("BROKEN_REPO_ARCHIVED_AT=" + $brokenPath) -ForegroundColor Yellow
-    }
-
-    exit 0
+    Write-Host ("RESTORED_FROM=" + $latest.FullName) -ForegroundColor Cyan
+    Complete-Step -Code 0 -Message "OK: latest backup restored"
 }
 catch {
-    Write-Host $_ -ForegroundColor Red
-    exit 1
+    Complete-Step -Code 1 -Message $_
 }
 finally {
-    Read-Host "Press ENTER (PowerShell stays open)"
+    if (Test-Path $extractRoot) {
+        Remove-Item $extractRoot -Recurse -Force -ErrorAction SilentlyContinue
+    }
+    if (-not $NoPause) { Wait-ForUser }
 }
