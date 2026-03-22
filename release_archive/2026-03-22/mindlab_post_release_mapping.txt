@@ -1,0 +1,28 @@
+﻿MINDLAB POST-RELEASE MAPPING
+DATE=2026-03-22
+STATUS=READY
+
+STRICT GOLDEN RULES
+- do not modify completed release history
+- do not rerun completed core tasks
+- always start from clean repo
+- stage immediately after file creation
+- on any STOP clean or restore before next action
+- keep new work isolated to post-release branch only
+
+OPTIONAL TRACKS
+1. achievements system
+2. tournaments / challenge mode
+3. puzzle editor
+4. live ops / seasonal content
+5. analytics expansion
+6. content pack pipeline
+7. QA automation expansion
+8. release v2 planning
+
+NEXT ACTION ORDER
+1. map scope
+2. create task checklist
+3. create manifest
+4. stage
+5. commit

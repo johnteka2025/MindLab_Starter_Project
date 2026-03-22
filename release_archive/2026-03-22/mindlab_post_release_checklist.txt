@@ -1,0 +1,23 @@
+﻿POST RELEASE CHECKLIST
+DATE=2026-03-22
+STATUS=READY
+
+A. SCOPE LOCK
+- choose one optional track only
+- define success gate
+- define no-change zones in completed release
+
+B. FILE LOCK
+- create new files only where possible
+- avoid changing final release manifests
+- avoid changing delivery artifacts
+
+C. VALIDATION
+- clean repo check
+- health check
+- pre-flight check
+- targeted validation only for new work
+
+D. COMMIT RULE
+- commit only current task-group files
+- stop on commit failure
