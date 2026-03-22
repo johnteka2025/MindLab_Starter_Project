@@ -1,0 +1,8 @@
+﻿{
+  "achievements": [
+    { "id": "first_win", "condition": "wins >= 1", "unlocked": false },
+    { "id": "ten_wins", "condition": "wins >= 10", "unlocked": false },
+    { "id": "hundred_moves", "condition": "moves >= 100", "unlocked": false },
+    { "id": "perfect_game", "condition": "no_errors", "unlocked": false }
+  ]
+}

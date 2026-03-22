@@ -1,0 +1,20 @@
+﻿ACHIEVEMENTS SYSTEM SCOPE
+STATUS=ACTIVE
+
+GOAL
+- track player milestones
+
+INITIAL SET
+- first win
+- 10 wins
+- 100 moves
+- perfect game
+
+RULES
+- no changes to core engine logic
+- use event hooks only
+- store locally first
+
+SUCCESS GATE
+- achievements trigger correctly
+- saved and reload correctly
