@@ -1,0 +1,11 @@
+﻿{
+  "activeSeasonId": "season-001",
+  "seasons": [
+    {
+      "id": "season-001",
+      "name": "Starter Season",
+      "enabled": true,
+      "content": ["starter-pack", "daily-challenge-a"]
+    }
+  ]
+}

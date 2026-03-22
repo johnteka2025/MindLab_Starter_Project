@@ -1,0 +1,23 @@
+﻿LIVE OPS / SEASONAL CONTENT SCOPE
+DATE=2026-03-22
+STATUS=ACTIVE
+
+GOAL
+- create local seasonal content base
+
+INITIAL SET
+- season configuration
+- active season loader
+- content rotation selector
+- validation rules
+
+RULES
+- no completed release rollback
+- isolated to post_release_mapping_2026-03-22
+- config-driven only
+- validate before commit
+
+SUCCESS GATE
+- can load active season
+- can switch season config
+- can validate season fields
