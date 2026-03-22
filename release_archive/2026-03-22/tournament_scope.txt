@@ -1,0 +1,24 @@
+﻿TOURNAMENT / CHALLENGE MODE SCOPE
+DATE=2026-03-22
+STATUS=ACTIVE
+
+GOAL
+- create a local tournament / challenge system
+
+INITIAL SET
+- score entry
+- win/loss tracking
+- leaderboard
+- session summary
+
+RULES
+- no core release rollback
+- isolated to post_release_mapping_2026-03-22
+- local data first
+- validate before commit
+
+SUCCESS GATE
+- can create session
+- can record score
+- can rank results
+- can persist leaderboard
