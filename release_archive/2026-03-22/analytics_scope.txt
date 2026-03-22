@@ -1,0 +1,24 @@
+﻿ANALYTICS EXPANSION SCOPE
+DATE=2026-03-22
+STATUS=ACTIVE
+
+GOAL
+- create local analytics tracking base
+
+INITIAL SET
+- event logging
+- session metrics
+- action metrics
+- error metrics
+- report export
+
+RULES
+- no completed release rollback
+- isolated to post_release_mapping_2026-03-22
+- local file storage first
+- validate before commit
+
+SUCCESS GATE
+- can log events
+- can aggregate metrics
+- can export analytics report
