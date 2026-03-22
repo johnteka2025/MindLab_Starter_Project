@@ -1,0 +1,8 @@
+﻿{
+  "runs": [],
+  "summary": {
+    "smokePass": 0,
+    "regressionPass": 0,
+    "edgeCasePass": 0
+  }
+}

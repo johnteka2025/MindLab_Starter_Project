@@ -1,0 +1,23 @@
+﻿QA AUTOMATION EXPANSION SCOPE
+DATE=2026-03-23
+STATUS=ACTIVE
+
+GOAL
+- create local QA automation base
+
+INITIAL SET
+- regression runner
+- smoke suite runner
+- edge-case suite runner
+- report generator
+
+RULES
+- no completed release rollback
+- isolated to post_release_mapping_2026-03-22
+- local execution only
+- validate before commit
+
+SUCCESS GATE
+- can run smoke suite
+- can run regression suite
+- can produce test report
