@@ -1,0 +1,25 @@
+﻿PUZZLE EDITOR SCOPE
+DATE=2026-03-22
+STATUS=ACTIVE
+
+GOAL
+- create a local puzzle editor base
+
+INITIAL SET
+- puzzle definition schema
+- create puzzle
+- save puzzle
+- load puzzle
+- validate puzzle
+
+RULES
+- no completed release rollback
+- isolated to post_release_mapping_2026-03-22
+- local files first
+- validate before commit
+
+SUCCESS GATE
+- can create puzzle object
+- can save puzzle file
+- can load puzzle file
+- can validate required fields
