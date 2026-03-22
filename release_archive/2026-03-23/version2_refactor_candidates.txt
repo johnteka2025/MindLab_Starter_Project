@@ -1,0 +1,11 @@
+﻿VERSION 2 REFACTOR CANDIDATES
+DATE=2026-03-23
+
+CANDIDATES
+- consolidate JSON file loaders/savers
+- unify test backup/restore patterns
+- extract shared validation utilities
+- centralize report/export helpers
+- centralize game data storage adapters
+- unify track-specific config schemas
+- standardize module naming and versioning

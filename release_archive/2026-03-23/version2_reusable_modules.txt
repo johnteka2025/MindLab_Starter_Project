@@ -1,0 +1,18 @@
+﻿VERSION 2 REUSABLE MODULES MAP
+DATE=2026-03-23
+
+REUSE CANDIDATES
+- game/achievements_engine.js
+- game/achievements_notifications.js
+- game/achievements_status_view.js
+- game/tournament_engine.js
+- game/puzzle_editor_engine.js
+- game/live_ops_engine.js
+- game/analytics_engine.js
+- game/content_pack_engine.js
+- game/qa_automation_engine.js
+
+CORE SUPPORT
+- tools/RECOVER_BACKEND_AND_RERUN_SANITY.ps1
+- tools/CHECK_REPO_STATE_BEFORE_COMMIT.ps1
+- tools/CLEAN_REPO_TO_HEAD.ps1

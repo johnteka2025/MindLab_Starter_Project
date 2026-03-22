@@ -1,0 +1,25 @@
+﻿VERSION 2 PLANNING SCOPE
+DATE=2026-03-23
+STATUS=ACTIVE
+
+GOAL
+- define version 2 planning baseline
+
+INITIAL SET
+- reusable modules list
+- refactor candidates
+- architecture candidates
+- roadmap phases
+- risk list
+
+RULES
+- no completed release rollback
+- isolated to post_release_mapping_2026-03-22
+- planning files only
+- validate before commit
+
+SUCCESS GATE
+- reusable modules mapped
+- refactor candidates listed
+- roadmap phases defined
+- risk list defined

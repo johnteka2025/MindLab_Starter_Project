@@ -1,0 +1,16 @@
+﻿VERSION 2 ROADMAP
+DATE=2026-03-23
+
+PHASES
+1. architecture baseline
+2. shared utility extraction
+3. storage adapter standardization
+4. unified feature API
+5. expanded UI integration
+6. automated reporting and release hardening
+
+RISKS
+- duplicated file I/O logic
+- inconsistent validation rules
+- version drift across content systems
+- regression risk during shared-module extraction
