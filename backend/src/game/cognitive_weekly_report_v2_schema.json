@@ -1,0 +1,19 @@
+﻿{
+  "version": "2.0",
+  "userId": "",
+  "period": {
+    "type": "weekly",
+    "startDate": "",
+    "endDate": ""
+  },
+  "summary": {
+    "sessionsCompleted": 0,
+    "recommendedFocus": [],
+    "skillChanges": {
+      "pattern_recognition": 0,
+      "working_memory": 0,
+      "logical_reasoning": 0,
+      "cognitive_flexibility": 0
+    }
+  }
+}

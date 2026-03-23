@@ -1,0 +1,22 @@
+﻿{
+  "version": "2.0",
+  "exportType": "ai-ready-training-dataset",
+  "records": [
+    {
+      "anonymousUserId": "",
+      "ageMode": "",
+      "puzzleId": "",
+      "skillProfile": {
+        "pattern_recognition": 0,
+        "working_memory": 0,
+        "logical_reasoning": 0,
+        "cognitive_flexibility": 0
+      },
+      "sessionOutcome": {
+        "success": false,
+        "durationSeconds": 0,
+        "moves": 0
+      }
+    }
+  ]
+}
