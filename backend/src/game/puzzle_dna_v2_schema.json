@@ -1,0 +1,26 @@
+﻿{
+  "version": "2.0",
+  "skills": [
+    {
+      "name": "pattern_recognition",
+      "weight": 0.0
+    },
+    {
+      "name": "working_memory",
+      "weight": 0.0
+    },
+    {
+      "name": "logical_reasoning",
+      "weight": 0.0
+    },
+    {
+      "name": "cognitive_flexibility",
+      "weight": 0.0
+    }
+  ],
+  "difficulty": {
+    "base": 0,
+    "adaptive": 0
+  },
+  "ageModeCompatibility": ["kids", "adults", "seniors"]
+}

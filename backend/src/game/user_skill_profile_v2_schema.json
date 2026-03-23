@@ -1,0 +1,13 @@
+﻿{
+  "version": "2.0",
+  "userId": "",
+  "ageMode": "",
+  "skills": {
+    "pattern_recognition": 0,
+    "working_memory": 0,
+    "logical_reasoning": 0,
+    "cognitive_flexibility": 0
+  },
+  "history": [],
+  "lastUpdated": ""
+}
