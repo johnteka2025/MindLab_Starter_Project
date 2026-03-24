@@ -1,0 +1,19 @@
+﻿{
+  "version": "2.0",
+  "userId": "",
+  "ageMode": "",
+  "targetSkills": {
+    "pattern_recognition": 0,
+    "working_memory": 0,
+    "logical_reasoning": 0,
+    "cognitive_flexibility": 0
+  },
+  "difficulty": {
+    "base": 0,
+    "adaptive": 0
+  },
+  "constraints": {
+    "maxMoves": 0,
+    "sessionLengthMinutes": 0
+  }
+}
