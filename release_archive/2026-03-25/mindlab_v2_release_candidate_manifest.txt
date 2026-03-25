@@ -1,0 +1,13 @@
+﻿MINDLAB V2 RELEASE CANDIDATE MANIFEST
+DATE=2026-03-25
+STATUS=ACTIVE
+
+CORE AREAS
+- backend game services
+- frontend client flows
+- analytics dashboards
+- educator review surfaces
+- deployment readiness checks
+
+BRANCH
+mindlab_v2_core_cognitive_evolution_2026_03_23
