@@ -1,0 +1,11 @@
+﻿MINDLAB V2 BRANCH CLOSURE CHECKLIST
+DATE=2026-03-25
+
+CHECKS
+- repo clean
+- release candidate package created
+- release candidate zip created
+- deployment readiness check passed
+- final handoff summary created
+- final sanity passed
+- closure tag created
