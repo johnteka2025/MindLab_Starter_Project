@@ -20,3 +20,4 @@
 - [x] Kids puzzle 09 added
 - [x] Kids puzzle 10 added
 - [x] Kids puzzle 11 added
+- [x] Kids puzzle 12 added
