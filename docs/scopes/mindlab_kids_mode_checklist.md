@@ -13,3 +13,4 @@
 - [x] Kids puzzle 02 added
 - [x] Kids puzzle 03 added
 - [x] Kids puzzle 04 added
+- [x] Kids puzzle 05 added
