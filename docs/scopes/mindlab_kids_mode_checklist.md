@@ -1,4 +1,4 @@
-﻿# MindLab Kids Mode Checklist
+# MindLab Kids Mode Checklist
 
 - [x] Repo clean confirmed
 - [x] Branch confirmed
@@ -22,3 +22,5 @@
 - [x] Kids puzzle 11 added
 - [x] Kids puzzle 12 added
 - [x] Kids puzzle 13 added
+
+- [x] Kids puzzle 14 added
