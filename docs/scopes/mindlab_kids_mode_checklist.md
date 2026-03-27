@@ -10,3 +10,5 @@
 - [x] Exact files staged
 - [x] Commit passed
 - [x] Post-commit sanity passed
+- [x] Kids puzzle 02 added
+- [x] Kids puzzle 03 added
