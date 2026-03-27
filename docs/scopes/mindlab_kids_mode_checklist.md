@@ -1,12 +1,12 @@
 ﻿# MindLab Kids Mode Checklist
 
-- [ ] Repo clean confirmed
-- [ ] Branch confirmed
-- [ ] Shared core validation passed
-- [ ] Kids shell created
-- [ ] Kids first puzzle created
-- [ ] Real route/app wiring completed
-- [ ] Sanity passed
-- [ ] Exact files staged
-- [ ] Commit passed
-- [ ] Post-commit sanity passed
+- [x] Repo clean confirmed
+- [x] Branch confirmed
+- [x] Shared core validation passed
+- [x] Kids shell created
+- [x] Kids first puzzle created
+- [x] Real route/app wiring completed
+- [x] Sanity passed
+- [x] Exact files staged
+- [x] Commit passed
+- [x] Post-commit sanity passed
