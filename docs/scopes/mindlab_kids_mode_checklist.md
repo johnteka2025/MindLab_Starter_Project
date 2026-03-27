@@ -18,3 +18,4 @@
 - [x] Kids puzzle 07 added
 - [x] Kids puzzle 08 added
 - [x] Kids puzzle 09 added
+- [x] Kids puzzle 10 added
