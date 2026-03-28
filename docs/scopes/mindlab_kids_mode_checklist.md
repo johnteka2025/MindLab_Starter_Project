@@ -47,3 +47,4 @@
 - [x] Kids puzzle 35 added
 - [x] Kids puzzle 36 added
 - [x] Kids puzzle 37 added
+- [x] Kids puzzle 37 added
