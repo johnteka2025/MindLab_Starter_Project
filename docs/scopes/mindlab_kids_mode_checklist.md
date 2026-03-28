@@ -54,3 +54,4 @@
 - [x] Kids puzzle 41 added
 - [x] Kids puzzle 42 added
 - [x] Kids puzzle 43 added
+- [x] Kids puzzle 44 added
