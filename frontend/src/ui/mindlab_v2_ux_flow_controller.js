@@ -736,3 +736,15 @@ function mountMindLabKidsPuzzle37(rootContainerId){
 if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
 if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
 // MINDLAB_KIDS_PUZZLE_37_END
+
+// MINDLAB_KIDS_PUZZLE_37_START
+function mountMindLabKidsPuzzle37(rootContainerId){
+ const root=document.getElementById(rootContainerId);
+ if(!root) throw new Error("Puzzle 37 root not found");
+ renderKidsModeShell(rootContainerId);
+ renderKidsPuzzle37("mindlab-kids-puzzle-host");
+ return true;
+}
+if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
+if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
+// MINDLAB_KIDS_PUZZLE_37_END
