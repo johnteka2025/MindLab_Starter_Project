@@ -65,3 +65,4 @@
 - [x] Kids puzzle 51 added
 - [x] Kids puzzle 52 added
 - [x] Kids puzzle 53 added
+- [x] Kids puzzle 54 added
