@@ -49,3 +49,4 @@
 - [x] Kids puzzle 37 added
 - [x] Kids puzzle 37 added
 - [x] Kids puzzle 38 added
+- [x] Kids puzzle 39 added
