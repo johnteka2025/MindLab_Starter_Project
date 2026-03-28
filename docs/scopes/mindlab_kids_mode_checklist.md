@@ -61,3 +61,4 @@
 - [x] Kids puzzle 48 added
 - [x] Kids puzzle 49 added
 - [x] Kids puzzle 50 added
+- [x] Kids puzzle 37 added
