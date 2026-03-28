@@ -738,29 +738,9 @@ if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle36=mountMindLabKids
 if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle36=mountMindLabKidsPuzzle36;}
 // MINDLAB_KIDS_PUZZLE_36_END
 
-// MINDLAB_KIDS_PUZZLE_37_START
-function mountMindLabKidsPuzzle37(rootContainerId){
- const root=document.getElementById(rootContainerId);
- if(!root) throw new Error("Puzzle 37 root not found");
- renderKidsModeShell(rootContainerId);
- renderKidsPuzzle37("mindlab-kids-puzzle-host");
- return true;
-}
-if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
-if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
-// MINDLAB_KIDS_PUZZLE_37_END
 
-// MINDLAB_KIDS_PUZZLE_37_START
-function mountMindLabKidsPuzzle37(rootContainerId){
- const root=document.getElementById(rootContainerId);
- if(!root) throw new Error("Puzzle 37 root not found");
- renderKidsModeShell(rootContainerId);
- renderKidsPuzzle37("mindlab-kids-puzzle-host");
- return true;
-}
-if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
-if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
-// MINDLAB_KIDS_PUZZLE_37_END
+
+
 
 // MINDLAB_KIDS_PUZZLE_38_START
 function mountMindLabKidsPuzzle38(rootContainerId){
@@ -918,14 +898,5 @@ if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle50=mountMindLabKids
 if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle50=mountMindLabKidsPuzzle50;}
 // MINDLAB_KIDS_PUZZLE_50_END
 
-// MINDLAB_KIDS_PUZZLE_37_START
-function mountMindLabKidsPuzzle37(rootContainerId){
- const root=document.getElementById(rootContainerId);
- if(!root) throw new Error("Puzzle 37 root not found");
- renderKidsModeShell(rootContainerId);
- renderKidsPuzzle37("mindlab-kids-puzzle-host");
- return true;
-}
-if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
-if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle37=mountMindLabKidsPuzzle37;}
-// MINDLAB_KIDS_PUZZLE_37_END
+
+
