@@ -1,4 +1,5 @@
-﻿const { renderKidsPuzzle35 } = require("./mindlab_kids_puzzle_35");
+﻿const { renderKidsPuzzle36 } = require("./mindlab_kids_puzzle_36");
+const { renderKidsPuzzle35 } = require("./mindlab_kids_puzzle_35");
 const { renderKidsPuzzle34 } = require("./mindlab_kids_puzzle_34");
 const { renderKidsPuzzle33 } = require("./mindlab_kids_puzzle_33");
 const { renderKidsPuzzle32 } = require("./mindlab_kids_puzzle_32");
@@ -710,3 +711,15 @@ function mountMindLabKidsPuzzle35(rootContainerId){
 if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle35=mountMindLabKidsPuzzle35;}
 if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle35=mountMindLabKidsPuzzle35;}
 // MINDLAB_KIDS_PUZZLE_35_END
+
+// MINDLAB_KIDS_PUZZLE_36_START
+function mountMindLabKidsPuzzle36(rootContainerId){
+ const root=document.getElementById(rootContainerId);
+ if(!root) throw new Error("Puzzle 36 root not found");
+ renderKidsModeShell(rootContainerId);
+ renderKidsPuzzle36("mindlab-kids-puzzle-host");
+ return true;
+}
+if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle36=mountMindLabKidsPuzzle36;}
+if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle36=mountMindLabKidsPuzzle36;}
+// MINDLAB_KIDS_PUZZLE_36_END
