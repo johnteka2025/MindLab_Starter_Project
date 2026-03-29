@@ -1,0 +1,1 @@
+- Puzzle 01 | K1 | Color Recognition | Visual recognition | Difficulty 1
