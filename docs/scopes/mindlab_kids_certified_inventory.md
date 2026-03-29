@@ -1,1 +1,5 @@
 - Puzzle 01 | K1 | Color Recognition | Visual recognition | Difficulty 1
+- Puzzle 02 | K1 | Color Recognition | Visual recognition | Difficulty 1
+- Puzzle 03 | K1 | Shape Recognition | Pattern recognition | Difficulty 1
+- Puzzle 04 | K1 | Object Recognition | Visual recognition | Difficulty 1
+- Puzzle 05 | K1 | Animal Recognition | Recognition | Difficulty 1
