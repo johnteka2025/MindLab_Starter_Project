@@ -6,3 +6,4 @@ inputs.forEach(i => {
     const output = runGame(i)
     console.log(output)
 })
+

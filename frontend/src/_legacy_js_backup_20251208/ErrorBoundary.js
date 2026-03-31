@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+﻿import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Component } from 'react';
 export default class ErrorBoundary extends Component {
     constructor() {
@@ -15,3 +15,4 @@ export default class ErrorBoundary extends Component {
         return this.props.children;
     }
 }
+

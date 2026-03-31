@@ -13,3 +13,4 @@ async function loadRecommendationScreen(candidatePuzzles) {
 module.exports = {
     loadRecommendationScreen
 };
+

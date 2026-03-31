@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+﻿import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 // src/GamePanel.tsx
 import { useEffect, useState } from "react";
 import { getPuzzles } from "./api";
@@ -53,3 +53,4 @@ export const GamePanel = () => {
     return (_jsxs("section", { "aria-label": "Puzzles section", children: [_jsx("h2", { children: "Puzzles" }), loading && _jsx("div", { "aria-live": "polite", children: "Loading puzzles\u2026" }), !loading && !currentPuzzle && (_jsxs("div", { "aria-live": "polite", children: [_jsx("p", { children: "No puzzle loaded." }), _jsx("button", { type: "button", onClick: loadPuzzles, children: "Reload puzzles" })] })), currentPuzzle && (_jsxs(_Fragment, { children: [_jsx("p", { children: currentPuzzle.question }), _jsx("ul", { children: currentPuzzle.options.map((opt, idx) => (_jsx("li", { children: _jsx("button", { type: "button", onClick: () => handleOptionClick(idx), children: opt }) }, idx))) }), _jsx("button", { type: "button", onClick: nextPuzzle, children: "Next puzzle" })] })), status && (_jsx("div", { role: "status", "aria-live": "polite", children: status }))] }));
 };
 export default GamePanel;
+

@@ -1,4 +1,4 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+﻿import { jsx as _jsx } from "react/jsx-runtime";
 export default function ResultBanner({ kind, text }) {
     if (!kind)
         return null;
@@ -9,3 +9,4 @@ export default function ResultBanner({ kind, text }) {
             border: `1px solid ${fg}33`, marginBottom: 12
         }, children: text }));
 }
+

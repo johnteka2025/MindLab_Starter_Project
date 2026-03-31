@@ -17,3 +17,4 @@
 if (typeof module !== "undefined") {
     module.exports = { renderKidsModeShell };
 }
+

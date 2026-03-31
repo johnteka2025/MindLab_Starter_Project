@@ -962,3 +962,4 @@ function mountMindLabKidsPuzzle55(rootContainerId){
 if(typeof window!=="undefined"){window.mountMindLabKidsPuzzle55=mountMindLabKidsPuzzle55;}
 if(typeof module!=="undefined"){module.exports.mountMindLabKidsPuzzle55=mountMindLabKidsPuzzle55;}
 // MINDLAB_KIDS_PUZZLE_55_END
+

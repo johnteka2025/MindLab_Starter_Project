@@ -5,3 +5,4 @@ export function runGame(answer) {
     const result = handleUserInput(answer)
     return runUI(result)
 }
+

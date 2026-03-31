@@ -8,3 +8,4 @@ export function runEngineCycle(result) {
     const raw = selectNextPuzzle(state)
     return normalizeOutput(raw)
 }
+

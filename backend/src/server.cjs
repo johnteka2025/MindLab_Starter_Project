@@ -1,4 +1,8 @@
-﻿const express = require("express");
+﻿app.use((req, res, next) => {
+    console.log("[REQ]", req.method, req.url)
+    next()
+})
+const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
@@ -97,4 +101,5 @@ app.post("\/score", (req, res) => {
 }
 
 module.exports = app;
+
 

@@ -5,3 +5,4 @@ export function runUI(result) {
     const puzzle = runEngineCycle(result)
     return renderPuzzle(puzzle)
 }
+

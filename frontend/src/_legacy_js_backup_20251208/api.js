@@ -1,4 +1,4 @@
-// src/lib/api.ts
+﻿// src/lib/api.ts
 /**
  * Simple JSON fetch helper with timeout support.
  */
@@ -25,3 +25,4 @@ export async function fetchJson(path, opts = {}) {
         clearTimeout(timeoutId);
     }
 }
+

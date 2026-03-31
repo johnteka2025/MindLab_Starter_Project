@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+﻿import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import { fetchDailyStatus, } from "./dailyChallengeApi";
 /**
@@ -34,7 +34,7 @@ export function DailyChallengeHomeCard() {
         };
     }, []);
     const handleOpenClick = () => {
-        // Generic navigation – works regardless of React Router version.
+        // Generic navigation â€“ works regardless of React Router version.
         window.location.href = "/daily";
     };
     let body;
@@ -58,3 +58,4 @@ export function DailyChallengeHomeCard() {
     return (_jsxs("section", { className: "daily-challenge-card border rounded-lg p-4 shadow-sm bg-white", children: [_jsx("h2", { className: "text-lg font-bold mb-2", children: "Daily Challenge" }), body, _jsx("button", { type: "button", onClick: handleOpenClick, className: "mt-4 inline-flex items-center px-3 py-2 text-sm font-semibold rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50", children: "Open Daily Challenge" })] }));
 }
 export default DailyChallengeHomeCard;
+

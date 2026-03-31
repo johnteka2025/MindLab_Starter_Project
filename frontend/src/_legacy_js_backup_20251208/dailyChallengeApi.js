@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Daily Challenge API client
  * Talks to backend /daily endpoints.
  */
@@ -56,3 +56,4 @@ export function submitDailyAnswer(payload) {
         body: JSON.stringify(payload),
     });
 }
+

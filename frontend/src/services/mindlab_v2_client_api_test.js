@@ -74,3 +74,4 @@ global.fetch = async (url, options) => {
         process.exit(1);
     }
 })();
+

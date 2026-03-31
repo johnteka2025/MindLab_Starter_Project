@@ -1,4 +1,4 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+﻿import { jsx as _jsx } from "react/jsx-runtime";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -11,3 +11,4 @@ const isDailyRoute = path === "/daily" ||
     path === "/app/daily" ||
     path === "/app/daily/";
 ReactDOM.createRoot(document.getElementById("root")).render(_jsx(React.StrictMode, { children: isDailyRoute ? _jsx(DailyChallengeDetailPage, {}) : _jsx(App, {}) }));
+

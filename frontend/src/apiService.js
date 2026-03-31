@@ -1,4 +1,4 @@
-export const API_BASE = "http://localhost:8085";
+﻿export const API_BASE = "http://localhost:8085";
 
 export async function getDailyStatus() {
   const res = await fetch(`${API_BASE}/daily/status`);

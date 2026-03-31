@@ -19,3 +19,4 @@ window.addEventListener("load", async () => {
   history = output.history
   render(output.puzzleHtml)
 })
+
