@@ -2,7 +2,14 @@
 const fs = require("fs")
 const path = require("path")
 
-const root = path.join(__dirname)
+const root = __dirname
+
+function getContentType(file) {
+  if (file.endsWith(".js")) return "application/javascript"
+  if (file.endsWith(".html")) return "text/html"
+  if (file.endsWith(".css")) return "text/css"
+  return "text/plain"
+}
 
 http.createServer((req, res) => {
   let filePath = path.join(root, req.url === "/" ? "index.html" : req.url)
@@ -13,7 +20,7 @@ http.createServer((req, res) => {
   }
 
   const data = fs.readFileSync(filePath)
-  res.writeHead(200)
+  res.writeHead(200, { "Content-Type": getContentType(filePath) })
   res.end(data)
 }).listen(8090, () => {
   console.log("Frontend running at http://localhost:8090")
