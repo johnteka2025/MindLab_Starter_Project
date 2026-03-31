@@ -7,8 +7,15 @@
         body: JSON.stringify(payload)
     })
 
-    const data = await response.json()
+    let data = {}
+try {
+  data = await response.json()
+} catch (e) {
+  data = { error: "invalid_json" }
+}
     return data
 }
+
+
 
 
