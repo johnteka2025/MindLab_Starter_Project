@@ -1,5 +1,5 @@
 ﻿export async function submitScore(payload) {
-    const response = await fetch("http://localhost:8085/score", {
+    const response = await fetch("${window.location.protocol}//${window.location.hostname}:8085/score", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -10,4 +10,5 @@
     const data = await response.json()
     return data
 }
+
 
