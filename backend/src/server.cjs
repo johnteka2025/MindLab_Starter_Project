@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
@@ -76,9 +76,25 @@ app.use("/", createDailyChallengeRouter());
 
 // RESET ENDPOINT (contract gate)
 if (require.main === module) {
+
+/**
+ * SCORE ENDPOINT (FRONTEND CONTRACT)
+ */
+app.post("\/score", (req, res) => {
+  try {
+    return res.status(200).json({
+      ok: true,
+      received: req.body || null
+    });
+  } catch (e) {
+    return res.status(500).json({ error: "score_failed", details: String(e) });
+  }
+});
+
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 }
 
 module.exports = app;
+
