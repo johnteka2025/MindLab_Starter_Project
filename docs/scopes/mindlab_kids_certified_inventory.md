@@ -5,3 +5,4 @@
 - Puzzle 05 | K1 | Animal Recognition | Recognition | Difficulty 1
 - Puzzles 01–05 created for K1 first certified batch
 - Puzzles 01–05 created for K1 first certified batch
+- Puzzles 06–10 created for K2 first certified batch
