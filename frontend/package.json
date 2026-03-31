@@ -1,5 +1,12 @@
-﻿{
+{
   "name": "mindlab-frontend",
   "version": "1.0.0",
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 8090",
+    "start": "vite --port 8090"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
 }
