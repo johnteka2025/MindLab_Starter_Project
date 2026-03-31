@@ -5,3 +5,4 @@
 - K5 approved (FINAL STAGE COMPLETE)
 - K1 batch 01–05 created and awaiting full validation
 - K1 batch 01–05 created and awaiting full validation
+- K1 approved for K2 transition
