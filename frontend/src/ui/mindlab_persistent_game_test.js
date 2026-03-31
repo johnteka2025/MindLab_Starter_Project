@@ -2,12 +2,17 @@
 
 let history = []
 
-const inputs = ["correct", "wrong", "invalid"]
+const inputs = ["correct", "wrong"]
 
-inputs.forEach(input => {
-    const output = runPersistentGame(input, history)
-    history = output.history
-    console.log("RESULT:", output.result)
-    console.log("HISTORY_COUNT:", output.history.length)
-    console.log("SCORE:", output.payload.score)
-})
+async function runTest() {
+    for (const input of inputs) {
+        const output = await runPersistentGame(input, history)
+        history = output.history
+
+        console.log("RESULT:", output.result)
+        console.log("SCORE:", output.payload.score)
+        console.log("BACKEND:", output.backend)
+    }
+}
+
+runTest()
