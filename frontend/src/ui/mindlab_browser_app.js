@@ -13,4 +13,9 @@ window.run = async function(answer) {
   render(output.puzzleHtml)
 }
 
-render("<button onclick=\"run('correct')\">Correct</button><button onclick=\"run('wrong')\">Wrong</button>")
+// INITIAL LOAD FIX
+window.addEventListener("load", async () => {
+  const output = await runPersistentGame(null, history)
+  history = output.history
+  render(output.puzzleHtml)
+})
