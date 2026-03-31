@@ -4,3 +4,4 @@
 - Puzzle 04 | K1 | Object Recognition | Visual recognition | Difficulty 1
 - Puzzle 05 | K1 | Animal Recognition | Recognition | Difficulty 1
 - Puzzles 01–05 created for K1 first certified batch
+- Puzzles 01–05 created for K1 first certified batch
