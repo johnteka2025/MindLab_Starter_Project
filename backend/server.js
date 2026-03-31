@@ -3,7 +3,7 @@
 const HOST = "0.0.0.0";
 const PORT = process.env.PORT || 8085;
 
-const server = http.createServer(async (req, res) => {
+const server = http.createServer((req, res) => {
 
   if (req.method === "POST" && req.url === "/score") {
     let body = "";
@@ -24,16 +24,16 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.url === "/health") {
-    res.writeHead(200, {"Content-Type": "application/json"});
-    res.end(JSON.stringify({ ok: true }));
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ status: "ok" }));
     return;
   }
 
-  res.writeHead(404, {"Content-Type": "application/json"});
+  res.writeHead(404, { "Content-Type": "application/json" });
   res.end(JSON.stringify({ error: "not found", path: req.url }));
 
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`API listening on http://${HOST}:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
