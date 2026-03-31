@@ -1,9 +1,6 @@
-﻿# K1 Puzzle Validation Log
+﻿# K1 Validation Log
 
-- Puzzle 01: PASS
-- Puzzle 02: PASS
-- Puzzle 03: PASS
-- Puzzle 04: PASS
-- Puzzle 05: PASS
-
-All puzzles meet K1 rules.
+- Confirm all five puzzles are K1 only.
+- Confirm 2–3 choices only.
+- Confirm prompts are simple recognition prompts.
+- Confirm no puzzle is too hard for K1.
