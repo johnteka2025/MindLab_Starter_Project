@@ -1,4 +1,4 @@
-﻿import { runEngineCycle } from "../ui/mindlab_engine_bridge"
+﻿import { runEngineCycle } from "../ui/mindlab_engine_bridge.js"
 
 const tests = ["correct", "wrong", "correct"]
 
