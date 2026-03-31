@@ -7,3 +7,4 @@
 - K1 batch 01–05 created and awaiting full validation
 - K1 approved for K2 transition
 - K2 batch 06–10 created and logged
+- K3 batch 11–15 created and logged
