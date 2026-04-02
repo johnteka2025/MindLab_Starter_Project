@@ -1,11 +1,10 @@
-﻿export function renderPuzzle(puzzle) {
-    return `
-        <div class="puzzle">
-            <h2>${puzzle.id}</h2>
-            <p>Type: ${puzzle.type}</p>
-            <p>Status: ${puzzle.status}</p>
-        </div>
-    `
+﻿export function renderPuzzle(data) {
+    const root = document.getElementById('app') || document.body;
+
+    const html =
+        '<h1>' + (data.id || 'K1_standard') + '</h1>' +
+        '<p>Type: ' + (data.type || 'puzzle') + '</p>' +
+        '<p>Status: ready</p>';
+
+    root.innerHTML = html;
 }
-
-
