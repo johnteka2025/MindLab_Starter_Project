@@ -22,3 +22,4 @@ export function startMindLabKidsGame(containerId) {
     loadPuzzle(currentPuzzle);
 }
 
+

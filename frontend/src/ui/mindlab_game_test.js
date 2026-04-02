@@ -7,3 +7,4 @@ inputs.forEach(i => {
     console.log(output)
 })
 
+

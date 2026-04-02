@@ -1,105 +1,17 @@
-﻿app.use((req, res, next) => {
-    console.log("[REQ]", req.method, req.url)
-    next()
-})
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
-
+﻿const express = require('express');
 const app = express();
-const testRoutes = require("./routes/__test__.cjs");
-app.use(testRoutes);
-const PORT = process.env.PORT || 8085;
 
-app.use(cors());
 app.use(express.json());
 
-/**
- * Health endpoint (tests + sanity checks)
- */
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    uptime: process.uptime()
-  });
+app.post('/score', (req, res) => {
+    console.log('[REQ] POST /score', req.body);
+    res.json({ ok: true, received: req.body });
 });
 
-/**
- * Puzzles endpoint
- * Returns an array of puzzles.
- * Tries known JSON locations; falls back to a minimal list.
- */
-/* PHASE5: moved /puzzles to puzzlesRoutes.cjs (kept for rollback)
-app.get("/puzzles", (req, res) => {
-  try {
-    const candidates = [
-      path.join(__dirname, "index.json"),
-      path.join(__dirname, "puzzles", "index.json"),
-      path.join(__dirname, "puzzles", "index.json")
-    ];
-
-    let found = null;
-    for (const p of candidates) {
-      if (fs.existsSync(p)) { found = p; break; }
-    }
-
-    if (found) {
-      const raw = fs.readFileSync(found, "utf8");
-      const data = JSON.parse(raw);
-      const puzzles = Array.isArray(data) ? data : (Array.isArray(data.puzzles) ? data.puzzles : []);
-      return res.status(200).json(puzzles);
-    }
-
-    // Fallback minimal puzzles list
-    return res.status(200).json([
-      { id: "demo-1", question: "2 + 2 = ?", answer: "4" },
-      { id: "demo-2", question: "Spell 'mind' backwards.", answer: "dnim" }
-    ]);
-  } catch (e) {
-    return res.status(500).json({ error: "Failed to load puzzles", details: String(e) });
-  }
-});
-*/
-
-/**
- * Progress routes (real routing, shared store)
- */
-const registerProgressRoutes = require("./progressRoutes.cjs");
-const registerPuzzlesRoutes = require("./puzzlesRoutes.cjs");
-const difficultyRoutes = require("./difficultyRoutes.cjs");
-registerProgressRoutes(app);
-const { createDailyChallengeRouter } = require("./daily-challenge/dailyChallengeRoutes.cjs");
-app.use("/difficulty", difficultyRoutes);
-registerPuzzlesRoutes(app);
-
-// Enable JSON persistence for progress (Phase 4B)
-const initProgressPersistence = require("./progressPersistence.cjs");
-initProgressPersistence();
-app.use("/", createDailyChallengeRouter());
-
-// RESET ENDPOINT (contract gate)
-if (require.main === module) {
-
-/**
- * SCORE ENDPOINT (FRONTEND CONTRACT)
- */
-app.post("\/score", (req, res) => {
-  try {
-    return res.status(200).json({
-      ok: true,
-      received: req.body || null
-    });
-  } catch (e) {
-    return res.status(500).json({ error: "score_failed", details: String(e) });
-  }
+app.get('/', (req, res) => {
+    res.send('Backend running');
 });
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
-
-module.exports = app;
-
-
+app.listen(8085, () => {
+    console.log('Server running on port 8085');
+});

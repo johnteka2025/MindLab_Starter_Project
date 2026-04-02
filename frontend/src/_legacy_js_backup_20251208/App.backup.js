@@ -6,3 +6,4 @@ export default function App() {
     return (_jsxs("main", { className: "p-8", children: [_jsx("h1", { className: "text-4xl font-bold mb-4", children: "MindLab Frontend" }), _jsxs("p", { className: "mb-4 text-sm", children: ["API base: ", apiBase] }), _jsx(HealthPanel, {}), _jsx(DailyChallengeHomeCard, {})] }));
 }
 
+

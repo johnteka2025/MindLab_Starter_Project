@@ -7,7 +7,7 @@ export async function fetchJson(path, opts = {}) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
     try {
-        const response = await fetch(path, {
+        const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//path, {
             signal: controller.signal,
             headers: {
                 'Content-Type': 'application/json',
@@ -25,4 +25,5 @@ export async function fetchJson(path, opts = {}) {
         clearTimeout(timeoutId);
     }
 }
+
 

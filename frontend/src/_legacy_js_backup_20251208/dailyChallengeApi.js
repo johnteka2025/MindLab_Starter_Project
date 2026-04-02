@@ -6,7 +6,7 @@
  * Helper to call JSON endpoints and surface nice errors.
  */
 async function fetchJson(input, init) {
-    const response = await fetch(input, {
+    const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//input, {
         headers: {
             "Content-Type": "application/json",
             ...(init && init.headers ? init.headers : {}),
@@ -56,4 +56,5 @@ export function submitDailyAnswer(payload) {
         body: JSON.stringify(payload),
     });
 }
+
 

@@ -9,7 +9,7 @@
 async function probe() {
     for (const url of candidates) {
         try {
-            const response = await fetch(url, {
+            const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ test: true, score: 1 })
@@ -34,4 +34,5 @@ async function probe() {
 }
 
 probe()
+
 

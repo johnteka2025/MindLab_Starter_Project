@@ -117,3 +117,4 @@ export const DailyChallengeDetailPage = () => {
 };
 export default DailyChallengeDetailPage;
 
+

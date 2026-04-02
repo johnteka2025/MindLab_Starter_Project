@@ -12,3 +12,4 @@ const isDailyRoute = path === "/daily" ||
     path === "/app/daily/";
 ReactDOM.createRoot(document.getElementById("root")).render(_jsx(React.StrictMode, { children: isDailyRoute ? _jsx(DailyChallengeDetailPage, {}) : _jsx(App, {}) }));
 
+

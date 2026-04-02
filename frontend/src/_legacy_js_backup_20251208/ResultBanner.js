@@ -10,3 +10,4 @@ export default function ResultBanner({ kind, text }) {
         }, children: text }));
 }
 
+

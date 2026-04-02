@@ -6,3 +6,4 @@ export default function App() {
     return (_jsxs("main", { children: [_jsx("h1", { children: "MindLab Frontend" }), _jsx(HealthPanel, {}), _jsx(GamePanel, {}), _jsx(ProgressPanel, {})] }));
 }
 
+

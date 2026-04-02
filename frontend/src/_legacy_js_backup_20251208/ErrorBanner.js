@@ -10,3 +10,4 @@ export default function ErrorBanner({ error }) {
         }, children: [_jsx("strong", { children: "Frontend Error:" }), " ", error] }));
 }
 
+
