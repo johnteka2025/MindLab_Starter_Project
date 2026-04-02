@@ -12,6 +12,6 @@ app.get('/', (req, res) => {
     res.send('Backend running');
 });
 
-app.listen(8085, () => {
+app.listen(8085, '127.0.0.1', () => {
     console.log('Server running on port 8085');
 });
