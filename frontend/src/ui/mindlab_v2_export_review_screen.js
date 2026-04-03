@@ -1,4 +1,4 @@
-﻿function loadExportReviewScreen(data) {
+function loadExportReviewScreen(data) {
     if (!data) throw new Error("STOP: export review data missing");
 
     return {

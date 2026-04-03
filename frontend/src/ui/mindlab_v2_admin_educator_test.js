@@ -1,4 +1,4 @@
-﻿const { loadEducatorReviewDashboard } = require("./mindlab_v2_educator_review_dashboard");
+const { loadEducatorReviewDashboard } = require("./mindlab_v2_educator_review_dashboard");
 const { loadLearnerProgressReview } = require("./mindlab_v2_learner_progress_review");
 const { loadAssignmentSummaryScreen } = require("./mindlab_v2_assignment_summary_screen");
 const { loadExportReviewScreen } = require("./mindlab_v2_export_review_screen");

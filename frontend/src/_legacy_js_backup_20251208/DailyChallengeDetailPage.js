@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import { fetchDailyInstance, submitDailyAnswer, } from "./DailyChallengeApi";
 const demoAnswerHint = "demo-answer";
@@ -112,7 +112,7 @@ export const DailyChallengeDetailPage = () => {
                                                     fontWeight: 600,
                                                     cursor: answerState === "submitting" ? "wait" : "pointer",
                                                 }, children: answerState === "submitting"
-                                                    ? "Submittingâ€¦"
+                                                    ? "Submitting…"
                                                     : "Submit answer" })] }))] })] })] }))] }));
 };
 export default DailyChallengeDetailPage;

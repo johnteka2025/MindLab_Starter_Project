@@ -1,4 +1,4 @@
-﻿export function createProgressRecord(result, puzzleHtml) {
+export function createProgressRecord(result, puzzleHtml) {
     return {
         timestamp: new Date().toISOString(),
         result,

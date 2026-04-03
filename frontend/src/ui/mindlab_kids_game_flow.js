@@ -1,4 +1,4 @@
-﻿import { trackProgress } from "./mindlab_kids_progress.js";
+import { trackProgress } from "./mindlab_kids_progress.js";
 
 export function startMindLabKidsGame(containerId) {
 

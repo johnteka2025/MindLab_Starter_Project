@@ -1,4 +1,4 @@
-﻿import { runUI } from "./mindlab_ui_controller.js"
+import { runUI } from "./mindlab_ui_controller.js"
 
 const results = ["correct", "wrong"]
 

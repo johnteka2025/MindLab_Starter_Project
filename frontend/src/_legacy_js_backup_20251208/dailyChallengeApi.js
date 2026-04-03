@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Daily Challenge API client
  * Talks to backend /daily endpoints.
  */

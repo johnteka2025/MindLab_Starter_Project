@@ -1,4 +1,4 @@
-﻿import { runGame } from "./mindlab_game_loop.js"
+import { runGame } from "./mindlab_game_loop.js"
 
 const inputs = ["correct", "wrong", "invalid"]
 

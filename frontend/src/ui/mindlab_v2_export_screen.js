@@ -1,4 +1,4 @@
-﻿function loadExportScreen(report) {
+function loadExportScreen(report) {
     if (!report) throw new Error("STOP: export report missing");
 
     return {

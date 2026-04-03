@@ -1,4 +1,4 @@
-﻿export function buildScorePayload(result, puzzleHtml) {
+export function buildScorePayload(result, puzzleHtml) {
     return {
         result,
         puzzleHtml,

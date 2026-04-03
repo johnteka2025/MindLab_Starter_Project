@@ -1,4 +1,4 @@
-﻿import { handleUserInput } from "./mindlab_input_handler.js"
+import { handleUserInput } from "./mindlab_input_handler.js"
 import { runUI } from "./mindlab_ui_controller.js"
 import { createProgressRecord, saveProgress } from "../engine/mindlab_progress_store.js"
 import { buildScorePayload } from "../engine/mindlab_score_payload.js"

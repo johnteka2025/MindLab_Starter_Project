@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 // src/GamePanel.tsx
 import { useEffect, useState } from "react";
 import { getPuzzles } from "./api";

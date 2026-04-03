@@ -1,4 +1,4 @@
-﻿export function selectNextPuzzle(state) {
+export function selectNextPuzzle(state) {
     const { stage, performance } = state
 
     if (!stage) return null

@@ -1,4 +1,4 @@
-﻿// src/lib/api.ts
+// src/lib/api.ts
 /**
  * Simple JSON fetch helper with timeout support.
  */

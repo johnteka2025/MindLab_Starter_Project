@@ -1,4 +1,4 @@
-﻿import { runEngineCycle } from "./mindlab_engine_bridge.js"
+import { runEngineCycle } from "./mindlab_engine_bridge.js"
 import { renderPuzzle } from "./mindlab_renderer.js"
 
 export function runUI(result) {

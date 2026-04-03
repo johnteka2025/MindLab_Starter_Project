@@ -1,4 +1,4 @@
-﻿import { renderPuzzle } from '../ui/mindlab_renderer.js';
+import { renderPuzzle } from '../ui/mindlab_renderer.js';
 import { submitScore } from './mindlab_score_submitter.js';
 
 async function bootKidsApp() {

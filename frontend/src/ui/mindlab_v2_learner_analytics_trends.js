@@ -1,4 +1,4 @@
-﻿function loadLearnerAnalyticsTrends(data) {
+function loadLearnerAnalyticsTrends(data) {
     if (!data) throw new Error("STOP: learner analytics trend data missing");
 
     return {

@@ -1,4 +1,4 @@
-﻿const { loadAnalyticsDashboard } = require("./mindlab_v2_analytics_dashboard");
+const { loadAnalyticsDashboard } = require("./mindlab_v2_analytics_dashboard");
 const { loadLearnerAnalyticsTrends } = require("./mindlab_v2_learner_analytics_trends");
 
 try {

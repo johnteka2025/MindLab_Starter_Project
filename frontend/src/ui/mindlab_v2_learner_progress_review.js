@@ -1,4 +1,4 @@
-﻿function loadLearnerProgressReview(data) {
+function loadLearnerProgressReview(data) {
     if (!data) throw new Error("STOP: learner progress data missing");
 
     return {

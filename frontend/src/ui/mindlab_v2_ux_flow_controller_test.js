@@ -1,4 +1,4 @@
-﻿const { loadMindLabV2Experience } = require("./mindlab_v2_ux_flow_controller");
+const { loadMindLabV2Experience } = require("./mindlab_v2_ux_flow_controller");
 
 global.fetch = async (url, options) => {
     const body = JSON.parse(options.body);

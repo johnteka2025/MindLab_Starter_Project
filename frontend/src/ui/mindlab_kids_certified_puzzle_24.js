@@ -1,4 +1,4 @@
-﻿function renderCertifiedKidsPuzzle24(containerId) {
+function renderCertifiedKidsPuzzle24(containerId) {
 
     const host = document.getElementById(containerId);
     if (!host) throw new Error("Puzzle 24 host not found");

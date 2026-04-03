@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import HealthPanel from "./components/HealthPanel";
 import { DailyChallengeHomeCard } from "./daily-challenge/DailyChallengeHomeCard";
 export default function App() {

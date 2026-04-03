@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // src/components/HealthPanel.tsx
 import { useEffect, useState } from "react";
 import { fetchJson } from "../lib/api";

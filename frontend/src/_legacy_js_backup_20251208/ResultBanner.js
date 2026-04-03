@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx } from "react/jsx-runtime";
 export default function ResultBanner({ kind, text }) {
     if (!kind)
         return null;

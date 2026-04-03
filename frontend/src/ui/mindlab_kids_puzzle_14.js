@@ -1,4 +1,4 @@
-﻿function renderKidsPuzzle14(containerId) {
+function renderKidsPuzzle14(containerId) {
     const host = document.getElementById(containerId);
     if (!host) {
         throw new Error("Kids puzzle 14 host not found.");

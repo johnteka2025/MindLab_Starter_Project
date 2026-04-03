@@ -1,7 +1,7 @@
-﻿const candidates = [
+const candidates = [
     "http://127.0.0.1:8085/score",
-    "http://127.0.0.1:8085/api/score",
-    "http://127.0.0.1:8085/api/scores",
+    "http://127.0.0.1:8085/score",
+    "http://127.0.0.1:8085/scores",
     "http://127.0.0.1:8085/submit-score",
     "http://127.0.0.1:8085/api/submit-score"
 ]

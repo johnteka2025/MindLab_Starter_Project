@@ -1,4 +1,4 @@
-﻿function renderKidsModeShell(containerId) {
+function renderKidsModeShell(containerId) {
     const host = document.getElementById(containerId);
     if (!host) {
         throw new Error("Kids mode shell host not found.");

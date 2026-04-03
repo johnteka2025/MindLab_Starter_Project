@@ -1,4 +1,4 @@
-﻿const {
+const {
     requestRecommendation,
     requestPuzzleGeneration
 } = require("./mindlab_v2_client_api");

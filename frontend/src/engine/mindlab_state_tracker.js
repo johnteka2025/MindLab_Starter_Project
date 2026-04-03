@@ -1,4 +1,4 @@
-﻿export function createInitialState() {
+export function createInitialState() {
     return {
         stage: "K1",
         performance: "neutral",

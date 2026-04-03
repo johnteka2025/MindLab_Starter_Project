@@ -1,4 +1,4 @@
-﻿function loadAssignmentSummaryScreen(data) {
+function loadAssignmentSummaryScreen(data) {
     if (!data) throw new Error("STOP: assignment data missing");
 
     return {

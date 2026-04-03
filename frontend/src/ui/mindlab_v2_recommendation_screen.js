@@ -1,4 +1,4 @@
-﻿const { runRecommendationFlow } = require("../services/mindlab_v2_flow_orchestrator");
+const { runRecommendationFlow } = require("../services/mindlab_v2_flow_orchestrator");
 
 async function loadRecommendationScreen(candidatePuzzles) {
     const response = await runRecommendationFlow(candidatePuzzles);

@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 export default function ErrorBanner({ error }) {
     return (_jsxs("div", { style: {
             background: "#fee2e2",

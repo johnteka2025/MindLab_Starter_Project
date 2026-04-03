@@ -1,4 +1,4 @@
-﻿function loadAdminDashboard(data) {
+function loadAdminDashboard(data) {
     if (!data) throw new Error("STOP: admin data missing");
 
     return {

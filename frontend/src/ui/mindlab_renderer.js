@@ -1,4 +1,4 @@
-﻿export function renderPuzzle(data) {
+export function renderPuzzle(data) {
     const root = document.getElementById('app') || document.body;
 
     const html =

@@ -1,4 +1,4 @@
-﻿const { renderKidsPuzzle55 } = require("./mindlab_kids_puzzle_55");
+const { renderKidsPuzzle55 } = require("./mindlab_kids_puzzle_55");
 const { renderKidsPuzzle54 } = require("./mindlab_kids_puzzle_54");
 const { renderKidsPuzzle53 } = require("./mindlab_kids_puzzle_53");
 const { renderKidsPuzzle52 } = require("./mindlab_kids_puzzle_52");

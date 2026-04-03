@@ -1,4 +1,4 @@
-﻿import { runPersistentGame } from "./mindlab_persistent_game_runner.js"
+import { runPersistentGame } from "./mindlab_persistent_game_runner.js"
 
 let history = []
 

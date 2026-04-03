@@ -1,4 +1,4 @@
-﻿function loadEducatorReviewDashboard(data) {
+function loadEducatorReviewDashboard(data) {
     if (!data) throw new Error("STOP: educator review data missing");
 
     return {

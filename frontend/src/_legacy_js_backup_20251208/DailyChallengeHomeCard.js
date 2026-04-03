@@ -1,4 +1,4 @@
-﻿import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import { fetchDailyStatus, } from "./dailyChallengeApi";
 /**
@@ -34,7 +34,7 @@ export function DailyChallengeHomeCard() {
         };
     }, []);
     const handleOpenClick = () => {
-        // Generic navigation â€“ works regardless of React Router version.
+        // Generic navigation – works regardless of React Router version.
         window.location.href = "/daily";
     };
     let body;

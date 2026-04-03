@@ -1,4 +1,4 @@
-﻿function loadAnalyticsDashboard(data) {
+function loadAnalyticsDashboard(data) {
     if (!data) throw new Error("STOP: analytics dashboard data missing");
 
     return {

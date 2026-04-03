@@ -1,4 +1,4 @@
-﻿async function postJson(url, body) {
+async function postJson(url, body) {
     const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//url, {
         method: "POST",
         headers: {

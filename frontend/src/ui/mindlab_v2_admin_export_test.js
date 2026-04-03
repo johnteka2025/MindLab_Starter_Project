@@ -1,4 +1,4 @@
-﻿const { loadAdminDashboard } = require("./mindlab_v2_admin_dashboard");
+const { loadAdminDashboard } = require("./mindlab_v2_admin_dashboard");
 const { loadExportScreen } = require("./mindlab_v2_export_screen");
 
 try {
