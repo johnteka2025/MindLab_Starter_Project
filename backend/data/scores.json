@@ -10,5 +10,23 @@
     "level": "K1",
     "ageCategory": "kids",
     "action": "direct-test"
+  },
+  {
+    "timestamp": "2026-04-03T02:06:17.792Z",
+    "level": "K1",
+    "ageCategory": "kids",
+    "action": "direct-test-after-isolation-fix"
+  },
+  {
+    "timestamp": "2026-04-03T02:07:17.697Z",
+    "ageCategory": "kids",
+    "level": "K1",
+    "action": "boot"
+  },
+  {
+    "timestamp": "2026-04-03T02:07:31.169Z",
+    "ageCategory": "kids",
+    "level": "K1",
+    "action": "boot"
   }
 ]
