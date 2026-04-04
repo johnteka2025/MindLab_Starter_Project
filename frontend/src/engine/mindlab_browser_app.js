@@ -27,4 +27,8 @@ async function bootKidsApp() {
     }
 }
 
-bootKidsApp();
+if (!window.__bootExecuted) {
+    window.__bootExecuted = true;
+    bootKidsApp();
+}
+
