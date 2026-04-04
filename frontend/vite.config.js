@@ -1,10 +1,14 @@
-﻿import { defineConfig } from 'vite'
+﻿import { defineConfig } from 'vite';
 
 export default defineConfig({
   server: {
     port: 8090,
-    strictPort: true,
-    hmr: false
+    proxy: {
+      '/score': {
+        target: 'http://localhost:8085',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
-})
-
+});
