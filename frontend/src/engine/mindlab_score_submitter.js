@@ -1,17 +1,19 @@
-﻿export async function submitScore(payload) {
-    try {
-        const response = await fetch('http://localhost:8085/score', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        });
+﻿import { mindlabSafeFetch } from "./mindlab_safe_fetch.js";
 
-        const data = await response.json();
-        return { ok: true, data };
-    } catch (error) {
-        console.error("submitScore_error:", error);
-        return { ok: false, error: error.message };
-    }
+export const MINDLAB_SCORE_ENDPOINT = "http://localhost:8085/score";
+
+export async function submitMindLabScore(payload) {
+  const body = JSON.stringify({
+    sessionId: payload?.sessionId ?? "default-session",
+    scoreDelta: Number(payload?.scoreDelta ?? 0),
+    result: payload?.result ?? "unknown",
+    puzzleId: payload?.puzzleId ?? null,
+    metadata: payload?.metadata ?? {}
+  });
+
+  return await mindlabSafeFetch(MINDLAB_SCORE_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body
+  });
 }

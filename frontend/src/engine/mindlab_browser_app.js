@@ -1,19 +1,15 @@
-﻿import { submitScore } from './mindlab_score_submitter.js';
+﻿import { submitMindLabScore } from "./mindlab_score_submitter.js";
 
-export async function bootKidsApp() {
-    const payload = {
-        level: "K1",
-        ageCategory: "kids",
-        action: "boot"
-    };
+export async function runMindLabBrowserScoreFlow(payload, handlers = {}) {
+  const onSuccess = handlers.onSuccess ?? (() => {});
+  const onError = handlers.onError ?? (() => {});
 
-    const result = await submitScore(payload);
-
-    console.log("[BOOT RESULT]", result);
-
-    if (!result.ok) {
-        document.body.innerHTML += '<div style="color:red">API ERROR: ' + result.error + '</div>';
-    }
+  try {
+    const response = await submitMindLabScore(payload);
+    onSuccess(response);
+    return response;
+  } catch (error) {
+    onError(error);
+    throw error;
+  }
 }
-
-bootKidsApp();
