@@ -1,0 +1,285 @@
+=== ENTRY FILE ===
+import "./styles/mindlab_runtime.css";
+import { startMindLabKidsRuntime } from "./app/mindlab_kids_runtime.js";
+import "./env_probe";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error("Root element #root not found in index.html");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+
+// MINDLAB_PHASE13_RUNTIME_BOOTSTRAP
+
+if (typeof document !== "undefined") {
+  const bootHost = document.querySelector("#app");
+  if (bootHost) {
+    startMindLabKidsRuntime("#app");
+  }
+}
+
+// MINDLAB_PHASE13_RUNTIME_BOOTSTRAP
+
+
+
+=== RUNTIME FILE ===
+import * as Renderer from "../ui/mindlab_renderer.js";
+import * as Interaction from "../ui/mindlab_interaction_controller.js";
+import * as StateSync from "../engine/mindlab_state_sync.js";
+import * as GameLogic from "../engine/mindlab_game_logic.js";
+import * as Submitter from "../engine/mindlab_score_submitter.js";
+import { getKidsPuzzleByStage } from "../data/kids/mindlab_kids_content_selector.js";
+
+function resolveFunction(moduleRef, names) {
+  for (const name of names) {
+    if (typeof moduleRef[name] === "function") return moduleRef[name];
+  }
+  return null;
+}
+
+export async function startMindLabKidsRuntime(containerSelector = "#app") {
+  const renderFn = resolveFunction(Renderer, [
+    "renderMindLabPuzzle",
+    "renderMindLabRenderer",
+    "default"
+  ]);
+
+  const interactionFn = resolveFunction(Interaction, [
+    "attachMindLabInteraction",
+    "wireMindLabInteraction",
+    "default"
+  ]);
+
+  const loadStateFn = resolveFunction(StateSync, [
+    "loadMindLabState",
+    "loadState",
+    "default"
+  ]);
+
+  const saveStateFn = resolveFunction(StateSync, [
+    "saveMindLabState",
+    "saveState"
+  ]);
+
+  const nextStateFn = resolveFunction(GameLogic, [
+    "getMindLabNextState",
+    "getNextState",
+    "default"
+  ]);
+
+  const submitFn = resolveFunction(Submitter, [
+    "submitMindLabScore",
+    "submitScore",
+    "default"
+  ]);
+
+  if (!renderFn || !interactionFn) {
+    throw new Error("Required UI runtime functions are missing");
+  }
+
+  const host = document.querySelector(containerSelector);
+  if (!host) throw new Error("Runtime host not found");
+
+  let state = loadStateFn ? (loadStateFn() || {}) : {};
+  const activeStage = state.stage || "K1";
+  const puzzle = getKidsPuzzleByStage(activeStage, 0);
+  if (!puzzle) throw new Error("No puzzle available for current stage");
+
+  const renderInput = {
+    id: puzzle.id,
+    puzzleId: puzzle.id,
+    title: puzzle.title,
+    prompt: puzzle.prompt,
+    options: puzzle.options
+  };
+
+  renderFn(host, renderInput);
+
+  interactionFn(host, async (choiceIndex) => {
+    const choice = puzzle.options[choiceIndex];
+    const isCorrect = !!(choice && choice.value === puzzle.correctValue);
+
+    const payload = {
+      userId: "kids-runtime-user",
+      puzzleId: puzzle.id,
+      isCorrect,
+      basePoints: 10,
+      responseMs: 1500,
+      streak: isCorrect ? ((state.streak || 0) + 1) : 0
+    };
+
+    let response = { ok: true, result: { earned: isCorrect ? 10 : 0 } };
+
+    if (submitFn) {
+      try {
+        response = await submitFn(payload);
+      } catch (error) {
+        response = {
+          ok: false,
+          error: error.message,
+          result: { earned: isCorrect ? 10 : 0 }
+        };
+      }
+    }
+
+    const computed = nextStateFn
+      ? nextStateFn(state, response)
+      : {
+          puzzleId: puzzle.id,
+          score: (state.score || 0) + (response.result?.earned || 0),
+          streak: payload.streak
+        };
+
+    state = computed;
+    if (saveStateFn) saveStateFn(computed);
+
+    const feedback = document.querySelector("#mindlab-feedback");
+    if (feedback) {
+      feedback.textContent = isCorrect ? "Correct." : "Try again.";
+    }
+
+    return response;
+  });
+}
+
+=== RENDERER FILE ===
+export function renderMindLabPuzzle(containerId, puzzle = {}) {
+  const host = document.getElementById(containerId);
+
+  if (!host) {
+    throw new Error(`Renderer host not found: ${containerId}`);
+  }
+
+  const prompt = puzzle.prompt ?? "Puzzle prompt missing";
+  const options = Array.isArray(puzzle.options) ? puzzle.options : [];
+  const buttons = options
+    .map(option => `<button class="mindlab-option" data-choice="${option.value}">${option.label}</button>`)
+    .join("");
+
+  host.innerHTML = `
+    <div class="mindlab-card">
+      <div class="mindlab-card-header">
+        <h2>${prompt}</h2>
+      </div>
+      <div class="mindlab-card-body">
+        ${buttons || "<p>No options available.</p>"}
+      </div>
+      <div id="mindlab-status-line"></div>
+    </div>
+  `;
+}
+
+export function renderMindLabStatus(containerId, message, isError = false) {
+  const host = document.getElementById(containerId);
+
+  if (!host) {
+    throw new Error(`Status host not found: ${containerId}`);
+  }
+
+  host.textContent = message ?? "";
+  host.dataset.state = isError ? "error" : "ok";
+}
+
+
+=== INTERACTION FILE ===
+import { renderMindLabStatus } from "./mindlab_renderer.js";
+import { runMindLabBrowserScoreFlow } from "../engine/mindlab_browser_app.js";
+import { shouldAdvancePuzzle } from "../engine/mindlab_game_logic.js";
+
+export function attachMindLabInteraction(containerId, payloadBuilder, handlers = {}) {
+  const host = document.getElementById(containerId);
+
+  if (!host) {
+    throw new Error(`Interaction host not found: ${containerId}`);
+  }
+
+  host.querySelectorAll("[data-choice]").forEach(button => {
+    button.addEventListener("click", async () => {
+      const choice = button.dataset.choice;
+      const payload = payloadBuilder(choice);
+
+      try {
+        const response = await runMindLabBrowserScoreFlow(payload, {
+          onSuccess: () => renderMindLabStatus("mindlab-status-line", "Saved.", false),
+          onError: (error) => renderMindLabStatus("mindlab-status-line", error.message, true)
+        });
+
+        if (shouldAdvancePuzzle(response) && handlers.onAdvance) {
+          handlers.onAdvance(response);
+        }
+      } catch (error) {
+        renderMindLabStatus("mindlab-status-line", error.message, true);
+      }
+    });
+  });
+}
+
+
+=== INDEX HTML ===
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MindLab</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/engine/mindlab_browser_app.js"></script>
+</body>
+</html>
+
+
+=== VITE CONFIG ===
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  server: {
+    port: 8090,
+    proxy: {
+      '/score': {
+        target: 'http://localhost:8085',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
+});
+
+
+=== SERVED HTML ===
+ï»¿<!DOCTYPE html>
+<html>
+<head>
+  <script type="module" src="/@vite/client"></script>
+
+  <title>MindLab</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/engine/mindlab_browser_app.js"></script>
+</body>
+</html>
+
+
+=== LISTENING PORTS ===
+
+LocalAddress                        LocalPort RemoteAddress                       RemotePort State       AppliedSetting OwningProcess 
+------------                        --------- -------------                       ---------- -----       -------------- ------------- 
+::                                  8085      ::                                  0          Listen                     16544         
+127.0.0.1                           8090      0.0.0.0                             0          Listen                     21696         
+
+
