@@ -3,7 +3,7 @@ import * as Interaction from "../ui/mindlab_interaction_controller.js";
 import * as StateSync from "../engine/mindlab_state_sync.js";
 import * as GameLogic from "../engine/mindlab_game_logic.js";
 import * as Submitter from "../engine/mindlab_score_submitter.js";
-import { kidsSeedPuzzles } from "../data/kids/mindlab_kids_seed_puzzles.js";
+import { getKidsPuzzleByStage } from "../data/kids/mindlab_kids_content_selector.js";
 
 function resolveFunction(moduleRef, names) {
   for (const name of names) {
@@ -56,7 +56,9 @@ export async function startMindLabKidsRuntime(containerSelector = "#app") {
   if (!host) throw new Error("Runtime host not found");
 
   let state = loadStateFn ? (loadStateFn() || {}) : {};
-  const puzzle = kidsSeedPuzzles[0];
+  const activeStage = state.stage || "K1";
+  const puzzle = getKidsPuzzleByStage(activeStage, 0);
+  if (!puzzle) throw new Error("No puzzle available for current stage");
 
   const renderInput = {
     id: puzzle.id,
