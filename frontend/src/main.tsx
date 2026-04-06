@@ -1,3 +1,4 @@
+import "./styles/mindlab_runtime.css";
 import { startMindLabKidsRuntime } from "./app/mindlab_kids_runtime.js";
 import "./env_probe";
 import React from "react";
