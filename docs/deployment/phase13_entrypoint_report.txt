@@ -1,0 +1,7 @@
+SELECTED_ENTRYPOINT=C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx
+
+MAIN_FOUND:
+C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx
+
+APP_FOUND:
+C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx
