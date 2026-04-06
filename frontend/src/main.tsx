@@ -1,4 +1,5 @@
-﻿import "./env_probe";
+import { startMindLabKidsRuntime } from "./app/mindlab_kids_runtime.js";
+import "./env_probe";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -19,3 +20,16 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+
+// MINDLAB_PHASE13_RUNTIME_BOOTSTRAP
+
+if (typeof document !== "undefined") {
+  const bootHost = document.querySelector("#app");
+  if (bootHost) {
+    startMindLabKidsRuntime("#app");
+  }
+}
+
+// MINDLAB_PHASE13_RUNTIME_BOOTSTRAP
+
