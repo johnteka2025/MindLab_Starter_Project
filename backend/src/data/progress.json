@@ -1,1 +1,11 @@
-﻿{}
+{
+  "phase15-user": {
+    "userId": "phase15-user",
+    "totalScore": 0,
+    "solved": 1,
+    "failed": 0,
+    "streak": 3,
+    "lastPuzzleId": "K1-001",
+    "updatedAt": "2026-04-06T19:13:31.185Z"
+  }
+}

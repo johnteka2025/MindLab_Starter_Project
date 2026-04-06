@@ -1,4 +1,40 @@
-﻿const express = require("express");
+const { getUserProgress, saveUserProgress } = require("./game/mindlab_progress_store.cjs");
+const ScoringRules = require("./game/mindlab_scoring_rules.cjs");
+
+function resolveScoringFunction(moduleRef, names) {
+  const candidates = [];
+  if (moduleRef) candidates.push(moduleRef);
+  if (moduleRef && moduleRef.default) candidates.push(moduleRef.default);
+
+  for (const candidate of candidates) {
+    for (const name of names) {
+      if (typeof candidate[name] === "function") return candidate[name];
+    }
+  }
+
+  return null;
+}
+
+const normalizeScorePayloadFn =
+  resolveScoringFunction(ScoringRules, [
+    "normalizeScorePayload",
+    "normalizePayload",
+    "normalizeMindLabScorePayload",
+    "normalizeMindLabPayload"
+  ]) ||
+  ((payload) => payload || {});
+
+const calculateScoreFn =
+  resolveScoringFunction(ScoringRules, [
+    "calculateScore",
+    "scoreSubmission",
+    "calculateMindLabScore",
+    "calculateMindLabSubmissionScore"
+  ]) ||
+  ((payload) => ({
+    earned: payload && payload.isCorrect ? Number(payload.basePoints || 0) : 0
+  }));
+const express = require("express");
 const cors = require("cors");
 
 const app = express();
@@ -15,19 +51,51 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.post("/score", (req, res) => {
-  const payload = req.body && typeof req.body === "object" ? req.body : {};
 
-  res.status(200).json({
-    ok: true,
-    sessionId: payload.sessionId ?? "default-session",
-    scoreDelta: Number(payload.scoreDelta ?? 0),
-    result: payload.result ?? "unknown",
-    puzzleId: payload.puzzleId ?? null,
-    metadata: payload.metadata ?? {}
-  });
+
+
+app.post("/score", (req, res) => {
+  try {
+    if (typeof normalizeScorePayloadFn !== "function" || typeof calculateScoreFn !== "function") {
+      throw new Error("Scoring rule functions are missing");
+    }
+    const payload = normalizeScorePayloadFn(req.body || {});
+    const result = calculateScoreFn(payload);
+    const current = getUserProgress(payload.userId);
+
+    const next = {
+      userId: payload.userId,
+      totalScore: Number(current.totalScore || 0) + Number(result.earned || 0),
+      solved: Number(current.solved || 0) + (payload.isCorrect ? 1 : 0),
+      failed: Number(current.failed || 0) + (payload.isCorrect ? 0 : 1),
+      streak: payload.isCorrect ? Number(payload.streak || 0) : 0,
+      lastPuzzleId: payload.puzzleId,
+      updatedAt: new Date().toISOString()
+    };
+
+    saveUserProgress(next);
+
+    return res.status(200).json({
+      ok: true,
+      result,
+      progress: next
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: error.message
+    });
+  }
 });
 
+app.get("/progress/:userId", (req, res) => {
+  try {
+    const progress = getUserProgress(req.params.userId);
+    return res.status(200).json({ ok: true, progress });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message });
+  }
+});
 app.use((req, res) => {
   res.status(404).json({
     ok: false,
@@ -41,6 +109,10 @@ app.use((error, req, res, next) => {
     error: "Invalid JSON body"
   });
 });
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`MindLab backend listening on ${PORT}`);
