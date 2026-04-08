@@ -1,0 +1,94 @@
+=== PHASE 18 BACKEND API MISMATCH PROBE ===
+Timestamp: 2026-04-07 20:25:02
+Repository root: C:\Projects\MindLab_Starter_Project
+
+=== HEALTH ===
+Method: GET
+URL: http://127.0.0.1:8085/health
+Status: 200
+Error: 
+Content:
+{"ok":true,"status":"ok","port":8085}
+
+=== PUZZLES ===
+Method: GET
+URL: http://127.0.0.1:8085/puzzles
+Status: 404
+Error: The remote server returned an error: (404) Not Found.
+Content:
+{"ok":false,"error":"Route not found: GET /puzzles"}
+
+=== PROGRESS ===
+Method: GET
+URL: http://127.0.0.1:8085/progress
+Status: 404
+Error: The remote server returned an error: (404) Not Found.
+Content:
+{"ok":false,"error":"Route not found: GET /progress"}
+
+=== PROGRESS USER ===
+Method: GET
+URL: http://127.0.0.1:8085/progress/kids-runtime-user
+Status: 200
+Error: 
+Content:
+{"ok":true,"progress":{"userId":"kids-runtime-user","totalScore":0,"solved":0,"failed":0,"streak":0,"lastPuzzleId":null,"updatedAt":null}}
+
+=== SCORE ===
+Method: POST
+URL: http://127.0.0.1:8085/score
+Status: 200
+Error: 
+Content:
+{"ok":true,"result":{"sessionId":"default-session","puzzleId":"phase18-probe","awardedScore":0,"result":"unknown","metadata":{}},"progress":{"userId":"kids-runtime-user","totalScore":0,"solved":1,"failed":0,"streak":1,"lastPuzzleId":"phase18-probe","updatedAt":"2026-04-08T00:25:02.841Z"}}
+
+=== FRONTEND ENDPOINT REFERENCES ===
+C:\Projects\MindLab_Starter_Project\frontend\src\engine\mindlab_backend_route_probe.js:2: "http://127.0.0.1:8085/score",
+C:\Projects\MindLab_Starter_Project\frontend\src\engine\mindlab_backend_route_probe.js:3: "http://127.0.0.1:8085/score",
+C:\Projects\MindLab_Starter_Project\frontend\src\engine\mindlab_backend_route_probe.js:4: "http://127.0.0.1:8085/scores",
+C:\Projects\MindLab_Starter_Project\frontend\src\engine\mindlab_backend_route_probe.js:12: const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//url, {
+C:\Projects\MindLab_Starter_Project\frontend\src\engine\mindlab_score_submitter.js:3: export const MINDLAB_SCORE_ENDPOINT = "http://localhost:8085/score";
+C:\Projects\MindLab_Starter_Project\frontend\src\services\mindlab_v2_client_api.js:2: const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//url, {
+C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\api.js:10: const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//path, {
+C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\App.js:3: import ProgressPanel from "./components/ProgressPanel";
+C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\dailyChallengeApi.js:9: const response = await fetch('http://localhost:8085/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:1})})//input, {
+C:\Projects\MindLab_Starter_Project\frontend\src\_legacy_js_backup_20251208\ProgressPanel.js:2: // src/ProgressPanel.tsx
+C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx:20: const puzzles = await apiGet<any[]>("/puzzles");
+C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx:21: const prog = await apiGet<{ total: number; solved: number }>("/progress");
+C:\Projects\MindLab_Starter_Project\frontend\src\components\HealthPanel.tsx:57: <Link to="/app/progress">Progress</Link>
+C:\Projects\MindLab_Starter_Project\frontend\src\components\ProgressPanel.tsx:10: try { setLoading(true); setErr(''); setP(await api('/progress')); }
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\Daily.tsx:24: const json = await apiGet<Puzzle[]>("/puzzles");
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx:18: const p = await apiGet<Progress>("/progress");
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\Progress.tsx:29: await apiPost("/progress/reset", {});
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\PuzzlesPlay.tsx:43: const pz = await fetchJson<Puzzle[]>(`${API}/puzzles`);
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\PuzzlesPlay.tsx:46: const pr = await fetchJson<any>(`${API}/progress`);
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\PuzzlesPlay.tsx:60: await fetchJson(`${API}/progress/solve`, {
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\PuzzlesPlay.tsx:65: const pr = await fetchJson<any>(`${API}/progress`);
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\PuzzlesPlay.tsx:76: await fetchJson(`${API}/progress/reset`, {
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx:133: // Keep existing /puzzles behavior intact (supports both array or { puzzles } shape)
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx:136: const puzzlesRes = await fetchJson<any>(`/puzzles${qp}`);
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx:146: const prog = await fetchJson<Progress>("/progress");
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx:183: const res = await postJson<any>("/progress/solve", {
+C:\Projects\MindLab_Starter_Project\frontend\src\pages\SolvePuzzle.tsx:189: const prog = await fetchJson<Progress>("/progress");
+C:\Projects\MindLab_Starter_Project\frontend\src\progress\ProgressPage.tsx:19: const data = await apiGet<ProgressData>("/progress");
+C:\Projects\MindLab_Starter_Project\frontend\src\progress\ProgressPage.tsx:53: {/* IMPORTANT: This text is required for Playwright: /puzzles solved/i */}
+
+
+=== BACKEND ENDPOINT REFERENCES ===
+C:\Projects\MindLab_Starter_Project\backend\src\engine\dailySubmission.cjs:5: const { buildScoreResult } = require("./scoreEngine.cjs");
+C:\Projects\MindLab_Starter_Project\backend\src\engine\leaderboardSnapshot.cjs:3: const { buildScoreboard } = require("./scoreboard.cjs");
+C:\Projects\MindLab_Starter_Project\backend\src\routes\score.cjs:4: const { buildScoreResult } = require("../engine/scoreEngine.cjs");
+C:\Projects\MindLab_Starter_Project\backend\src\routes\score.cjs:8: router.post("/score", (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\routes\scoreboard.cjs:4: const { buildScoreboard } = require("../engine/scoreboard.cjs");
+C:\Projects\MindLab_Starter_Project\backend\src\routes\scoreboard.cjs:8: router.post("/scoreboard", (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\routes\__test__.cjs:19: const pp = require("../progressPersistence.cjs");
+C:\Projects\MindLab_Starter_Project\backend\src\routes\score.js:4: router.post('/score', (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.backup.js:18: app.get('/progress', async (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:39: // Simple in-memory puzzle data for /api/puzzles
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:58: // New API: GET /api/puzzles
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:59: app.get("/api/puzzles", (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:67: app.get('/progress', async (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:72: const r = await fetch(http://localhost:/puzzles);
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:84: app.post('/progress', async (req, res) => {
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:100: const r = await fetch(http://localhost:/puzzles);
+C:\Projects\MindLab_Starter_Project\backend\src\_quarantine\server.js:114: app.post('/progress/reset', (req, res) => {
