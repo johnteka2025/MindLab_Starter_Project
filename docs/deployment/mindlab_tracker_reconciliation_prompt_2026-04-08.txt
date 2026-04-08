@@ -1,0 +1,9 @@
+Use this prompt only if a future session explicitly asks for broader game-content completion beyond the currently verified repo path.
+
+1. Open the latest continuation handoff first.
+2. Open the external game tracker or roadmap documents next.
+3. Reconcile the repo's verified state against the tracker before adding new content.
+4. Do not assume the currently loaded 11 puzzles equal total game completion unless the tracker proves that.
+5. Produce a gap list before changing code or content.
+6. Keep all work rooted at C:\Projects\MindLab_Starter_Project.
+7. Keep the repository clean before and after every task.
