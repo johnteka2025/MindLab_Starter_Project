@@ -12,3 +12,13 @@
 - [ ] Page reload restores state cleanly
 - [ ] Keyboard focus is visible
 - [ ] Layout remains readable at normal browser zoom
+
+<!-- PHASE18_QA_BLOCKER_START -->
+## Phase 18 current blocker update
+- [x] Frontend page loads at http://127.0.0.1:8090
+- [x] Runtime puzzle card is visible
+- [ ] Backend /puzzles request succeeds
+- [ ] Puzzles list loads successfully
+- [ ] Progress fetch succeeds
+- [ ] Final manual QA sign-off completed
+<!-- PHASE18_QA_BLOCKER_END -->
