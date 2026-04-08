@@ -54,6 +54,10 @@ app.get("/health", (req, res) => {
 
 
 
+// PHASE18_ROUTE_MOUNT_START
+require("./puzzlesRoutes.cjs")(app);
+require("./progressRoutes.cjs")(app);
+// PHASE18_ROUTE_MOUNT_END
 app.post("/score", (req, res) => {
   try {
     if (typeof normalizeScorePayloadFn !== "function" || typeof calculateScoreFn !== "function") {
