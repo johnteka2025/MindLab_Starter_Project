@@ -1,0 +1,6 @@
+ID,Area,Dependency,Blocking tasks,Owner,State
+KD-001,Approvals,Gate owner assignment,K-GOV-006,,OPEN
+KD-002,Standards,Metadata template,K-STD-001 / K-VS-004,,OPEN
+KD-003,Standards,Design brief template,K-STD-002 / K-VS-004,,OPEN
+KD-004,QA,Kids QA matrices,K-STD-003 / K-QA-001 / K-QA-002 / K-QA-003,,OPEN
+KD-005,Legacy,Legacy register,K-LEG-001 through K-LEG-006,,OPEN
