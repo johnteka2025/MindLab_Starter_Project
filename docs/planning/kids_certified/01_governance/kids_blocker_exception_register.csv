@@ -1,0 +1,4 @@
+ID,Date,Area,Type,Description,Owner,Resolution target,Current state
+K-BLK-001,2026-04-08,Governance,Scope alignment,Need complete reset-language sync across all roadmap-facing files,,To be set,OPEN
+K-BLK-002,2026-04-08,Approvals,Ownership,Named gate owners not yet assigned,,To be set,OPEN
+K-BLK-003,2026-04-08,Reporting,Program clarity,Technical repo completion could be mistaken for certified Kids completion,,To be set,OPEN

@@ -1,0 +1,11 @@
+Gate,Approval area,Primary owner,Backup owner,Approval evidence,Status
+KG1,Governance baseline,,,Roadmap sign-off record,OPEN
+KG2,Category architecture,,,Architecture sign-off record,OPEN
+KG3,Standards pack,,,Template approval record,OPEN
+KG4,Vertical slice,,,Pilot approval record,OPEN
+KG5,Baseline coverage planning,,,Coverage planning approval,OPEN
+KG6,Baseline coverage quality,,,Balance review approval,OPEN
+KG7,Advanced coverage quality,,,Advanced coverage approval,OPEN
+KG8,Legacy control,,,Legacy rule approval,OPEN
+KG9,Quality evidence,,,QA and playtest approval,OPEN
+KG10,Kids release readiness,,,Closure approval,OPEN
