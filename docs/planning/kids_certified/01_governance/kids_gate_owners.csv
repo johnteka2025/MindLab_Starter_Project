@@ -1,11 +1,11 @@
 Gate,Approval area,Primary owner,Backup owner,Approval evidence,Status
-KG1,Governance baseline,,,Roadmap sign-off record,OPEN
-KG2,Category architecture,,,Architecture sign-off record,OPEN
-KG3,Standards pack,,,Template approval record,OPEN
-KG4,Vertical slice,,,Pilot approval record,OPEN
-KG5,Baseline coverage planning,,,Coverage planning approval,OPEN
-KG6,Baseline coverage quality,,,Balance review approval,OPEN
-KG7,Advanced coverage quality,,,Advanced coverage approval,OPEN
-KG8,Legacy control,,,Legacy rule approval,OPEN
-KG9,Quality evidence,,,QA and playtest approval,OPEN
-KG10,Kids release readiness,,,Closure approval,OPEN
+KG1,Governance baseline,Program Governance Lead,Deputy Governance Lead,Roadmap sign-off record,OPEN
+KG2,Category architecture,Curriculum Architecture Lead,Deputy Curriculum Architecture Lead,Architecture sign-off record,OPEN
+KG3,Standards pack,Content Standards Lead,Deputy Content Standards Lead,Template approval record,OPEN
+KG4,Vertical slice,Pilot Slice Lead,Deputy Pilot Slice Lead,Pilot approval record,OPEN
+KG5,Baseline coverage planning,Coverage Planning Lead,Deputy Coverage Planning Lead,Coverage planning approval,OPEN
+KG6,Baseline coverage quality,Quality Review Lead,Deputy Quality Review Lead,Balance review approval,OPEN
+KG7,Advanced coverage quality,Advanced Coverage Lead,Deputy Advanced Coverage Lead,Advanced coverage approval,OPEN
+KG8,Legacy control,Legacy Migration Lead,Deputy Legacy Migration Lead,Legacy rule approval,OPEN
+KG9,Quality evidence,QA Evidence Lead,Deputy QA Evidence Lead,QA and playtest approval,OPEN
+KG10,Kids release readiness,Release Readiness Lead,Deputy Release Readiness Lead,Closure approval,OPEN
