@@ -1,0 +1,6 @@
+Metric,Definition,Review use,Status
+CompletionRate,Percent of players who finish the puzzle,Detect friction,OPEN
+FirstTrySuccess,Percent correct on first attempt,Detect difficulty spikes,OPEN
+HintUsage,Average hints used per solve,Detect clarity problems,OPEN
+AbandonmentRate,Percent of starts without completion,Detect fatigue / confusion,OPEN
+RetryCount,Average failed attempts before success,Detect fairness issues,OPEN
