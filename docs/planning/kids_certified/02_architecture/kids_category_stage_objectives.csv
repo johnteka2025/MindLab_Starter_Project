@@ -1,41 +1,41 @@
 Category,Stage,Objective,Approval status
-KC1,K1,TODO,OPEN
-KC1,K2,TODO,OPEN
-KC1,K3,TODO,OPEN
-KC1,K4,TODO,OPEN
-KC1,K5,TODO,OPEN
-KC2,K1,TODO,OPEN
-KC2,K2,TODO,OPEN
-KC2,K3,TODO,OPEN
-KC2,K4,TODO,OPEN
-KC2,K5,TODO,OPEN
-KC3,K1,TODO,OPEN
-KC3,K2,TODO,OPEN
-KC3,K3,TODO,OPEN
-KC3,K4,TODO,OPEN
-KC3,K5,TODO,OPEN
-KC4,K1,TODO,OPEN
-KC4,K2,TODO,OPEN
-KC4,K3,TODO,OPEN
-KC4,K4,TODO,OPEN
-KC4,K5,TODO,OPEN
-KC5,K1,TODO,OPEN
-KC5,K2,TODO,OPEN
-KC5,K3,TODO,OPEN
-KC5,K4,TODO,OPEN
-KC5,K5,TODO,OPEN
-KC6,K1,TODO,OPEN
-KC6,K2,TODO,OPEN
-KC6,K3,TODO,OPEN
-KC6,K4,TODO,OPEN
-KC6,K5,TODO,OPEN
-KC7,K1,TODO,OPEN
-KC7,K2,TODO,OPEN
-KC7,K3,TODO,OPEN
-KC7,K4,TODO,OPEN
-KC7,K5,TODO,OPEN
-KC8,K1,TODO,OPEN
-KC8,K2,TODO,OPEN
-KC8,K3,TODO,OPEN
-KC8,K4,TODO,OPEN
-KC8,K5,TODO,OPEN
+KC1,K1,Identify simple same-or-different visual matches with one clear rule,OPEN
+KC1,K2,Group and compare visual items by one or two visible features,OPEN
+KC1,K3,Scan mixed layouts to find target patterns and eliminate distractors,OPEN
+KC1,K4,Solve multi-step visual discrimination tasks with reduced hint support,OPEN
+KC1,K5,Transfer visual discrimination skills across varied layouts and rule changes,OPEN
+KC2,K1,Continue simple repeating patterns using one obvious rule,OPEN
+KC2,K2,Complete short sequences using color shape or order clues,OPEN
+KC2,K3,Detect pattern breaks and predict next steps in mixed sequences,OPEN
+KC2,K4,Solve multi-rule sequences with more distractors and fewer cues,OPEN
+KC2,K5,Apply sequencing strategy flexibly across changing rule systems,OPEN
+KC3,K1,Recall one recently shown item or location after a short pause,OPEN
+KC3,K2,Remember short sets of items and select the correct repeat,OPEN
+KC3,K3,Track small changes across turns and recall ordered details,OPEN
+KC3,K4,Hold multiple details in working memory while solving a task,OPEN
+KC3,K5,Use memory strategy to manage longer recall chains accurately,OPEN
+KC4,K1,Recognize basic positions such as above below inside and beside,OPEN
+KC4,K2,Follow simple left-right up-down and near-far spatial directions,OPEN
+KC4,K3,Compare rotations paths and placements in small visual scenes,OPEN
+KC4,K4,Solve multi-step spatial transformations with limited support,OPEN
+KC4,K5,Apply spatial reasoning across larger layouts and changing viewpoints,OPEN
+KC5,K1,Count small sets and compare more less and equal,OPEN
+KC5,K2,Match numerals to quantities and solve simple one-step comparisons,OPEN
+KC5,K3,Use number patterns order and basic combining or separating ideas,OPEN
+KC5,K4,Solve multi-step quantity reasoning with larger sets and constraints,OPEN
+KC5,K5,Apply flexible number reasoning to varied counting and comparison tasks,OPEN
+KC6,K1,Identify letters sounds or simple word-picture matches,OPEN
+KC6,K2,Sort words or sounds by one clear language feature,OPEN
+KC6,K3,Use vocabulary clues and short verbal associations to solve tasks,OPEN
+KC6,K4,Solve language puzzles with multiple cues and reduced scaffold,OPEN
+KC6,K5,Apply word reasoning across categories clues and pattern shifts,OPEN
+KC7,K1,Choose the correct answer using one explicit elimination rule,OPEN
+KC7,K2,Compare simple clues to rule out wrong options,OPEN
+KC7,K3,Combine two clues to make a fair logical decision,OPEN
+KC7,K4,Solve multi-step logic tasks with increased ambiguity and distractors,OPEN
+KC7,K5,Select and adapt logical strategies across varied puzzle structures,OPEN
+KC8,K1,Find one target quickly and accurately in a small field,OPEN
+KC8,K2,Spot simple errors or differences while maintaining focus,OPEN
+KC8,K3,Sustain attention across longer scans and mixed detail checks,OPEN
+KC8,K4,Balance speed and accuracy under higher distraction and task length,OPEN
+KC8,K5,Maintain precise attention across complex timed or high-density tasks,OPEN
