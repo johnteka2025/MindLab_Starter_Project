@@ -1,0 +1,11 @@
+{
+    "CertifiedID":  "K-KC01-K1-B01",
+    "PacketPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_packets\\K-KC01-K1-B01.csv",
+    "FocusRowPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_lock\\current_focus_input_row.csv",
+    "FocusIssuesPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_lock\\current_focus_missing_fields.csv",
+    "InputPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_input.csv",
+    "BaselineGapCount":  280,
+    "CurrentRowGapCount":  35,
+    "CreatedUtc":  "2026-04-10T23:45:48.3162471Z",
+    "State":  "ROW_LOCK_ACTIVE"
+}
