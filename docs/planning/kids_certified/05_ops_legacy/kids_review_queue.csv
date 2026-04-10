@@ -1,6 +1,6 @@
-Item,Queue stage,Owner,Due date,State
-Pilot batch briefs,Planning review,,,OPEN
-Pilot implementation,Implementation review,,,OPEN
-Pilot QA,QA review,,,OPEN
-Pilot retrospective,Governance review,,,OPEN
-Wave 2 planning,Architecture review,,,OPEN
+"Item","Queue stage","Owner","Due date","State"
+"Pilot batch briefs","Planning review","Pilot Slice Lead","2026-04-10","OPEN"
+"Pilot implementation","Implementation review","Pilot Slice Lead","2026-04-11","OPEN"
+"Pilot QA","QA review","QA Evidence Lead","2026-04-12","OPEN"
+"Pilot retrospective","Governance review","Program Governance Lead","2026-04-13","OPEN"
+"Wave 2 planning","Architecture review","Curriculum Architecture Lead","2026-04-14","OPEN"
