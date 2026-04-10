@@ -1,5 +1,5 @@
-CheckArea,Question,Owner,Status
-StageSequence,Does K2 feel harder than K1 for the same category?,,OPEN
-StageSequence,Does K3 build on earlier learning without unfair jumps?,,OPEN
-AdvancedGate,Are K4 and K5 blocked until lower stages stabilize?,,OPEN
-CoverageBalance,Is one category dominating production unfairly?,,OPEN
+"CheckArea","Question","Owner","Status"
+"StageSequence","Does K2 feel harder than K1 for the same category?","Curriculum Architecture Lead","OPEN"
+"StageSequence","Does K3 build on earlier learning without unfair jumps?","Curriculum Architecture Lead","OPEN"
+"AdvancedGate","Are K4 and K5 blocked until lower stages stabilize?","Program Governance Lead","OPEN"
+"CoverageBalance","Is one category dominating production unfairly?","Quality Review Lead","OPEN"

@@ -1,7 +1,7 @@
-CheckArea,Question,Owner,Status
-Wording,Is the prompt age-appropriate?,,OPEN
-Logic,Is the answer uniquely correct?,,OPEN
-Clarity,Can the player understand the task without hidden assumptions?,,OPEN
-ReadingLoad,Is the text short and readable?,,OPEN
-CategoryFit,Does the puzzle belong in the assigned category?,,OPEN
-StageFit,Does the puzzle match the assigned stage?,,OPEN
+"CheckArea","Question","Owner","Status"
+"Wording","Is the prompt age-appropriate?","Content Standards Lead","OPEN"
+"Logic","Is the answer uniquely correct?","Content Standards Lead","OPEN"
+"Clarity","Can the player understand the task without hidden assumptions?","Content Standards Lead","OPEN"
+"ReadingLoad","Is the text short and readable?","Content Standards Lead","OPEN"
+"CategoryFit","Does the puzzle belong in the assigned category?","Curriculum Architecture Lead","OPEN"
+"StageFit","Does the puzzle match the assigned stage?","Curriculum Architecture Lead","OPEN"

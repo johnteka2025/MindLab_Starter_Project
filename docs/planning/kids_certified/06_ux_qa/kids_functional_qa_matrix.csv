@@ -1,7 +1,7 @@
-InteractionType,TestCase,ExpectedResult,Owner,Status
-Tap / click selection,Correct answer path,Correct feedback shown,,OPEN
-Tap / click selection,Wrong answer path,Retry path shown,,OPEN
-Drag / drop,Correct placement,Correct feedback shown,,OPEN
-Drag / drop,Wrong placement,Recovery path shown,,OPEN
-Sequence order,Correct order,Passes validation,,OPEN
-Sequence order,Incorrect order,Recovery path shown,,OPEN
+"InteractionType","TestCase","ExpectedResult","Owner","Status"
+"Tap / click selection","Correct answer path","Correct feedback shown","QA Evidence Lead","OPEN"
+"Tap / click selection","Wrong answer path","Retry path shown","QA Evidence Lead","OPEN"
+"Drag / drop","Correct placement","Correct feedback shown","QA Evidence Lead","OPEN"
+"Drag / drop","Wrong placement","Recovery path shown","QA Evidence Lead","OPEN"
+"Sequence order","Correct order","Passes validation","QA Evidence Lead","OPEN"
+"Sequence order","Incorrect order","Recovery path shown","QA Evidence Lead","OPEN"
