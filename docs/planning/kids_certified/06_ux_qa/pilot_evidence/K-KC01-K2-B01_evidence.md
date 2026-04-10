@@ -2,10 +2,6 @@
 
 ## Identity
 - Certified ID: K-KC01-K2-B01
-- Category: KC1
-- Stage: K2
-- Batch: B01
-- Design brief: C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\04_vertical_slice\pilot_briefs\K-KC01-K2-B01_pilot_puzzle_brief.md
 
 ## Ownership
 - Implementation owner: Pilot Slice Lead
@@ -15,43 +11,43 @@
 - Approval owner: Program Governance Lead
 
 ## Implementation evidence
-- Status: Pending
-- Evidence notes:
-- Build / asset references:
+- Status: BLOCKED
+- Evidence notes: Blocked: executed implementation evidence has not been captured yet.
+- Build / asset references: Blocked: build and asset references have not been captured yet.
 
 ## Functional QA
-- Status: Pending
-- Test summary:
-- Defects found:
-- Retest result:
+- Status: BLOCKED
+- Test summary: Blocked: functional QA execution record has not been captured yet.
+- Defects found: Blocked: functional QA defect log has not been captured yet.
+- Retest result: Blocked: functional QA retest result has not been captured yet.
 
 ## Content QA
-- Status: Pending
-- Review summary:
-- Wording result:
-- Logic result:
+- Status: BLOCKED
+- Review summary: Blocked: content QA review record has not been captured yet.
+- Wording result: Blocked: wording review result has not been captured yet.
+- Logic result: Blocked: logic review result has not been captured yet.
 
 ## Progression QA
-- Status: Pending
-- Sequence review:
-- Category fit:
-- Stage fit:
+- Status: BLOCKED
+- Sequence review: Blocked: progression review record has not been captured yet.
+- Category fit: Blocked: category-fit result has not been captured yet.
+- Stage fit: Blocked: stage-fit result has not been captured yet.
 
 ## Playtest findings
-- Status: Pending
-- Session notes:
-- Confusion points:
-- Improvement notes:
+- Status: BLOCKED
+- Session notes: Blocked: playtest session notes have not been captured yet.
+- Confusion points: Blocked: playtest confusion points have not been captured yet.
+- Improvement notes: Blocked: playtest improvement notes have not been captured yet.
 
 ## Telemetry summary
-- Status: Pending
-- Completion rate:
-- First-try success:
-- Hint usage:
-- Retry count:
+- Status: BLOCKED
+- Completion rate: Blocked: telemetry completion rate has not been captured yet.
+- First-try success: Blocked: telemetry first-try success has not been captured yet.
+- Hint usage: Blocked: telemetry hint usage has not been captured yet.
+- Retry count: Blocked: telemetry retry count has not been captured yet.
 
 ## Approval
-- Status: Pending
-- Reviewer:
-- Review date:
-- Decision:
+- Status: BLOCKED
+- Reviewer: Blocked: reviewer has not been assigned yet.
+- Review date: Blocked: review date has not been recorded yet.
+- Decision: Blocked: approval decision has not been recorded yet.
