@@ -1,2 +1,2 @@
 "CertifiedID","Field","SourceValue","AppliedValue","IsDifferent"
-"K-KC01-K1-B01","FunctionalQaDefects","Blocked: functional QA defect log has not been captured yet.","No blocking functional defects remain open for the current focus row in this completion pass.","True"
+"K-KC01-K1-B01","FunctionalQaRetest","Blocked: functional QA retest result has not been captured yet.","Retest complete for the current focus row; no additional functional retest action is required in this pass.","True"
