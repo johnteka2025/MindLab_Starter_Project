@@ -1,2 +1,2 @@
 "CertifiedID","Field","SourceValue","AppliedValue","IsDifferent"
-"K-KC01-K1-B01","LogicResult","Blocked: logic review result has not been captured yet.","PASS","True"
+"K-KC01-K1-B01","ProgressionQaStatus","BLOCKED","COMPLETE","True"
