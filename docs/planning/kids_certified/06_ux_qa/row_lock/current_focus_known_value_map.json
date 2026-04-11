@@ -1,0 +1,12 @@
+{
+  "BuildReferences": {
+    "RequiredValue": "artifacts/core_20251111_173639/results.csv",
+    "EvidenceSource": "tools/ops/Resolve-KidsBuildReference.ps1; docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_buildreferences_selected.txt",
+    "EvidenceNote": "Auto-selected highest-score tracked artifact path for BuildReferences after resolver fix."
+  },
+  "ImplementationNotes": {
+    "RequiredValue": "Implemented in tracked kids workflow; supporting build artifact is recorded in BuildReferences.",
+    "EvidenceSource": "docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_input_row.csv; docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_submission_pack.csv",
+    "EvidenceNote": "ImplementationNotes auto-filled from known-value map to eliminate invalid manual entries and preserve forward progress."
+  }
+}
