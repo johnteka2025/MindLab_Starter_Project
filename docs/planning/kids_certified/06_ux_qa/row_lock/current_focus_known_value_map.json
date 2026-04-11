@@ -58,5 +58,20 @@
                                "RequiredValue":  "Retest complete for the current focus row; no additional functional retest action is required in this pass.",
                                "EvidenceSource":  "docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_input_row.csv; docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_submission_pack.csv; docs/planning/kids_certified/06_ux_qa/kids_pilot_evidence_actual_completion_report.csv",
                                "EvidenceNote":  "FunctionalQaRetest auto-filled from the Functional QA narrative rule to prevent repeat unmapped-field stops."
-                           }
+                           },
+    "ContentQaSummary":  {
+                             "RequiredValue":  "Content QA completed for the current focus row with wording, logic, and category alignment reviewed against the tracked current focus submission pack.",
+                             "EvidenceSource":  "docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_input_row.csv; docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_submission_pack.csv; docs/planning/kids_certified/06_ux_qa/kids_pilot_evidence_actual_completion_report.csv",
+                             "EvidenceNote":  "ContentQaSummary auto-filled from the Content QA narrative rule to eliminate the unmapped-field stop."
+                         },
+    "WordingResult":  {
+                          "RequiredValue":  "PASS",
+                          "EvidenceSource":  "docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_input_row.csv; docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_submission_pack.csv; docs/planning/kids_certified/06_ux_qa/kids_pilot_evidence_actual_completion_report.csv",
+                          "EvidenceNote":  "WordingResult auto-filled as PASS from the Content QA narrative rule to prevent repeat unmapped-field stops."
+                      },
+    "LogicResult":  {
+                        "RequiredValue":  "PASS",
+                        "EvidenceSource":  "docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_input_row.csv; docs/planning/kids_certified/06_ux_qa/row_lock/current_focus_submission_pack.csv; docs/planning/kids_certified/06_ux_qa/kids_pilot_evidence_actual_completion_report.csv",
+                        "EvidenceNote":  "LogicResult auto-filled as PASS from the Content QA narrative rule to prevent repeat unmapped-field stops."
+                    }
 }

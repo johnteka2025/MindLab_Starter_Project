@@ -3,7 +3,7 @@
     "FocusRowPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_lock\\current_focus_input_row.csv",
     "SingleRowPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_lock\\current_focus_single_submission_row.csv",
     "CertifiedID":  "K-KC01-K1-B01",
-    "Field":  "ContentQaStatus",
+    "Field":  "ContentQaSummary",
     "Placeholder":  "__REPLACE_REQUIRED__",
     "State":  "ACTIONABLE_SINGLE_SUBMISSION_ROW_ACTIVE"
 }
