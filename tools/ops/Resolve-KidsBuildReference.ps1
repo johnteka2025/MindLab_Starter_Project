@@ -26,21 +26,9 @@ function Write-Utf8NoBom {
 
 Set-Location $RepoRoot
 
-$patterns = @(
-    '*build*',
-    '*dist*',
-    '*release*',
-    '*out*',
-    '*artifact*',
-    '*publish*',
-    '*package.json',
-    '*.sln',
-    '*.csproj'
-)
-
 $candidates = New-Object System.Collections.Generic.List[object]
-
 $tracked = @(git -C $RepoRoot ls-files)
+
 foreach ($rel in $tracked) {
     $full = Join-Path $RepoRoot $rel
     if (!(Test-Path $full)) { continue }
@@ -53,9 +41,9 @@ foreach ($rel in $tracked) {
 
     if ($score -gt 0) {
         $candidates.Add([pscustomobject]@{
-            Score         = $score
-            RelativePath  = ($rel -replace '\\','/')
-            FullPath      = $full
+            Score        = $score
+            RelativePath = ($rel -replace '\\','/')
+            FullPath     = $full
         })
     }
 }
@@ -65,10 +53,10 @@ if ($candidates.Count -eq 0) {
     return
 }
 
-$final = @($candidates | Sort-Object Score -Descending, RelativePath -Unique)
+$final = @($candidates | Sort-Object -Property @{Expression='Score';Descending=$true}, @{Expression='RelativePath';Descending=$false})
 Write-CsvUtf8NoBom -Path $CandidatesPath -Rows $final
 
-$selected = $final[0].RelativePath
+$selected = [string]$final[0].RelativePath
 Write-Utf8NoBom -Path $SelectedPath -Text $selected
 
 Write-Host ("SELECTED_BUILD_REFERENCE:{0}" -f $selected) -ForegroundColor Green
