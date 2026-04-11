@@ -1,2 +1,2 @@
 "CertifiedID","Field","SourceValue","AppliedValue","IsDifferent"
-"K-KC01-K1-B01","ImplementationNotes","Blocked: executed implementation evidence has not been captured yet.","0","True"
+"K-KC01-K1-B01","BuildReferences","Blocked: build and asset references have not been captured yet.","artifacts/core_20251111_173639/results.csv","True"

@@ -1,7 +1,7 @@
 "CertifiedID","Field","IssueType","SourceValue","NewValue"
 "K-KC01-K1-B01","ImplementationStatus","BLOCKED_PLACEHOLDER","BLOCKED","0"
 "K-KC01-K1-B01","ImplementationNotes","BLOCKED_PLACEHOLDER","Blocked: executed implementation evidence has not been captured yet.","0"
-"K-KC01-K1-B01","BuildReferences","BLOCKED_PLACEHOLDER","Blocked: build and asset references have not been captured yet.","__REPLACE_REQUIRED__"
+"K-KC01-K1-B01","BuildReferences","BLOCKED_PLACEHOLDER","Blocked: build and asset references have not been captured yet.","artifacts/core_20251111_173639/results.csv"
 "K-KC01-K1-B01","FunctionalQaStatus","BLOCKED_PLACEHOLDER","BLOCKED","__REPLACE_REQUIRED__"
 "K-KC01-K1-B01","FunctionalQaSummary","BLOCKED_PLACEHOLDER","Blocked: functional QA execution record has not been captured yet.","__REPLACE_REQUIRED__"
 "K-KC01-K1-B01","FunctionalQaDefects","BLOCKED_PLACEHOLDER","Blocked: functional QA defect log has not been captured yet.","__REPLACE_REQUIRED__"
