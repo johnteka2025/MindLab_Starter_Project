@@ -1,2 +1,2 @@
 "CertifiedID","Field","SourceValue","AppliedValue","IsDifferent"
-"K-KC01-K1-B01","ContentQaSummary","Blocked: content QA review record has not been captured yet.","Content QA completed for the current focus row with wording, logic, and category alignment reviewed against the tracked current focus submission pack.","True"
+"K-KC01-K1-B01","WordingResult","Blocked: wording review result has not been captured yet.","PASS","True"
