@@ -9,7 +9,7 @@
 "K-KC01-K1-B01","ContentQaStatus","BLOCKED_PLACEHOLDER","BLOCKED","COMPLETE"
 "K-KC01-K1-B01","ContentQaSummary","BLOCKED_PLACEHOLDER","Blocked: content QA review record has not been captured yet.","Content QA completed for the current focus row with wording, logic, and category alignment reviewed against the tracked current focus submission pack."
 "K-KC01-K1-B01","WordingResult","BLOCKED_PLACEHOLDER","Blocked: wording review result has not been captured yet.","PASS"
-"K-KC01-K1-B01","LogicResult","BLOCKED_PLACEHOLDER","Blocked: logic review result has not been captured yet.","__REPLACE_REQUIRED__"
+"K-KC01-K1-B01","LogicResult","BLOCKED_PLACEHOLDER","Blocked: logic review result has not been captured yet.","PASS"
 "K-KC01-K1-B01","ProgressionQaStatus","BLOCKED_PLACEHOLDER","BLOCKED","__REPLACE_REQUIRED__"
 "K-KC01-K1-B01","SequenceReview","BLOCKED_PLACEHOLDER","Blocked: progression review record has not been captured yet.","__REPLACE_REQUIRED__"
 "K-KC01-K1-B01","CategoryFit","BLOCKED_PLACEHOLDER","Blocked: category-fit result has not been captured yet.","__REPLACE_REQUIRED__"

@@ -1,12 +1,12 @@
 {
-    "BaselineCreatedUtc":  "2026-04-11T20:29:22.2456169Z",
+    "BaselineCreatedUtc":  "2026-04-11T20:34:46.5663059Z",
     "InputPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_input.csv",
     "ReportPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_actual_completion_report.csv",
     "SummaryPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_unresolved_by_certified.csv",
     "PacketRoot":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_packets",
-    "InputHashSha256":  "5A2FCCBA5B41D6EFFA32B6DC22642C5FF681B91FDB6EC505880EDC0C516081FD",
-    "ReportHashSha256":  "B3D0B42A6C5BE80C1D65231F83A74BDFBF6E9F62C5A5879A5E1A5520CE4A21CB",
-    "GapCount":  268,
+    "InputHashSha256":  "B188896D07FFF733A9D34EF2001FE7969D6FEEAD30E6A68939019C0231B35A1E",
+    "ReportHashSha256":  "9EEB00C715FE6845EB6FD471037E4D74E2D3F064951D6E8DBFE7397671A84C8D",
+    "GapCount":  267,
     "CertifiedIdCount":  8,
     "State":  "PROGRESS_RECORDED"
 }
