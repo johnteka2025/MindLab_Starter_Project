@@ -1,2 +1,2 @@
 "CertifiedID","Field","IssueType","SourceValue","RequiredValue","EvidenceSource","EvidenceNote","EntryState"
-"K-KC01-K1-B01","ImplementationStatus","BLOCKED_PLACEHOLDER","BLOCKED","0","0","0","READY"
+"K-KC01-K1-B01","ImplementationNotes","BLOCKED_PLACEHOLDER","Blocked: executed implementation evidence has not been captured yet.","__REPLACE_REQUIRED__","__REPLACE_REQUIRED__","__REPLACE_REQUIRED__","OPEN"
