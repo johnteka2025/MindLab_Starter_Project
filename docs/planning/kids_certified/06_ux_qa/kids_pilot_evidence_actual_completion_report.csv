@@ -1,5 +1,4 @@
 "CertifiedID","EvidenceShellPath","Field","Issue","CurrentValue"
-"K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","FunctionalQaStatus","BLOCKED_PLACEHOLDER","BLOCKED"
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","FunctionalQaSummary","BLOCKED_PLACEHOLDER","Blocked: functional QA execution record has not been captured yet."
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","FunctionalQaDefects","BLOCKED_PLACEHOLDER","Blocked: functional QA defect log has not been captured yet."
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","FunctionalQaRetest","BLOCKED_PLACEHOLDER","Blocked: functional QA retest result has not been captured yet."
@@ -25,7 +24,6 @@
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","ReviewDate","BLOCKED_PLACEHOLDER","Blocked: review date has not been recorded yet."
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","Decision","BLOCKED_PLACEHOLDER","Blocked: approval decision has not been recorded yet."
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","ImplementationStatus","STATUS_NOT_COMPLETE","0"
-"K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","FunctionalQaStatus","STATUS_NOT_COMPLETE","BLOCKED"
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","ContentQaStatus","STATUS_NOT_COMPLETE","BLOCKED"
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","ProgressionQaStatus","STATUS_NOT_COMPLETE","BLOCKED"
 "K-KC01-K1-B01","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\pilot_evidence\K-KC01-K1-B01_evidence.md","PlaytestStatus","STATUS_NOT_COMPLETE","BLOCKED"
