@@ -1,0 +1,10 @@
+{
+    "CertifiedID":  "K-KC01-K1-B01",
+    "SubmissionPackPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\row_lock\\current_focus_submission_pack.csv",
+    "ValueBankPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_value_bank.csv",
+    "SubmissionStatusPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_submission_status.csv",
+    "BlockerDashboardPath":  "C:\\Projects\\MindLab_Starter_Project\\docs\\planning\\kids_certified\\06_ux_qa\\kids_pilot_evidence_blocker_dashboard.csv",
+    "RowCount":  35,
+    "Placeholder":  "__REPLACE_REQUIRED__",
+    "State":  "SUBMISSION_PACK_ACTIVE"
+}
