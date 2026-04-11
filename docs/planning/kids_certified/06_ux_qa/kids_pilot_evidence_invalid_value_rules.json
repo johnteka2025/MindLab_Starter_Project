@@ -1,0 +1,32 @@
+{
+  "invalid_tokens": [
+    "",
+    "0",
+    "1",
+    "__REPLACE_REQUIRED__",
+    "n/a",
+    "na",
+    "none",
+    "null",
+    "ok",
+    "done",
+    "test",
+    "todo",
+    "tbd",
+    "same"
+  ],
+  "status_fields_must_equal_complete": [
+    "ImplementationStatus",
+    "FunctionalQaStatus",
+    "ContentQaStatus",
+    "ProgressionQaStatus",
+    "PlaytestStatus",
+    "TelemetryStatus",
+    "ApprovalStatus"
+  ],
+  "minimum_lengths": {
+    "RequiredValue": 3,
+    "EvidenceSource": 3,
+    "EvidenceNote": 8
+  }
+}
