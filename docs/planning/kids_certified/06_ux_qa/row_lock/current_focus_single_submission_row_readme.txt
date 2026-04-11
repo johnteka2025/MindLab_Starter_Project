@@ -7,4 +7,4 @@ RULES:
 3. RequiredValue must differ from SourceValue.
 4. Status fields must be COMPLETE.
 5. EvidenceSource and EvidenceNote must be real values.
-6. Skip no-change fields automatically; do not restore BuildReferences again if already applied.
+6. Skip no-change fields automatically.
