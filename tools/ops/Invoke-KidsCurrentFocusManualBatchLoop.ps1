@@ -93,7 +93,10 @@ function Write-CsvUtf8NoBom {
     $dir = Split-Path -Parent $Path
     if ($dir -and !(Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
     $csv = $Rows | ConvertTo-Csv -NoTypeInformation
-    [System.IO.File]::WriteAllLines($Path, $csv, (New-Object System.Text.UTF8Encoding($false)))
+    if ($null -eq $csv) { $csv = @("") }
+elseif ($csv -is [string]) { $csv = @($csv) }
+else { $csv = @($csv) }
+[System.IO.File]::WriteAllLines($Path, $csv, (New-Object System.Text.UTF8Encoding($false)))
 }
 
 function Test-OnlyAllowedDirty {
