@@ -1,0 +1,23 @@
+TARGET_CERTIFIED_ID=K-KC05-K2-B01
+REMAINING_BLOCKED_FIELD_COUNT=10
+
+FILL THESE FIELDS IN C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\row_lock\current_focus_blocker_capture_request.csv
+- RequiredValue
+- EvidenceSource
+- EvidenceCapturedBy
+- EvidenceCapturedOn
+- ReadyToApply
+
+SET ReadyToApply=YES ONLY WHEN VALUE IS FINAL
+
+REMAINING_FIELDS
+CompletionRate
+ConfusionPoints
+Decision
+FirstTrySuccess
+HintUsage
+ImprovementNotes
+RetryCount
+ReviewDate
+Reviewer
+SessionNotes
