@@ -1,0 +1,8 @@
+"ExecutionOrder","Area","NextAction","QueueStatus"
+"1","Governance","Resolve exact paths and verify","PENDING"
+"2","Tracker","Resolve exact paths and verify","PENDING"
+"3","Snapshot","Resolve snapshot blockers","PENDING"
+"4","Release","Resolve release output blockers","PENDING"
+"5","Wave2","Complete apply readiness inputs","PENDING"
+"6","Legacy","Complete apply readiness inputs","PENDING"
+"7","CrossAge","Complete apply readiness inputs","PENDING"
