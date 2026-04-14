@@ -1,0 +1,4 @@
+"BatchID","FillTask","TaskStatus","CompletionGate"
+"W2-B01","POPULATE_OWNER_AND_APPROVER_FIELDS","PENDING","All required intake fields filled"
+"W2-B02","POPULATE_OWNER_AND_APPROVER_FIELDS","PENDING","All required intake fields filled"
+"W2-B03","POPULATE_OWNER_AND_APPROVER_FIELDS","PENDING","All required intake fields filled"
