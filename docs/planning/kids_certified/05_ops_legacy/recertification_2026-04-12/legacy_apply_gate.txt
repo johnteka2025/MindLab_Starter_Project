@@ -1,0 +1,4 @@
+LEGACY APPLY GATE
+State=READY_FOR_APPLY_PRECHECK
+FailCount=0
+RequiredRule=Do not intake or approve legacy recertification candidates until validation is PASS.
