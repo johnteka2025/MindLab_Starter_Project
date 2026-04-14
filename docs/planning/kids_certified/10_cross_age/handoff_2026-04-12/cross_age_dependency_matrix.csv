@@ -1,0 +1,5 @@
+"TargetAgeGroup","Dependency","Status","Owner","Notes"
+"Adults","ReusableKidsLearnings","OPEN","TBD","Keep Adults evidence separate from Kids"
+"Adults","StablePreconditions","OPEN","TBD","Record before planning starts"
+"Seniors","ReusableKidsAdultsLearnings","OPEN","TBD","Keep Seniors evidence separate"
+"Seniors","StablePreconditions","OPEN","TBD","Record before planning starts"
