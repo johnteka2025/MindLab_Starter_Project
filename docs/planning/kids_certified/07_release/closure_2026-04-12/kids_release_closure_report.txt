@@ -1,0 +1,13 @@
+KIDS RELEASE CLOSURE REPORT
+State=OPEN_DRAFT
+ReferenceTag=kids-qa-all-rows-resolved-2026-04-12
+ReferenceHead=26974aee767d43c703615801a141a4699400b7ae
+RequiredSections=
+1. Closure summary
+2. Final certified lane status
+3. Tracker refresh summary
+4. Governance sync summary
+5. Evidence bundle summary
+6. Post-release backlog summary
+Owner=TBD
+ApprovalStatus=PENDING

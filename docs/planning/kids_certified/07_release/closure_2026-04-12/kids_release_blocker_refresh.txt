@@ -1,0 +1,10 @@
+KIDS RELEASE BLOCKER REFRESH
+State=OPEN_DRAFT
+RefreshItems=
+1. Confirm no certified unresolved rows remain
+2. Confirm tracker refresh changes are recorded
+3. Confirm governance sync wording is approved
+4. Confirm evidence bundle index is complete
+5. Confirm post-release backlog seed is attached
+Owner=TBD
+ApprovalStatus=PENDING
