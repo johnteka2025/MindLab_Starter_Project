@@ -1,0 +1,5 @@
+"Order","TargetArea","RequiredState","SourceReference","Notes"
+"1","06_ux_qa","COMPLETE","kids_pilot_evidence_unresolved_by_certified.csv","Use zero-open-row state only"
+"2","K-KC05-K2-B01","REMOVE_STALE_OPEN","tracker_refresh_checklist.txt","Align with resolved final state"
+"3","04_vertical_slice","COMPLETE","tracker_refresh_checklist.txt","Keep technical and certified completion separated"
+"4","GovernanceReleaseWaveLegacyCrossAge","KEEP_OPEN","tracker_refresh_checklist.txt","Do not close future work lanes"
