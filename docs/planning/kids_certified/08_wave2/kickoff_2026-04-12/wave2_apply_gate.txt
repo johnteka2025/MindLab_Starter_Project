@@ -1,0 +1,4 @@
+WAVE 2 APPLY GATE
+State=READY_FOR_APPLY_PRECHECK
+FailCount=0
+RequiredRule=Do not activate Wave 2 batches until owner, approver, queue, and QA path validations are PASS.
