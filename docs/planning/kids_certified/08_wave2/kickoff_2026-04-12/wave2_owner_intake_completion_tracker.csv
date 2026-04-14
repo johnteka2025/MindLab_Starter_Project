@@ -1,0 +1,4 @@
+"BatchID","ReviewStatus","MissingFields","CompletionStatus","CompletionVerifiedBy"
+"W2-B01","PENDING","OwnerName;OwnerEmail;ApproverName;ApproverEmail;QaReviewer;SignoffCheckpoint","PENDING","TBD"
+"W2-B02","PENDING","OwnerName;OwnerEmail;ApproverName;ApproverEmail;QaReviewer;SignoffCheckpoint","PENDING","TBD"
+"W2-B03","PENDING","OwnerName;OwnerEmail;ApproverName;ApproverEmail;QaReviewer;SignoffCheckpoint","PENDING","TBD"
