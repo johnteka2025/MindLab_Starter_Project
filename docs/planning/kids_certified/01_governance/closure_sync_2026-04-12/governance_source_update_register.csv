@@ -1,0 +1,4 @@
+"Order","TargetType","TargetPath","RequiredUpdate","ApplyStatus","Notes"
+"1","RoadmapFacingSourceDocs","TBD","Insert approved closure language","PENDING","Use governance_closure_language_draft.txt only"
+"2","GovernancePackNotes","TBD","Mirror approved closure language","PENDING","Keep wording identical"
+"3","ApprovalRecord","TBD","Capture approver and timestamp","PENDING","Populate after approval"
