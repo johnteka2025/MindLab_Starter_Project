@@ -1,0 +1,5 @@
+"Order","ApplyArea","RequiredAction","ApplyStatus","Notes"
+"1","ClosureReport","Populate sections","PENDING","Use kids_release_closure_section_status.csv"
+"2","BlockerRefresh","Refresh blocker state","PENDING","Use kids_release_blocker_refresh.txt"
+"3","EvidenceBundle","Attach required evidence","PENDING","Use kids_release_evidence_attachment_status.csv"
+"4","Backlog","Record backlog carry-forward","PENDING","Use kids_post_release_backlog_apply_log.csv"
