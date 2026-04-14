@@ -1,0 +1,9 @@
+LEGACY RECERTIFICATION RULES ACKNOWLEDGMENT
+State=PENDING
+Rules=
+1. No legacy item becomes certified until remapping is approved
+2. No legacy item becomes certified until rewrite is complete
+3. No legacy item becomes certified until QA is complete
+4. No legacy item becomes certified until sign-off is recorded
+5. Legacy recertification does not count as Wave 2 until approved
+Owner=TBD
