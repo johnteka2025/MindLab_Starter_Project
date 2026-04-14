@@ -1,0 +1,17 @@
+KIDS GOVERNANCE CLOSURE LANGUAGE DRAFT
+State=OPEN_DRAFT
+ReferenceTag=kids-qa-all-rows-resolved-2026-04-12
+ReferenceHead=26974aee767d43c703615801a141a4699400b7ae
+
+ApprovedClosureStatement=
+The Kids certified QA lane is closed against the verified final reference and zero-open-row state.
+
+AntiMiscountStatement=
+Legacy 01-55 work remains outside certified completion unless remapped, rewritten, QA-complete, and approved.
+
+RequiredDestinations=
+1. Roadmap-facing source docs
+2. Governance pack notes
+3. Approval record
+Owner=TBD
+ApprovalStatus=PENDING
