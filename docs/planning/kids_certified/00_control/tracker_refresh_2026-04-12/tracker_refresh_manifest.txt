@@ -1,0 +1,4 @@
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+WorkspaceRoot=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12
+ReferenceSummary=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\kids_pilot_evidence_unresolved_by_certified.csv
+State=READY_FOR_TRACKER_REFRESH

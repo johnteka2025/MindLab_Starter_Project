@@ -1,0 +1,5 @@
+1. Mark the active certified 06_ux_qa lane complete.
+2. Remove stale open status for K-KC05-K2-B01.
+3. Mark 04_vertical_slice complete for the pilot slice.
+4. Keep governance, release, Wave 2, Wave 3, legacy, and cross-age work open.
+5. Preserve the separation between technical completion and certified content completion.
