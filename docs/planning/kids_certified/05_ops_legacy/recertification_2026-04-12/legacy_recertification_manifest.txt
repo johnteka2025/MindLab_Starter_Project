@@ -1,0 +1,3 @@
+State=LEGACY_RECERTIFICATION_PLANNING_ONLY
+Rule=No legacy item becomes certified until approved remapping, rewrite, QA, and sign-off are complete.
+RepositoryRoot=C:\Projects\MindLab_Starter_Project

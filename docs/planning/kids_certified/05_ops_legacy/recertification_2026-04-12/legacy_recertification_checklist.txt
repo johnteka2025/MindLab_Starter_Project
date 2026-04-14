@@ -1,0 +1,5 @@
+1. Pull approved candidates only.
+2. Map candidate to approved category-stage target.
+3. Record rewrite / hold / archive / reject decision.
+4. Keep recertification IDs separate from legacy numbering.
+5. Do not count recertification progress as Wave 2 until approved.
