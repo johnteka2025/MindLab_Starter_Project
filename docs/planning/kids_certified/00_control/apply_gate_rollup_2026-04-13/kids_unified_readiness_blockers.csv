@@ -1,0 +1,8 @@
+"Area","BlockerStatus","Source"
+"Governance","OPEN","kids_governance_tracker_blockers.csv"
+"Tracker","OPEN","kids_governance_tracker_blockers.csv"
+"Snapshot","OPEN","kids_snapshot_blockers.csv"
+"Release","OPEN","release_unresolved_output_blockers.csv"
+"Wave2","OPEN","wave2_apply_readiness_rollup.csv"
+"Legacy","OPEN","legacy_apply_readiness_rollup.csv"
+"CrossAge","OPEN","cross_age_apply_readiness_rollup.csv"
