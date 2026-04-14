@@ -1,0 +1,1 @@
+Use this workspace only after governance sync is ready. Keep release bundle inputs aligned to the verified clean final state.

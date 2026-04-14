@@ -1,0 +1,6 @@
+1. Attach clean unresolved summary.
+2. Attach final tag and HEAD reference.
+3. Attach export proof files.
+4. Attach Kids closure report.
+5. Refresh release blocker view.
+6. Seed post-release backlog.
