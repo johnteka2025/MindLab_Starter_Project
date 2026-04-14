@@ -1,0 +1,8 @@
+KIDS APPLY EXECUTION ORDER
+1. Governance
+2. Tracker
+3. Release
+4. Wave 2
+5. Legacy
+6. Cross-Age
+Rule=Do not apply any source update until all required gates for that area are READY_FOR_APPLY_PRECHECK.
