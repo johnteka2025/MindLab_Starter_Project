@@ -1,0 +1,8 @@
+"Artifact","RequiredState","Status","Notes"
+"governance_closure_language_draft.txt","PRESENT","PENDING_VERIFY","Governance control file"
+"tracker_refresh_target_map.csv","PRESENT","PENDING_VERIFY","Tracker control file"
+"kids_release_closure_section_status.csv","PRESENT","PENDING_VERIFY","Release closure control file"
+"kids_release_evidence_attachment_status.csv","PRESENT","PENDING_VERIFY","Evidence control file"
+"wave2_batch_activation_log.csv","PRESENT","PENDING_VERIFY","Wave 2 control file"
+"legacy_candidate_intake.csv","PRESENT","PENDING_VERIFY","Legacy control file"
+"adults_handoff_dependency_register.csv","PRESENT","PENDING_VERIFY","Cross-age control file"

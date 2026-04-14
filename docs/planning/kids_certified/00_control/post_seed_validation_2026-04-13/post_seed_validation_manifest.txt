@@ -1,0 +1,8 @@
+POST-SEED VALIDATION MANIFEST
+State=OPEN_DRAFT
+ReferenceTag=kids-qa-all-rows-resolved-2026-04-12
+ReferenceHead=26974aee767d43c703615801a141a4699400b7ae
+ValidationGoal=
+Confirm all post-seed execution-control files exist before direct source-document updates begin.
+Owner=TBD
+ApprovalStatus=PENDING
