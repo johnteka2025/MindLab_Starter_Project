@@ -1,0 +1,5 @@
+"EvidenceItem","ExpectedOutput","BlockerStatus","ReviewStatus","Notes"
+"CleanUnresolvedSummary","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\evidence_bundle_2026-04-12\attachments\kids_pilot_evidence_unresolved_by_certified.csv","OPEN","PENDING","Resolve pending output before release apply"
+"FinalTagReference","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\evidence_bundle_2026-04-12\attachments\git_tag.txt","OPEN","PENDING","Resolve pending output before release apply"
+"FinalHeadReference","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\evidence_bundle_2026-04-12\attachments\git_head.txt","OPEN","PENDING","Resolve pending output before release apply"
+"ClosureReport","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\evidence_bundle_2026-04-12\attachments\kids_release_closure_report.txt","OPEN","PENDING","Resolve pending output before release apply"
