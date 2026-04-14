@@ -1,0 +1,3 @@
+KIDS NEXT APPLY GATE
+State=PENDING
+Rule=Do not begin any source apply until governance, tracker, release, wave2, legacy, cross-age, and snapshot readiness are all cleared.

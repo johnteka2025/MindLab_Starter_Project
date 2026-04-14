@@ -1,0 +1,7 @@
+"Area","ReadinessStatus","SummaryStatus","Notes"
+"Governance","PENDING","PENDING","Await exact path resolution and snapshot verification"
+"Tracker","PENDING","PENDING","Await exact path resolution and snapshot verification"
+"Release","PENDING","PENDING","Await copy verification and output review"
+"Wave2","PENDING","PENDING","Await owner fill application completion"
+"Legacy","PENDING","PENDING","Await approval fill application completion"
+"CrossAge","PENDING","PENDING","Await owner fill application completion"
