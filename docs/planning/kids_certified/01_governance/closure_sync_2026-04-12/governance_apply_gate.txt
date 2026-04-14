@@ -1,0 +1,4 @@
+GOVERNANCE APPLY GATE
+State=READY_FOR_APPLY_PRECHECK
+FailCount=0
+RequiredRule=Do not update governance source docs until validation is PASS and approval record is ready.
