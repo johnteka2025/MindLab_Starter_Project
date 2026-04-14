@@ -1,0 +1,10 @@
+WAVE 2 OWNER ASSIGNMENT NOTES
+State=OPEN_DRAFT
+RequiredInputs=
+1. Owner per batch
+2. Approver per batch
+3. Approved category-stage mapping per batch
+4. QA reviewer per batch
+5. Sign-off checkpoint per batch
+Owner=TBD
+ApprovalStatus=PENDING
