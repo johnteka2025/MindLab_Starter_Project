@@ -1,0 +1,5 @@
+"GateName","GateStatus","GateDate","Notes"
+"MappingApproved","PENDING","TBD","Required before certification"
+"RewriteComplete","PENDING","TBD","Required before certification"
+"QaComplete","PENDING","TBD","Required before certification"
+"SignoffRecorded","PENDING","TBD","Required before certification"

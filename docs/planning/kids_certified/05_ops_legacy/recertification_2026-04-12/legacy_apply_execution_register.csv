@@ -1,0 +1,4 @@
+"Order","ApplyArea","RequiredAction","ApplyStatus","Notes"
+"1","CandidateIntake","Add approved candidates only","PENDING","Use legacy_candidate_intake.csv"
+"2","DecisionMatrix","Record approved mapping decision","PENDING","Use legacy_recertification_decision_matrix.csv"
+"3","ReviewStatus","Track mapping/rewrite/QA/signoff gates","PENDING","Use legacy_recertification_review_status.csv"
