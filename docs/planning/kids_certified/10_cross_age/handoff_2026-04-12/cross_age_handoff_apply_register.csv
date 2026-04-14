@@ -1,0 +1,5 @@
+"TargetAgeGroup","RequiredAction","ApplyStatus","Notes"
+"Adults","Populate dependency register","PENDING","Do not start until Kids release artifacts remain stable"
+"Adults","Populate checklist and readiness","PENDING","Keep Adults evidence separate"
+"Seniors","Populate dependency register","PENDING","Do not start until Adults dependencies are known"
+"Seniors","Populate checklist and readiness","PENDING","Keep Seniors evidence separate"

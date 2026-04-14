@@ -1,0 +1,5 @@
+"TargetAgeGroup","Dependency","ResolutionStatus","ResolutionDate","Notes"
+"Adults","ReusableKidsLearnings","PENDING","TBD","Populate before planning starts"
+"Adults","StablePreconditions","PENDING","TBD","Populate before planning starts"
+"Seniors","ReusableKidsAdultsLearnings","PENDING","TBD","Populate before planning starts"
+"Seniors","StablePreconditions","PENDING","TBD","Populate before planning starts"
