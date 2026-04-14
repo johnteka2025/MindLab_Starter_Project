@@ -1,0 +1,7 @@
+"ExecutionOrder","ApplyArea","BlockerType","BlockerStatus","Notes"
+"1","Governance","SNAPSHOT_NOT_VERIFIED","OPEN","Resolve verification before apply"
+"2","Tracker","SNAPSHOT_NOT_VERIFIED","OPEN","Resolve verification before apply"
+"3","Release","SNAPSHOT_NOT_VERIFIED","OPEN","Resolve verification before apply"
+"4","Wave2","SNAPSHOT_NOT_VERIFIED","OPEN","Resolve verification before apply"
+"5","Legacy","SNAPSHOT_NOT_VERIFIED","OPEN","Resolve verification before apply"
+"6","CrossAge","SNAPSHOT_NOT_VERIFIED","OPEN","Resolve verification before apply"
