@@ -1,0 +1,11 @@
+KIDS RELEASE BUNDLE VALIDATION CHECKLIST
+State=OPEN_DRAFT
+ValidationChecks=
+1. Evidence map paths resolve
+2. Evidence attachment status file is complete
+3. Closure report is attached
+4. Blocker refresh is attached
+5. Export proof files are attached
+6. Final references match approved tag and head
+Owner=TBD
+ApprovalStatus=PENDING

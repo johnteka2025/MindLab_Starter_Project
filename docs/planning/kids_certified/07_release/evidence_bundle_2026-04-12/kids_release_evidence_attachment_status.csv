@@ -1,0 +1,7 @@
+"EvidenceItem","AttachStatus","VerifiedBy","VerifiedDate","Notes"
+"CleanUnresolvedSummary","PENDING","TBD","TBD","Attach verified zero-open-row file"
+"FinalTagReference","PENDING","TBD","TBD","Attach git_tag.txt"
+"FinalHeadReference","PENDING","TBD","TBD","Attach git_head.txt"
+"ClosureReport","PENDING","TBD","TBD","Attach after section completion"
+"BlockerRefresh","PENDING","TBD","TBD","Attach after blocker review"
+"PostReleaseBacklogSeed","PENDING","TBD","TBD","Attach seeded backlog csv"
