@@ -1,0 +1,4 @@
+CROSS-AGE APPLY GATE
+State=READY_FOR_APPLY_PRECHECK
+FailCount=0
+RequiredRule=Do not begin Adults or Seniors handoff application until validation is PASS.
