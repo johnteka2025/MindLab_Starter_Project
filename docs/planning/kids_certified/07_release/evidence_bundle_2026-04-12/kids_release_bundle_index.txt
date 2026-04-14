@@ -1,0 +1,12 @@
+KIDS RELEASE BUNDLE INDEX
+State=OPEN_DRAFT
+RequiredEvidence=
+1. Clean unresolved summary
+2. Final tag reference
+3. Final HEAD reference
+4. External export proof files
+5. Release closure report
+6. Release blocker refresh
+7. Post-release backlog seed
+Owner=TBD
+ApprovalStatus=PENDING
