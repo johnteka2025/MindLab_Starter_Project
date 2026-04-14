@@ -1,0 +1,5 @@
+"Order","TargetArea","RequiredUpdate","ApplyStatus","SourceFile","Notes"
+"1","06_ux_qa","Set complete","PENDING","TBD","Use tracker_refresh_target_map.csv"
+"2","K-KC05-K2-B01","Remove stale open status","PENDING","TBD","Use tracker_refresh_target_map.csv"
+"3","04_vertical_slice","Set complete","PENDING","TBD","Keep technical and certified completion separated"
+"4","FutureWorkLanes","Keep open","PENDING","TBD","Do not close future lanes"
