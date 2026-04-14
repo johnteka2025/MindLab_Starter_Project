@@ -1,0 +1,5 @@
+APPLY SNAPSHOT WORKSPACE MANIFEST
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+SnapshotRoot=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_snapshots_2026-04-14
+PlannerPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\kids_pre_apply_snapshot_path_planner.csv
+Rule=Create all snapshots before any source-file modification.
