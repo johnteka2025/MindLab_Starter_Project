@@ -1,0 +1,8 @@
+"Artifact","RequiredState","Status","ResolvedPath","Exists","Notes"
+"governance_closure_language_draft.txt","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\01_governance\closure_sync_2026-04-12\governance_closure_language_draft.txt","True","Governance control file"
+"tracker_refresh_target_map.csv","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_refresh_target_map.csv","True","Tracker control file"
+"kids_release_closure_section_status.csv","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\closure_2026-04-12\kids_release_closure_section_status.csv","True","Release closure control file"
+"kids_release_evidence_attachment_status.csv","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\evidence_bundle_2026-04-12\kids_release_evidence_attachment_status.csv","True","Evidence control file"
+"wave2_batch_activation_log.csv","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\08_wave2\kickoff_2026-04-12\wave2_batch_activation_log.csv","True","Wave 2 control file"
+"legacy_candidate_intake.csv","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\05_ops_legacy\recertification_2026-04-12\legacy_candidate_intake.csv","True","Legacy control file"
+"adults_handoff_dependency_register.csv","PRESENT","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\10_cross_age\handoff_2026-04-12\adults_handoff_dependency_register.csv","True","Cross-age control file"

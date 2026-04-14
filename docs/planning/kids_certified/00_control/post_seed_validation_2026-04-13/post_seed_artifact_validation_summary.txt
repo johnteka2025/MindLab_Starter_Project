@@ -1,0 +1,5 @@
+POST-SEED ARTIFACT VALIDATION SUMMARY
+TotalArtifacts=7
+PassCount=7
+FailCount=0
+ValidationState=PASS
