@@ -1,0 +1,5 @@
+1. Build Kids closure report.
+2. Refresh tracker documents to reflect the closed certified lane.
+3. Assemble release evidence bundle.
+4. Refresh release blocker views.
+5. Prepare post-release backlog.

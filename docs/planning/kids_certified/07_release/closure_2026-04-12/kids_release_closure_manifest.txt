@@ -1,0 +1,5 @@
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+ClosureRoot=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\closure_2026-04-12
+SummaryPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\06_ux_qa\kids_pilot_evidence_unresolved_by_certified.csv
+TagName=kids-qa-all-rows-resolved-2026-04-12
+State=KIDS_QA_CLOSED_READY_FOR_RELEASE_CLOSURE
