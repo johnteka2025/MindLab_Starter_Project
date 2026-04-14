@@ -1,0 +1,4 @@
+RELEASE APPLY GATE
+State=READY_FOR_APPLY_PRECHECK
+FailCount=0
+RequiredRule=Do not attach or finalize release closure artifacts until validation is PASS.
