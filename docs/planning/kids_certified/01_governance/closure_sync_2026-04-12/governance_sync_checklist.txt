@@ -1,0 +1,4 @@
+1. Push final certified closure language into roadmap-facing source docs.
+2. Push the same closure language into governance pack notes.
+3. Validate that legacy 01-55 work is not counted as certified completion.
+4. Record who approved the closure sync and when.

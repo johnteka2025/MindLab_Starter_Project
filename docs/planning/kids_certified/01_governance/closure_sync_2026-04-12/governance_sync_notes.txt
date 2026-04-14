@@ -1,0 +1,1 @@
+Use this workspace to capture the exact files updated during governance sync. Keep changes limited to closure language, final references, and anti-miscount notes.

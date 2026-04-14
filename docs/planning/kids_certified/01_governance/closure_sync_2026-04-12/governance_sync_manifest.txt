@@ -1,0 +1,5 @@
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+WorkspaceRoot=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\01_governance\closure_sync_2026-04-12
+ReferenceTag=kids-qa-all-rows-resolved-2026-04-12
+ReferenceHead=26974aee767d43c703615801a141a4699400b7ae
+State=READY_FOR_GOVERNANCE_SYNC
