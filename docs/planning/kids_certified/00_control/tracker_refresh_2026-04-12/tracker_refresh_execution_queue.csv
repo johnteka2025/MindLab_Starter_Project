@@ -1,0 +1,5 @@
+"Order","TrackerArea","RequiredChange","Status","Owner","Notes"
+"1","06_ux_qa","Mark active certified lane complete","OPEN","TBD","Use zero-open-rows final state"
+"2","K-KC05-K2-B01","Remove stale open status","OPEN","TBD","Align with resolved final state"
+"3","04_vertical_slice","Mark pilot slice complete","OPEN","TBD","Keep technical and certified completion separated"
+"4","FutureWorkLanes","Keep governance, release, Wave2, Wave3, legacy, cross-age open","OPEN","TBD","Do not close future lanes"
