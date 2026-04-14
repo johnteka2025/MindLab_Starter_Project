@@ -1,0 +1,5 @@
+"EvidenceItem","DecisionStatus","DecisionReason","DecisionDate"
+"CleanUnresolvedSummary","PENDING","Resolve release output blocker first","TBD"
+"FinalTagReference","PENDING","Resolve release output blocker first","TBD"
+"FinalHeadReference","PENDING","Resolve release output blocker first","TBD"
+"ClosureReport","PENDING","Resolve release output blocker first","TBD"
