@@ -1,0 +1,4 @@
+TRACKER APPLY GATE
+State=READY_FOR_APPLY_PRECHECK
+FailCount=0
+RequiredRule=Do not update tracker source files until validation is PASS and target map is confirmed.
