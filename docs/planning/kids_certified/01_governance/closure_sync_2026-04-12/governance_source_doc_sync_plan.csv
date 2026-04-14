@@ -1,0 +1,5 @@
+"Order","TargetArea","UpdateAction","Status","Owner","Notes"
+"1","RoadmapFacingSourceDocs","Insert final certified closure language","OPEN","TBD","Use final tag and clean final reference only"
+"2","GovernancePackNotes","Insert matching closure language","OPEN","TBD","Mirror approved wording exactly"
+"3","AntiMiscountControl","Add legacy exclusion note","OPEN","TBD","Do not count legacy 01-55 as certified completion"
+"4","ApprovalRecord","Capture approver and timestamp","OPEN","TBD","Record after wording is approved"
