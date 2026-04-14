@@ -1,0 +1,9 @@
+WAVE 2 QA PATH SEED
+State=OPEN_DRAFT
+RequiredPath=
+1. Define evidence capture points
+2. Define QA reviewer
+3. Define sign-off checkpoint
+4. Define escalation rule
+Owner=TBD
+ApprovalStatus=PENDING
