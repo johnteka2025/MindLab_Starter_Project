@@ -1,0 +1,3 @@
+1. Confirm which Kids and Adults learnings are reusable for Seniors.
+2. Record dependencies that must be stable before Seniors planning starts.
+3. Keep Seniors tracker and closure evidence separate from Kids and Adults.
