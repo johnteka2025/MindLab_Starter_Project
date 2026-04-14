@@ -1,0 +1,4 @@
+State=WAVE2_READY_FOR_KICKOFF
+Dependency=Kids release closure artifacts must exist before implementation starts.
+ReferenceTag=kids-qa-all-rows-resolved-2026-04-12
+RepositoryRoot=C:\Projects\MindLab_Starter_Project

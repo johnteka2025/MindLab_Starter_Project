@@ -1,0 +1,5 @@
+1. Confirm Wave 2 owner and approver.
+2. Confirm approved category-stage mapping.
+3. Seed the initial batch queue.
+4. Confirm standards pack is the active template source.
+5. Open QA evidence and sign-off path before implementation.
