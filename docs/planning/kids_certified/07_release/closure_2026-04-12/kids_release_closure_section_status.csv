@@ -1,0 +1,7 @@
+"Section","Status","Owner","SourceReference","Notes"
+"ClosureSummary","OPEN","TBD","kids_release_closure_report.txt","Populate after governance/tracker inputs"
+"FinalCertifiedLaneStatus","OPEN","TBD","kids_pilot_evidence_unresolved_by_certified.csv","Use zero-open-row evidence"
+"TrackerRefreshSummary","OPEN","TBD","tracker_refresh_change_log.csv","Populate after tracker changes"
+"GovernanceSyncSummary","OPEN","TBD","governance_sync_approval_log.csv","Populate after wording approval"
+"EvidenceBundleSummary","OPEN","TBD","kids_release_evidence_map.csv","Populate after attachments"
+"PostReleaseBacklogSummary","OPEN","TBD","kids_post_release_backlog_seed.csv","Populate after backlog review"
