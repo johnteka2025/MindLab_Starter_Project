@@ -1,4 +1,4 @@
-"SelectedRole","CandidatePath","ExactPath","SearchStatus"
-"RoadmapFacingSourceDocs","TBD","TBD","PENDING_BROADER_SCAN"
-"GovernancePackNotes","TBD","TBD","PENDING_BROADER_SCAN"
-"ApprovalRecord","TBD","TBD","PENDING_BROADER_SCAN"
+"SelectedRole","CandidatePath","CurrentExactPath","ManualExactPath","ResolutionStatus"
+"RoadmapFacingSourceDocs","TBD","TBD","TBD","PENDING"
+"GovernancePackNotes","TBD","TBD","TBD","PENDING"
+"ApprovalRecord","TBD","TBD","TBD","PENDING"
