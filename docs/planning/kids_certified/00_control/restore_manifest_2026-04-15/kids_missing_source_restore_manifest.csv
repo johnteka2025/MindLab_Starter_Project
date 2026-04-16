@@ -1,0 +1,6 @@
+"Area","Item","CandidatePath","ExactPath","RequiredAction","RestoreStatus","RestoredPath","RestoredBy","RestoreNotes"
+"Governance","RoadmapFacingSourceDocs","TBD","TBD","RESTORE_OR_CREATE_AUTHORITATIVE_SOURCE_FILE","PENDING","","",""
+"Governance","GovernancePackNotes","TBD","TBD","RESTORE_OR_CREATE_AUTHORITATIVE_SOURCE_FILE","PENDING","","",""
+"Governance","ApprovalRecord","TBD","TBD","RESTORE_OR_CREATE_AUTHORITATIVE_SOURCE_FILE","PENDING","","",""
+"Tracker","06_ux_qa","TBD","TBD","RESTORE_OR_CREATE_AUTHORITATIVE_SOURCE_FILE","PENDING","","",""
+"Tracker","GovernanceReleaseWaveLegacyCrossAge","TBD","TBD","RESTORE_OR_CREATE_AUTHORITATIVE_SOURCE_FILE","PENDING","","",""

@@ -1,0 +1,7 @@
+Restore Manifest Pack
+Repository: C:\Projects\MindLab_Starter_Project
+Source blocker file: C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\kids_final_unresolved_exact_path_blockers.csv
+Restore manifest: C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\restore_manifest_2026-04-15\kids_missing_source_restore_manifest.csv
+Governance blocker file: C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\01_governance\closure_sync_2026-04-12\governance_final_unresolved_blockers.csv
+Tracker blocker file: C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_final_unresolved_blockers.csv
+Status: PENDING_AUTHORITATIVE_SOURCE_RESTORE
