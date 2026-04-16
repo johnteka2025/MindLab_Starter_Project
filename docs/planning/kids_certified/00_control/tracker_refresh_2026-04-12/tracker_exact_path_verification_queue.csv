@@ -1,5 +1,5 @@
 "SelectedTarget","CandidatePath","ExactPath","PathExists","VerificationStatus","VerifiedBy"
-"06_ux_qa","TBD","TBD","NO","PENDING","TBD"
+"06_ux_qa","TBD","TBD","NO","BLOCKED_SOURCE_FILE_MISSING","FINAL_BLOCKER_PACK"
 "K-KC05-K2-B01","TBD","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\04_vertical_slice\pilot_briefs\K-KC05-K1-B01_pilot_puzzle_brief.md","YES","READY_FOR_VERIFY","TBD"
 "04_vertical_slice","TBD","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\04_vertical_slice\vertical_slice_retrospective.md","YES","READY_FOR_VERIFY","TBD"
-"GovernanceReleaseWaveLegacyCrossAge","TBD","TBD","NO","PENDING","TBD"
+"GovernanceReleaseWaveLegacyCrossAge","TBD","TBD","NO","BLOCKED_SOURCE_FILE_MISSING","FINAL_BLOCKER_PACK"

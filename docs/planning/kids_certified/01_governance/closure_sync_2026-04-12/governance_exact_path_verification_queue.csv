@@ -1,4 +1,4 @@
 "SelectedRole","CandidatePath","ExactPath","PathExists","VerificationStatus","VerifiedBy"
-"RoadmapFacingSourceDocs","TBD","TBD","NO","PENDING","TBD"
-"GovernancePackNotes","TBD","TBD","NO","PENDING","TBD"
-"ApprovalRecord","TBD","TBD","NO","PENDING","TBD"
+"RoadmapFacingSourceDocs","TBD","TBD","NO","BLOCKED_SOURCE_FILE_MISSING","FINAL_BLOCKER_PACK"
+"GovernancePackNotes","TBD","TBD","NO","BLOCKED_SOURCE_FILE_MISSING","FINAL_BLOCKER_PACK"
+"ApprovalRecord","TBD","TBD","NO","BLOCKED_SOURCE_FILE_MISSING","FINAL_BLOCKER_PACK"
