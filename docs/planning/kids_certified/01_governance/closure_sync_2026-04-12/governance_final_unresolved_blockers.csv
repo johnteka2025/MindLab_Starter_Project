@@ -1,4 +1,4 @@
-"Area","Item","CandidatePath","ExactPath","ResolutionStatus","BlockerStatus","AuditStatus","ProposedPath","ProposedScore","MatchCount","RequiredAction"
-"Governance","RoadmapFacingSourceDocs","TBD","TBD","PENDING","SOURCE_FILE_MISSING_OR_NONUNIQUE","NO_MATCH","","","0","CREATE_OR_RESTORE_SOURCE_FILE"
-"Governance","GovernancePackNotes","TBD","TBD","PENDING","SOURCE_FILE_MISSING_OR_NONUNIQUE","NO_MATCH","","","0","CREATE_OR_RESTORE_SOURCE_FILE"
-"Governance","ApprovalRecord","TBD","TBD","PENDING","SOURCE_FILE_MISSING_OR_NONUNIQUE","NO_MATCH","","","0","CREATE_OR_RESTORE_SOURCE_FILE"
+"Area","Item","CandidatePath","ExactPath","ResolutionStatus","BlockerStatus","RequiredAction"
+"Governance","RoadmapFacingSourceDocs","TBD","TBD","BLOCKED_SOURCE_FILE_MISSING","AUTHORITATIVE_FILE_STILL_INVALID","CORRECT_OR_REPLACE_FILE_CONTENT"
+"Governance","GovernancePackNotes","TBD","TBD","BLOCKED_SOURCE_FILE_MISSING","AUTHORITATIVE_FILE_STILL_INVALID","CORRECT_OR_REPLACE_FILE_CONTENT"
+"Governance","ApprovalRecord","TBD","TBD","BLOCKED_SOURCE_FILE_MISSING","AUTHORITATIVE_FILE_STILL_INVALID","CORRECT_OR_REPLACE_FILE_CONTENT"
