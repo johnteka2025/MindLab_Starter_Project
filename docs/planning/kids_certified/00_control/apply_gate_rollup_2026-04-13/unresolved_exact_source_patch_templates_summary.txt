@@ -1,0 +1,7 @@
+Wave2PatchTemplate=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\08_wave2\kickoff_2026-04-12\wave2_owner_intake_patch_template.csv
+Wave2Rows=3
+LegacyPatchTemplate=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\05_ops_legacy\recertification_2026-04-12\legacy_candidate_approval_patch_template.csv
+LegacyRows=2
+CrossAgePatchTemplate=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\10_cross_age\handoff_2026-04-12\cross_age_owner_intake_patch_template.csv
+CrossAgeRows=2
+GapRegister=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\unresolved_exact_source_gap_register.csv
