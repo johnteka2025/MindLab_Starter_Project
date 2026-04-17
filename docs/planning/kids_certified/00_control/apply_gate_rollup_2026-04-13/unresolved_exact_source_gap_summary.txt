@@ -1,0 +1,4 @@
+Wave2OpenRows=3
+LegacyOpenRows=2
+CrossAgeOpenRows=2
+GapRegister=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\unresolved_exact_source_gap_register.csv
