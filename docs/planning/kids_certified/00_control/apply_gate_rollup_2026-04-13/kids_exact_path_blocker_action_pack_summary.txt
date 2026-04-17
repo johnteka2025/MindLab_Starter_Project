@@ -1,0 +1,8 @@
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+GeneratedAt=2026-04-16T21:32:39
+GovernanceReadiness=BLOCKED
+TrackerReadiness=BLOCKED
+GovernanceRemainingRows=3
+TrackerRemainingRows=2
+RemainingFinalBlockers=5
+ActionPackCsv=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\kids_exact_path_blocker_action_pack.csv
