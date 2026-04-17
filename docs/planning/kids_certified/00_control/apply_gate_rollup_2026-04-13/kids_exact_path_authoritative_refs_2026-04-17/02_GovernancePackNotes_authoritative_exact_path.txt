@@ -1,0 +1,8 @@
+Item=GovernancePackNotes
+Lane=GOVERNANCE
+Area=Governance
+SourceFile=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\01_governance\closure_sync_2026-04-12\governance_remaining_unresolved_exact_paths.csv
+SourceCandidatePath=TBD
+CreatedAt=2026-04-16T21:40:03
+CreatedBy=PowerShell_Autofix
+Status=AUTHORITATIVE_EXACT_PATH_CREATED
