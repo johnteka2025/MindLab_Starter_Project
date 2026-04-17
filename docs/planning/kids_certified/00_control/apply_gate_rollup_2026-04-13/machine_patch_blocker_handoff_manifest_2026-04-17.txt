@@ -1,0 +1,10 @@
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+SummaryPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\open_bundle_population_summary.txt
+GapSummaryPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\unresolved_exact_source_gap_summary.txt
+GapRegisterPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\unresolved_exact_source_gap_register.csv
+BlockerSummaryPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\machine_patch_blocker_summary.txt
+BlockerRegisterPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\machine_patch_blocker_register.csv
+Wave2PatchTemplate=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\08_wave2\kickoff_2026-04-12\wave2_owner_intake_patch_template.csv
+LegacyPatchTemplate=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\05_ops_legacy\recertification_2026-04-12\legacy_candidate_approval_patch_template.csv
+CrossAgePatchTemplate=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\10_cross_age\handoff_2026-04-12\cross_age_owner_intake_patch_template.csv
+StopState=STOP_WITH_MACHINE_BLOCKERS_READY
