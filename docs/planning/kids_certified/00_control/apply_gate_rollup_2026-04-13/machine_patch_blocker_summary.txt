@@ -1,0 +1,4 @@
+TotalNonBlankPatchValues=0
+TotalAppliedChanges=0
+BlockerRows=7
+BlockerRegister=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\machine_patch_blocker_register.csv
