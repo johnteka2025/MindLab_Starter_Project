@@ -1,0 +1,7 @@
+"Area","Field","AllowedValue"
+"Legacy","MappingApproved","Yes"
+"Legacy","MappingApproved","No"
+"Legacy","RewriteRequired","Yes"
+"Legacy","RewriteRequired","No"
+"Wave2","SignoffCheckpoint","ENTER_ALLOWED_VALUE_1"
+"Wave2","SignoffCheckpoint","ENTER_ALLOWED_VALUE_2"
