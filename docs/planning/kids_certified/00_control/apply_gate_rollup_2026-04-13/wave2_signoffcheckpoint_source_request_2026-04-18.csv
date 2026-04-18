@@ -1,0 +1,3 @@
+"Priority","EntryKey","Area","Item","ItemInstance","Field","SuggestedValue","FinalValue","Status","ActionNeeded"
+"BLOCKER","Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","Wave2","SignoffCheckpoint","1","AllowedValue","","","REQUIRED","Provide exact source-approved Wave2 SignoffCheckpoint allowed value"
+"BLOCKER","Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","Wave2","SignoffCheckpoint","2","AllowedValue","","","REQUIRED","Provide exact source-approved Wave2 SignoffCheckpoint allowed value"
