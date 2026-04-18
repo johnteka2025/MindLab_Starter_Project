@@ -3,5 +3,5 @@
 "Legacy","MappingApproved","No"
 "Legacy","RewriteRequired","Yes"
 "Legacy","RewriteRequired","No"
-"Wave2","SignoffCheckpoint","ENTER_ALLOWED_VALUE_1"
-"Wave2","SignoffCheckpoint","ENTER_ALLOWED_VALUE_2"
+"Wave2","SignoffCheckpoint","1"
+"Wave2","SignoffCheckpoint","2"
