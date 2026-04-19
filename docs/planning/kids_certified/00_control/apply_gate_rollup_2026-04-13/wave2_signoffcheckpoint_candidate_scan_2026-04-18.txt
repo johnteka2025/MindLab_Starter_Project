@@ -1,13 +1,5 @@
 Wave2 SignoffCheckpoint candidate scan
 RepositoryRoot=C:\Projects\MindLab_Starter_Project
-State=SOURCE_VALUE_REQUIRED_STOP
 CandidateCount=0
+Status=No repository-backed approved values available
 DoNotGuess=TRUE
-RequestCsv=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\wave2_signoffcheckpoint_source_request_2026-04-18.csv
-RequestTxt=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\wave2_signoffcheckpoint_source_request_2026-04-18.txt
-
-RequiredKeys
-Lookup|Wave2|SignoffCheckpoint|AllowedValue|1
-Lookup|Wave2|SignoffCheckpoint|AllowedValue|2
-
-Status=No exact repository-backed lookup values detected at scan time

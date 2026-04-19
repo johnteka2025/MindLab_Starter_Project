@@ -2,9 +2,6 @@ STATE=SOURCE_VALUE_REQUIRED_STOP
 REPOSITORY=C:\Projects\MindLab_Starter_Project
 BLOCKER=Wave2 SignoffCheckpoint allowed values missing
 DO_NOT_GUESS=TRUE
-REQUEST_CSV=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\wave2_signoffcheckpoint_source_request_2026-04-18.csv
-CANDIDATE_REPORT=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\wave2_signoffcheckpoint_candidate_scan_2026-04-18.txt
-
 REQUIRED_KEYS
 Lookup|Wave2|SignoffCheckpoint|AllowedValue|1
 Lookup|Wave2|SignoffCheckpoint|AllowedValue|2
