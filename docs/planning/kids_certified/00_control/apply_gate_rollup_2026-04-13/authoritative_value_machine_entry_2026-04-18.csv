@@ -1,6 +1,6 @@
 "EntryKey","EntryType","Area","Item","ItemInstance","Field","SuggestedValue","FinalValue","Status","SourceHint"
-"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","Lookup","Wave2","SignoffCheckpoint","1","AllowedValue","","1","READY","Wave2 SignoffCheckpoint lookup"
-"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","Lookup","Wave2","SignoffCheckpoint","2","AllowedValue","","2","READY","Wave2 SignoffCheckpoint lookup"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","Lookup","Wave2","SignoffCheckpoint","1","AllowedValue","","","REQUIRED","Wave2 SignoffCheckpoint lookup"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","Lookup","Wave2","SignoffCheckpoint","2","AllowedValue","","","REQUIRED","Wave2 SignoffCheckpoint lookup"
 "Field|Wave2|W2-B01|1|OwnerName","Field","Wave2","W2-B01","1","OwnerName","","","REQUIRED","BusinessValueRequired"
 "Field|Wave2|W2-B01|1|OwnerEmail","Field","Wave2","W2-B01","1","OwnerEmail","","","REQUIRED","BusinessValueRequired"
 "Field|Wave2|W2-B01|1|ApproverName","Field","Wave2","W2-B01","1","ApproverName","","","REQUIRED","BusinessValueRequired"
