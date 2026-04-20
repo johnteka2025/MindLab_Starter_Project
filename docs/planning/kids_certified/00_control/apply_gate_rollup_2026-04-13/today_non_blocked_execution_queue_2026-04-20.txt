@@ -1,0 +1,7 @@
+QueueSource=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\non_blocked_remaining_work_report_2026-04-20.csv
+QueueSize=50
+Rule=Use this queue only for non-blocked work today
+BlockedLaneExcluded=TRUE
+ExecutionFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_queue_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_queue_2026-04-20.txt
