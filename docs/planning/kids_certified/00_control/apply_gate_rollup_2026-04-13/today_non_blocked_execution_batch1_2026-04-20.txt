@@ -1,0 +1,7 @@
+BatchSource=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_queue_2026-04-20.csv
+BatchSize=10
+Rule=Use Batch 1 only for non-blocked updates
+BlockedLaneExcluded=TRUE
+BatchFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_batch1_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_batch1_2026-04-20.txt
