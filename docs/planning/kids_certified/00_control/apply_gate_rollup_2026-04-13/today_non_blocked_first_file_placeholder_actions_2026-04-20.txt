@@ -1,0 +1,7 @@
+SourceExtract=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_field_extract_2026-04-20.csv
+PlaceholderActions=79
+Rule=Use this list only to update the first target file
+BlockedLaneExcluded=TRUE
+ActionFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_placeholder_actions_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_placeholder_actions_2026-04-20.txt
