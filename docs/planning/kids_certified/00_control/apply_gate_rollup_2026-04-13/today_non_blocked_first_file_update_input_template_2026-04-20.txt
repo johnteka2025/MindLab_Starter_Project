@@ -1,0 +1,7 @@
+SourceActionList=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_placeholder_actions_2026-04-20.csv
+RequiredInputs=79
+Rule=Fill NewValue only for this first target file
+BlockedLaneExcluded=TRUE
+TemplateFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_update_input_template_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_update_input_template_2026-04-20.txt
