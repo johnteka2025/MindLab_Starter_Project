@@ -1,0 +1,7 @@
+ReviewTarget=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\authoritative_exact_source_values_2026-04-17.csv
+Rows=7
+Fields=105
+Rule=Review this extract only before editing target file
+ExtractFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_field_extract_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_field_extract_2026-04-20.txt
