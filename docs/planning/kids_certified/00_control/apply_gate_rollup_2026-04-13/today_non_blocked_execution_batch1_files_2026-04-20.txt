@@ -1,0 +1,7 @@
+BatchSource=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_batch1_2026-04-20.csv
+UniqueFiles=1
+Rule=Review files in this pack only
+BlockedLaneExcluded=TRUE
+ExecutionFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_batch1_files_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_batch1_files_2026-04-20.txt
