@@ -1,0 +1,8 @@
+SourceFilePack=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_execution_batch1_files_2026-04-20.csv
+SelectedFile=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\authoritative_exact_source_values_2026-04-17.csv
+ItemsInBatch=10
+Rule=Review this one file first before touching any other file
+BlockedLaneExcluded=TRUE
+ReviewFiles
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_review_target_2026-04-20.csv
+C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\today_non_blocked_first_file_review_target_2026-04-20.txt
