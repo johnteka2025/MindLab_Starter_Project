@@ -1,0 +1,5 @@
+ScanRoot=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified
+ExcludedBlockedLane=7
+OpenItems=3475
+ReportCsv=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\non_blocked_remaining_work_report_2026-04-20.csv
+Rule=Do not touch blocked Wave2 exact-source lane
