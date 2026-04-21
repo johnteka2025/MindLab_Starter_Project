@@ -1,0 +1,5 @@
+"Gate","ApprovedRows","Status","RequiredToProceed"
+"EXTERNAL_INBOX","0","BLOCKED","YES"
+"RECEIVED_TEMPLATE","0","BLOCKED","NO"
+"READY_IMPORT","0","BLOCKED","YES"
+"DOWNSTREAM_APPLY","0","HARD_BLOCK","YES"

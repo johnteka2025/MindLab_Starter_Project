@@ -1,0 +1,5 @@
+RESULT: ROOT_CAUSE_CONFIRMED
+ExternalApprovedRows=0
+TemplateApprovedRows=0
+ReadyImportApprovedRows=0
+DownstreamApplyStatus=HARD_BLOCK
