@@ -1,0 +1,4 @@
+RESULT: REVIEW_DIAGNOSTICS_READY
+MissingFiles=1
+FilesWithMissingColumns=3
+FilesWithApprovedRows=0
