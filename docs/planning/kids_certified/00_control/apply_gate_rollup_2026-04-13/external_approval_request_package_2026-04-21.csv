@@ -1,0 +1,2 @@
+"PackageDate","NonBlockedQueueStatus","ExactSourceLaneStatus","BlockedLane","BlockReason","ResumeCondition","ApprovedValueIntakeFile","SourceRequestFile","IntakeRowCount","SourceRequestRowCount","NextValidAction"
+"2026-04-21","COMPLETE","BLOCKED_PENDING_REAL_APPROVALS","Wave2_SignoffCheckpoint_ExactSource","REAL_APPROVED_VALUES_MISSING","APPROVED_VALUES_RECEIVED","wave2_signoffcheckpoint_approved_value_intake_2026-04-18.csv","wave2_signoffcheckpoint_source_request_2026-04-18.csv","2","2","OBTAIN_REAL_EXTERNAL_APPROVED_VALUES"
