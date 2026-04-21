@@ -1,0 +1,5 @@
+RESULT: COVERAGE_GAP_MATRIX_READY
+RequiredPairs=2
+MissingFromExternalInbox=2
+RowsPresentValueBlank=0
+ReadyPairs=0

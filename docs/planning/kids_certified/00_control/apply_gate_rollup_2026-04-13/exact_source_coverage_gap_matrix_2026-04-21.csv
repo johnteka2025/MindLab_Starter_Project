@@ -1,0 +1,3 @@
+"ItemKey","FieldName","InExternalInbox","InExternalApproved","GapStatus"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","AllowedValue","N","N","MISSING_FROM_EXTERNAL_INBOX"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","AllowedValue","N","N","MISSING_FROM_EXTERNAL_INBOX"
