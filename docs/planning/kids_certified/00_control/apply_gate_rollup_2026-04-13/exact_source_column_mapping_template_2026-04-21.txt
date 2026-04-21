@@ -1,0 +1,3 @@
+RESULT: COLUMN_MAPPING_TEMPLATE_READY
+FilesToMap=4
+RULE: Fill with exact column names from raw schema snapshot only
