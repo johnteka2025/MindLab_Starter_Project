@@ -1,0 +1,3 @@
+RESULT: MISSING_EXTERNAL_VALUES_REQUEST_READY
+RequestedRows=1
+ExternalApprovedRows=0

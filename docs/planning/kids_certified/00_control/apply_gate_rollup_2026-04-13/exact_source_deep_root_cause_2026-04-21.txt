@@ -1,0 +1,5 @@
+RESULT: DEEP_ROOT_CAUSE_READY
+ExternalApprovedRows=0
+MissingColumns=
+MissingCoverageRows=0
+ReadyImportApprovedRows=0
