@@ -1,0 +1,6 @@
+"RootCauseId","RootCause","Status","Evidence","EvidenceValue","FixAction"
+"RC01","EXTERNAL_INBOX_HAS_ZERO_APPROVED_ROWS","OPEN","C:\Projects\MindLab_External_Input\wave2_exact_source_external_approved_values.csv","ApprovedRows=0","RECEIVE_REAL_EXTERNAL_APPROVED_VALUES"
+"RC02","RECEIVED_TEMPLATE_HAS_ZERO_APPROVED_ROWS","OPEN","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\external_approved_values_received_template_2026-04-21.csv","ApprovedRows=0","PROCESS_REAL_EXTERNAL_APPROVED_VALUES"
+"RC03","READY_IMPORT_FILE_MISSING_OR_EMPTY","OPEN","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\wave2_signoffcheckpoint_ready_import_2026-04-21.csv","ApprovedRows=0","CREATE_READY_IMPORT_BEFORE_APPLY"
+"RC04","APPLY_STEP_RUN_BEFORE_READY_IMPORT_EXISTS","OPEN","Missing path gate triggered in apply step","ReadyImportExists=False","USE_SINGLE_ORCHESTRATED_PIPELINE"
+"RC05","PROCESSOR_DEPENDS_ON_EXTERNAL_INBOX_NOT_TEMPLATE","OPEN","Processor source priority","ExternalApproved=0;TemplateApproved=0","USE_DETERMINISTIC_RECOVERY_PIPELINE"

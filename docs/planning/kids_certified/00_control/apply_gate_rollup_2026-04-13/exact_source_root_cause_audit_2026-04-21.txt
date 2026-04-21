@@ -1,0 +1,5 @@
+RESULT: ROOT_CAUSE_AUDIT_READY
+ExternalApprovedRows=0
+TemplateApprovedRows=0
+ReadyImportApprovedRows=0
+OpenRootCauses=5
