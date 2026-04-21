@@ -1,2 +1,3 @@
 "ItemKey","FieldName","RequiredReason","SourceFile"
-"","","SOURCE_REQUEST_ROWS_NOT_DETECTED","MANUAL_REVIEW_REQUIRED"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","AllowedValue","REAL_EXTERNAL_APPROVAL_REQUIRED","wave2_signoffcheckpoint_source_request_2026-04-18.csv"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","AllowedValue","REAL_EXTERNAL_APPROVAL_REQUIRED","wave2_signoffcheckpoint_source_request_2026-04-18.csv"
