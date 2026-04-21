@@ -1,0 +1,3 @@
+RESULT: EXTERNAL_REPAIR_PATH_GATE_READY
+CheckedFiles=ExternalInbox|SourceRequest|MissingRequest
+InvalidMappings=0
