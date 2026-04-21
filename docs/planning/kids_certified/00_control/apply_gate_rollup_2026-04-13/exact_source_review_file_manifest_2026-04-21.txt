@@ -1,0 +1,4 @@
+RESULT: REVIEW_FILE_MANIFEST_READY
+CriticalFiles=4
+HighFiles=7
+MediumFiles=5
