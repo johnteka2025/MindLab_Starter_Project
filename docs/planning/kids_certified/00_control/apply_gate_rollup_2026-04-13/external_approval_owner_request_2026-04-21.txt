@@ -1,0 +1,3 @@
+RESULT: EXTERNAL_APPROVAL_OWNER_REQUEST_READY
+RequestedRows=2
+RULE: Obtain real approved values before rerunning merge

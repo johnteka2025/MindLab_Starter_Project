@@ -1,0 +1,3 @@
+"ItemKey","FieldName","RequiredFields","CurrentGapStatus","TargetInputFile"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","AllowedValue","ApprovedNewValue|ApprovalSource|ApprovedBy|ApprovedDate","MISSING_FROM_EXTERNAL_INBOX","C:\Projects\MindLab_External_Input\wave2_exact_source_external_approved_values_repair_template.csv"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","AllowedValue","ApprovedNewValue|ApprovalSource|ApprovedBy|ApprovedDate","MISSING_FROM_EXTERNAL_INBOX","C:\Projects\MindLab_External_Input\wave2_exact_source_external_approved_values_repair_template.csv"
