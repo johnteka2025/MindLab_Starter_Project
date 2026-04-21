@@ -1,0 +1,4 @@
+RESULT: SCHEMA_PROBE_READY
+FilesProbed=4
+CandidateItemKeyColumns=2
+CandidateFieldNameColumns=3
