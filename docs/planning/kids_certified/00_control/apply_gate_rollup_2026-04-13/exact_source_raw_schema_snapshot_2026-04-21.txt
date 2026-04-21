@@ -1,0 +1,3 @@
+RESULT: RAW_SCHEMA_SNAPSHOT_READY
+FilesCaptured=4
+SampleRowsCaptured=6
