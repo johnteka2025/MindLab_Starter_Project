@@ -1,0 +1,4 @@
+RESULT: EXACT_SOURCE_BLOCKED_STATUS_READY
+LaneName=Wave2_SignoffCheckpoint_ExactSource
+BlockStatus=BLOCKED
+ResumeCondition=APPROVED_VALUES_RECEIVED
