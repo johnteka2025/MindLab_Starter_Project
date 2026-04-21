@@ -1,0 +1,4 @@
+RESULT: EXTERNAL_APPROVED_VALUES_TEMPLATE_READY
+RULE: Populate only with real external approved values
+RULE: Do not invent ApprovedNewValue
+RULE: Resume exact-source lane only after this file contains approved rows
