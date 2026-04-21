@@ -1,0 +1,4 @@
+RESULT: TARGETINTAKE_KEY_PROFILE_READY
+Columns=5
+ItemKeyLikeColumns=0
+FieldNameLikeColumns=0

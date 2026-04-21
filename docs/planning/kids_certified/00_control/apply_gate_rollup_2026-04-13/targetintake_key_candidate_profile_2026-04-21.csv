@@ -1,0 +1,6 @@
+"ColumnName","NameClass","NonBlankCount","DistinctCount","TotalRows","FillRatio","DistinctRatio","SampleValue1","SampleValue2","SampleValue3"
+"LookupOrder","OTHER","2","2","2","1","1","1","2",""
+"ApprovedValue","METADATA_LIKE","0","0","2","0","0","","",""
+"ApprovalSource","METADATA_LIKE","0","0","2","0","0","","",""
+"ApprovedBy","METADATA_LIKE","0","0","2","0","0","","",""
+"ApprovedDate","METADATA_LIKE","0","0","2","0","0","","",""
