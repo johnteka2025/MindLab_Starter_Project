@@ -1,0 +1,6 @@
+"ColumnIndex","ColumnName","NonBlankCount","DistinctCount","SampleValue1","SampleValue2","MatchRoleHint"
+"1","LookupOrder","2","2","1","2","OTHER"
+"2","ApprovedValue","0","0","","","OTHER"
+"3","ApprovalSource","0","0","","","OTHER"
+"4","ApprovedBy","0","0","","","OTHER"
+"5","ApprovedDate","0","0","","","OTHER"
