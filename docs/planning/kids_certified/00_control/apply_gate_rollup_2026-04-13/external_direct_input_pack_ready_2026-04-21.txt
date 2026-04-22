@@ -1,0 +1,4 @@
+RESULT: DIRECT_INPUT_PACK_READY
+Rows=2
+File=C:\Projects\MindLab_External_Input\wave2_exact_source_external_approved_values_direct_input.csv
+RULE: Fill only real external approved values
