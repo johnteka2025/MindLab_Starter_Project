@@ -1,0 +1,4 @@
+RESULT: REPAIR_TEMPLATE_READY
+RepairRows=2
+ApprovedRows=2
+InvalidRows=0
