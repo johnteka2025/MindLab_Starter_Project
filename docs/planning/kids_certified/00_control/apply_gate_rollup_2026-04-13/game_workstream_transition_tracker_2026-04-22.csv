@@ -1,0 +1,3 @@
+"Sequence","Workstream","Status","NextAction","TargetPath"
+"1","ExactSource","COMPLETED","TransitionToRoadmapAndTrackerContinuation","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13"
+"2","RoadmapAndTrackerContinuation","READY","OpenRoadmapInputsAndBuildGapPack","C:\Projects\MindLab_Starter_Project\docs\planning"
