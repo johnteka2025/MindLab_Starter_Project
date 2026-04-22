@@ -1,0 +1,3 @@
+"LaneName","ItemKey","FieldName","ApprovedNewValue","ApprovalSource","ApprovedBy","ApprovedDate","EvidenceReference","IntakeMatched"
+"Wave2_SignoffCheckpoint_ExactSource","Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","AllowedValue","ReviewReady","Wave2SignoffDecisionRegister","ProjectOwner","2026-04-20","Wave2SignoffApproval_2026-04-20",""
+"Wave2_SignoffCheckpoint_ExactSource","Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","AllowedValue","Draft","Wave2SignoffDecisionRegister","ProjectOwner","2026-04-20","Wave2SignoffApproval_2026-04-20",""
