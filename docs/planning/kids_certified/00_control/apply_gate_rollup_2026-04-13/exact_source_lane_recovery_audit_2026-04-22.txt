@@ -1,0 +1,4 @@
+RESULT: EXACT_SOURCE_LANE_AUDIT_READY
+BlockedStatusRows=1
+ReadyImportRows=2
+TargetIntakeRows=2
