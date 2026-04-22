@@ -1,0 +1,3 @@
+RESULT: BLOCKED_STATUS_PATH_PROBE_READY
+Candidates=1
+ExpectedPath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\exact_source_blocked_status_2026-04-21.csv
