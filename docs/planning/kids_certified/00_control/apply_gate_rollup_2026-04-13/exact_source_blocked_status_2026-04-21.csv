@@ -1,2 +1,2 @@
 "LaneName","BlockStatus","BlockReason","EvidenceFile1","EvidenceFile2","ResumeCondition","CheckedOn"
-"Wave2_SignoffCheckpoint_ExactSource","BLOCKED","REAL_APPROVED_VALUES_MISSING","wave2_signoffcheckpoint_approved_value_intake_2026-04-18.csv","wave2_signoffcheckpoint_source_request_2026-04-18.csv","APPROVED_VALUES_RECEIVED","2026-04-21"
+"Wave2_SignoffCheckpoint_ExactSource","CLEARED","APPROVED_VALUES_RECEIVED_AND_APPLIED","wave2_signoffcheckpoint_approved_value_intake_2026-04-18.csv","wave2_signoffcheckpoint_source_request_2026-04-18.csv","READY_IMPORT_APPLIED","2026-04-21"

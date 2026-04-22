@@ -1,3 +1,3 @@
 "ItemKey","FieldName","ApprovedNewValue","ApprovalSource","ApprovedBy","ApprovedDate","EvidenceReference"
-"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","AllowedValue","","","","",""
-"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","AllowedValue","","","","",""
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|1","AllowedValue","ReviewReady","Wave2SignoffDecisionRegister","ProjectOwner","2026-04-20","Wave2SignoffApproval_2026-04-20"
+"Lookup|Wave2|SignoffCheckpoint|AllowedValue|2","AllowedValue","Draft","Wave2SignoffDecisionRegister","ProjectOwner","2026-04-20","Wave2SignoffApproval_2026-04-20"
