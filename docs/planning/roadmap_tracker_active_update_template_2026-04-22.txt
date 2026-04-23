@@ -1,2 +1,2 @@
 RESULT: ACTIVE_UPDATE_TEMPLATE_READY
-WorkItem=tracker_remaining_unresolved_exact_paths.csv
+WorkItem=tracker_apply_readiness_rollup.csv
