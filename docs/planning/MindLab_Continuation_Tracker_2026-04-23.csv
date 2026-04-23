@@ -1,0 +1,6 @@
+"TaskID","Workstream","Status","NextAction","TargetPath","Notes"
+"T01","ExactSourceLaneRecovery","COMPLETED","None","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13","Recovered, audited, handed off"
+"T02","ExternalApprovedValues","COMPLETED","None","C:\Projects\MindLab_External_Input","Direct input, repair template, inbox merge completed"
+"T03","RoadmapAndTrackerContinuation","IN_PROGRESS","Continue one-item queue loop","C:\Projects\MindLab_Starter_Project\docs\planning","Promote next READY item, review only one file, close item"
+"T04","ManualTrackerRefreshBatch","IN_PROGRESS","Continue remaining one-item validations","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12","Header-only unresolved file already validated"
+"T05","ReleaseAuditPackage","PENDING","Run after all open queue items close","C:\Projects\MindLab_Starter_Project\docs\planning","Final cross-lane release audit/package"
