@@ -1,3 +1,3 @@
 RESULT: ACTIVE_QUEUE_ITEM_COMPLETED
-Sequence=3
-WorkItem=tracker_remaining_unresolved_exact_paths.csv
+Sequence=4
+WorkItem=tracker_apply_readiness_rollup.csv
