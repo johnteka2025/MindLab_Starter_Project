@@ -1,4 +1,4 @@
 RESULT: NEXT_ACTIVE_REVIEW_PACK_READY
-Sequence=3
-WorkItem=tracker_remaining_unresolved_exact_paths.csv
-SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_remaining_unresolved_exact_paths.csv
+Sequence=4
+WorkItem=tracker_apply_readiness_rollup.csv
+SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_apply_readiness_rollup.csv
