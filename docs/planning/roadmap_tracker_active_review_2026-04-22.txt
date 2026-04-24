@@ -1,4 +1,4 @@
 RESULT: NEXT_ACTIVE_REVIEW_PACK_READY
-Sequence=20
-WorkItem=kids_snapshot_archive_task_template.csv
-SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\apply_gate_rollup_2026-04-13\kids_snapshot_archive_task_template.csv
+Sequence=21
+WorkItem=tracker_selected_path_fill_template.csv
+SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_selected_path_fill_template.csv
