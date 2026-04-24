@@ -1,3 +1,4 @@
 RESULT: ACTIVE_SOURCE_CHANGE_CAPTURED
-SourceRepoPath=docs/planning/kids_certified/00_control/tracker_refresh_2026-04-12/tracker_fallback_auto_resolution_audit.csv
-WorkItem=tracker_fallback_auto_resolution_audit.csv
+SourceRepoPath=docs/planning/kids_certified/00_control/tracker_refresh_2026-04-12/tracker_unresolved_candidate_paths.csv
+AppliedStatus=SOURCE_VALIDATED_NO_VALUE_CHANGE
+WorkItem=tracker_unresolved_candidate_paths.csv
