@@ -1,3 +1,3 @@
 RESULT: ACTIVE_SOURCE_CHANGE_CAPTURED
-SourceRepoPath=docs/planning/kids_certified/00_control/tracker_refresh_2026-04-12/tracker_snapshot_task_queue.csv
-WorkItem=tracker_snapshot_task_queue.csv
+SourceRepoPath=docs/planning/kids_certified/00_control/tracker_refresh_2026-04-12/tracker_selected_target_population.csv
+WorkItem=tracker_selected_target_population.csv
