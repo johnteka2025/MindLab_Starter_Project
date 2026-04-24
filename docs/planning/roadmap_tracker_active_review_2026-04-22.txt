@@ -1,4 +1,4 @@
 RESULT: NEXT_ACTIVE_REVIEW_PACK_READY
-Sequence=10
-WorkItem=tracker_fallback_auto_resolution_audit.csv
-SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_fallback_auto_resolution_audit.csv
+Sequence=11
+WorkItem=tracker_unresolved_candidate_paths.csv
+SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_unresolved_candidate_paths.csv
