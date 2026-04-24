@@ -1,4 +1,4 @@
 RESULT: NEXT_ACTIVE_REVIEW_PACK_READY
-Sequence=18
-WorkItem=tracker_exact_path_scan_execution_log.csv
-SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_exact_path_scan_execution_log.csv
+Sequence=19
+WorkItem=tracker_exact_path_candidate_scan.csv
+SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_exact_path_candidate_scan.csv
