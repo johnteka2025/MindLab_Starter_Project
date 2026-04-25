@@ -1,4 +1,4 @@
 RESULT: NEXT_ACTIVE_REVIEW_PACK_READY
-Sequence=33
-WorkItem=tracker_apply_readiness_validation.csv
-SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_apply_readiness_validation.csv
+Sequence=34
+WorkItem=tracker_apply_gate.txt
+SourcePath=C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_apply_gate.txt
