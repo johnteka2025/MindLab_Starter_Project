@@ -3,6 +3,6 @@
 "ApplyStatusExists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_refresh_apply_status.csv"
 "QueueExists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_refresh_execution_queue.csv"
 "ChangeLogExists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_refresh_change_log.csv"
-"RequiredTargetsPresent","PASS","Missing="
+"RequiredTargetsPresent","PASS","06_ux_qa;K-KC05-K2-B01;04_vertical_slice;GovernanceReleaseWaveLegacyCrossAge"
 "ApplyStatusRowCount","PASS","Rows=2"
 "ExecutionQueueRowCount","PASS","Rows=4"
