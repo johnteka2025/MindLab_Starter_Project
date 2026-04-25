@@ -1,3 +1,3 @@
 "ChangeArea","PreviousState","NewState","ChangeDate","Status","Notes"
-"06_ux_qa","TBD","TBD","TBD","PENDING","Populate during execution"
-"04_vertical_slice","TBD","TBD","TBD","PENDING","Populate during execution"
+"06_ux_qa","OPEN","COMPLETE","2026-04-25","READY_FOR_APPLY","Zero-open-rows final state confirmed during execution"
+"04_vertical_slice","OPEN","COMPLETE","2026-04-25","READY_FOR_APPLY","Pilot slice completion confirmed during execution"
