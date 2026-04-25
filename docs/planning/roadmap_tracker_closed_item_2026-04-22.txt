@@ -1,3 +1,3 @@
 RESULT: ACTIVE_QUEUE_ITEM_COMPLETED
-Sequence=34
-WorkItem=tracker_apply_gate.txt
+Sequence=35
+WorkItem=tracker_refresh_apply_status.csv
