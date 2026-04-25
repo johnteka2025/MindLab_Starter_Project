@@ -1,3 +1,3 @@
 RESULT: ACTIVE_QUEUE_ITEM_COMPLETED
-Sequence=32
-WorkItem=tracker_source_update_register.csv
+Sequence=33
+WorkItem=tracker_apply_readiness_validation.csv
