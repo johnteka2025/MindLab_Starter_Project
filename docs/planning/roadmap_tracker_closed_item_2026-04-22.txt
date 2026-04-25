@@ -1,3 +1,3 @@
 RESULT: ACTIVE_QUEUE_ITEM_COMPLETED
-Sequence=40
-WorkItem=tracker_refresh_checklist.txt
+Sequence=41
+WorkItem=tracker_refresh_status_snapshot.txt
