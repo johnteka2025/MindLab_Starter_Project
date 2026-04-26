@@ -1,0 +1,9 @@
+RESULT: KIDS_MANUAL_QA_EVIDENCE_INTAKE_READY
+ManualUpdateAllowed=true
+DoNotMarkCompleteWithoutEvidence=true
+AllowedStatusValues=NOT_STARTED,IN_PROGRESS,PASS,FAIL,BLOCKED,NOT_APPLICABLE
+RecommendedInitialStatus=NOT_STARTED
+RecommendedInitialEvidencePath=PENDING_MANUAL_ARTIFACT
+RecommendedInitialDecision=HOLD_UNTIL_EVIDENCE_ATTACHED
+RequiredToCloseDashboardCheck5=All required QA rows PASS or documented NOT_APPLICABLE with evidence.
+RequiredToCloseDashboardCheck6=Final handoff package reviewed and accepted.

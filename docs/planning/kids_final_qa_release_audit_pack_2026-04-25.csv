@@ -3,5 +3,5 @@
 "ReleaseOutputPopulation","INCOMPLETE","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\07_release\evidence_bundle_2026-04-12\release_output_path_population.csv","IncompleteRows=4"
 "TrackerRefreshChecklist","VALIDATED_NO_CHANGE_REQUIRED","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_refresh_checklist.txt","Queue closure confirmed this file as already correct."
 "TrackerRefreshStatusSnapshot","VALIDATED_NO_CHANGE_REQUIRED","C:\Projects\MindLab_Starter_Project\docs\planning\kids_certified\00_control\tracker_refresh_2026-04-12\tracker_refresh_status_snapshot.txt","Queue closure confirmed this file as already correct."
-"GameplayVerification","HUMAN_EVIDENCE_REQUIRED","Final Kids QA evidence pack","Explicit gameplay and regression evidence must be attached before Kids exit."
-"FinalKidsHandoff","HUMAN_HANDOFF_REQUIRED","Final Kids closeout package","Required before Adults transition."
+"GameplayVerification","EVIDENCE_INTAKE_CREATED_HUMAN_COMPLETION_REQUIRED","docs/planning/kids_certified/08_final_qa/kids_manual_qa_evidence_intake_2026-04-26.csv","Manual gameplay and regression evidence intake created; complete before Kids exit."
+"FinalKidsHandoff","HANDOFF_SCAFFOLD_CREATED_HUMAN_ACCEPTANCE_REQUIRED","docs/planning/kids_certified/09_handoff/kids_final_handoff_package_2026-04-26.csv","Final handoff scaffold created; acceptance required before Adults transition."

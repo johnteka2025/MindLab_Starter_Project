@@ -1,0 +1,6 @@
+"CheckId","CheckName","Status","EvidencePath","Notes"
+"DOC-001","Queue terminal audit exists","READY_FOR_REVIEW","docs/planning/roadmap_queue_terminal_audit_2026-04-25.csv","Created in completed automation."
+"DOC-002","Remaining work tracker exists","READY_FOR_REVIEW","docs/planning/game_completion_remaining_work_2026-04-25.csv","Created in completed automation."
+"DOC-003","Business rules matrix exists","READY_FOR_REVIEW","docs/planning/kids_business_rules_matrix_2026-04-25.csv","Created in completed automation."
+"DOC-004","Six-check dashboard exists","READY_FOR_REVIEW","docs/planning/kids_completion_dashboard_2026-04-25.csv","Created in completed automation."
+"DOC-005","Final QA/release audit pack exists","READY_FOR_REVIEW","docs/planning/kids_final_qa_release_audit_pack_2026-04-25.csv","Created in completed automation."

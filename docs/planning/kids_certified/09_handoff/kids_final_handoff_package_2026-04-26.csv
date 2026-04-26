@@ -1,0 +1,6 @@
+"HandoffArea","Status","EvidencePath","Owner","Notes"
+"CompletedRepoArtifacts","READY_FOR_REVIEW","docs/planning","ProjectOwner","All closeout scaffolds committed and repo clean."
+"ManualGameplayQA","PENDING_HUMAN_EVIDENCE","docs/planning/kids_certified/08_final_qa/kids_manual_qa_evidence_intake_2026-04-26.csv","QAOwner","Must be completed before Kids exit."
+"RegressionEvidence","PENDING_HUMAN_EVIDENCE","docs/planning/kids_certified/08_final_qa/kids_regression_evidence_checklist_2026-04-26.csv","QAOwner","Must be completed before Kids exit."
+"DocumentationEvidence","READY_FOR_REVIEW","docs/planning/kids_certified/08_final_qa/kids_docs_evidence_checklist_2026-04-26.csv","ProjectOwner","Review and confirm."
+"AdultsTransitionGate","BLOCKED_UNTIL_KIDS_QA_ACCEPTED","Final Kids handoff acceptance","ProjectOwner","Do not start Adults transition until Kids QA is accepted."

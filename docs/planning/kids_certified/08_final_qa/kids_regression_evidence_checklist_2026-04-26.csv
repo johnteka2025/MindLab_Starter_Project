@@ -1,0 +1,6 @@
+"CheckId","CheckName","Status","EvidencePath","Notes"
+"REG-001","Repository clean before test","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Run git status before QA."
+"REG-002","Install/build command succeeds","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Attach terminal output."
+"REG-003","Kids route or mode loads","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Attach screenshot or test note."
+"REG-004","Gameplay loop works","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Attach playthrough evidence."
+"REG-005","No new dirty repo files after test except approved evidence","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Attach final git status."
