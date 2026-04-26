@@ -1,0 +1,7 @@
+"CheckNumber","CheckName","PassCondition","CurrentState"
+"1","Repo clean","No unresolved repo dirt after transient restore","PASS"
+"2","Blocker rows zero","machine_patch_blocker_register.csv has zero unresolved rows","FAIL:7 rows"
+"3","Open bundle READY","open_bundle_population_summary.txt shows State=READY","FAIL:NOT_READY"
+"4","Release evidence/output complete","Release source and output files have no placeholder gaps","PASS"
+"5","Gameplay/regression/docs complete","Final QA/release audit pack exists and is complete","BLOCKED:HUMAN_REVIEW_EVIDENCE_REQUIRED"
+"6","Final Kids handoff package exists","Final Kids closeout and transition package exists","BLOCKED:HUMAN_HANDOFF_REQUIRED"

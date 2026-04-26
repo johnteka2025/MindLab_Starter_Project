@@ -1,0 +1,7 @@
+RESULT: KIDS_COMPLETION_DASHBOARD_READY
+RepoClean=True
+BlockerRows=7
+OpenBundleReady=False
+ReleaseIncompleteRows=0
+GameplayRegressionDocs=BLOCKED:HUMAN_REVIEW_EVIDENCE_REQUIRED
+FinalKidsHandoff=BLOCKED:HUMAN_HANDOFF_REQUIRED
