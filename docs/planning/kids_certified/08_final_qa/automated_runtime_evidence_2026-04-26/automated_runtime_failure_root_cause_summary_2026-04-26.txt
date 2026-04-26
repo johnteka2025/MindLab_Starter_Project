@@ -1,0 +1,8 @@
+RESULT: AUTOMATED_RUNTIME_FAILURE_ANALYSIS_READY
+PassedCommands=5
+FailedCommands=8
+SkippedOrBlockedCommands=3
+OpenFailureRootCauses=8
+FailureRegister=docs\planning\kids_certified\08_final_qa\automated_runtime_evidence_2026-04-26\automated_runtime_failure_root_cause_register_2026-04-26.csv
+FixQueue=docs\planning\kids_certified\08_final_qa\automated_runtime_evidence_2026-04-26\automated_runtime_failure_fix_queue_2026-04-26.csv
+NextMode=FIX_AUTOMATED_RUNTIME_FAILURES
