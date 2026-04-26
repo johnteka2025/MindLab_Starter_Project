@@ -1,0 +1,7 @@
+RESULT: MANUAL_PLAYTEST_GATE_PACKAGE_READY
+GateStatus=READY_FOR_MANUAL_PLAYTEST_CAPTURE
+ActiveOpenFailures=0
+ManualChecklist=docs\planning\kids_certified\08_final_qa\manual_playtest_evidence_2026-04-26\manual_playtest_capture_checklist_2026-04-26.csv
+ManualTemplate=docs\planning\kids_certified\08_final_qa\manual_playtest_evidence_2026-04-26\manual_playtest_observation_template_2026-04-26.csv
+ManualUpdateValues=docs\planning\kids_certified\08_final_qa\manual_playtest_evidence_2026-04-26\manual_playtest_update_values_2026-04-26.csv
+DoNotMarkKidsExitCompleteUntilManualEvidenceAccepted=true

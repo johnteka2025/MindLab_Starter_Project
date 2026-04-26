@@ -1,0 +1,6 @@
+"TestId","EvidenceArea","RequiredAction","ExpectedResult","Status","EvidencePath","Reviewer","Decision","Notes"
+"MPT-001","GameplayLaunch","Launch app from clean repo state","App starts successfully","PENDING_MANUAL_PLAYTEST","PENDING_MANUAL_ARTIFACT","ProjectOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Attach terminal output or screenshot."
+"MPT-002","KidsModeSelection","Open Kids age category","Kids mode opens correctly","PENDING_MANUAL_PLAYTEST","PENDING_MANUAL_ARTIFACT","ProjectOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Attach screenshot or tester note."
+"MPT-003","CoreGameplayLoop","Complete one Kids gameplay loop","Gameplay loop works end-to-end","PENDING_MANUAL_PLAYTEST","PENDING_MANUAL_ARTIFACT","QAOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Attach playthrough note or screen capture."
+"MPT-004","ProgressPersistence","Verify progress/state before and after play","Progress remains stable","PENDING_MANUAL_PLAYTEST","PENDING_MANUAL_ARTIFACT","QAOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Attach before/after evidence."
+"MPT-005","FinalRepoClean","Run final git status after playtest","Repo clean or only approved evidence files changed","PENDING_FINAL_CLEAN_CHECK","PENDING_MANUAL_ARTIFACT","ProjectOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Attach final git status output."

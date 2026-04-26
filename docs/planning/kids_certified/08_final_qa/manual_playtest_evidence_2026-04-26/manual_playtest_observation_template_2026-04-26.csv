@@ -1,0 +1,6 @@
+"EvidenceArea","ActualResult","EvidencePath","Reviewer","Decision","Notes"
+"GameplayLaunch","PENDING","PENDING_MANUAL_ARTIFACT","ProjectOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Update after evidence exists."
+"KidsModeSelection","PENDING","PENDING_MANUAL_ARTIFACT","ProjectOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Update after evidence exists."
+"CoreGameplayLoop","PENDING","PENDING_MANUAL_ARTIFACT","QAOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Update after evidence exists."
+"ProgressPersistence","PENDING","PENDING_MANUAL_ARTIFACT","QAOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Update after evidence exists."
+"FinalRepoClean","PENDING","PENDING_MANUAL_ARTIFACT","ProjectOwner","HOLD_UNTIL_EVIDENCE_ATTACHED","Update after evidence exists."
