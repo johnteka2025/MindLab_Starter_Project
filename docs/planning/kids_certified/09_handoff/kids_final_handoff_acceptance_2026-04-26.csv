@@ -1,0 +1,5 @@
+"AcceptanceArea","Decision","EvidencePath","Notes"
+"ManualGameplayQA","ACCEPTED","docs/planning/kids_certified/08_final_qa/manual_playtest_evidence_2026-04-26/captured_playtest_artifacts_2026-04-26/manual_playtest_review_acceptance_2026-04-26.csv","Manual gameplay QA accepted."
+"RegressionEvidence","ACCEPTED","docs/planning/kids_certified/08_final_qa/manual_playtest_evidence_2026-04-26/captured_playtest_artifacts_2026-04-26/manual_playtest_review_acceptance_2026-04-26.csv","Regression evidence accepted."
+"FinalKidsHandoff","ACCEPTED","docs/planning/kids_certified/09_handoff/kids_final_handoff_package_2026-04-26.csv","Final Kids handoff accepted."
+"AdultsTransitionGate","READY_AFTER_KIDS_QA_ACCEPTED","docs/planning/kids_certified/09_handoff/kids_final_handoff_acceptance_2026-04-26.csv","Adults transition gate is ready after Kids QA acceptance."
