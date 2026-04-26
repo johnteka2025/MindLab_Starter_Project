@@ -1,0 +1,5 @@
+RESULT: KIDS_FINAL_QA_RELEASE_AUDIT_PACK_READY
+ReleaseSourceIncomplete=4
+ReleaseOutputIncomplete=4
+GameplayVerification=HUMAN_EVIDENCE_REQUIRED
+FinalKidsHandoff=HUMAN_HANDOFF_REQUIRED
