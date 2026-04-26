@@ -1,0 +1,4 @@
+RESULT: KIDS_BUSINESS_RULES_MATRIX_READY
+RuleRows=8
+RuleGroups=Control,BusinessWorkflow,GameQuality,Release
+This matrix is the repo-side rules source for the updated roadmap and trackers.
