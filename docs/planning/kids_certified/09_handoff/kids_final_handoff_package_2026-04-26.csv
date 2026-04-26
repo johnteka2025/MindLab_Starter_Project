@@ -1,6 +1,6 @@
 "HandoffArea","Status","EvidencePath","Owner","Notes"
 "CompletedRepoArtifacts","PASS","docs/planning/kids_certified/08_final_qa/machine_evidence_2026-04-26/kids_machine_closeout_validation_2026-04-26.csv","ProjectOwner","Machine validation confirmed closeout scaffolds exist."
 "ManualGameplayQA","PENDING_MANUAL_PLAYTEST","docs/planning/kids_certified/08_final_qa/kids_manual_qa_evidence_intake_2026-04-26.csv","QAOwner","Manual gameplay QA evidence required."
-"RegressionEvidence","AUTOMATED_FAILURE_ROOT_CAUSE_REGISTER_READY_FIX_REQUIRED","docs/planning/kids_certified/08_final_qa/automated_runtime_evidence_2026-04-26/automated_runtime_failure_root_cause_register_2026-04-26.csv","QAOwner","Fix automated runtime failures before handoff acceptance."
+"RegressionEvidence","NO_ACTIVE_RUNTIME_FAILURES_MANUAL_PLAYTEST_REQUIRED","docs/planning/kids_certified/08_final_qa/automated_runtime_evidence_2026-04-26/active_package_runtime_scope_register_2026-04-26.csv","QAOwner","No active runtime failures remain; manual playtest still required."
 "DocumentationEvidence","PASS","docs/planning/kids_certified/08_final_qa/kids_docs_evidence_checklist_2026-04-26.csv","ProjectOwner","Documentation checklist marked PASS by machine validation."
 "AdultsTransitionGate","BLOCKED_UNTIL_KIDS_QA_ACCEPTED","Final Kids handoff acceptance","ProjectOwner","Do not start Adults transition until gameplay QA and handoff are accepted."

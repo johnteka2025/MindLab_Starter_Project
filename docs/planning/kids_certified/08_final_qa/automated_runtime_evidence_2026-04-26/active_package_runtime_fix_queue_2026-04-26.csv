@@ -1,0 +1,2 @@
+"Priority","Action","RootCause","Target","Evidence","RequiredBefore","Status"
+"1","Collect manual playtest evidence","NO_ACTIVE_PACKAGE_FAILURES_AFTER_SCOPE_NORMALIZATION","Kids gameplay QA","manual playtest screenshot, tester note, or terminal output","Kids exit","READY"

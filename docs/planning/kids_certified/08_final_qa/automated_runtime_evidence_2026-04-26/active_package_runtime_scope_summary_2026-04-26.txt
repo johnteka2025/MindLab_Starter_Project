@@ -1,0 +1,7 @@
+RESULT: ACTIVE_PACKAGE_RUNTIME_SCOPE_NORMALIZATION_READY
+ActiveOpenFailures=0
+ClosedOutOfScopeHistoricalFailures=8
+NoFailureRows=0
+NextMode=COLLECT_MANUAL_PLAYTEST_EVIDENCE
+ScopedRegister=docs\planning\kids_certified\08_final_qa\automated_runtime_evidence_2026-04-26\active_package_runtime_scope_register_2026-04-26.csv
+ScopedQueue=docs\planning\kids_certified\08_final_qa\automated_runtime_evidence_2026-04-26\active_package_runtime_fix_queue_2026-04-26.csv
