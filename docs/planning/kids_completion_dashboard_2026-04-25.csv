@@ -3,5 +3,5 @@
 "2","Blocker rows zero","machine_patch_blocker_register.csv has zero unresolved rows","FAIL:7 rows"
 "3","Open bundle READY","open_bundle_population_summary.txt shows State=READY","FAIL:NOT_READY"
 "4","Release evidence/output complete","Release source and output files have no placeholder gaps","PASS"
-"5","Gameplay/regression/docs complete","Final QA/release audit pack exists and is complete","MANUAL_PLAYTEST_EVIDENCE_CAPTURED_PENDING_REVIEW"
-"6","Final Kids handoff package exists","Final Kids closeout and transition package exists","HANDOFF_DOCS_READY_HUMAN_ACCEPTANCE_REQUIRED"
+"5","Gameplay/regression/docs complete","Final QA/release audit pack exists and is complete","PASS_MANUAL_PLAYTEST_ACCEPTED"
+"6","Final Kids handoff package exists","Final Kids closeout and transition package exists","HANDOFF_ACCEPTANCE_REQUIRED"

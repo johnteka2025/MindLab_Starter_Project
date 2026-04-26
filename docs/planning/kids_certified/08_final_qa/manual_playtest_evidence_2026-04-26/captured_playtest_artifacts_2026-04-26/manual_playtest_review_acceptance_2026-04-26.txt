@@ -1,0 +1,8 @@
+RESULT: MANUAL_PLAYTEST_REVIEW_ACCEPTED
+AcceptedEvidenceAreas=4
+RejectedEvidenceAreas=0
+BlockedEvidenceAreas=0
+GameplayVerification=ACCEPTED
+RegressionEvidence=ACCEPTED
+KidsExitStatus=QA_ACCEPTED_HANDOFF_ACCEPTANCE_STILL_REQUIRED
+AdultsTransitionStatus=BLOCKED_UNTIL_FINAL_KIDS_HANDOFF_ACCEPTED
