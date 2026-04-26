@@ -1,0 +1,7 @@
+RESULT: KIDS_MACHINE_CLOSEOUT_VALIDATION_READY
+ExpectedFilesChecked=16
+MissingCloseoutFiles=0
+DocumentationReview=PASS
+RegressionSmoke=IN_PROGRESS_HUMAN_GAMEPLAY_REQUIRED
+KidsExitStatus=NOT_READY_FOR_EXIT
+AdultsTransitionStatus=BLOCKED_UNTIL_KIDS_QA_ACCEPTED
