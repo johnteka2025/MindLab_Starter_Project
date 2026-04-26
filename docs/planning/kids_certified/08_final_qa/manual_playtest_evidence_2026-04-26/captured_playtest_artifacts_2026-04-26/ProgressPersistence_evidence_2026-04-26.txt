@@ -1,0 +1,7 @@
+RESULT: MANUAL_PLAYTEST_EVIDENCE_CAPTURED
+EvidenceArea=ProgressPersistence
+Status=PASS
+Reviewer=QAOwner
+ExternalEvidencePath=NONE
+EvidenceNote=Progress/state remained stable before and after play
+CapturedAt=2026-04-26T12:42:02

@@ -1,0 +1,7 @@
+RESULT: MANUAL_PLAYTEST_CAPTURE_RECORDED
+PassedEvidenceAreas=4
+FailedEvidenceAreas=0
+BlockedEvidenceAreas=0
+AllManualPlaytestAreasPass=True
+ReviewStatus=READY_FOR_REVIEW_NOT_ACCEPTED_YET
+DoNotStartAdultsTransition=true

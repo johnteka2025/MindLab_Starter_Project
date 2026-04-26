@@ -1,0 +1,5 @@
+"EvidenceArea","Status","Reviewer","ArtifactPath","ExternalEvidencePath","Notes"
+"GameplayLaunch","PASS","ProjectOwner","docs/planning/kids_certified/08_final_qa/manual_playtest_evidence_2026-04-26/captured_playtest_artifacts_2026-04-26/GameplayLaunch_evidence_2026-04-26.txt","NONE","App launched successfully from clean repo state"
+"KidsModeSelection","PASS","ProjectOwner","docs/planning/kids_certified/08_final_qa/manual_playtest_evidence_2026-04-26/captured_playtest_artifacts_2026-04-26/KidsModeSelection_evidence_2026-04-26.txt","NONE","Kids age category opened correctly"
+"CoreGameplayLoop","PASS","QAOwner","docs/planning/kids_certified/08_final_qa/manual_playtest_evidence_2026-04-26/captured_playtest_artifacts_2026-04-26/CoreGameplayLoop_evidence_2026-04-26.txt","NONE","Completed one Kids gameplay loop end-to-end successfully"
+"ProgressPersistence","PASS","QAOwner","docs/planning/kids_certified/08_final_qa/manual_playtest_evidence_2026-04-26/captured_playtest_artifacts_2026-04-26/ProgressPersistence_evidence_2026-04-26.txt","NONE","Progress/state remained stable before and after play"

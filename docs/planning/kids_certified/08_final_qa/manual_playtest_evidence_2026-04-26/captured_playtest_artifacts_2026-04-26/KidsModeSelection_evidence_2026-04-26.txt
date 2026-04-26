@@ -1,0 +1,7 @@
+RESULT: MANUAL_PLAYTEST_EVIDENCE_CAPTURED
+EvidenceArea=KidsModeSelection
+Status=PASS
+Reviewer=ProjectOwner
+ExternalEvidencePath=NONE
+EvidenceNote=Kids age category opened correctly
+CapturedAt=2026-04-26T12:41:02
