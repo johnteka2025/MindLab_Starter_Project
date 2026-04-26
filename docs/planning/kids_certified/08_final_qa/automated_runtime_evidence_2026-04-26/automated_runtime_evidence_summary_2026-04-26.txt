@@ -1,0 +1,10 @@
+RESULT: AUTOMATED_RUNTIME_EVIDENCE_READY
+PackageFilesFound=9
+CommandsRecorded=16
+PassedCommands=5
+FailedCommands=8
+SkippedCommands=3
+BuildPass=True
+BuildFail=True
+KidsExitStatus=NOT_READY_FOR_EXIT_UNTIL_MANUAL_PLAYTEST_ACCEPTED
+AdultsTransitionStatus=BLOCKED_UNTIL_KIDS_QA_ACCEPTED
