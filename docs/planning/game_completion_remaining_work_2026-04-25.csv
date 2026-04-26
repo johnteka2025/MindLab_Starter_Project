@@ -1,0 +1,8 @@
+"Phase","Task","Status","Dependency","PrimaryOutput","Notes"
+"KidsCloseout","Create final queue terminal audit snapshot","OPEN","None","docs/planning/roadmap_queue_terminal_audit_2026-04-25.csv","First final-closeout artifact after queue exhaustion."
+"KidsCloseout","Create remaining-work tracker for game phases","OPEN","Queue terminal audit","docs/planning/game_completion_remaining_work_2026-04-25.csv","Cross-phase tracker for Kids finish and later game-delivery stages."
+"KidsRoadmapRefresh","Refresh roadmap and Kids age-category trackers","OPEN","Queue terminal audit + remaining-work tracker","External roadmap/task docs plus repo-side snapshots","Carry final queue state into roadmap and Kids planning documents."
+"BusinessRules","Define business rules and game rules","OPEN","None","docs/planning/kids_business_rules_matrix_2026-04-25.csv","Separate control, business, game-quality, and release rules."
+"Dashboards","Build one dashboard with six checks","OPEN","Business rules matrix","docs/planning/kids_completion_dashboard_2026-04-25.csv","Operational closeout dashboard for Repo, blockers, readiness, release, docs, and handoff."
+"QARelease","Prepare final QA/release audit pack","OPEN","Dashboard + refreshed trackers","docs/planning/kids_final_qa_release_audit_pack_2026-04-25.csv","Final evidence package before Kids exit and Adults transition."
+"PortfolioTransition","Freeze Kids exit package and open Adults foundation from a clean checkpoint","PLANNED","QA/release audit pack","Final Kids closeout package + Adults transition note","Portfolio transition only after Kids closeout evidence is complete."
