@@ -3,4 +3,4 @@
 "REG-002","Install/build command succeeds","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Manual gameplay/build evidence still required."
 "REG-003","Kids route or mode loads","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Manual gameplay/build evidence still required."
 "REG-004","Gameplay loop works","NOT_STARTED","PENDING_MANUAL_ARTIFACT","Manual gameplay/build evidence still required."
-"REG-005","No new dirty repo files after test except approved evidence","PENDING_FINAL_CLEAN_COMMIT_VERIFICATION","docs/planning/kids_certified/08_final_qa/machine_evidence_2026-04-26/git_status_final_2026-04-26.txt","Final clean state will be verified after this evidence commit."
+"REG-005","No new dirty repo files after test except approved evidence","PASS","docs/planning/kids_certified/08_final_qa/machine_evidence_2026-04-26/git_status_final_2026-04-26.txt","Repo clean after machine QA evidence commit."
