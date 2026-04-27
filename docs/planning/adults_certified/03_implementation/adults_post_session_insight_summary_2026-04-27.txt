@@ -1,0 +1,15 @@
+RESULT: ADULTS_POST_SESSION_INSIGHT_MODEL_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+InsightLevels=NeedsSupport|Developing|Stable|ReadyToAdvance|Exceptional
+RecommendationRules=Recovery|SameStageWithSupport|ContinueCurrentStage|Deep|ExpertPathCandidate
+TelemetryFields=OverallScore|Accuracy|RetryPattern|HintUse|TimeSignal|FirstTrySuccess
+DefaultTitle=Session insight
+ToneRule=Mature calm concise
+A-IMPL-001=COMPLETE
+A-IMPL-002=COMPLETE
+A-IMPL-003=COMPLETE
+A-IMPL-004=COMPLETE
+A-IMPL-005=COMPLETE
+A-IMPL-006=COMPLETE
+A-IMPL-007=READY_NEXT
+NextRequiredAction=DEFINE_PERSISTENCE_AND_PROFILE_DATA_MODEL

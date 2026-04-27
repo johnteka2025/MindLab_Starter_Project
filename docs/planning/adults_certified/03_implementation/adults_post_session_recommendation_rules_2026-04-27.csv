@@ -1,0 +1,6 @@
+"RuleId","Condition","Recommendation","Priority","Reason","Status"
+"A-REC-001","RetryCount>3 OR CompletionTimeSpike=YES","Recovery","1","Protect confidence and reduce pressure","READY_FOR_IMPLEMENTATION"
+"A-REC-002","Score>=85 AND HintUse<=15","Deep","2","User is ready for deeper reasoning load","READY_FOR_IMPLEMENTATION"
+"A-REC-003","Score>=93 AND FirstTrySuccess>=85 AND HintUse<=10","ExpertPathCandidate","3","Exceptional-player threshold reached","READY_FOR_IMPLEMENTATION"
+"A-REC-004","Score>=75 AND Score<85","ContinueCurrentStage","4","Stable performance without forced advancement","READY_FOR_IMPLEMENTATION"
+"A-REC-005","Score<75 AND RetryCount<=3","SameStageWithSupport","5","Keep progress moving with coaching","READY_FOR_IMPLEMENTATION"

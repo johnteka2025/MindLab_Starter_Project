@@ -1,0 +1,6 @@
+"InsightId","Trigger","MasteryLevel","InsightType","MessageTone","PrimaryMessage","NextAction","Status"
+"A-INSIGHT-001","ScoreRange=0-59","NeedsSupport","SupportiveRecovery","CalmEncouraging","This session showed friction. A lighter Recovery round is recommended.","RecommendRecovery","READY_FOR_IMPLEMENTATION"
+"A-INSIGHT-002","ScoreRange=60-74","Developing","CoachedRetry","CalmPractical","You are building the pattern. Try the same stage again with light guidance.","StayCurrentStageWithSupport","READY_FOR_IMPLEMENTATION"
+"A-INSIGHT-003","ScoreRange=75-84","Stable","SteadyProgress","Confident","Your performance is stable. Continue this stage or try another category.","ContinueCurrentStageOrNextCategory","READY_FOR_IMPLEMENTATION"
+"A-INSIGHT-004","ScoreRange=85-92","ReadyToAdvance","AdvanceRecommendation","Confident","You are ready for a stronger challenge. Try the next stage or Deep mode.","RecommendNextStageOrDeep","READY_FOR_IMPLEMENTATION"
+"A-INSIGHT-005","ScoreRange=93-100","Exceptional","ExpertEligibility","MatureRecognition","Excellent accuracy and control. Expert-path eligibility can be considered if repeated.","MarkExpertPathCandidate","READY_FOR_IMPLEMENTATION"

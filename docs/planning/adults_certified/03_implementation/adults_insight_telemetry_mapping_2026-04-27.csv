@@ -1,0 +1,7 @@
+"InsightField","SourceMetric","Required","Purpose","Status"
+"OverallScore","AccuracyScore|EfficiencyScore|HintIndependenceScore|RetryControlScore|CompletionScore","YES","Calculate post-session score","READY_FOR_IMPLEMENTATION"
+"Accuracy","CompletionRate","YES","Show correctness signal","READY_FOR_IMPLEMENTATION"
+"RetryPattern","RetryCount","YES","Detect friction and recovery need","READY_FOR_IMPLEMENTATION"
+"HintUse","HintUse","YES","Detect independence and expert eligibility","READY_FOR_IMPLEMENTATION"
+"TimeSignal","TimeToComplete","YES","Detect pacing mismatch or fatigue","READY_FOR_IMPLEMENTATION"
+"FirstTrySuccess","FirstTrySuccess","YES","Detect expert-path eligibility","READY_FOR_IMPLEMENTATION"

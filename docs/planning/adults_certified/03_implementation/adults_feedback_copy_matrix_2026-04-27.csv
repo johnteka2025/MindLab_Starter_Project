@@ -1,0 +1,7 @@
+"CopyKey","Value","UseCase","ManualUpdateNeeded"
+"POST_SESSION_HEADER","Session insight","Header","NO"
+"POST_SESSION_SCORE_LABEL","Overall score","ScoreDisplay","NO"
+"POST_SESSION_ACCURACY_LABEL","Accuracy","MetricDisplay","NO"
+"POST_SESSION_HINT_LABEL","Hint use","MetricDisplay","NO"
+"POST_SESSION_RETRY_LABEL","Retry pattern","MetricDisplay","NO"
+"POST_SESSION_NEXT_LABEL","Recommended next step","RecommendationDisplay","NO"

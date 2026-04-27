@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"POST_SESSION_DEFAULT_TITLE","Session insight","NO"
+"POST_SESSION_DEFAULT_NEXT","Continue","NO"
+"POST_SESSION_RECOVERY_LABEL","Try Recovery","NO"
+"POST_SESSION_DEEP_LABEL","Try Deep","NO"
+"POST_SESSION_EXPERT_LABEL","Expert path candidate","NO"
+"POST_SESSION_TONE_RULE","Mature calm concise","NO"
+"POST_SESSION_SHOW_RAW_SCORE","YES","NO"
