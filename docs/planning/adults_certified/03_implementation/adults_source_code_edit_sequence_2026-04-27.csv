@@ -1,0 +1,7 @@
+"Order","StepId","Action","RequiredInputs","SourceChangeAllowed","Validation"
+"1","A-SRC-001","Create or update Adults route entry","/adults|adults|Adults","NEXT_STEP_ONLY","Adults route loads"
+"2","A-SRC-002","Add Adults session mode selector","QuickFocus|Standard|Deep|Recovery","AFTER_A-SRC-001","Session mode selection works"
+"3","A-SRC-003","Add Adults gameplay content loader","A-AC01-A1-P01|A-AC03-A1-P02|A-AC05-A2-P03|A-AC06-A2-P04","AFTER_A-SRC-002","Gameplay item loads"
+"4","A-SRC-004","Add scoring and progression calculation","Accuracy50|Efficiency20|Hint15|Retry10|Completion5","AFTER_A-SRC-003","Score and next recommendation generated"
+"5","A-SRC-005","Add post-session insight panel","Session insight|Recommended next step","AFTER_A-SRC-004","Insight panel displays adult-tone recommendation"
+"6","A-SRC-006","Add Adults persistence/profile state","AdultProfile|AdultProgress|AdultSession|AdultInsight","AFTER_A-SRC-005","Progress persists without touching Kids lane"

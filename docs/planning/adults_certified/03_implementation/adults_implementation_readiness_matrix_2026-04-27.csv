@@ -1,0 +1,7 @@
+"CheckId","Check","Required","Status","Evidence"
+"A-BLUE-001","All A-IMPL-001 through A-IMPL-007 complete","YES","PASS","docs/planning/adults_certified/03_implementation/adults_implementation_queue_2026-04-27.csv"
+"A-BLUE-002","Adults route values defined","YES","PASS","docs/planning/adults_certified/03_implementation/adults_route_implementation_values_2026-04-27.csv"
+"A-BLUE-003","Adults session modes defined","YES","PASS","docs/planning/adults_certified/03_implementation/adults_session_modes_design_2026-04-27.csv"
+"A-BLUE-004","Adults gameplay content model defined","YES","PASS","docs/planning/adults_certified/03_implementation/adults_gameplay_content_model_2026-04-27.csv"
+"A-BLUE-005","Adults scoring and insight models defined","YES","PASS","docs/planning/adults_certified/03_implementation/adults_scoring_model_2026-04-27.csv"
+"A-BLUE-006","Adults persistence schema defined","YES","PASS","docs/planning/adults_certified/03_implementation/adults_persistence_schema_2026-04-27.csv"

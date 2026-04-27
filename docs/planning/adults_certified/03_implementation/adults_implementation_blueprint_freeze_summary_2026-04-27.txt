@@ -1,0 +1,11 @@
+RESULT: ADULTS_IMPLEMENTATION_BLUEPRINT_FROZEN
+RepoRoot=C:\Projects\MindLab_Starter_Project
+BlueprintStatus=FROZEN_READY_FOR_SOURCE_CODE
+CompletedImplementationTasks=A-IMPL-001|A-IMPL-002|A-IMPL-003|A-IMPL-004|A-IMPL-005|A-IMPL-006|A-IMPL-007
+NextSourceStep=A-SRC-001
+AdultsRoutePath=/adults
+AdultsModeKey=adults
+AdultsLabel=Adults
+DefaultSessionMode=QuickFocus
+DefaultCertifiedID=A-AC01-A1-P01
+NextRequiredAction=RUN_ADULTS_SOURCE_CODE_IMPLEMENTATION_PREP
