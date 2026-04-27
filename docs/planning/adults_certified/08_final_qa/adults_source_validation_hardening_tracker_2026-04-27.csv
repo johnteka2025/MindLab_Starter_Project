@@ -1,0 +1,7 @@
+"FilePath","Hardening","Result"
+"src/features/adults/AdultsLanding.tsx","UseClientDirective","UNCHANGED_ALREADY_CLIENT"
+"src/features/adults/AdultsSessionModeSelector.tsx","UseClientDirective","UNCHANGED_ALREADY_CLIENT"
+"src/features/adults/AdultsGameplayPanel.tsx","UseClientDirective","UNCHANGED_ALREADY_CLIENT"
+"src/features/adults/AdultsPostSessionInsightPanel.tsx","UseClientDirective","UNCHANGED_ALREADY_CLIENT"
+"src/features/adults/adultsSessionModes.ts","TypeScriptExplicitTypes","UPDATED_EXPLICIT_TYPES"
+"src/features/adults/adultsGameplayContent.ts","TypeScriptExplicitTypes","UPDATED_EXPLICIT_TYPES"

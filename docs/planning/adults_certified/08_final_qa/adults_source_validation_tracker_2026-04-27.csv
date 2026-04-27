@@ -1,0 +1,6 @@
+"CheckId","Check","Status","Evidence"
+"A-VAL-001","Repo clean before source validation","PASS","git status --porcelain"
+"A-VAL-002","Adults source build smoke","PASS","docs/planning/adults_certified/08_final_qa/logs/adults_build_smoke_2026-04-27.log"
+"A-VAL-003","Adults lint smoke","SKIPPED_NOT_AVAILABLE","docs/planning/adults_certified/08_final_qa/logs/adults_lint_smoke_2026-04-27.log"
+"A-VAL-004","Adults source hardening","COMPLETE","docs/planning/adults_certified/08_final_qa/adults_source_validation_hardening_tracker_2026-04-27.csv"
+"A-VAL-005","Repo clean after source validation","PASS","docs/planning/adults_certified/08_final_qa/git_status_after_adults_source_validation_build_smoke_2026-04-27.txt"

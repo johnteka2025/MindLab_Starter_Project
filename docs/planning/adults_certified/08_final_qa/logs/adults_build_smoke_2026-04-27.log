@@ -1,0 +1,6 @@
+CommandId=A-VAL-CMD-001
+Purpose=BuildValidation
+Command=npm run build
+WorkingDirectory=C:\Projects\MindLab_Starter_Project\frontend
+ExitCode=0
+---- STDOUT ----

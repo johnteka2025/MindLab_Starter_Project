@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useMemo, useState } from "react";
 import {
   getDefaultAdultsGameplayItemForSession,
@@ -50,7 +52,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
       scoreResult
     });
 
-    setSavedProfileLabel(`${savedProfile.currentStage} · ${savedProfile.currentCategory}`);
+    setSavedProfileLabel(`${savedProfile.currentStage} Ã‚Â· ${savedProfile.currentCategory}`);
   }, [activeItem, isCorrect, scoreResult, selectedAnswer, selectedMode]);
 
   function handleAnswer(option: string) {
@@ -69,7 +71,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     <section aria-labelledby="adults-gameplay-heading" style={{ marginTop: "28px" }}>
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-          {activeItem.certifiedId} · {activeItem.categoryName} · {activeItem.stage}
+          {activeItem.certifiedId} Ã‚Â· {activeItem.categoryName} Ã‚Â· {activeItem.stage}
         </p>
         <h2 id="adults-gameplay-heading" style={{ margin: 0, fontSize: "26px" }}>
           Starter challenge

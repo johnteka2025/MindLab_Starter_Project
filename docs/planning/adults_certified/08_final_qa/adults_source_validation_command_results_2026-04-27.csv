@@ -1,0 +1,3 @@
+"CommandId","Purpose","Command","ExitCode","Status","LogPath","Blocking"
+"A-VAL-CMD-001","BuildValidation","npm run build","0","PASS","docs/planning/adults_certified/08_final_qa/logs/adults_build_smoke_2026-04-27.log","True"
+"A-VAL-CMD-002","LintValidation","NOT_FOUND","999","SKIPPED_NOT_AVAILABLE","docs/planning/adults_certified/08_final_qa/logs/adults_lint_smoke_2026-04-27.log","False"

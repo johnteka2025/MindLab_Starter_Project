@@ -1,4 +1,17 @@
-export const adultsSessionModes = [
+export type AdultsSessionModeId = "QuickFocus" | "Standard" | "Deep" | "Recovery";
+
+export type AdultsSessionMode = {
+  id: AdultsSessionModeId;
+  label: string;
+  duration: string;
+  intent: string;
+  description: string;
+  cognitiveLoad: string;
+  timerDefault: string;
+  hintStyle: string;
+};
+
+export const adultsSessionModes: AdultsSessionMode[] = [
   {
     id: "QuickFocus",
     label: "Quick Focus",
@@ -41,8 +54,8 @@ export const adultsSessionModes = [
   }
 ];
 
-export const defaultAdultsSessionMode = "QuickFocus";
+export const defaultAdultsSessionMode: AdultsSessionModeId = "QuickFocus";
 
-export function getDefaultAdultsSessionMode() {
+export function getDefaultAdultsSessionMode(): AdultsSessionMode {
   return adultsSessionModes.find((mode) => mode.id === defaultAdultsSessionMode) ?? adultsSessionModes[0];
 }

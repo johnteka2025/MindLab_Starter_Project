@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import AdultsGameplayPanel from "./AdultsGameplayPanel";
 import AdultsSessionModeSelector from "./AdultsSessionModeSelector";

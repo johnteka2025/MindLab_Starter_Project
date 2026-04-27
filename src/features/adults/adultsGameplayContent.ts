@@ -1,4 +1,24 @@
-export const adultsGameplayItems = [
+import type { AdultsSessionModeId } from "./adultsSessionModes";
+
+export type AdultsGameplayItem = {
+  certifiedId: string;
+  category: string;
+  categoryName: string;
+  stage: string;
+  sessionProfile: AdultsSessionModeId;
+  promptType: string;
+  objective: string;
+  prompt: string;
+  options: string[];
+  correctAnswer: string;
+  answerFormat: "SingleChoice";
+  difficulty: string;
+  timerPolicy: string;
+  hintPolicy: string;
+  insight: string;
+};
+
+export const adultsGameplayItems: AdultsGameplayItem[] = [
   {
     certifiedId: "A-AC01-A1-P01",
     category: "AC1",
@@ -71,15 +91,15 @@ export const adultsGameplayItems = [
 
 export const defaultAdultsGameplayItemId = "A-AC01-A1-P01";
 
-export function getAdultsGameplayItemById(certifiedId) {
+export function getAdultsGameplayItemById(certifiedId: string): AdultsGameplayItem {
   return adultsGameplayItems.find((item) => item.certifiedId === certifiedId) ?? adultsGameplayItems[0];
 }
 
-export function getAdultsGameplayItemsForSession(sessionMode) {
+export function getAdultsGameplayItemsForSession(sessionMode: string): AdultsGameplayItem[] {
   return adultsGameplayItems.filter((item) => item.sessionProfile === sessionMode);
 }
 
-export function getDefaultAdultsGameplayItemForSession(sessionMode) {
+export function getDefaultAdultsGameplayItemForSession(sessionMode: string): AdultsGameplayItem {
   const items = getAdultsGameplayItemsForSession(sessionMode);
   return items[0] ?? getAdultsGameplayItemById(defaultAdultsGameplayItemId);
 }
