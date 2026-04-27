@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import AdultsSessionModeSelector from "./AdultsSessionModeSelector";
+import { defaultAdultsSessionMode } from "./adultsSessionModes";
 
 export default function AdultsLanding() {
-  const sessionModes = ["Quick Focus", "Standard", "Deep", "Recovery"];
+  const [selectedMode, setSelectedMode] = useState(defaultAdultsSessionMode);
 
   return (
     <main
@@ -34,23 +36,20 @@ export default function AdultsLanding() {
         <p style={{ margin: "0 0 24px", fontSize: "18px", lineHeight: 1.6, color: "#475569" }}>
           Choose a calm, focused training style built for adult reasoning, attention, decision-making, and mastery.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px" }}>
-          {sessionModes.map((mode) => (
-            <article
-              key={mode}
-              style={{
-                border: "1px solid #e5e7eb",
-                borderRadius: "18px",
-                padding: "18px",
-                background: "#f9fafb"
-              }}
-            >
-              <h2 style={{ margin: "0 0 8px", fontSize: "20px" }}>{mode}</h2>
-              <p style={{ margin: 0, color: "#475569", lineHeight: 1.5 }}>
-                Start with the pace that fits your focus today.
-              </p>
-            </article>
-          ))}
+
+        <AdultsSessionModeSelector selectedMode={selectedMode} onSelectMode={setSelectedMode} />
+
+        <div
+          aria-live="polite"
+          style={{
+            marginTop: "24px",
+            padding: "16px 18px",
+            borderRadius: "16px",
+            background: "#eef2ff",
+            color: "#312e81"
+          }}
+        >
+          Selected session mode: <strong>{selectedMode}</strong>
         </div>
       </section>
     </main>

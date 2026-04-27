@@ -1,0 +1,7 @@
+"Key","Value","ManualUpdateNeeded"
+"DEFAULT_SESSION_MODE","QuickFocus","NO"
+"SESSION_MODES","QuickFocus|Standard|Deep|Recovery","NO"
+"SESSION_SELECTOR_SOURCE","src/features/adults/AdultsSessionModeSelector.tsx","NO"
+"SESSION_MODEL_SOURCE","src/features/adults/adultsSessionModes.ts","NO"
+"ADULTS_LANDING_SOURCE","src/features/adults/AdultsLanding.tsx","NO"
+"NEXT_ALLOWED_PATCH","A-PATCH-003","NO"

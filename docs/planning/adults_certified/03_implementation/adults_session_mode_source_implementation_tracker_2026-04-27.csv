@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"A-SRC-002","Add Adults session mode selector","COMPLETE","src/features/adults/AdultsSessionModeSelector.tsx","QuickFocus Standard Deep Recovery selector added."
+"A-SRC-002A","Create Adults session mode model","COMPLETE","src/features/adults/adultsSessionModes.ts","Mode definitions and default session mode added."
+"A-SRC-002B","Wire selector into Adults landing","COMPLETE","src/features/adults/AdultsLanding.tsx","Adults landing now tracks selected session mode."
