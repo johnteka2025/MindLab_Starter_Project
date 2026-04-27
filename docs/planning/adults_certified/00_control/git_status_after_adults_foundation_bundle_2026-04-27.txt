@@ -1,0 +1,5 @@
+RESULT: ADULTS_FOUNDATION_FINAL_CLEAN_VERIFIED
+RepoRoot=C:\Projects\MindLab_Starter_Project
+GeneratedOn=2026-04-27T18:52:17-04:00
+ManagedDirtyCountBeforeFinalCommit=2
+NextRequiredAction=INVENTORY_ACTIVE_APP_ROUTES_AND_AGE_MODE_ENTRY_POINTS
