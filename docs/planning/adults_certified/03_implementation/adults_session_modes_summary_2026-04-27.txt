@@ -1,0 +1,11 @@
+RESULT: ADULTS_SESSION_MODES_DESIGN_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+DefaultSessionMode=QuickFocus
+SessionModes=QuickFocus|Standard|Deep|Recovery
+TimerRule=OptionalAdultsTimer
+RecoveryRule=RetrySpikeOrCompletionTimeSpikeRecommendsRecovery
+A-IMPL-001=COMPLETE
+A-IMPL-002=COMPLETE
+A-IMPL-003=COMPLETE
+A-IMPL-004=READY_NEXT
+NextRequiredAction=CREATE_ADULTS_GAMEPLAY_CONTENT_MODEL

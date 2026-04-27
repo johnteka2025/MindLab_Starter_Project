@@ -1,0 +1,5 @@
+"SessionMode","DisplayLabel","Intent","RecommendedDurationMinutes","CognitiveLoad","TimerDefault","HintStyle","ExitBehavior","Status"
+"QuickFocus","Quick Focus","Short focused adult session","3-5","LowToModerate","Optional","LightNudge","Show concise insight and next recommendation","READY_FOR_IMPLEMENTATION"
+"Standard","Standard","Balanced training session","8-12","Moderate","Optional","LayeredHints","Show progress, accuracy, retry pattern, and next stage suggestion","READY_FOR_IMPLEMENTATION"
+"Deep","Deep","Longer reasoning and mastery session","15-25","ModerateToHigh","OffByDefault","StrategyCueThenStructureCue","Show category mastery, fatigue signal, and transfer recommendation","READY_FOR_IMPLEMENTATION"
+"Recovery","Recovery","Calm low-pressure session after friction or fatigue","3-8","Low","Off","SupportiveStepwiseHints","Show encouragement, reduced-load recommendation, and optional retry","READY_FOR_IMPLEMENTATION"

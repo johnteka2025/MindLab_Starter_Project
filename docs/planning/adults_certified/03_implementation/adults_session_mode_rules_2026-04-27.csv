@@ -1,0 +1,7 @@
+"RuleId","Area","Rule","Value","Status"
+"A-SESSION-001","DefaultEntry","First Adults entry defaults to QuickFocus","QuickFocus","READY_FOR_IMPLEMENTATION"
+"A-SESSION-002","UserChoice","User may choose QuickFocus Standard Deep or Recovery before starting","QuickFocus|Standard|Deep|Recovery","READY_FOR_IMPLEMENTATION"
+"A-SESSION-003","Timer","Timer is optional for Adults and disabled by default in Deep and Recovery","Optional","READY_FOR_IMPLEMENTATION"
+"A-SESSION-004","Fatigue","Completion time spike or retry spike recommends Recovery","RouteToRecoveryRecommendation","READY_FOR_IMPLEMENTATION"
+"A-SESSION-005","ExceptionalPlayers","Strong accuracy with low hint use recommends Deep or expert path later","DeepOrExpertEligible","READY_FOR_IMPLEMENTATION"
+"A-SESSION-006","Tone","Adults session copy uses mature calm language","AdultToneRequired","READY_FOR_IMPLEMENTATION"

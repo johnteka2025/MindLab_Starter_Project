@@ -1,0 +1,6 @@
+"FromMode","Trigger","TargetMode","Reason","Status"
+"QuickFocus","HighAccuracyLowHintUse","Standard","User is ready for balanced challenge","READY_FOR_IMPLEMENTATION"
+"Standard","StableAccuracyAcrossMultiplePuzzles","Deep","User is ready for longer reasoning load","READY_FOR_IMPLEMENTATION"
+"Standard","RetrySpikeOrCompletionTimeSpike","Recovery","Reduce fatigue and pressure","READY_FOR_IMPLEMENTATION"
+"Deep","AccuracyDropOrAbandonmentRisk","Recovery","Protect user confidence and retention","READY_FOR_IMPLEMENTATION"
+"Recovery","RecoveredConfidenceAndCompletion","QuickFocus","Return gently to active training","READY_FOR_IMPLEMENTATION"
