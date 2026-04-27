@@ -1,0 +1,6 @@
+"Order","NextAction","CommandOrValue","Status"
+"1","Run manual browser smoke for /adults","/adults","READY"
+"2","Confirm session modes display","QuickFocus|Standard|Deep|Recovery","READY"
+"3","Confirm gameplay answer, score, insight, and persistence","Target match|Session insight|mindlab.adults.profile.v1","READY"
+"4","Capture manual smoke result","Use adults_manual_smoke_checklist_2026-04-27.csv","READY"
+"5","Start next implementation category only after manual confirmation","READY_FOR_NEXT_CATEGORY_AFTER_CONFIRMATION","READY_AFTER_MANUAL_CONFIRMATION"

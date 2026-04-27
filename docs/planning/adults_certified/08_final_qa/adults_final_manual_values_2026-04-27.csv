@@ -1,0 +1,8 @@
+"Key","Value","UseFor","ManualUpdateNeeded"
+"ROUTE_TO_OPEN","/adults","Manual browser smoke","YES"
+"SESSION_MODES_TO_VERIFY","QuickFocus|Standard|Deep|Recovery","Manual browser smoke","YES"
+"FIRST_ANSWER_VALUE","Target match","Manual gameplay smoke","YES"
+"EXPECTED_STORAGE_KEY","mindlab.adults.profile.v1","Manual persistence smoke","YES"
+"EXPECTED_HISTORY_KEY","mindlab.adults.sessionHistory.v1","Manual persistence smoke","YES"
+"EXPECTED_PAGE_TITLE","Adult cognitive training","Manual route smoke","YES"
+"EXPECTED_RESULT_TEXT","Session insight","Manual insight smoke","YES"

@@ -1,0 +1,7 @@
+"StatusId","Item","Status","RequiredBeforeNext"
+"A-FINAL-001","Adults foundation and planning","COMPLETE","YES"
+"A-FINAL-002","Adults source implementation patches A-PATCH-001 through A-PATCH-006","COMPLETE","YES"
+"A-FINAL-003","Build smoke evidence","COMPLETE","YES"
+"A-FINAL-004","QA evidence capture","COMPLETE","YES"
+"A-FINAL-005","Manual browser smoke","READY_FOR_CONFIRMATION","NO"
+"A-FINAL-006","Repository clean after final closure","READY_FOR_FINAL_CHECK","YES"
