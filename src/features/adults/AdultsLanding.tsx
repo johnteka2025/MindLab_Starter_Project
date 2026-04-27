@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AdultsGameplayPanel from "./AdultsGameplayPanel";
 import AdultsSessionModeSelector from "./AdultsSessionModeSelector";
 import { defaultAdultsSessionMode } from "./adultsSessionModes";
 
@@ -51,6 +52,8 @@ export default function AdultsLanding() {
         >
           Selected session mode: <strong>{selectedMode}</strong>
         </div>
+
+        <AdultsGameplayPanel selectedMode={selectedMode} />
       </section>
     </main>
   );

@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"A-SRC-003","Add Adults gameplay content loader","COMPLETE","src/features/adults/adultsGameplayContent.ts","Pilot gameplay items A-AC01-A1-P01 through A-AC06-A2-P04 added."
+"A-SRC-003A","Add Adults gameplay panel","COMPLETE","src/features/adults/AdultsGameplayPanel.tsx","Single-choice starter challenge panel added."
+"A-SRC-003B","Wire gameplay panel into Adults landing","COMPLETE","src/features/adults/AdultsLanding.tsx","Gameplay panel now follows selected session mode."

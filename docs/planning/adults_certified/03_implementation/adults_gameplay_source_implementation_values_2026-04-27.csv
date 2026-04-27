@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"DEFAULT_CERTIFIED_ID","A-AC01-A1-P01","NO"
+"PILOT_CERTIFIED_IDS","A-AC01-A1-P01|A-AC03-A1-P02|A-AC05-A2-P03|A-AC06-A2-P04","NO"
+"ANSWER_FORMAT","SingleChoice","NO"
+"GAMEPLAY_CONTENT_SOURCE","src/features/adults/adultsGameplayContent.ts","NO"
+"GAMEPLAY_PANEL_SOURCE","src/features/adults/AdultsGameplayPanel.tsx","NO"
+"ADULTS_LANDING_SOURCE","src/features/adults/AdultsLanding.tsx","NO"
+"NEXT_ALLOWED_PATCH","A-PATCH-004","NO"
