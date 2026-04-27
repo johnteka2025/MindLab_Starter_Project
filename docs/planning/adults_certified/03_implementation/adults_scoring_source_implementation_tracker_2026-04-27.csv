@@ -1,0 +1,3 @@
+"StepId","Action","Status","SourceFile","Notes"
+"A-SRC-004","Add scoring and progression calculation","COMPLETE","src/features/adults/adultsScoring.ts","Accuracy, efficiency, hint, retry, and completion score weights added."
+"A-SRC-004A","Wire score result into Adults gameplay panel","COMPLETE","src/features/adults/AdultsGameplayPanel.tsx","Gameplay answer now displays score, mastery, and next recommendation."

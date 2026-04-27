@@ -3,6 +3,7 @@ import {
   getDefaultAdultsGameplayItemForSession,
   getAdultsGameplayItemsForSession
 } from "./adultsGameplayContent";
+import { calculateAdultsScore, getAdultsRecommendationLabel } from "./adultsScoring";
 
 type AdultsGameplayPanelProps = {
   selectedMode: string;
@@ -12,10 +13,37 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   const availableItems = useMemo(() => getAdultsGameplayItemsForSession(selectedMode), [selectedMode]);
   const fallbackItem = useMemo(() => getDefaultAdultsGameplayItemForSession(selectedMode), [selectedMode]);
   const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [retryCount, setRetryCount] = useState(0);
+  const [hintUse, setHintUse] = useState(0);
 
   const activeItem = availableItems[0] ?? fallbackItem;
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = selectedAnswer === activeItem.correctAnswer;
+  const scoreResult = hasAnswered
+    ? calculateAdultsScore({
+        isCorrect,
+        selectedAnswer,
+        correctAnswer: activeItem.correctAnswer,
+        hintUse,
+        retryCount,
+        completed: hasAnswered,
+        expectedTimeSeconds: selectedMode === "Deep" ? 120 : 60,
+        actualTimeSeconds: selectedMode === "Deep" ? 110 : 55,
+        firstTrySuccess: isCorrect && retryCount === 0
+      })
+    : null;
+
+  function handleAnswer(option: string) {
+    if (selectedAnswer && option !== selectedAnswer) {
+      setRetryCount((current) => current + 1);
+    }
+
+    setSelectedAnswer(option);
+  }
+
+  function handleHint() {
+    setHintUse((current) => current + 1);
+  }
 
   return (
     <section aria-labelledby="adults-gameplay-heading" style={{ marginTop: "28px" }}>
@@ -51,7 +79,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
               <button
                 key={option}
                 type="button"
-                onClick={() => setSelectedAnswer(option)}
+                onClick={() => handleAnswer(option)}
                 style={{
                   textAlign: "left",
                   border: isSelected ? "2px solid #111827" : "1px solid #e5e7eb",
@@ -68,7 +96,23 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
           })}
         </div>
 
-        {hasAnswered && (
+        <button
+          type="button"
+          onClick={handleHint}
+          style={{
+            marginTop: "14px",
+            border: "1px solid #cbd5e1",
+            borderRadius: "999px",
+            padding: "10px 14px",
+            background: "#ffffff",
+            color: "#334155",
+            cursor: "pointer"
+          }}
+        >
+          Use hint
+        </button>
+
+        {hasAnswered && scoreResult && (
           <div
             aria-live="polite"
             style={{
@@ -81,6 +125,11 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
           >
             <strong>{isCorrect ? "Correct." : "Review recommended."}</strong>{" "}
             {isCorrect ? activeItem.insight : "Use the hint policy and try the best-supported answer."}
+            <div style={{ marginTop: "12px", color: "#334155" }}>
+              Score: <strong>{scoreResult.overallScore}</strong> · Mastery:{" "}
+              <strong>{scoreResult.masteryLevel}</strong> · Next:{" "}
+              <strong>{getAdultsRecommendationLabel(scoreResult.recommendation)}</strong>
+            </div>
           </div>
         )}
       </article>

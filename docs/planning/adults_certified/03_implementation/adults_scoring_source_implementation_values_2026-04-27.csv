@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"ADULTS_SCORE_PASSING","75","NO"
+"ADULTS_SCORE_ADVANCE","85","NO"
+"ADULTS_SCORE_EXCEPTIONAL","93","NO"
+"ADULTS_SCORE_WEIGHTS","Accuracy50|Efficiency20|Hint15|Retry10|Completion5","NO"
+"SCORING_SOURCE","src/features/adults/adultsScoring.ts","NO"
+"GAMEPLAY_PANEL_SOURCE","src/features/adults/AdultsGameplayPanel.tsx","NO"
+"NEXT_ALLOWED_PATCH","A-PATCH-005","NO"
