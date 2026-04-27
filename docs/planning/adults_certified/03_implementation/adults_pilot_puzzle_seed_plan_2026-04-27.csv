@@ -1,0 +1,5 @@
+"SeedId","CertifiedID","PromptType","SamplePrompt","AnswerFormat","Difficulty","Status"
+"ADULTS-SEED-001","A-AC01-A1-P01","VisualFocus","Find the only item that matches the target rule.","SingleChoice","Intro","READY_FOR_CONTENT_AUTHORING"
+"ADULTS-SEED-002","A-AC03-A1-P02","PatternLogic","Choose the next item that completes the pattern.","SingleChoice","Intro","READY_FOR_CONTENT_AUTHORING"
+"ADULTS-SEED-003","A-AC05-A2-P03","DecisionTradeoff","Select the best option after comparing speed, risk, and accuracy cues.","SingleChoice","Moderate","READY_FOR_CONTENT_AUTHORING"
+"ADULTS-SEED-004","A-AC06-A2-P04","LanguageInference","Choose the interpretation best supported by the prompt.","SingleChoice","Moderate","READY_FOR_CONTENT_AUTHORING"

@@ -1,0 +1,5 @@
+"CertifiedID","AdultsCategory","CategoryName","Stage","SessionProfile","PuzzleObjective","CoreMechanic","TimerPolicy","HintPolicy","Status"
+"A-AC01-A1-P01","AC1","FocusAndAttentionControl","A1","QuickFocus","Selective attention with light distraction control","Identify target signal while ignoring simple distractors","Optional","LightNudge","READY_FOR_IMPLEMENTATION"
+"A-AC03-A1-P02","AC3","LogicAndPatternReasoning","A1","QuickFocus","Recognize simple rule patterns and complete sequence","Choose the next valid item from a small option set","Optional","LightNudge","READY_FOR_IMPLEMENTATION"
+"A-AC05-A2-P03","AC5","DecisionMakingUnderPressure","A2","Standard","Balance accuracy and decision speed with clear constraints","Select best answer after evaluating tradeoff cues","OptionalVisible","LayeredHints","READY_FOR_IMPLEMENTATION"
+"A-AC06-A2-P04","AC6","LanguageInsightAndInterpretation","A2","Deep","Infer meaning from concise adult-focused prompts","Choose strongest interpretation using evidence from prompt","OffByDefault","StrategyCueThenStructureCue","READY_FOR_IMPLEMENTATION"

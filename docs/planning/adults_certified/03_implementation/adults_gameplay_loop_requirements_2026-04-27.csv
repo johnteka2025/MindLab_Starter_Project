@@ -1,0 +1,6 @@
+"StepOrder","LoopStep","Requirement","Required","EvidenceTarget"
+"1","SelectSessionMode","User selects or defaults into QuickFocus","YES","Adults route/session mode UI"
+"2","LoadGameplayItem","Load one Adults certified content item using CertifiedID","YES","Gameplay runtime"
+"3","CaptureAnswer","Capture answer, completion time, hint use, retry count","YES","Telemetry model"
+"4","ShowFeedback","Show adult-tone feedback with concise insight","YES","Post-answer UI"
+"5","RecommendNext","Recommend next session, recovery, or harder challenge","YES","Post-session insight"
