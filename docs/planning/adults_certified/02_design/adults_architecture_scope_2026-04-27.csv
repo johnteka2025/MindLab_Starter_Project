@@ -1,0 +1,5 @@
+"Field","Value","Owner","Notes"
+"AgeCategory","Adults","BusinessOwner","Adults-only certified lane."
+"PrimaryGoal","Premium adult cognitive training with calm, focused, adaptive gameplay","DesignOwner","Avoid childish tone."
+"EntryModes","QuickFocus|Standard|Deep|Recovery","DesignOwner","Session profile drives pacing."
+"QualityGate","BusinessOwner|DesignOwner|QAOwner|ReleaseOwner","ProjectOwner","No closure without evidence."

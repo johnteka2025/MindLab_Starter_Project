@@ -1,0 +1,5 @@
+RESULT: ADULTS_ARCHITECTURE_PACK_READY
+AdultsCategories=AC1-AC8
+AdultsStages=A1-A5
+IdentifierRule=A-ACxx-Ax-Bxx
+NextMode=CREATE_RULES_STANDARDS_PACK
