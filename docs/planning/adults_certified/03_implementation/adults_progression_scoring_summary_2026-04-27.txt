@@ -1,0 +1,15 @@
+RESULT: ADULTS_PROGRESSION_AND_SCORING_RULES_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+PassingScore=75
+AdvanceScore=85
+ExceptionalScore=93
+DefaultScoreWeights=Accuracy50|Efficiency20|Hint15|Retry10|Completion5
+RecoveryRule=RetryCount>3 OR CompletionTimeSpike=YES
+ExpertEligibility=FirstTrySuccess>=85 AND HintUse<=10 AND Accuracy>=90
+A-IMPL-001=COMPLETE
+A-IMPL-002=COMPLETE
+A-IMPL-003=COMPLETE
+A-IMPL-004=COMPLETE
+A-IMPL-005=COMPLETE
+A-IMPL-006=READY_NEXT
+NextRequiredAction=CREATE_POST_SESSION_INSIGHT_MODEL

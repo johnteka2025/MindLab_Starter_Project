@@ -1,0 +1,6 @@
+"RuleId","Area","Rule","Metric","Threshold","Result","Status"
+"A-PROG-001","StageAdvance","Advance from A1 to A2 after stable accuracy and low retry friction","Accuracy|RetryCount|Completion","Accuracy>=80%;RetryCount<=2;Completion=YES","RecommendNextStage","READY_FOR_IMPLEMENTATION"
+"A-PROG-002","StageHold","Hold current stage if accuracy is unstable or retry count is high","Accuracy|RetryCount","Accuracy<70% OR RetryCount>3","StayCurrentStageWithSupport","READY_FOR_IMPLEMENTATION"
+"A-PROG-003","RecoveryRouting","Recommend Recovery after fatigue signal","CompletionTimeSpike|RetrySpike","CompletionTimeSpike=YES OR RetrySpike=YES","RecommendRecovery","READY_FOR_IMPLEMENTATION"
+"A-PROG-004","DeepRouting","Recommend Deep mode after stable Standard performance","Accuracy|HintUse|Completion","Accuracy>=85%;HintUse<=15%;Completion=YES","RecommendDeep","READY_FOR_IMPLEMENTATION"
+"A-PROG-005","ExpertEligibility","Mark exceptional-player eligibility after repeated high accuracy and low hint use","FirstTrySuccess|HintUse|Accuracy","FirstTrySuccess>=85%;HintUse<=10%;Accuracy>=90%","ExpertPathEligible","READY_FOR_IMPLEMENTATION"

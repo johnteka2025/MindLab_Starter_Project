@@ -1,0 +1,6 @@
+"Level","ScoreRange","Recommendation","Status"
+"NeedsSupport","0-59","Recovery or same-stage retry with stronger hints","READY_FOR_IMPLEMENTATION"
+"Developing","60-74","Stay current stage with light coaching","READY_FOR_IMPLEMENTATION"
+"Stable","75-84","Continue current stage or next category","READY_FOR_IMPLEMENTATION"
+"ReadyToAdvance","85-92","Recommend next stage or Deep mode","READY_FOR_IMPLEMENTATION"
+"Exceptional","93-100","Mark expert-path eligibility if repeated","READY_FOR_IMPLEMENTATION"

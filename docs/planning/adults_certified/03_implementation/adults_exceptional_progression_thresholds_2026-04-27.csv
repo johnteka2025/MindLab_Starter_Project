@@ -1,0 +1,6 @@
+"Rule","Threshold","Action","Evidence","Status"
+"HighFirstTrySuccess",">=85% across multiple categories","ExpertPathEligible","FirstTrySuccess","READY_FOR_IMPLEMENTATION"
+"LowHintUse","<=10% hint reliance","AcceleratedProgression","HintUse","READY_FOR_IMPLEMENTATION"
+"FastWithoutAccuracyLoss","Top quartile speed and accuracy>=90%","CrossCategoryMastery","TimeToComplete|Accuracy","READY_FOR_IMPLEMENTATION"
+"SustainedTransfer","Stable high performance after mechanic changes","ReducedTutorialFriction","CategoryShiftPerformance","READY_FOR_IMPLEMENTATION"
+"Consistency","Three strong sessions without fatigue signal","MasteryBadgeCandidate","SessionHistory","READY_FOR_IMPLEMENTATION"

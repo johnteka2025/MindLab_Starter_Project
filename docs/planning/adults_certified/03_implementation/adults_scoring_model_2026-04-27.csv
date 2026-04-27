@@ -1,0 +1,6 @@
+"ScoreComponent","WeightPercent","Formula","Purpose","Status"
+"AccuracyScore","50","CorrectAnswers / TotalQuestions","Primary correctness signal","READY_FOR_IMPLEMENTATION"
+"EfficiencyScore","20","ExpectedTime / ActualTime capped at 100","Reward smooth completion without overvaluing speed","READY_FOR_IMPLEMENTATION"
+"HintIndependenceScore","15","1 - HintUseRate","Reward low hint dependence","READY_FOR_IMPLEMENTATION"
+"RetryControlScore","10","1 - RetryPenalty","Detect friction while keeping score fair","READY_FOR_IMPLEMENTATION"
+"CompletionScore","5","CompletedSession ? 1 : 0","Reward completing the session","READY_FOR_IMPLEMENTATION"
