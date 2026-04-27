@@ -1,0 +1,4 @@
+"Rule","Value","Notes"
+"AdultsIdentifier","A-ACxx-Ax-Bxx","Age + category + stage + batch."
+"NoKidsReuse","TRUE","Never reuse Kids IDs as Adults certified completion."
+"PilotBatchPrefix","PILOT","Mark pilot batches clearly."

@@ -1,0 +1,8 @@
+"RuleLayer","RuleName","CheckType","Owner","EvidenceFile","FailureCondition"
+"Control","RepoCleanBeforeAdultsStep","Machine","ProjectOwner","git status --porcelain","Dirty repo blocks execution."
+"BusinessWorkflow","OwnerApproverQASignoffRequired","Mixed","BusinessOwner","Adults tracker and signoff files","No bundle may close without named ownership and signoff."
+"GameQuality","AdultsToneAndStageFit","Human","DesignOwner","Adults design brief and QA evidence","Adults content feels childish or mismatched to A-stage intent."
+"GameQuality","AdaptiveChangesStayInsideStageRules","Mixed","DesignOwner","Adaptive progression pack","Adaptation bypasses certification discipline."
+"ExceptionalPlayers","TopPerformersGetExpertPath","Mixed","DesignOwner","Expert path pack","High performers stay trapped in default ladder."
+"Accessibility","CalmTimerReadingModesAvailable","Mixed","QAOwner","Accessibility scaffold","Adults lane lacks comfort and readability controls."
+"Release","EvidenceBeforeClosure","Mixed","ReleaseOwner","Adults QA/release pack","Adults closure claimed without evidence bundle."

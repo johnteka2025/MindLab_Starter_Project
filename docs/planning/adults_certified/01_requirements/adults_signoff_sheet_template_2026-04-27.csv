@@ -1,0 +1,5 @@
+"Step","Status","Owner","EvidencePath"
+"Business approval","NOT_STARTED","BusinessOwner","PENDING"
+"Design approval","NOT_STARTED","DesignOwner","PENDING"
+"QA approval","NOT_STARTED","QAOwner","PENDING"
+"Release approval","NOT_STARTED","ReleaseOwner","PENDING"
