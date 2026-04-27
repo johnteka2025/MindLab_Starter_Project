@@ -1,0 +1,7 @@
+"TaskId","Task","Status","Evidence","Owner"
+"A26-01","Verify Adults start checkpoint","COMPLETE","docs/planning/session_continuation/adults_start_checkpoint_2026-04-27.csv","ProjectOwner"
+"A26-02","Create Adults certified workspace","COMPLETE","docs/planning/adults_certified","ProjectOwner"
+"A26-03","Create Adults governance baseline","OPEN","docs/planning/adults_certified/01_requirements","BusinessOwner"
+"A26-04","Create Adults architecture pack","OPEN","docs/planning/adults_certified/02_design","DesignOwner"
+"A26-05","Create Adults rules and standards pack","OPEN","docs/planning/adults_certified/01_requirements","BusinessOwner"
+"A26-06","Create Adults implementation queue","OPEN","docs/planning/adults_certified/03_implementation","ImplementationOwner"

@@ -1,0 +1,3 @@
+RESULT: ADULTS_FOUNDATION_SCAFFOLD_READY
+AdultsRoot=docs/planning/adults_certified
+NextMode=CREATE_ADULTS_ARCHITECTURE_PACK

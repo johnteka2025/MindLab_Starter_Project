@@ -1,0 +1,5 @@
+"TaskId","Parent","Task","Status","OutputPath"
+"A26-T-001","A26-03","Write Adults scope statement and owner map","OPEN","docs/planning/adults_certified/01_requirements"
+"A26-T-002","A26-04","Freeze Adults categories, A1-A5 objectives, and identifier rule","OPEN","docs/planning/adults_certified/02_design"
+"A26-T-003","A26-05","Publish rules matrix, metadata template, naming, signoff, QA templates","OPEN","docs/planning/adults_certified/01_requirements"
+"A26-T-004","A26-06","Create implementation queue and first pilot planning queue","OPEN","docs/planning/adults_certified/03_implementation"
