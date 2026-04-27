@@ -1,0 +1,8 @@
+"Field","Type","Required","DefaultValue","Source","Purpose","Status"
+"UserAgeMode","string","YES","adults","AdultsRoute","Lock profile to Adults lane","READY_FOR_IMPLEMENTATION"
+"CurrentStage","string","YES","A1","ProgressionRules","Track current Adults stage","READY_FOR_IMPLEMENTATION"
+"CurrentCategory","string","YES","AC1","GameplayModel","Track current Adults category","READY_FOR_IMPLEMENTATION"
+"PreferredSessionMode","string","YES","QuickFocus","SessionModeSelection","Store selected pacing preference","READY_FOR_IMPLEMENTATION"
+"LastCertifiedID","string","YES","A-AC01-A1-P01","GameplayRuntime","Resume or inspect latest Adults item","READY_FOR_IMPLEMENTATION"
+"MasteryLevel","string","YES","Developing","PostSessionInsight","Store current insight level","READY_FOR_IMPLEMENTATION"
+"ExpertPathEligible","boolean","YES","false","ExceptionalThresholds","Track exceptional-player routing","READY_FOR_IMPLEMENTATION"

@@ -5,4 +5,4 @@
 "4","A-IMPL-004","Create Adults gameplay content model","COMPLETE","docs/planning/adults_certified/03_implementation","Map AC categories, stage, and session profile."
 "5","A-IMPL-005","Create progression and scoring rules","COMPLETE","docs/planning/adults_certified/03_implementation","Support mastery and exceptional pathways."
 "6","A-IMPL-006","Create post-session insight model","COMPLETE","docs/planning/adults_certified/03_implementation","Feedback beyond raw score."
-"7","A-IMPL-007","Define persistence and profile data model","READY_NEXT","docs/planning/adults_certified/03_implementation","Include adaptive and expert-path state."
+"7","A-IMPL-007","Define persistence and profile data model","COMPLETE","docs/planning/adults_certified/03_implementation","Include adaptive and expert-path state."

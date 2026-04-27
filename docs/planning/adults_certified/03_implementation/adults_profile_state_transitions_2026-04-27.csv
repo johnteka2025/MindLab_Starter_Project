@@ -1,0 +1,6 @@
+"FromState","Trigger","ToState","PersistedFields","Status"
+"NewAdultProfile","FirstAdultsRouteEntry","AdultsA1QuickFocusReady","ageMode|stage|category|sessionMode","READY_FOR_IMPLEMENTATION"
+"AdultsA1QuickFocusReady","SessionCompleted","AdultsLatestInsightReady","lastCertifiedId|score|accuracy|hintUse|retryCount|timeToComplete","READY_FOR_IMPLEMENTATION"
+"AdultsLatestInsightReady","Score>=85","AdultsAdvanceRecommended","masteryLevel|recommendedNextAction","READY_FOR_IMPLEMENTATION"
+"AdultsLatestInsightReady","RetryCount>3 OR CompletionTimeSpike=YES","AdultsRecoveryRecommended","masteryLevel|recommendedNextAction","READY_FOR_IMPLEMENTATION"
+"AdultsLatestInsightReady","Score>=93 AND FirstTrySuccess>=85 AND HintUse<=10","AdultsExpertCandidate","expertPathEligible|masteryLevel|recommendedNextAction","READY_FOR_IMPLEMENTATION"

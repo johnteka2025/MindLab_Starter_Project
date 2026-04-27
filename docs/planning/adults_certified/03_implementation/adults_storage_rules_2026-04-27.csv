@@ -1,0 +1,6 @@
+"RuleId","Area","Rule","Value","Status"
+"A-STORE-001","DefaultState","Create Adults profile defaults when none exists","ageMode=adults;stage=A1;category=AC1;sessionMode=QuickFocus","READY_FOR_IMPLEMENTATION"
+"A-STORE-002","SessionHistory","Persist session result after every completed Adults session","certifiedId|sessionMode|score|accuracy|hintUse|retryCount|timeToComplete|nextAction","READY_FOR_IMPLEMENTATION"
+"A-STORE-003","LatestInsight","Persist latest post-session insight separately for fast resume","masteryLevel|primaryMessage|recommendedNextAction","READY_FOR_IMPLEMENTATION"
+"A-STORE-004","ExpertPath","Persist expert-path eligibility only after threshold evidence exists","ExpertPathEligible=false until thresholds met","READY_FOR_IMPLEMENTATION"
+"A-STORE-005","Recovery","Persist Recovery recommendation but do not force mode without user choice","RecommendRecoveryNotForce","READY_FOR_IMPLEMENTATION"

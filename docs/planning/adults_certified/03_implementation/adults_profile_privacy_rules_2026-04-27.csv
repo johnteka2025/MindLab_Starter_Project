@@ -1,0 +1,6 @@
+"RuleId","Area","Rule","Required","Status"
+"A-PRIV-001","MinimumData","Persist only gameplay progress and session metrics needed for Adults experience","YES","READY_FOR_IMPLEMENTATION"
+"A-PRIV-002","NoSensitiveHealthClaims","Do not store medical diagnosis or health claims in Adults profile","YES","READY_FOR_IMPLEMENTATION"
+"A-PRIV-003","UserControl","Profile reset should clear Adults progress and session history","YES","READY_FOR_IMPLEMENTATION"
+"A-PRIV-004","CrossAgeIsolation","Adults profile state must not overwrite Kids lane progress","YES","READY_FOR_IMPLEMENTATION"
+"A-PRIV-005","TelemetrySeparation","Telemetry metrics remain gameplay-quality signals only","YES","READY_FOR_IMPLEMENTATION"

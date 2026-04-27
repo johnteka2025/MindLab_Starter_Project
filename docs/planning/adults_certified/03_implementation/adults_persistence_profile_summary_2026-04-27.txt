@@ -1,0 +1,17 @@
+RESULT: ADULTS_PERSISTENCE_PROFILE_DATA_MODEL_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+ProfileMode=adults
+DefaultStage=A1
+DefaultCategory=AC1
+DefaultSessionMode=QuickFocus
+DefaultCertifiedID=A-AC01-A1-P01
+PersistedEntities=AdultProfile|AdultProgress|AdultSession|AdultInsight
+PrivacyRules=MinimumData|NoSensitiveHealthClaims|UserControl|CrossAgeIsolation|TelemetrySeparation
+A-IMPL-001=COMPLETE
+A-IMPL-002=COMPLETE
+A-IMPL-003=COMPLETE
+A-IMPL-004=COMPLETE
+A-IMPL-005=COMPLETE
+A-IMPL-006=COMPLETE
+A-IMPL-007=COMPLETE
+NextRequiredAction=FREEZE_ADULTS_IMPLEMENTATION_BLUEPRINT
