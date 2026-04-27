@@ -1,0 +1,7 @@
+"EvidenceId","Area","EvidencePath","Status","RequiredForClosure"
+"A-QA-EVID-001","BuildSmoke","docs/planning/adults_certified/08_final_qa/logs/adults_build_smoke_2026-04-27.log","CAPTURED","YES"
+"A-QA-EVID-002","LintSmoke","docs/planning/adults_certified/08_final_qa/logs/adults_lint_smoke_2026-04-27.log","CAPTURED","YES"
+"A-QA-EVID-003","ValidationTracker","docs/planning/adults_certified/08_final_qa/adults_source_validation_tracker_2026-04-27.csv","CAPTURED","YES"
+"A-QA-EVID-004","CommandResults","docs/planning/adults_certified/08_final_qa/adults_source_validation_command_results_2026-04-27.csv","CAPTURED","YES"
+"A-QA-EVID-005","SourceHardening","docs/planning/adults_certified/08_final_qa/adults_source_validation_hardening_tracker_2026-04-27.csv","CAPTURED","YES"
+"A-QA-EVID-006","AdultsSourceFiles","src/features/adults","CAPTURED","YES"

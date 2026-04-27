@@ -1,0 +1,8 @@
+"AcceptanceId","Requirement","Evidence","Status"
+"A-ACCEPT-001","Adults route implemented","src/features/adults/AdultsLanding.tsx","PASS"
+"A-ACCEPT-002","Adults session modes implemented","src/features/adults/adultsSessionModes.ts","PASS"
+"A-ACCEPT-003","Adults gameplay content implemented","src/features/adults/adultsGameplayContent.ts","PASS"
+"A-ACCEPT-004","Adults scoring implemented","src/features/adults/adultsScoring.ts","PASS"
+"A-ACCEPT-005","Adults post-session insight implemented","src/features/adults/adultsPostSessionInsights.ts","PASS"
+"A-ACCEPT-006","Adults persistence implemented","src/features/adults/adultsPersistence.ts","PASS"
+"A-ACCEPT-007","Build smoke evidence captured","docs/planning/adults_certified/08_final_qa/logs/adults_build_smoke_2026-04-27.log","PASS"

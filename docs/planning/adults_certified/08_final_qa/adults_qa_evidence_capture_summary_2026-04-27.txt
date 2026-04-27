@@ -1,0 +1,8 @@
+RESULT: ADULTS_QA_EVIDENCE_CAPTURE_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+EvidenceIndex=docs/planning/adults_certified/08_final_qa/adults_qa_evidence_index_2026-04-27.csv
+ManualSmokeChecklist=docs/planning/adults_certified/08_final_qa/adults_manual_smoke_checklist_2026-04-27.csv
+RegressionChecklist=docs/planning/adults_certified/08_final_qa/adults_regression_checklist_2026-04-27.csv
+QaAcceptanceMatrix=docs/planning/adults_certified/08_final_qa/adults_qa_acceptance_matrix_2026-04-27.csv
+ManualValuesToUse=/adults|QuickFocus|Standard|Deep|Recovery|Target match|mindlab.adults.profile.v1
+NextRequiredAction=RUN_ADULTS_FINAL_IMPLEMENTATION_CLOSURE
