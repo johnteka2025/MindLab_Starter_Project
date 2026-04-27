@@ -1,0 +1,6 @@
+"Rule","Threshold","Path","Status"
+"HighFirstTrySuccess",">=85% across multiple categories","ExpertPathEligible","OPEN_FOR_REVIEW"
+"LowHintUse","<=10% hint reliance","AcceleratedProgression","OPEN_FOR_REVIEW"
+"FastWithoutAccuracyLoss","Top quartile speed and low error","CrossCategoryMastery","OPEN_FOR_REVIEW"
+"SustainedTransfer","Stable high performance after mechanic changes","ReducedTutorialFriction","OPEN_FOR_REVIEW"
+"RewardModel","N/A","Consistency + elegance + mastery","OPEN_FOR_REVIEW"

@@ -1,0 +1,6 @@
+"Area","Trigger","Action","Evidence","Status"
+"Fatigue","CompletionTimeSpike or RetrySpike","RouteToRecoveryMode","Telemetry","OPEN_FOR_REVIEW"
+"HintDependence","HighHintUse","IncreaseStructureHintsNotDifficultyDrop","Telemetry","OPEN_FOR_REVIEW"
+"SpeedVsAccuracy","FastButErrorHeavy","ShiftToPrecisionTasks","Telemetry","OPEN_FOR_REVIEW"
+"ReadingLoad","SlowReadPattern","ReduceTextDensityOrOfferSimplifiedWording","QA + Telemetry","OPEN_FOR_REVIEW"
+"SessionPreference","RepeatedShortSessions","PrioritizeQuickFocusProfile","Telemetry","OPEN_FOR_REVIEW"
