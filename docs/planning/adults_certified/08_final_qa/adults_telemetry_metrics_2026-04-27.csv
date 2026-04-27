@@ -1,0 +1,7 @@
+"Metric","Purpose","Threshold"
+"CompletionRate","Balance and difficulty tuning","SET_IN_PILOT_REVIEW"
+"RetryCount","Detect friction and fatigue","SET_IN_PILOT_REVIEW"
+"HintUse","Tune layered coaching","SET_IN_PILOT_REVIEW"
+"TimeToComplete","Detect pacing mismatch","SET_IN_PILOT_REVIEW"
+"FirstTrySuccess","Detect expert-path eligibility","SET_IN_PILOT_REVIEW"
+"Abandonment","Detect churn and overload","SET_IN_PILOT_REVIEW"

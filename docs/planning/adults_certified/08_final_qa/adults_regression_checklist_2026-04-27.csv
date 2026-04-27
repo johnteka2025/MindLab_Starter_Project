@@ -1,0 +1,6 @@
+"Check","Status","EvidencePath"
+"Repo clean before test","NOT_STARTED","PENDING_AUTOMATED_ARTIFACT"
+"Build/test or runtime validation passes","NOT_STARTED","PENDING_AUTOMATED_ARTIFACT"
+"Adults route or mode loads","NOT_STARTED","PENDING_MANUAL_ARTIFACT"
+"Adults gameplay loop works","NOT_STARTED","PENDING_MANUAL_ARTIFACT"
+"Repo clean after test","NOT_STARTED","PENDING_AUTOMATED_ARTIFACT"
