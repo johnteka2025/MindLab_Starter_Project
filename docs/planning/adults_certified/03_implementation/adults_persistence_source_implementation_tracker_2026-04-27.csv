@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"A-SRC-006","Add Adults persistence profile state","COMPLETE","src/features/adults/adultsPersistence.ts","AdultProfile, AdultSession history, save, read, and reset helpers added."
+"A-SRC-006A","Wire persistence into Adults gameplay panel","COMPLETE","src/features/adults/AdultsGameplayPanel.tsx","Completed answer now persists Adults-only profile/session result."
+"A-SRC-006B","Preserve cross-age isolation","COMPLETE","src/features/adults/adultsPersistence.ts","Storage keys are Adults-specific and do not overwrite Kids progress."

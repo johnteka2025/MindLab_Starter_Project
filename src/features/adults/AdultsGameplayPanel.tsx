@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   getDefaultAdultsGameplayItemForSession,
   getAdultsGameplayItemsForSession
 } from "./adultsGameplayContent";
 import AdultsPostSessionInsightPanel from "./AdultsPostSessionInsightPanel";
+import { recordAdultSessionResult } from "./adultsPersistence";
 import { calculateAdultsScore } from "./adultsScoring";
 
 type AdultsGameplayPanelProps = {
@@ -16,6 +17,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [retryCount, setRetryCount] = useState(0);
   const [hintUse, setHintUse] = useState(0);
+  const [savedProfileLabel, setSavedProfileLabel] = useState("");
 
   const activeItem = availableItems[0] ?? fallbackItem;
   const hasAnswered = selectedAnswer.length > 0;
@@ -33,6 +35,23 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
         firstTrySuccess: isCorrect && retryCount === 0
       })
     : null;
+
+  useEffect(() => {
+    if (!scoreResult || !selectedAnswer) return;
+
+    const savedProfile = recordAdultSessionResult({
+      certifiedId: activeItem.certifiedId,
+      category: activeItem.category,
+      stage: activeItem.stage,
+      sessionMode: selectedMode,
+      selectedAnswer,
+      correctAnswer: activeItem.correctAnswer,
+      isCorrect,
+      scoreResult
+    });
+
+    setSavedProfileLabel(`${savedProfile.currentStage} · ${savedProfile.currentCategory}`);
+  }, [activeItem, isCorrect, scoreResult, selectedAnswer, selectedMode]);
 
   function handleAnswer(option: string) {
     if (selectedAnswer && option !== selectedAnswer) {
@@ -126,6 +145,11 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
           >
             <strong>{isCorrect ? "Correct." : "Review recommended."}</strong>{" "}
             {isCorrect ? activeItem.insight : "Use the hint policy and try the best-supported answer."}
+            {savedProfileLabel && (
+              <div style={{ marginTop: "10px", color: "#334155" }}>
+                Progress saved: <strong>{savedProfileLabel}</strong>
+              </div>
+            )}
           </div>
         )}
 
