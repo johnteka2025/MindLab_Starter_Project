@@ -1,0 +1,8 @@
+"Key","Value","UseInStep","ManualUpdateNeeded"
+"ADULTS_ROUTE_PATH","/adults","A-IMPL-002","NO"
+"ADULTS_MODE_KEY","adults","A-IMPL-002","NO"
+"ADULTS_DISPLAY_LABEL","Adults","A-IMPL-002","NO"
+"ADULTS_DEFAULT_SESSION","QuickFocus","A-IMPL-003","NO"
+"ADULTS_SESSION_OPTIONS","QuickFocus|Standard|Deep|Recovery","A-IMPL-003","NO"
+"ADULTS_PRIMARY_STAGE","A1","A-IMPL-004","NO"
+"ADULTS_PRIMARY_CATEGORY","AC1","A-IMPL-004","NO"

@@ -1,0 +1,5 @@
+"Area","CurrentEvidence","Decision","RequiredBeforeCodeEdit","RiskIfSkipped"
+"Route","Route inventory completed","Add /adults route or equivalent existing router entry","YES","Adults lane has planning docs but no reachable entry point."
+"Navigation","Age-mode inventory completed","Expose Adults label in same navigation pattern as other age modes","YES","Adults route exists but users cannot find it."
+"Tone","Adults architecture pack","Use adult-focused wording, no childish copy","YES","Adults experience feels copied from Kids lane."
+"Fallback","Route inventory candidate files","If no direct router file exists, create minimal Adults entry shell only after source-code implementation step","YES","Missing file or incorrect app structure edits."

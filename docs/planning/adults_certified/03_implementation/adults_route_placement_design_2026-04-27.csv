@@ -1,0 +1,6 @@
+"DecisionId","Decision","RecommendedValue","TargetFile","Status","Notes"
+"A-ROUTE-001","AdultsRoutePath","/adults","backend/src/daily-challenge/dailyChallengeEngine.ts","READY_FOR_IMPLEMENTATION","Primary Adults landing route."
+"A-ROUTE-002","AdultsDisplayLabel","Adults","backend/src/daily-challenge/dailyChallengeEngine.ts","READY_FOR_IMPLEMENTATION","Navigation label must stay mature and simple."
+"A-ROUTE-003","AdultsModeKey","adults","backend/src/daily-challenge/dailyChallengeEngine.ts","READY_FOR_IMPLEMENTATION","Use lowercase stable mode key."
+"A-ROUTE-004","AdultsDefaultSessionMode","QuickFocus","docs/planning/adults_certified/03_implementation/adults_implementation_queue_2026-04-27.csv","READY_FOR_IMPLEMENTATION","Default mode for first entry."
+"A-ROUTE-005","AdultsNavigationPlacement","AgeModeSelectionOrMainNavigation","backend/src/daily-challenge/dailyChallengeEngine.ts","READY_FOR_IMPLEMENTATION","Place beside Kids/Seniors only if those modes already exist."
