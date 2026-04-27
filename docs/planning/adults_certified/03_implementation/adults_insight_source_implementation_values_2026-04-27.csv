@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"POST_SESSION_DEFAULT_TITLE","Session insight","NO"
+"INSIGHT_LEVELS","NeedsSupport|Developing|Stable|ReadyToAdvance|Exceptional","NO"
+"RECOMMENDATIONS","Recovery|SameStageWithSupport|ContinueCurrentStage|Deep|ExpertPathCandidate","NO"
+"INSIGHT_MODEL_SOURCE","src/features/adults/adultsPostSessionInsights.ts","NO"
+"INSIGHT_PANEL_SOURCE","src/features/adults/AdultsPostSessionInsightPanel.tsx","NO"
+"GAMEPLAY_PANEL_SOURCE","src/features/adults/AdultsGameplayPanel.tsx","NO"
+"NEXT_ALLOWED_PATCH","A-PATCH-006","NO"

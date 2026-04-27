@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"A-SRC-005","Add post-session insight model","COMPLETE","src/features/adults/adultsPostSessionInsights.ts","Insight messages, mastery levels, tone, and recommendations added."
+"A-SRC-005A","Add post-session insight panel","COMPLETE","src/features/adults/AdultsPostSessionInsightPanel.tsx","Session insight panel displays score, mastery, and recommended next step."
+"A-SRC-005B","Wire insight panel into gameplay panel","COMPLETE","src/features/adults/AdultsGameplayPanel.tsx","Gameplay result now shows adult-tone post-session insight."

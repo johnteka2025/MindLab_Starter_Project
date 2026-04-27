@@ -3,7 +3,8 @@ import {
   getDefaultAdultsGameplayItemForSession,
   getAdultsGameplayItemsForSession
 } from "./adultsGameplayContent";
-import { calculateAdultsScore, getAdultsRecommendationLabel } from "./adultsScoring";
+import AdultsPostSessionInsightPanel from "./AdultsPostSessionInsightPanel";
+import { calculateAdultsScore } from "./adultsScoring";
 
 type AdultsGameplayPanelProps = {
   selectedMode: string;
@@ -112,7 +113,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
           Use hint
         </button>
 
-        {hasAnswered && scoreResult && (
+        {hasAnswered && (
           <div
             aria-live="polite"
             style={{
@@ -125,13 +126,14 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
           >
             <strong>{isCorrect ? "Correct." : "Review recommended."}</strong>{" "}
             {isCorrect ? activeItem.insight : "Use the hint policy and try the best-supported answer."}
-            <div style={{ marginTop: "12px", color: "#334155" }}>
-              Score: <strong>{scoreResult.overallScore}</strong> · Mastery:{" "}
-              <strong>{scoreResult.masteryLevel}</strong> · Next:{" "}
-              <strong>{getAdultsRecommendationLabel(scoreResult.recommendation)}</strong>
-            </div>
           </div>
         )}
+
+        <AdultsPostSessionInsightPanel
+          scoreResult={scoreResult}
+          isCorrect={isCorrect}
+          itemInsight={activeItem.insight}
+        />
       </article>
     </section>
   );

@@ -2,6 +2,6 @@
 "A-VAL-001","Repo clean before source-code implementation","YES","git status --porcelain","PASS"
 "A-VAL-002","Adults route loads","YES","docs/planning/adults_certified/03_implementation/adults_route_source_implementation_summary_2026-04-27.txt","ROUTE_SHELL_CREATED_REVIEW_TARGET"
 "A-VAL-003","Adults session modes display","YES","docs/planning/adults_certified/03_implementation/adults_session_mode_source_implementation_summary_2026-04-27.txt","READY_FOR_RUNTIME_SMOKE"
-"A-VAL-004","Adults gameplay loop works","YES","docs/planning/adults_certified/03_implementation/adults_scoring_source_implementation_summary_2026-04-27.txt","READY_FOR_RUNTIME_SMOKE"
+"A-VAL-004","Adults gameplay loop works","YES","docs/planning/adults_certified/03_implementation/adults_insight_source_implementation_summary_2026-04-27.txt","READY_FOR_RUNTIME_SMOKE"
 "A-VAL-005","Adults progress does not overwrite Kids progress","YES","Regression check","PENDING_SOURCE_CODE"
 "A-VAL-006","Repo clean after source-code implementation","YES","git status --porcelain","PENDING_SOURCE_CODE"
