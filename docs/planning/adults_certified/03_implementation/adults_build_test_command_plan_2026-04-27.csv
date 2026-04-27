@@ -1,0 +1,6 @@
+"CommandId","Purpose","Command","RequiredBeforeSourceEdit","Status"
+"A-CMD-001","InstallCheck","npm install","NO","AVAILABLE"
+"A-CMD-002","DevServer","npm run dev","NO","AVAILABLE"
+"A-CMD-003","BuildValidation","npm run build","YES","AVAILABLE"
+"A-CMD-004","TestValidation","NOT_FOUND","YES","NOT_FOUND"
+"A-CMD-005","LintValidation","NOT_FOUND","NO","NOT_FOUND"

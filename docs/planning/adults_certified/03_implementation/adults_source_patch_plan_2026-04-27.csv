@@ -1,0 +1,7 @@
+"Order","PatchId","Action","Inputs","AllowedNow","CommitLabel"
+"1","A-PATCH-001","Create or update Adults route entry","/adults|adults|Adults","YES","ADULTS_ROUTE_SOURCE_IMPLEMENTATION"
+"2","A-PATCH-002","Add Adults session mode selector","QuickFocus|Standard|Deep|Recovery","NO","ADULTS_SESSION_MODE_SOURCE_IMPLEMENTATION"
+"3","A-PATCH-003","Add Adults gameplay content loader","A-AC01-A1-P01|A-AC03-A1-P02|A-AC05-A2-P03|A-AC06-A2-P04","NO","ADULTS_GAMEPLAY_SOURCE_IMPLEMENTATION"
+"4","A-PATCH-004","Add scoring and progression calculation","Accuracy50|Efficiency20|Hint15|Retry10|Completion5","NO","ADULTS_SCORING_SOURCE_IMPLEMENTATION"
+"5","A-PATCH-005","Add post-session insight panel","Session insight|Recommended next step","NO","ADULTS_INSIGHT_SOURCE_IMPLEMENTATION"
+"6","A-PATCH-006","Add Adults persistence profile state","AdultProfile|AdultProgress|AdultSession|AdultInsight","NO","ADULTS_PERSISTENCE_SOURCE_IMPLEMENTATION"

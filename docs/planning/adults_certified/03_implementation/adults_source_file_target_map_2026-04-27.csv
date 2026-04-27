@@ -1,0 +1,6 @@
+"TargetId","Area","PrimaryFile","FallbackAction","SourceEditStep","Status"
+"A-TARGET-001","RouteEntry","backend/src/daily-challenge/dailyChallengeEngine.ts","Create minimal Adults route shell only if router target is not valid","A-SRC-001","READY_NEXT"
+"A-TARGET-002","AgeModeNavigation","backend/src/daily-challenge/dailyChallengeEngine.ts","Add Adults link beside existing age-mode navigation","A-SRC-001","READY_NEXT"
+"A-TARGET-003","SessionModeSelector","TO_BE_CREATED_OR_SELECTED_AFTER_ROUTE_ENTRY","Create Adults session mode component from blueprint","A-SRC-002","PLANNED_AFTER_ROUTE"
+"A-TARGET-004","GameplayContentLoader","TO_BE_CREATED_OR_SELECTED_AFTER_SESSION_MODE","Create Adults gameplay content data module","A-SRC-003","PLANNED_AFTER_SESSION"
+"A-TARGET-005","ScoringInsightPersistence","TO_BE_CREATED_OR_SELECTED_AFTER_GAMEPLAY_LOOP","Create Adults scoring, insight, and persistence modules","A-SRC-004_TO_A-SRC-006","PLANNED_AFTER_GAMEPLAY"
