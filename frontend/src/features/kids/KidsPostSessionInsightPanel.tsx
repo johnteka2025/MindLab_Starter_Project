@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { KidsGameplayItem } from "./kidsGameplayContent";
 import { createKidsPostSessionInsight } from "./kidsPostSessionInsights";
 import type { KidsScoreResult } from "./kidsScoring";
@@ -15,11 +16,14 @@ export default function KidsPostSessionInsightPanel({
   hasAnswered,
   isCorrect
 }: KidsPostSessionInsightPanelProps) {
+  const insight = React.useMemo(
+    () => createKidsPostSessionInsight(item, score, isCorrect),
+    [item, score, isCorrect]
+  );
+
   if (!hasAnswered) {
     return null;
   }
-
-  const insight = createKidsPostSessionInsight(item, score, isCorrect);
 
   return (
     <section

@@ -7,4 +7,4 @@
 "KID-IMPL-006","Copy","Create Kids feedback copy matrix","COMPLETE","kids_feedback_copy_matrix_2026-04-28.csv","Use in insight and gameplay UI"
 "KID-IMPL-007","Persistence","Create Kids persistence schema","COMPLETE","kids_persistence_schema_2026-04-28.csv","Use in kidsPersistence.ts"
 "KID-IMPL-008","Source implementation","Run K-PATCH-001 Kids source foundation","COMPLETE","kidsPersistence.ts|KidsGameplayPanel.tsx","Run K-PATCH-007 Kids source validation and smoke prep"
-"KID-IMPL-009","Validation","Run Kids build and manual smoke","READY_FOR_MANUAL_SMOKE","kids_exact_root_cause_lock_2026-04-28.csv|kids_targeted_validation_fix_build_2026-04-28.log","RUN_KIDS_MANUAL_SMOKE_CONFIRMATION"
+"KID-IMPL-009","Validation","Run Kids build and manual smoke","READY_FOR_MANUAL_SMOKE_RETEST","kids_copy_route_aborted_smoke_fix_build_2026-04-28.log|kids_copy_route_aborted_smoke_fix_tracker_2026-04-28.csv","RUN_KIDS_MANUAL_SMOKE_RETEST"

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import * as React from "react";
 import {
   getDefaultKidsGameplayItemForSession,
   getKidsGameplayItemsForSession
@@ -12,14 +12,14 @@ type KidsGameplayPanelProps = {
 };
 
 export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelProps) {
-  const availableItems = useMemo(() => getKidsGameplayItemsForSession(selectedMode), [selectedMode]);
-  const fallbackItem = useMemo(() => getDefaultKidsGameplayItemForSession(selectedMode), [selectedMode]);
+  const availableItems = React.useMemo(() => getKidsGameplayItemsForSession(selectedMode), [selectedMode]);
+  const fallbackItem = React.useMemo(() => getDefaultKidsGameplayItemForSession(selectedMode), [selectedMode]);
   const activeItem = availableItems[0] ?? fallbackItem;
 
-  const [selectedAnswer, setSelectedAnswer] = useState("");
-  const [hintVisible, setHintVisible] = useState(false);
-  const [tryCount, setTryCount] = useState(0);
-  const [savedSessionKey, setSavedSessionKey] = useState("");
+  const [selectedAnswer, setSelectedAnswer] = React.useState("");
+  const [hintVisible, setHintVisible] = React.useState(false);
+  const [tryCount, setTryCount] = React.useState(0);
+  const [savedSessionKey, setSavedSessionKey] = React.useState("");
 
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = selectedAnswer === activeItem.correctAnswer;
@@ -38,14 +38,14 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     setSelectedAnswer(option);
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     setSelectedAnswer("");
     setHintVisible(false);
     setTryCount(0);
     setSavedSessionKey("");
   }, [selectedMode]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!hasAnswered) {
       return;
     }
@@ -85,7 +85,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-          {activeItem.certifiedId} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.categoryName} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.stage}
+          {activeItem.certifiedId} - {activeItem.categoryName} - {activeItem.stage}
         </p>
         <h2 id="kids-gameplay-heading" style={{ margin: 0, fontSize: "26px" }}>
           Play round
@@ -164,66 +164,74 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
           </div>
         )}
 
-        {hasAnswered && (
-          <div
-            aria-live="polite"
-            style={{
-              marginTop: "18px",
-              padding: "14px 16px",
-              borderRadius: "16px",
-              background: isCorrect ? "#ecfdf5" : "#fff7ed",
-              color: isCorrect ? "#065f46" : "#9a3412"
-            }}
-          >
-            <strong>{isCorrect ? "Great job. You found it." : "Good try. Let us look again together."}</strong>
-            <div style={{ marginTop: "8px" }}>
-              {isCorrect ? activeItem.insight : activeItem.hint}
-            </div>
-            {tryCount > 0 && (
-              <div style={{ marginTop: "8px", color: "#334155" }}>
-                Tries: {tryCount + 1}. You are learning.
-              </div>
-            )}
-          </div>
+        {!hasAnswered && (
+          <p style={{ margin: "14px 0 0", color: "#475569" }}>
+            Choose an answer when you are ready.
+          </p>
         )}
 
-        <aside
-          aria-label="Kids score and mastery"
-          style={{
-            marginTop: "18px",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
-            gap: "10px"
-          }}
-        >
-          <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
-            <div style={{ color: "#64748b", fontSize: "13px" }}>Score</div>
-            <strong style={{ fontSize: "22px" }}>{score.totalScore}</strong>
-          </div>
-          <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
-            <div style={{ color: "#64748b", fontSize: "13px" }}>Mastery</div>
-            <strong style={{ fontSize: "22px" }}>{score.masteryLabel}</strong>
-          </div>
-          <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
-            <div style={{ color: "#64748b", fontSize: "13px" }}>Next step</div>
-            <strong>{score.nextStep}</strong>
-          </div>
-        </aside>
+        {hasAnswered && (
+          <>
+            <div
+              aria-live="polite"
+              style={{
+                marginTop: "18px",
+                padding: "14px 16px",
+                borderRadius: "16px",
+                background: isCorrect ? "#ecfdf5" : "#fff7ed",
+                color: isCorrect ? "#065f46" : "#9a3412"
+              }}
+            >
+              <strong>{isCorrect ? "Great job. You found it." : "Good try. Let us look again together."}</strong>
+              <div style={{ marginTop: "8px" }}>
+                {isCorrect ? activeItem.insight : activeItem.hint}
+              </div>
+              {tryCount > 0 && (
+                <div style={{ marginTop: "8px", color: "#334155" }}>
+                  Tries: {tryCount + 1}. You are learning.
+                </div>
+              )}
+            </div>
 
-        <p style={{ margin: "14px 0 0", color: "#475569" }}>
-          {score.encouragement}
-        </p>
+            <aside
+              aria-label="Kids score and mastery"
+              style={{
+                marginTop: "18px",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+                gap: "10px"
+              }}
+            >
+              <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+                <div style={{ color: "#64748b", fontSize: "13px" }}>Score</div>
+                <strong style={{ fontSize: "22px" }}>{score.totalScore}</strong>
+              </div>
+              <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+                <div style={{ color: "#64748b", fontSize: "13px" }}>Mastery</div>
+                <strong style={{ fontSize: "22px" }}>{score.masteryLabel}</strong>
+              </div>
+              <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+                <div style={{ color: "#64748b", fontSize: "13px" }}>Next step</div>
+                <strong>{score.nextStep}</strong>
+              </div>
+            </aside>
 
-        <p style={{ margin: "10px 0 0", color: "#64748b", fontSize: "13px" }}>
-          Kids progress saved with mindlab.kids.profile.v1.
-        </p>
+            <p style={{ margin: "14px 0 0", color: "#475569" }}>
+              {score.encouragement}
+            </p>
 
-        <KidsPostSessionInsightPanel
-          item={activeItem}
-          score={score}
-          hasAnswered={hasAnswered}
-          isCorrect={isCorrect}
-        />
+            <p style={{ margin: "10px 0 0", color: "#64748b", fontSize: "13px" }}>
+              Kids progress saved with mindlab.kids.profile.v1.
+            </p>
+
+            <KidsPostSessionInsightPanel
+              item={activeItem}
+              score={score}
+              hasAnswered={hasAnswered}
+              isCorrect={isCorrect}
+            />
+          </>
+        )}
       </article>
     </section>
   );

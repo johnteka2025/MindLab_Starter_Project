@@ -1,13 +1,9 @@
-import KidsLanding from "./features/kids/KidsLanding";
-import AdultsLanding from "./features/adults/AdultsLanding";
-import "./styles/mindlab_runtime.css";
-import "./env_probe";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import * as React from "react";
+import { createRoot } from "react-dom/client";
 import App from "./App";
-import { startMindLabKidsRuntime } from "./app/mindlab_kids_runtime.js";
-
+import AdultsLanding from "./features/adults/AdultsLanding";
+import KidsLanding from "./features/kids/KidsLanding";
+import "./styles/mindlab_runtime.css";
 
 function MindLabRouteGate() {
   const path = typeof window !== "undefined" ? window.location.pathname : "/";
@@ -15,44 +11,15 @@ function MindLabRouteGate() {
   if (path.startsWith("/adults")) return <AdultsLanding />;
   return <App />;
 }
-const rootElement = document.getElementById("root");
-const runtimeHost = document.getElementById("app");
 
-if (!rootElement) {
-  throw new Error("Root element #root not found in index.html");
+const root = document.getElementById("root");
+
+if (!root) {
+  throw new Error("Root element not found.");
 }
 
-if (!runtimeHost) {
-  throw new Error("Runtime host #app not found in index.html");
-}
-
-const root = ReactDOM.createRoot(rootElement);
-
-root.render(
+createRoot(root).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <MindLabRouteGate />
-    </BrowserRouter>
+    <MindLabRouteGate />
   </React.StrictMode>
 );
-
-async function bootMindLabKidsRuntime() {
-  try {
-    await startMindLabKidsRuntime("#app");
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown runtime error";
-    runtimeHost.innerHTML = `
-      <div class="mindlab-card">
-        <h2>MindLab runtime blocker</h2>
-        <p id="mindlab-feedback">${message}</p>
-      </div>
-    `;
-    console.error(error);
-  }
-}
-
-if (typeof window !== "undefined") {
-  window.requestAnimationFrame(() => {
-    void bootMindLabKidsRuntime();
-  });
-}

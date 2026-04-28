@@ -1,9 +1,10 @@
 RESULT: KIDS_SOURCE_VALIDATION_AND_SMOKE_PREP_READY
 RepoRoot=C:\Projects\MindLab_Starter_Project
-StartFrom=COMMITTED_KIDS_TYPESCRIPT_HARDENING_VALIDATION_FIX
+StartFrom=ABORTED_KIDS_MANUAL_SMOKE_NO_SUMMARY
 BuildCommand=npm run build
 BuildStatus=PASS
-BuildLog=docs/planning/kids_enhancement/08_final_qa/logs/kids_targeted_validation_fix_build_2026-04-28.log
-RootCauseCsv=docs/planning/kids_enhancement/08_final_qa/kids_exact_root_cause_lock_2026-04-28.csv
+BuildLog=docs/planning/kids_enhancement/08_final_qa/logs/kids_copy_route_aborted_smoke_fix_build_2026-04-28.log
+EntryPatchStatus=ENTRY_REWRITTEN_KIDS_ONLY_ON_KIDS_ROUTE_WITH_ADULTS_ROUTE
+MojibakeFreeSource=True
 OverallStatus=PASS
-NextRequiredAction=RUN_KIDS_MANUAL_SMOKE_CONFIRMATION
+NextRequiredAction=RUN_KIDS_MANUAL_SMOKE_RETEST

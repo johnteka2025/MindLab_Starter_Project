@@ -1,0 +1,13 @@
+RESULT: KIDS_COPY_ROUTE_ABORTED_SMOKE_FIX_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=ABORTED_KIDS_MANUAL_SMOKE_NO_SUMMARY
+FixedIssue1=Removed aborted smoke runtime log
+FixedIssue2=Corrupted mojibake text replaced with ASCII-only source copy
+FixedIssue3=Duplicate starter App card removed from /kids by rewriting route gate
+FixedIssue4=Score hidden until answer is selected
+EntryPatchStatus=ENTRY_REWRITTEN_KIDS_ONLY_ON_KIDS_ROUTE_WITH_ADULTS_ROUTE
+BuildCommand=npm run build
+BuildStatus=PASS
+MojibakeFreeSource=True
+OverallStatus=PASS
+NextRequiredAction=RUN_KIDS_MANUAL_SMOKE_RETEST

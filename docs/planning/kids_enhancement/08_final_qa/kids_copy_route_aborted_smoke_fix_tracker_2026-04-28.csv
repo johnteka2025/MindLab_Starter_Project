@@ -1,0 +1,6 @@
+"FixId","Area","Action","Status","Evidence"
+"K-ABORT-FIX-001","DirtyRepo","Removed aborted manual smoke runtime log","COMPLETE","kids_manual_smoke_runtime_2026-04-28.log removed if present"
+"K-ABORT-FIX-002","Copy","Rewrote Kids source text as ASCII only","COMPLETE","Kids source files"
+"K-ABORT-FIX-003","Route","Rewrote Vite entry so /kids renders KidsLanding only","COMPLETE","frontend/src/main.tsx"
+"K-ABORT-FIX-004","Gameplay","Hid score until answer is selected","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx"
+"K-ABORT-FIX-005","Build","Ran build after aborted smoke fix","PASS","docs/planning/kids_enhancement/08_final_qa/logs/kids_copy_route_aborted_smoke_fix_build_2026-04-28.log"

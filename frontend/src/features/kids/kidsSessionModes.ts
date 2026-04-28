@@ -47,7 +47,7 @@ export const kidsSessionModes: KidsSessionMode[] = [
     label: "Calm Review",
     duration: "3-6 min",
     cognitiveLoad: "Low",
-    purpose: "Recovery-style review after mistakes",
+    purpose: "Recovery style review after mistakes",
     hintStyle: "Supportive step",
     defaultMode: false,
     childSafety: "Calm and supportive"

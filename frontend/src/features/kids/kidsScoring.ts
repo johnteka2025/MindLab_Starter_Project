@@ -22,17 +22,31 @@ function clampScore(value: number): number {
 }
 
 export function calculateKidsScore(result: KidsAnswerResult): KidsScoreResult {
-  const accuracyScore = result.isCorrect ? 100 : result.hasAnswered ? 40 : 0;
-  const effortScore = result.hasAnswered ? 100 : 0;
+  if (!result.hasAnswered) {
+    return {
+      totalScore: 0,
+      accuracyScore: 0,
+      effortScore: 0,
+      hintScore: 0,
+      retryScore: 0,
+      calmCompletionScore: 0,
+      masteryLabel: "Growing",
+      encouragement: "Pick an answer when you are ready.",
+      nextStep: "Choose one answer."
+    };
+  }
+
+  const accuracyScore = result.isCorrect ? 100 : 40;
+  const effortScore = 100;
   const hintScore = result.hintVisible ? 92 : 100;
   const retryScore = Math.max(60, 100 - result.tryCount * 5);
-  const calmCompletionScore = result.hasAnswered ? 100 : 0;
+  const calmCompletionScore = 100;
 
   const totalScore = clampScore(
     accuracyScore * 0.45 +
       effortScore * 0.25 +
       hintScore * 0.15 +
-      retryScore * 0.10 +
+      retryScore * 0.1 +
       calmCompletionScore * 0.05
   );
 
@@ -47,9 +61,7 @@ export function calculateKidsScore(result: KidsAnswerResult): KidsScoreResult {
 
   const encouragement = result.isCorrect
     ? "Great job. You used careful thinking."
-    : result.hasAnswered
-      ? "Good try. You are learning with each answer."
-      : "Pick an answer when you are ready.";
+    : "Good try. You are learning with each answer.";
 
   const nextStep = result.isCorrect
     ? "Try another friendly round."
