@@ -1,0 +1,4 @@
+"StepId","Area","Action","Status","Evidence","NextAction"
+"K-EXP-CONTENT-001","Source","Rewrite Kids gameplay content with KC6-KC10 expansion","COMPLETE","frontend/src/features/kids/kidsGameplayContent.ts","IMPLEMENT_KIDS_EXPANSION_SCORING_AND_EXCEPTIONAL_LEVELS"
+"K-EXP-CONTENT-002","StaticValidation","Validate expanded categories and exceptional labels","PASS","kids_expansion_content_data_static_validation_2026-04-28.csv","IMPLEMENT_KIDS_EXPANSION_SCORING_AND_EXCEPTIONAL_LEVELS"
+"K-EXP-CONTENT-003","Build","Run build after content data expansion","PASS","logs/kids_expansion_content_data_build_2026-04-28.log","IMPLEMENT_KIDS_EXPANSION_SCORING_AND_EXCEPTIONAL_LEVELS"

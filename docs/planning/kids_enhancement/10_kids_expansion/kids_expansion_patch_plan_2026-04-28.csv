@@ -1,6 +1,6 @@
 "PatchId","TargetFileKey","PatchGoal","AllowedNow","Dependency","StopIfFail","ExpectedOutput"
-"K-EXP-PATCH-001","KIDS_GAMEPLAY_CONTENT","Add KC6-KC10 expanded content items","YES","KIDS_EXPANSION_SOURCE_FILE_MAP_READY","YES","Expanded kidsGameplayItems"
-"K-EXP-PATCH-002","KIDS_SCORING","Add advanced Kids exceptional-player level labels and scoring metadata","YES_AFTER_PATCH_001","K-EXP-PATCH-001","YES","Explorer Builder Solver Mastery Spark scoring support"
+"K-EXP-PATCH-001","KIDS_GAMEPLAY_CONTENT","Add KC6-KC10 expanded content items","COMPLETE","KIDS_EXPANSION_SOURCE_FILE_MAP_READY","YES","Expanded kidsGameplayItems"
+"K-EXP-PATCH-002","KIDS_SCORING","Add advanced Kids exceptional-player level labels and scoring metadata","YES","K-EXP-PATCH-001","YES","Explorer Builder Solver Mastery Spark scoring support"
 "K-EXP-PATCH-003","KIDS_PERSISTENCE","Add Kids progress review fields without touching Adults keys","YES_AFTER_PATCH_002","K-EXP-PATCH-002","YES","Kids-only progress review data"
 "K-EXP-PATCH-004","KIDS_INSIGHTS","Add category-aware child-safe insight generator","YES_AFTER_PATCH_003","K-EXP-PATCH-003","YES","Expanded session insight text"
 "K-EXP-PATCH-005","KIDS_GAMEPLAY_PANEL","Add adaptive next-round and recovery suggestions","YES_AFTER_PATCH_004","K-EXP-PATCH-004","YES","Adaptive gameplay behavior"
