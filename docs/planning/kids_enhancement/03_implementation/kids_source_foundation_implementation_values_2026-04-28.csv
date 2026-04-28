@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"KIDS_FEATURE_DIR","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids","NO"
+"KIDS_SESSION_MODES_SOURCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsSessionModes.ts","NO"
+"KIDS_GAMEPLAY_CONTENT_SOURCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsGameplayContent.ts","NO"
+"KIDS_DEFAULT_MODE","PlayFocus","NO"
+"KIDS_MODES","PlayFocus|StoryPractice|Challenge|CalmReview","NO"
+"KIDS_DEFAULT_CERTIFIED_ID","K-KC01-K1-P01","NO"
+"NEXT_ALLOWED_PATCH","K-PATCH-002","NO"
