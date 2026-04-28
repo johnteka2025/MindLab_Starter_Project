@@ -1,0 +1,5 @@
+"StepId","Area","Action","Status","Evidence","NextAction"
+"K-EXP-REVIEW-001","Source","Add Kids progress review panel to Kids landing","COMPLETE","frontend/src/features/kids/KidsLanding.tsx","RUN_KIDS_EXPANSION_BUILD_AND_STATIC_VALIDATION"
+"K-EXP-REVIEW-002","Source","Patch gameplay panel to refresh progress review after saved session","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx","RUN_KIDS_EXPANSION_BUILD_AND_STATIC_VALIDATION"
+"K-EXP-REVIEW-003","StaticValidation","Validate review panel, summary helpers, callback, fields, and Kids storage","PASS","kids_expansion_progress_review_static_validation_2026-04-28.csv","RUN_KIDS_EXPANSION_BUILD_AND_STATIC_VALIDATION"
+"K-EXP-REVIEW-004","Build","Run build after progress review panel update","PASS","logs/kids_expansion_progress_review_build_2026-04-28.log","RUN_KIDS_EXPANSION_BUILD_AND_STATIC_VALIDATION"

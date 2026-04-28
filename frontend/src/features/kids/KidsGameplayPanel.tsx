@@ -11,6 +11,7 @@ import { calculateKidsScore } from "./kidsScoring";
 
 type KidsGameplayPanelProps = {
   selectedMode: string;
+  onProgressUpdated?: () => void;
 };
 
 function findDifferentItem(items: KidsGameplayItem[], currentCertifiedId: string): KidsGameplayItem | null {
@@ -53,7 +54,7 @@ function getSuggestedNextKidsItem(
   return findDifferentItem(getKidsGameplayItemsForSession(selectedMode), currentItem.certifiedId);
 }
 
-export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelProps) {
+export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
   const [activeItem, setActiveItem] = React.useState<KidsGameplayItem>(() =>
     getDefaultKidsGameplayItemForSession(selectedMode)
   );
@@ -147,6 +148,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
       completedAt: new Date().toISOString()
     });
 
+    onProgressUpdated?.();
     setSavedSessionKey(sessionKey);
   }, [
     activeItem,
@@ -162,6 +164,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     score.recoveryModeSuggestion,
     score.scoreBand,
     score.totalScore,
+    onProgressUpdated,
     selectedAnswer,
     tryCount
   ]);

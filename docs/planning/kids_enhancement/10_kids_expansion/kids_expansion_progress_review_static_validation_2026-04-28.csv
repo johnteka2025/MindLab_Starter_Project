@@ -1,0 +1,8 @@
+"CheckId","Check","Status","Evidence"
+"K-EXP-REVIEW-001","Kids progress review panel exists","PASS","frontend/src/features/kids/KidsLanding.tsx"
+"K-EXP-REVIEW-002","Progress summary helpers are used","PASS","createKidsProgressReviewSummary|loadKidsProfile"
+"K-EXP-REVIEW-003","Gameplay notifies landing after progress update","PASS","onProgressUpdated"
+"K-EXP-REVIEW-004","Progress fields are visible","PASS","rounds|accuracy|level|practice category"
+"K-EXP-REVIEW-005","Kids storage path remains Kids-only","PASS","mindlab.kids.profile.v1"
+"K-EXP-REVIEW-006","No mojibake in progress review source","PASS","frontend/src/features/kids/KidsLanding.tsx|frontend/src/features/kids/KidsGameplayPanel.tsx"
+"K-EXP-REVIEW-007","Build passes after progress review panel","PASS","logs/kids_expansion_progress_review_build_2026-04-28.log"

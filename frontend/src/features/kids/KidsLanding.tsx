@@ -1,13 +1,149 @@
 import * as React from "react";
 import KidsGameplayPanel from "./KidsGameplayPanel";
 import {
+  createKidsProgressReviewSummary,
+  loadKidsProfile
+} from "./kidsPersistence";
+import {
   defaultKidsSessionMode,
   kidsSessionModes,
   type KidsSessionModeId
 } from "./kidsSessionModes";
 
+type KidsProgressReviewPanelProps = {
+  refreshKey: number;
+  onRefresh: () => void;
+};
+
+function KidsProgressReviewPanel({ refreshKey, onRefresh }: KidsProgressReviewPanelProps) {
+  const summary = React.useMemo(
+    () => createKidsProgressReviewSummary(loadKidsProfile()),
+    [refreshKey]
+  );
+
+  return (
+    <section
+      aria-labelledby="kids-progress-review-heading"
+      style={{
+        marginTop: "28px",
+        borderRadius: "22px",
+        border: "1px solid #dbeafe",
+        background: "#eff6ff",
+        padding: "20px"
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "16px",
+          alignItems: "flex-start",
+          flexWrap: "wrap"
+        }}
+      >
+        <div>
+          <p style={{ margin: "0 0 6px", color: "#2563eb", fontSize: "14px" }}>
+            Kids progress review
+          </p>
+          <h2 id="kids-progress-review-heading" style={{ margin: 0, fontSize: "24px" }}>
+            Calm progress snapshot
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          onClick={onRefresh}
+          style={{
+            border: "1px solid #1d4ed8",
+            borderRadius: "999px",
+            padding: "10px 14px",
+            background: "#ffffff",
+            color: "#1d4ed8",
+            cursor: "pointer"
+          }}
+        >
+          Refresh progress
+        </button>
+      </div>
+
+      <p style={{ margin: "12px 0 16px", color: "#334155", lineHeight: 1.6 }}>
+        {summary.childSafeSummary}
+      </p>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+          gap: "10px"
+        }}
+      >
+        <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "13px" }}>Rounds</div>
+          <strong style={{ fontSize: "22px" }}>{summary.totalSessions}</strong>
+        </div>
+
+        <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "13px" }}>Accuracy</div>
+          <strong style={{ fontSize: "22px" }}>{summary.accuracyPercent}%</strong>
+        </div>
+
+        <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "13px" }}>Last score</div>
+          <strong style={{ fontSize: "22px" }}>{summary.lastScore}</strong>
+        </div>
+
+        <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "13px" }}>Level</div>
+          <strong>{summary.lastExceptionalLevel}</strong>
+        </div>
+      </div>
+
+      <div
+        style={{
+          marginTop: "12px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "10px"
+        }}
+      >
+        <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "13px" }}>Strongest category</div>
+          <strong>{summary.strongestCategory}</strong>
+        </div>
+
+        <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+          <div style={{ color: "#64748b", fontSize: "13px" }}>Practice category</div>
+          <strong>{summary.practiceCategory}</strong>
+        </div>
+      </div>
+
+      <div
+        style={{
+          marginTop: "12px",
+          borderRadius: "16px",
+          background: "#ffffff",
+          padding: "14px",
+          color: "#334155",
+          lineHeight: 1.6
+        }}
+      >
+        <strong style={{ color: "#111827" }}>Next step: </strong>
+        {summary.lastAdaptiveNextStep}
+        <br />
+        <strong style={{ color: "#111827" }}>Recovery support: </strong>
+        {summary.lastRecoveryModeSuggestion}
+      </div>
+    </section>
+  );
+}
+
 export default function KidsLanding() {
   const [selectedMode, setSelectedMode] = React.useState<KidsSessionModeId>(defaultKidsSessionMode);
+  const [progressRefreshKey, setProgressRefreshKey] = React.useState(0);
+
+  function refreshProgressReview() {
+    setProgressRefreshKey((value) => value + 1);
+  }
 
   return (
     <main
@@ -27,7 +163,7 @@ export default function KidsLanding() {
             Kids cognitive training
           </h1>
           <p style={{ maxWidth: "680px", color: "#475569", lineHeight: 1.7 }}>
-            Short, friendly games for attention, matching, stories, patterns, and calm review.
+            Short, friendly games for attention, matching, stories, patterns, memory, reasoning, and calm review.
           </p>
         </header>
 
@@ -74,7 +210,15 @@ export default function KidsLanding() {
           </div>
         </section>
 
-        <KidsGameplayPanel selectedMode={selectedMode} />
+        <KidsProgressReviewPanel
+          refreshKey={progressRefreshKey}
+          onRefresh={refreshProgressReview}
+        />
+
+        <KidsGameplayPanel
+          selectedMode={selectedMode}
+          onProgressUpdated={refreshProgressReview}
+        />
       </section>
     </main>
   );
