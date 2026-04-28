@@ -1,0 +1,6 @@
+"TaskId","Phase","Task","Status","RecommendedOptions","PowerShellNeeded"
+"K-NEXT-PHASE-001","Next selection","Choose next development target","READY","Kids expansion|Teen category|Adult refinement|Cross-category dashboard","YES_AFTER_SELECTION"
+"K-NEXT-PHASE-002","Planning","Create roadmap and tracker for selected next target","READY","Roadmap|Tracker|Execution scripts","YES"
+"K-NEXT-PHASE-003","Implementation","Create source file map for selected target","READY","File map|Patch plan|Validation plan","YES"
+"K-NEXT-PHASE-004","Validation","Run build, static validation, manual smoke, and final QA","READY","Same golden-rule process","YES"
+"K-NEXT-PHASE-005","Closeout","Create continuation document when stopping","READY","MS Word handoff with exact paths and scripts","YES_WHEN_STOPPING"
