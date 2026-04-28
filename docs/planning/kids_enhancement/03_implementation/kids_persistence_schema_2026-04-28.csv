@@ -1,0 +1,7 @@
+"Field","Type","DefaultValue","StorageKey","IsolationRule","Status"
+"ageMode","string","kids","mindlab.kids.profile.v1","Must not use adults key","READY_FOR_SOURCE"
+"currentStage","string","K1","mindlab.kids.profile.v1","Kids only","READY_FOR_SOURCE"
+"currentCategory","string","KC1","mindlab.kids.profile.v1","Kids only","READY_FOR_SOURCE"
+"preferredSessionMode","string","PlayFocus","mindlab.kids.profile.v1","Kids only","READY_FOR_SOURCE"
+"lastCertifiedId","string","K-KC01-K1-P01","mindlab.kids.profile.v1","Kids only","READY_FOR_SOURCE"
+"sessionHistory","array","[]","mindlab.kids.sessionHistory.v1","Must not use adults session history key","READY_FOR_SOURCE"

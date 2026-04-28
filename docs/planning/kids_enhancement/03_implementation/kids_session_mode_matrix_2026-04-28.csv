@@ -1,0 +1,5 @@
+"ModeId","Label","Duration","CognitiveLoad","Purpose","HintStyle","DefaultMode","ChildSafety"
+"PlayFocus","Play Focus","3-5 min","Low","Short playful attention practice","Gentle clue","YES","Low pressure"
+"StoryPractice","Story Practice","5-8 min","Low to moderate","Language and meaning practice","Story clue","NO","Encouraging"
+"Challenge","Challenge","5-10 min","Moderate","Optional stronger puzzle practice","Step clue","NO","No penalty language"
+"CalmReview","Calm Review","3-6 min","Low","Recovery-style review after mistakes","Supportive step","NO","Calm and supportive"

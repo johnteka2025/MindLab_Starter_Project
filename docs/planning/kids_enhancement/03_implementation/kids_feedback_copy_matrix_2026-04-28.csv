@@ -1,0 +1,7 @@
+"CopyId","Situation","CopyText","Tone","Avoid","Status"
+"KID-COPY-001","Correct","Great job. You found it.","Positive","Adult pressure language","READY_FOR_SOURCE"
+"KID-COPY-002","Incorrect","Good try. Let us look again together.","Supportive","Wrong or failed","READY_FOR_SOURCE"
+"KID-COPY-003","Hint","Here is a small clue.","Gentle","Penalty framing","READY_FOR_SOURCE"
+"KID-COPY-004","Retry","Try one more time. You are learning.","Encouraging","Mistake blame","READY_FOR_SOURCE"
+"KID-COPY-005","SessionInsight","You practiced focus today.","Simple","Complex adult terms","READY_FOR_SOURCE"
+"KID-COPY-006","CalmReview","Let us do a calm practice round.","Calm","Recovery as failure","READY_FOR_SOURCE"

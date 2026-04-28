@@ -3,5 +3,5 @@
 "KID-START-002","Next category planning","Create next-category decision matrix","COMPLETE","Use Kids enhancement pass unless manually changed"
 "KID-START-003","Kids discovery","Audit current Kids source files and docs","COMPLETE","Run Kids enhancement roadmap creation"
 "KID-START-004","Kids planning","Create Kids enhancement roadmap and tracker","COMPLETE","Run Kids task tracker and patch plan creation"
-"KID-START-005","Kids implementation","Patch Kids source safely only after audit","READY_AFTER_PATCH_PLAN","Patch Kids source safely only after patch plan"
-"KID-START-006","Validation","Run build smoke and manual route smoke","PENDING","After implementation"
+"KID-START-005","Kids implementation","Patch Kids source safely only after audit","READY_NEXT","Run K-PATCH-001 Kids source foundation implementation"
+"KID-START-006","Validation","Run build smoke and manual route smoke","PENDING","Run validation after Kids source implementation"

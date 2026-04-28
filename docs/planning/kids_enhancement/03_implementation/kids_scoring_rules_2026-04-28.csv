@@ -1,0 +1,7 @@
+"RuleId","Metric","WeightPercent","ChildSafeRule","Threshold","Status"
+"KID-SCORE-001","Accuracy","45","Reward correct answers without harsh failure","Correct=100 Incorrect=40 effort credit","READY_FOR_SOURCE"
+"KID-SCORE-002","Effort","25","Reward attempts and completion","Answered=100 NotAnswered=0","READY_FOR_SOURCE"
+"KID-SCORE-003","HintUse","15","Hints reduce score gently, not as punishment","Minus 8 per hint","READY_FOR_SOURCE"
+"KID-SCORE-004","RetryGrowth","10","Retries are learning opportunities","Minus 5 per retry, floor 60 if completed","READY_FOR_SOURCE"
+"KID-SCORE-005","CalmCompletion","5","Completion matters for confidence","Completed=100","READY_FOR_SOURCE"
+"KID-MASTERY-001","MasteryLevel","NA","Use friendly levels","Growing<60|GoodStart>=60|StrongFocus>=75|SuperThinker>=90","READY_FOR_SOURCE"

@@ -1,0 +1,6 @@
+"CertifiedId","Category","CategoryName","Stage","SessionMode","Prompt","Options","CorrectAnswer","Hint","Insight","Difficulty"
+"K-KC01-K1-P01","KC1","Colors and Attention","K1","PlayFocus","Which one is red?","Red|Leaf|Dog","Red","Look for the color word.","Great noticing. Red is the color word.","Starter"
+"K-KC02-K1-P02","KC2","Shapes and Matching","K1","PlayFocus","Which shape has three sides?","Triangle|Circle|Square","Triangle","Count the sides.","A triangle has three sides.","Starter"
+"K-KC03-K1-P03","KC3","Story Understanding","K1","StoryPractice","Mia put on boots because it was raining. Why did Mia wear boots?","To keep feet dry|To swim|To sleep","To keep feet dry","Think about rain.","Boots help keep feet dry in rain.","Starter"
+"K-KC04-K2-P04","KC4","Simple Patterns","K2","Challenge","What comes next: star, moon, star, moon, star, ?","Moon|Star|Sun","Moon","The pattern repeats.","The pattern is star then moon.","Early Challenge"
+"K-KC05-K1-P05","KC5","Calm Review","K1","CalmReview","Which answer is an animal?","Dog|Table|Blue","Dog","An animal can move and breathe.","Dog is an animal.","Review"

@@ -1,0 +1,7 @@
+"ValidationId","Validation","Status","Evidence"
+"K-VAL-001","Repo clean before source patch","READY","git status --porcelain"
+"K-VAL-002","Build smoke after source implementation","PENDING","docs/planning/kids_enhancement/08_final_qa/logs"
+"K-VAL-003","Kids route manual smoke","PENDING","docs/planning/kids_enhancement/08_final_qa/kids_manual_smoke_checklist_2026-04-28.csv"
+"K-VAL-004","Kids storage isolation","PENDING","mindlab.kids.profile.v1 must not collide with Adults keys"
+"K-VAL-005","Child-safe copy review","READY_FOR_SOURCE","kids_feedback_copy_matrix_2026-04-28.csv"
+"K-VAL-006","Repo clean after each patch","READY","git status proof files"
