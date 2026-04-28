@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import KidsGameplayPanel from "./KidsGameplayPanel";
 import {
   defaultKidsSessionMode,
@@ -18,15 +18,10 @@ export default function KidsLanding() {
         color: "#111827"
       }}
     >
-      <section
-        style={{
-          maxWidth: "980px",
-          margin: "0 auto"
-        }}
-      >
+      <section style={{ maxWidth: "980px", margin: "0 auto" }}>
         <header style={{ marginBottom: "28px" }}>
           <p style={{ margin: "0 0 8px", color: "#64748b", fontSize: "15px" }}>
-            Kids practice ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· playful focus ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· calm learning
+            Kids practice Ãƒâ€šÃ‚Â· playful focus Ãƒâ€šÃ‚Â· calm learning
           </p>
           <h1 style={{ margin: 0, fontSize: "40px", lineHeight: 1.1 }}>
             Kids cognitive training
@@ -71,7 +66,7 @@ export default function KidsLanding() {
                     {mode.purpose}
                   </p>
                   <p style={{ margin: 0, color: "#64748b", fontSize: "14px" }}>
-                    {mode.duration} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {mode.childSafety}
+                    {mode.duration} Ãƒâ€šÃ‚Â· {mode.childSafety}
                   </p>
                 </button>
               );

@@ -1,0 +1,7 @@
+"FixId","Area","Action","Status","Evidence"
+"K-TS-FIX-001","SessionModes","Added non-null fallback for strict TypeScript","COMPLETE","frontend/src/features/kids/kidsSessionModes.ts"
+"K-TS-FIX-002","GameplayContent","Added non-null fallback for strict TypeScript","COMPLETE","frontend/src/features/kids/kidsGameplayContent.ts"
+"K-TS-FIX-003","Landing","Removed unused React default import and rewrote stable landing","COMPLETE","frontend/src/features/kids/KidsLanding.tsx"
+"K-TS-FIX-004","GameplayPanel","Rewrote stable gameplay panel with persistence and insight","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx"
+"K-TS-FIX-005","Build","Ran build after hardening","PASS","docs/planning/kids_enhancement/08_final_qa/logs/kids_typescript_hardening_build_2026-04-28.log"
+"K-TS-FIX-006","StaticValidation","Reran static source validation","FAIL","docs/planning/kids_enhancement/08_final_qa/kids_route_static_validation_2026-04-28.csv"

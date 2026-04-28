@@ -57,5 +57,5 @@ export const kidsSessionModes: KidsSessionMode[] = [
 export const defaultKidsSessionMode: KidsSessionModeId = "PlayFocus";
 
 export function getDefaultKidsSessionMode(): KidsSessionMode {
-  return kidsSessionModes.find((mode) => mode.defaultMode) ?? kidsSessionModes[0];
+  return kidsSessionModes.find((mode) => mode.defaultMode) ?? kidsSessionModes[0]!;
 }

@@ -14,12 +14,13 @@ type KidsGameplayPanelProps = {
 export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelProps) {
   const availableItems = useMemo(() => getKidsGameplayItemsForSession(selectedMode), [selectedMode]);
   const fallbackItem = useMemo(() => getDefaultKidsGameplayItemForSession(selectedMode), [selectedMode]);
+  const activeItem = availableItems[0] ?? fallbackItem;
+
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [hintVisible, setHintVisible] = useState(false);
   const [tryCount, setTryCount] = useState(0);
   const [savedSessionKey, setSavedSessionKey] = useState("");
 
-  const activeItem = availableItems[0] ?? fallbackItem;
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = selectedAnswer === activeItem.correctAnswer;
   const score = calculateKidsScore({
@@ -36,6 +37,13 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
 
     setSelectedAnswer(option);
   }
+
+  useEffect(() => {
+    setSelectedAnswer("");
+    setHintVisible(false);
+    setTryCount(0);
+    setSavedSessionKey("");
+  }, [selectedMode]);
 
   useEffect(() => {
     if (!hasAnswered) {
@@ -77,7 +85,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-          {activeItem.certifiedId} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.categoryName} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.stage}
+          {activeItem.certifiedId} Ãƒâ€šÃ‚Â· {activeItem.categoryName} Ãƒâ€šÃ‚Â· {activeItem.stage}
         </p>
         <h2 id="kids-gameplay-heading" style={{ margin: 0, fontSize: "26px" }}>
           Play round

@@ -1,13 +1,13 @@
 RESULT: KIDS_SOURCE_VALIDATION_AND_SMOKE_PREP_BLOCKED
 RepoRoot=C:\Projects\MindLab_Starter_Project
-StartFrom=COMMITTED_KIDS_SOURCE_VALIDATION_SMOKE_PREP_REBUILD
+StartFrom=COMMITTED_KIDS_SOURCE_VALIDATION_FAILURE_FIX
 BuildCommand=npm run build
 BuildStatus=PASS
-BuildLog=docs/planning/kids_enhancement/08_final_qa/logs/kids_source_validation_fix_build_2026-04-28.log
+BuildLog=docs/planning/kids_enhancement/08_final_qa/logs/kids_typescript_hardening_build_2026-04-28.log
 StaticValidation=docs/planning/kids_enhancement/08_final_qa/kids_route_static_validation_2026-04-28.csv
 StaticFailCount=1
 KidsManualUrl=http://localhost:8090/kids
 KidsFirstAnswer=Red
 KidsStorageKeys=mindlab.kids.profile.v1|mindlab.kids.sessionHistory.v1
 OverallStatus=FAIL
-NextRequiredAction=REVIEW_KIDS_SOURCE_VALIDATION_FIX_LOGS
+NextRequiredAction=REVIEW_KIDS_TYPESCRIPT_HARDENING_BUILD_LOG

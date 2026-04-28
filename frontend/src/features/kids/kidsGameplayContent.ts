@@ -85,7 +85,7 @@ export const kidsGameplayItems: KidsGameplayItem[] = [
 export const defaultKidsGameplayItemId = "K-KC01-K1-P01";
 
 export function getKidsGameplayItemById(certifiedId: string): KidsGameplayItem {
-  return kidsGameplayItems.find((item) => item.certifiedId === certifiedId) ?? kidsGameplayItems[0];
+  return kidsGameplayItems.find((item) => item.certifiedId === certifiedId) ?? kidsGameplayItems[0]!;
 }
 
 export function getKidsGameplayItemsForSession(sessionMode: string): KidsGameplayItem[] {
