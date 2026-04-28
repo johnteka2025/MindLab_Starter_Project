@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"K-SRC-002","Create Kids route landing page","COMPLETE","frontend/src/features/kids/KidsLanding.tsx","Kids landing page created with session mode selector and gameplay panel."
+"K-SRC-002A","Create Kids gameplay panel","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx","Child-safe answer selection, clue display, and simple feedback added."
+"K-SRC-002B","Prepare route wiring","READY_NEXT","Discovered Vite entry from file map","Next patch must wire /kids route from discovered entry file."

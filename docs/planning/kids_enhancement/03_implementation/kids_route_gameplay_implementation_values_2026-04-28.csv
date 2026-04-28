@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"KIDS_LANDING_SOURCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsLanding.tsx","NO"
+"KIDS_GAMEPLAY_PANEL_SOURCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsGameplayPanel.tsx","NO"
+"KIDS_ROUTE","/kids","YES_AFTER_ROUTE_WIRING"
+"KIDS_PAGE_TITLE","Kids cognitive training","NO"
+"KIDS_FIRST_ANSWER","Red","NO"
+"KIDS_MODE_VALUES","PlayFocus|StoryPractice|Challenge|CalmReview","NO"
+"NEXT_ALLOWED_PATCH","K-PATCH-003","NO"
