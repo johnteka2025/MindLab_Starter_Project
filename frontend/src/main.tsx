@@ -1,3 +1,4 @@
+import KidsLanding from "./features/kids/KidsLanding";
 import AdultsLanding from "./features/adults/AdultsLanding";
 import "./styles/mindlab_runtime.css";
 import "./env_probe";
@@ -7,6 +8,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { startMindLabKidsRuntime } from "./app/mindlab_kids_runtime.js";
 
+
+function MindLabRouteGate() {
+  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+  if (path.startsWith("/kids")) return <KidsLanding />;
+  if (path.startsWith("/adults")) return <AdultsLanding />;
+  return <App />;
+}
 const rootElement = document.getElementById("root");
 const runtimeHost = document.getElementById("app");
 
@@ -23,7 +31,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {window.location.pathname.startsWith("/adults") ? <AdultsLanding /> : <App />}
+      <MindLabRouteGate />
     </BrowserRouter>
   </React.StrictMode>
 );

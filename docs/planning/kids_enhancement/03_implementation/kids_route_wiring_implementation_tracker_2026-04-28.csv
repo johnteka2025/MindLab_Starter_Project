@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"K-SRC-003","Wire /kids route","COMPLETE","frontend/src/main.tsx","Discovered Vite entry now routes /kids to KidsLanding."
+"K-SRC-003A","Preserve existing route behavior","COMPLETE","frontend/src/main.tsx","Route gate preserves existing app route fallback and Adults branch when present."
+"K-SRC-003B","Run build after route wiring","PASS","docs/planning/kids_enhancement/03_implementation/logs/kids_route_wiring_build_2026-04-28.log","Build result captured before moving to scoring patch."
