@@ -1,0 +1,7 @@
+RESULT: ADULTS_MANUAL_SMOKE_CONFIRMATION_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+GeneratedOn=2026-04-27T20:04:09-04:00
+ManualSmokeOverallStatus=FAIL
+FailCount=6
+ManagedDirtyCountBeforeCommit=5
+NextRequiredAction=FIX_MANUAL_SMOKE_FAILURE

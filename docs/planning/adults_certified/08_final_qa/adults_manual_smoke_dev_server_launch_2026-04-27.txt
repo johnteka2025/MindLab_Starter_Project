@@ -1,0 +1,7 @@
+RESULT: ADULTS_MANUAL_SMOKE_DEV_SERVER_LAUNCHED
+RepoRoot=C:\Projects\MindLab_Starter_Project
+PackageJson=C:\Projects\MindLab_Starter_Project\frontend\package.json
+PackageDir=C:\Projects\MindLab_Starter_Project\frontend
+DevCommand=npm run dev
+DevProcessId=6244
+AdultsUrl=http://localhost:5173/adults
