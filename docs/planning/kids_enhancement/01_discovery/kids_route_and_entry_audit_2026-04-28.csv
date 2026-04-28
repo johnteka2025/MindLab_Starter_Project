@@ -1,0 +1,5 @@
+"AuditId","Item","Path","Signal","RequiredAction"
+"KID-ROUTE-001","PackageJson","C:\Projects\MindLab_Starter_Project\frontend\package.json","FOUND","Use for build and dev commands"
+"KID-ROUTE-002","ViteEntry","C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx","FOUND","Audit route handling before patching Kids"
+"KID-ROUTE-003","KidsRouteSignal","C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx","YES","Confirm existing Kids route before changing source"
+"KID-ROUTE-004","AdultsRouteLessons","docs/planning/adults_certified/09_transition/adults_completion_seal_2026-04-27.txt","USE_AS_REFERENCE","Reuse route wiring, manual smoke, and storage isolation rules"

@@ -1,0 +1,6 @@
+"Order","NextTask","Status","RequiredInput","OutputRoot"
+"1","Create Kids enhancement roadmap","READY_NEXT","Kids discovery files","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\02_roadmap"
+"2","Create Kids task tracker and patch plan","PENDING","Kids roadmap","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\03_implementation"
+"3","Create Kids source implementation scripts","PENDING","Approved patch plan","C:\Projects\MindLab_Starter_Project\frontend\src"
+"4","Run Kids build smoke and manual smoke","PENDING","Kids source implementation complete","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\08_final_qa"
+"5","Seal Kids enhancement completion","PENDING","Manual smoke pass","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\09_transition"

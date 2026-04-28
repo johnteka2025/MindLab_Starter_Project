@@ -1,0 +1,7 @@
+"GapId","Area","CurrentEvidence","Gap","Severity","RecommendedNextAction"
+"KID-GAP-001","Route","kids route signal audit","Confirm existing Kids route and entry source","HIGH","Do not patch route until route source is confirmed"
+"KID-GAP-002","SessionModes","source inventory","Compare Kids session mode model with Adults QuickFocus/Standard/Deep/Recovery pattern","MEDIUM","Create Kids age-appropriate session mode matrix"
+"KID-GAP-003","Gameplay","source inventory","Audit Kids gameplay prompts, answers, and feedback for missing structured content model","HIGH","Create Kids gameplay content model before source patch"
+"KID-GAP-004","Scoring","source inventory","Audit scoring/progression and child-safe feedback","HIGH","Create Kids scoring and mastery rules"
+"KID-GAP-005","Persistence","source inventory","Confirm Kids storage keys do not collide with Adults keys","HIGH","Define Kids-only storage keys before persistence patch"
+"KID-GAP-006","QA","Adults QA process","Kids needs build smoke, route smoke, manual confirmation, and closure seal","HIGH","Create Kids QA checklist after roadmap"

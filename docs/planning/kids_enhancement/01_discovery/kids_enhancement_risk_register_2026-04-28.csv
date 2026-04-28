@@ -1,0 +1,6 @@
+"RiskId","Risk","RootCause","Prevention","Status"
+"KID-RISK-001","Patching wrong app entry","Multiple source roots may exist","Use package.json and index.html entry detection","OPEN"
+"KID-RISK-002","Overwriting Adults work","Shared source files or storage keys","Use Kids-specific paths and storage keys","OPEN"
+"KID-RISK-003","Manual smoke on wrong port","Vite may run on 8090 or another active port","Detect active localhost port before manual smoke","OPEN"
+"KID-RISK-004","Missing source file during patch","Assumed path instead of discovered path","Require discovery inventory before implementation","OPEN"
+"KID-RISK-005","Child feedback not age-appropriate","Adult feedback copied directly","Create Kids copy matrix before source patch","OPEN"

@@ -1,0 +1,7 @@
+"TaskId","Task","Status","Evidence"
+"KID-DISC-001","Verify next-category start gate","COMPLETE","docs/planning/next_category_start/next_category_start_summary_2026-04-28.txt"
+"KID-DISC-002","Inventory Kids-related source files","COMPLETE","docs/planning/kids_enhancement/01_discovery/kids_source_file_inventory_2026-04-28.csv"
+"KID-DISC-003","Inventory Kids-related documentation","COMPLETE","docs/planning/kids_enhancement/01_discovery/kids_docs_inventory_2026-04-28.csv"
+"KID-DISC-004","Audit route and entry source","COMPLETE","docs/planning/kids_enhancement/01_discovery/kids_route_and_entry_audit_2026-04-28.csv"
+"KID-DISC-005","Create Kids gap audit matrix","COMPLETE","docs/planning/kids_enhancement/01_discovery/kids_enhancement_gap_audit_matrix_2026-04-28.csv"
+"KID-DISC-006","Create Kids risk register","COMPLETE","docs/planning/kids_enhancement/01_discovery/kids_enhancement_risk_register_2026-04-28.csv"
