@@ -1,0 +1,6 @@
+"PhaseId","Phase","Goal","Status","ExitCriteria","NextAction"
+"K-EXP-PHASE-001","Expansion planning","Lock expansion scope, roadmap, tracker, execution plan, and validation plan","COMPLETE_AFTER_THIS_SCRIPT","Planning files committed and repository clean","Create source file map and patch plan"
+"K-EXP-PHASE-002","Content expansion","Add more Kids categories, stages, prompts, hints, insights, and difficulty paths","READY","Expanded data compiles and maps to certified ids","Implement expanded content data"
+"K-EXP-PHASE-003","Adaptive flow","Add gentle progression, mastery paths, recovery paths, and exceptional-player levels","READY","Mode and stage selection adapt to score and mastery","Implement adaptive selection rules"
+"K-EXP-PHASE-004","Parent-safe insights","Add child-safe session history, insight summaries, and progress review fields","READY","Storage remains Kids-only and does not affect Adults","Implement Kids progress review panel"
+"K-EXP-PHASE-005","QA and closeout","Run build, static checks, manual smoke, regression, and final QA closeout","READY","Final QA pass and repo clean","Prepare next phase or continuation document"
