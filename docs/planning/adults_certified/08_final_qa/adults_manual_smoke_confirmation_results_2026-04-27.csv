@@ -1,5 +1,5 @@
 "ConfirmId","Area","Check","ManualValueUsed","Status"
-"A-MANUAL-001","Route","Adults page loads","http://localhost:5173/adults","FAIL"
+"A-MANUAL-001","Route","Adults page loads","http://localhost:8090/adults","FAIL"
 "A-MANUAL-002","SessionModes","Four session modes display and are selectable","QuickFocus|Standard|Deep|Recovery","FAIL"
 "A-MANUAL-003","Gameplay","Gameplay answer triggers feedback","Target match","FAIL"
 "A-MANUAL-004","ScoringInsight","Score, mastery, recommendation, and Session insight display","Score|Mastery|Recommended next step|Session insight","FAIL"

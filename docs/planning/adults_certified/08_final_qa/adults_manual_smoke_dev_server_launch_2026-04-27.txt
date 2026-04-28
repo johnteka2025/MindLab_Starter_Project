@@ -1,7 +1,11 @@
-RESULT: ADULTS_MANUAL_SMOKE_DEV_SERVER_LAUNCHED
+RESULT: ADULTS_MANUAL_SMOKE_DEV_SERVER_URL_FIXED
 RepoRoot=C:\Projects\MindLab_Starter_Project
 PackageJson=C:\Projects\MindLab_Starter_Project\frontend\package.json
 PackageDir=C:\Projects\MindLab_Starter_Project\frontend
 DevCommand=npm run dev
-DevProcessId=6244
-AdultsUrl=http://localhost:5173/adults
+DevProcessId=13988
+PreviousFailedUrl=http://localhost:5173/adults
+ResolvedAdultsUrl=http://localhost:8090/adults
+ResolvedPort=8090
+DetectionMode=HTTP_PROBE_PASS
+RootCauseFixed=Browser was opened on inactive localhost port 5173 while Vite was available on a different port.
