@@ -1,0 +1,6 @@
+"GateId","Gate","Status","Evidence"
+"A-GATE-001","Adults source implementation","COMPLETE","src/features/adults and frontend/src/features/adults"
+"A-GATE-002","Adults build smoke","PASS","docs/planning/adults_certified/08_final_qa/logs/adults_build_smoke_2026-04-27.log"
+"A-GATE-003","Adults route wiring","PASS","docs/planning/adults_certified/08_final_qa/adults_manual_smoke_route_wiring_fix_summary_2026-04-27.txt"
+"A-GATE-004","Adults manual smoke","PASS","docs/planning/adults_certified/08_final_qa/adults_manual_smoke_confirmation_summary_2026-04-27.txt"
+"A-GATE-005","Next category start","READY","docs/planning/adults_certified/09_transition/adults_transition_ready_summary_2026-04-27.txt"

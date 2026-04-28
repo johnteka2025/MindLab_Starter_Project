@@ -1,0 +1,8 @@
+"Key","Value","Status"
+"VERIFIED_ROUTE","http://localhost:8090/adults","PASS"
+"VERIFIED_PAGE_TITLE","Adult cognitive training","PASS"
+"VERIFIED_SESSION_MODES","QuickFocus|Standard|Deep|Recovery","PASS"
+"VERIFIED_FIRST_ANSWER","Target match","PASS"
+"VERIFIED_STORAGE_KEY","mindlab.adults.profile.v1","PASS"
+"VERIFIED_HISTORY_KEY","mindlab.adults.sessionHistory.v1","PASS"
+"NEXT_ALLOWED_WORK","Start next category planning or implementation","READY"

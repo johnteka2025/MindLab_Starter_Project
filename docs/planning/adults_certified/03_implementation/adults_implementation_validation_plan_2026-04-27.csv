@@ -4,4 +4,4 @@
 "A-VAL-003","Adults session modes display","YES","docs/planning/adults_certified/08_final_qa/adults_manual_smoke_confirmation_results_2026-04-27.csv","PASS"
 "A-VAL-004","Adults gameplay loop works","YES","docs/planning/adults_certified/08_final_qa/adults_qa_acceptance_matrix_2026-04-27.csv","PASS"
 "A-VAL-005","Adults progress does not overwrite Kids progress","YES","docs/planning/adults_certified/08_final_qa/adults_regression_checklist_2026-04-27.csv","PASS"
-"A-VAL-006","Repo clean after source-code implementation","YES","docs/planning/adults_certified/08_final_qa/git_status_after_adults_manual_smoke_confirmation_2026-04-27.txt","PASS_AFTER_ROUTE_WIRING_MANUAL_SMOKE_COMMIT"
+"A-VAL-006","Repo clean after source-code implementation","YES","docs/planning/adults_certified/09_transition/git_status_after_adults_completion_seal_2026-04-27.txt","PASS_FINAL_REPO_CLEAN"
