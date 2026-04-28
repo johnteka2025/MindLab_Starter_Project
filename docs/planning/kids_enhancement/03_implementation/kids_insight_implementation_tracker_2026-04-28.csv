@@ -1,0 +1,5 @@
+"StepId","Action","Status","SourceFile","Notes"
+"K-SRC-005","Create Kids post-session insight model","COMPLETE","frontend/src/features/kids/kidsPostSessionInsights.ts","Child-safe summary, celebration, practice focus, and next step model added."
+"K-SRC-005A","Create Kids insight panel","COMPLETE","frontend/src/features/kids/KidsPostSessionInsightPanel.tsx","Session insight UI added after answer selection."
+"K-SRC-005B","Connect insight panel to gameplay panel","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx","Gameplay panel now renders Session insight after answer."
+"K-SRC-005C","Run build after Kids insight","PASS","docs/planning/kids_enhancement/03_implementation/logs/kids_insight_build_2026-04-28.log","Build result captured before moving to persistence patch."

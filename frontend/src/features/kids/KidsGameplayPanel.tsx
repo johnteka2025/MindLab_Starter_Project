@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   getDefaultKidsGameplayItemForSession,
   getKidsGameplayItemsForSession
 } from "./kidsGameplayContent";
+import KidsPostSessionInsightPanel from "./KidsPostSessionInsightPanel";
 import { calculateKidsScore } from "./kidsScoring";
 
 type KidsGameplayPanelProps = {
@@ -166,6 +167,13 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
         <p style={{ margin: "14px 0 0", color: "#475569" }}>
           {score.encouragement}
         </p>
+
+        <KidsPostSessionInsightPanel
+          item={activeItem}
+          score={score}
+          hasAnswered={hasAnswered}
+          isCorrect={isCorrect}
+        />
       </article>
     </section>
   );
