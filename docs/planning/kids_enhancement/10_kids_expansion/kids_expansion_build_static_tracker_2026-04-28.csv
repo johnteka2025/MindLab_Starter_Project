@@ -1,0 +1,4 @@
+"StepId","Area","Action","Status","Evidence","NextAction"
+"K-EXP-BUILD-STATIC-001","Build","Run final expansion build","PASS","logs/kids_expansion_build_static_build_2026-04-28.log","RUN_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION"
+"K-EXP-BUILD-STATIC-002","StaticValidation","Validate content, scoring, persistence, insights, gameplay, landing, routes, modes, copy","PASS","kids_expansion_build_static_validation_2026-04-28.csv","RUN_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION"
+"K-EXP-BUILD-STATIC-003","PatchPlan","Advance from patch 007 to manual smoke patch 008","PASS","kids_expansion_patch_plan_2026-04-28.csv","RUN_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION"

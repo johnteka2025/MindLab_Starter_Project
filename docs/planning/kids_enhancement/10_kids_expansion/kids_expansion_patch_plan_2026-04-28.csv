@@ -5,5 +5,5 @@
 "K-EXP-PATCH-004","KIDS_INSIGHTS","Add category-aware child-safe insight generator","COMPLETE","K-EXP-PATCH-003","YES","Expanded session insight text"
 "K-EXP-PATCH-005","KIDS_GAMEPLAY_PANEL","Add adaptive next-round and recovery suggestions","COMPLETE","K-EXP-PATCH-004","YES","Adaptive gameplay behavior"
 "K-EXP-PATCH-006","KIDS_LANDING","Host Kids progress review panel and expansion summary","COMPLETE","K-EXP-PATCH-005","YES","Kids expansion progress visible"
-"K-EXP-PATCH-007","ALL_KIDS_SOURCE","Run build and static validation","YES","K-EXP-PATCH-006","YES","Build pass and static validation pass"
-"K-EXP-PATCH-008","QA_DOCS","Run manual smoke, regression, final QA closeout","YES_AFTER_PATCH_007","K-EXP-PATCH-007","YES","Kids expansion final QA ready"
+"K-EXP-PATCH-007","ALL_KIDS_SOURCE","Run build and static validation","COMPLETE","K-EXP-PATCH-006","YES","Build pass and static validation pass"
+"K-EXP-PATCH-008","QA_DOCS","Run manual smoke, regression, final QA closeout","YES","K-EXP-PATCH-007","YES","Kids expansion final QA ready"
