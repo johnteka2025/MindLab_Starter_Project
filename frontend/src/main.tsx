@@ -1,3 +1,4 @@
+import AdultsLanding from "./features/adults/AdultsLanding";
 import "./styles/mindlab_runtime.css";
 import "./env_probe";
 import React from "react";
@@ -22,7 +23,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      {window.location.pathname.startsWith("/adults") ? <AdultsLanding /> : <App />}
     </BrowserRouter>
   </React.StrictMode>
 );

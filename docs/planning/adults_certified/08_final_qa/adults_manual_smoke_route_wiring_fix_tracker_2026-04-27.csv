@@ -1,0 +1,5 @@
+"FixId","Area","Problem","Fix","Status","Evidence"
+"A-ROUTE-FIX-001","PartialDirtyRecovery","Previous interrupted script left managed untracked frontend/src/features folder","Allowed managed feature prefix and completed route wiring","COMPLETE","frontend/src/features/"
+"A-ROUTE-FIX-002","EntryDiscovery","Previous script only checked RepoRoot src main files","Discovered actual Vite entry from package/index/source scan","COMPLETE","frontend/src/main.tsx"
+"A-ROUTE-FIX-003","RouteWiring","/adults rendered existing default app content","Entry now renders AdultsLanding when pathname starts with /adults","COMPLETE","frontend/src/main.tsx"
+"A-ROUTE-FIX-004","BuildValidation","Route wiring must compile before retest","npm run build","PASS","docs/planning/adults_certified/08_final_qa/logs/adults_route_wiring_fix_build_2026-04-27.log"
