@@ -1,0 +1,7 @@
+"Key","Value","ManualUpdateNeeded"
+"NEXT_PATCH","K-EXP-PATCH-001","NO"
+"NEXT_ACTION","IMPLEMENT_KIDS_EXPANSION_CONTENT_DATA","NO"
+"EXPANSION_CATEGORIES","KC6 Memory and sequencing|KC7 Early reasoning|KC8 Visual attention|KC9 Language meaning|KC10 Calm review","NO"
+"EXCEPTIONAL_LEVELS","Explorer|Builder|Solver|Mastery Spark","NO"
+"KIDS_STORAGE_KEYS_TO_KEEP","mindlab.kids.profile.v1|mindlab.kids.sessionHistory.v1","NO"
+"ADULTS_STORAGE_KEYS_TO_PROTECT","mindlab.adults.profile.v1|mindlab.adults.sessionHistory.v1","NO"

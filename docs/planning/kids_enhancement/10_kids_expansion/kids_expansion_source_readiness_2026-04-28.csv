@@ -1,0 +1,5 @@
+"CheckId","Check","Status","Evidence"
+"K-EXP-SRC-001","Base Kids file map exists","PASS","docs/planning/kids_enhancement/03_implementation/kids_source_file_map_2026-04-28.csv"
+"K-EXP-SRC-002","All required Kids expansion source files exist","PASS","kids_expansion_source_file_map_2026-04-28.csv"
+"K-EXP-SRC-003","Patch plan created","PASS","kids_expansion_patch_plan_2026-04-28.csv"
+"K-EXP-SRC-004","Next patch is content data implementation","PASS","K-EXP-PATCH-001"
