@@ -1,0 +1,8 @@
+"RequirementId","Area","Requirement","Priority","AcceptanceRule","Status"
+"KID-REQ-001","Route","Kids route must render Kids UI from the discovered Vite entry","HIGH","Manual smoke confirms Kids page loads on active localhost port","READY_FOR_PATCH_PLAN"
+"KID-REQ-002","Age Safety","All copy must be child-safe, encouraging, short, and non-punitive","HIGH","No harsh failure language; feedback gives simple next step","READY_FOR_DESIGN"
+"KID-REQ-003","Session Modes","Kids modes must be age-appropriate and simpler than Adults modes","HIGH","Modes use playful, short, calm labels","READY_FOR_DESIGN"
+"KID-REQ-004","Gameplay","Gameplay content must use structured prompts, choices, correct answer, hint, and insight","HIGH","Seed content model exists before source patch","READY_FOR_PATCH_PLAN"
+"KID-REQ-005","Scoring","Scoring must reward attempts, accuracy, focus, and improvement without adult-style pressure","HIGH","Kids scoring model and mastery thresholds exist","READY_FOR_PATCH_PLAN"
+"KID-REQ-006","Persistence","Kids storage keys must not collide with Adults storage keys","HIGH","Kids-specific storage keys are documented and tested","READY_FOR_PATCH_PLAN"
+"KID-REQ-007","QA","Build smoke, manual smoke, regression, and repo clean proof required","HIGH","QA evidence committed and repo clean","READY_FOR_PATCH_PLAN"

@@ -1,0 +1,6 @@
+"RiskId","Resolution","RequiredBeforeSourcePatch","Status"
+"KID-RISK-001","Confirm discovered package.json and Vite entry before route patch","YES","PLANNED"
+"KID-RISK-002","Use Kids-only storage keys and do not edit Adults storage files","YES","PLANNED"
+"KID-RISK-003","Detect active localhost port before manual smoke","NO","PLANNED"
+"KID-RISK-004","Use inventory-driven paths only; no assumed source paths","YES","PLANNED"
+"KID-RISK-005","Create Kids copy and feedback matrix before gameplay patch","YES","PLANNED"

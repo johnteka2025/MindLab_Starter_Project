@@ -1,0 +1,7 @@
+"PhaseId","Phase","Task","Status","Dependency","Evidence"
+"KID-PHASE-001","Discovery","Inventory source/docs/routes/gaps/risks","COMPLETE","Next category gate","docs/planning/kids_enhancement/01_discovery"
+"KID-PHASE-002","Roadmap","Create Kids roadmap, requirements, design values, and risk resolution plan","COMPLETE_AFTER_THIS_SCRIPT","Discovery ready","docs/planning/kids_enhancement/02_roadmap"
+"KID-PHASE-003","Implementation planning","Create Kids patch plan, file map, and task tracker","READY_NEXT","Roadmap ready","docs/planning/kids_enhancement/03_implementation"
+"KID-PHASE-004","Source implementation","Patch source using managed PowerShell scripts only","PENDING","Patch plan ready","frontend/src or discovered app source root"
+"KID-PHASE-005","Validation","Run build/lint/manual smoke and regression checks","PENDING","Source implementation ready","docs/planning/kids_enhancement/08_final_qa"
+"KID-PHASE-006","Closure","Seal Kids enhancement completion","PENDING","Manual smoke pass","docs/planning/kids_enhancement/09_transition"
