@@ -1,5 +1,5 @@
 "RegressionId","Area","Check","ExpectedValue","Status"
-"A-REG-001","KidsIsolation","Adults storage key must not overwrite Kids data","Adults uses mindlab.adults.profile.v1 only","READY_FOR_RETEST_AFTER_ROUTE_WIRING_FIX"
-"A-REG-002","ExistingRoutes","Existing app route still loads","No existing app route removed by Adults patch","READY_FOR_RETEST_AFTER_ROUTE_WIRING_FIX"
+"A-REG-001","KidsIsolation","Adults storage key must not overwrite Kids data","Adults uses mindlab.adults.profile.v1 only","PASS"
+"A-REG-002","ExistingRoutes","Existing app route still loads","No existing app route removed by Adults patch","PASS"
 "A-REG-003","Build","Build smoke remains available","Build log captured","PASS"
-"A-REG-004","Repository","Repo clean after evidence capture","git status --porcelain returns empty after commit","READY_FOR_RETEST_AFTER_ROUTE_WIRING_FIX"
+"A-REG-004","Repository","Repo clean after evidence capture","git status --porcelain returns empty after commit","READY_FOR_FINAL_CHECK"

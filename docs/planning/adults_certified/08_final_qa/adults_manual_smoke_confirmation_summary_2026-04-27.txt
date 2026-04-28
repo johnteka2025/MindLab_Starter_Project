@@ -1,13 +1,12 @@
-RESULT: ADULTS_MANUAL_SMOKE_CONFIRMATION_BLOCKED
+RESULT: ADULTS_MANUAL_SMOKE_CONFIRMATION_READY
 RepoRoot=C:\Projects\MindLab_Starter_Project
-PreviousFailedUrl=http://localhost:5173/adults
 AdultsUrl=http://localhost:8090/adults
 ResolvedPort=8090
 DetectionMode=HTTP_PROBE_PASS
-ManualSmokeOverallStatus=FAIL
-FailCount=6
+ManualSmokeOverallStatus=PASS
+FailCount=0
 ManualValuesUsed=/adults|QuickFocus|Standard|Deep|Recovery|Target match|mindlab.adults.profile.v1
-RootCauseFixed=Wrong inactive localhost port replaced with active Vite server URL.
+RouteWiringFix=docs/planning/adults_certified/08_final_qa/adults_manual_smoke_route_wiring_fix_summary_2026-04-27.txt
 ManualConfirmationResults=docs/planning/adults_certified/08_final_qa/adults_manual_smoke_confirmation_results_2026-04-27.csv
 DevServerEvidence=docs/planning/adults_certified/08_final_qa/adults_manual_smoke_dev_server_launch_2026-04-27.txt
-NextRequiredAction=FIX_MANUAL_SMOKE_FAILURE
+NextRequiredAction=READY_FOR_NEXT_CATEGORY_AFTER_CONFIRMATION
