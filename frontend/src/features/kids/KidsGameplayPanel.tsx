@@ -85,7 +85,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-          {activeItem.certifiedId} Ãƒâ€šÃ‚Â· {activeItem.categoryName} Ãƒâ€šÃ‚Â· {activeItem.stage}
+          {activeItem.certifiedId} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.categoryName} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.stage}
         </p>
         <h2 id="kids-gameplay-heading" style={{ margin: 0, fontSize: "26px" }}>
           Play round

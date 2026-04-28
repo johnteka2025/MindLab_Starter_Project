@@ -5,4 +5,4 @@
 "K-PATCH-004","Add Kids scoring and friendly mastery","COMPLETE","K-PATCH-003","kidsScoring.ts|KidsGameplayPanel.tsx","KIDS_SCORING"
 "K-PATCH-005","Add Kids post-session insight","COMPLETE","K-PATCH-004","kidsPostSessionInsights.ts|KidsPostSessionInsightPanel.tsx","KIDS_INSIGHTS"
 "K-PATCH-006","Add Kids persistence and storage isolation","COMPLETE","K-PATCH-005","kidsPersistence.ts|KidsGameplayPanel.tsx","KIDS_PERSISTENCE"
-"K-PATCH-007","Run Kids source validation and build smoke","BLOCKED_BY_TYPESCRIPT_HARDENING","K-PATCH-006","QA evidence logs","KIDS_VALIDATION"
+"K-PATCH-007","Run Kids source validation and build smoke","COMPLETE","K-PATCH-006","QA evidence logs","KIDS_VALIDATION"

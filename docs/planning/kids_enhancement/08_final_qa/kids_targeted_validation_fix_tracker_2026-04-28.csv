@@ -1,0 +1,4 @@
+"FixId","Area","Action","Status","Evidence"
+"K-TARGET-001","RootCause","Parsed exact compiler errors from failed hardening build","COMPLETE","kids_exact_root_cause_lock_2026-04-28.csv"
+"K-TARGET-002","TargetedFix","NO_SAFE_AUTOFIX_PATTERN_MATCHED","NO_SAFE_AUTOFIX","Kids source files"
+"K-TARGET-003","Build","Reran build after targeted fix","PASS","kids_targeted_validation_fix_build_2026-04-28.log"

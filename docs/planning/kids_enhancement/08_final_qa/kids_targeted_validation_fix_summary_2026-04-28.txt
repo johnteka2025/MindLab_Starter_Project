@@ -1,9 +1,10 @@
-RESULT: KIDS_SOURCE_VALIDATION_AND_SMOKE_PREP_READY
+RESULT: KIDS_TARGETED_VALIDATION_FIX_READY
 RepoRoot=C:\Projects\MindLab_Starter_Project
 StartFrom=COMMITTED_KIDS_TYPESCRIPT_HARDENING_VALIDATION_FIX
+PreviousFailedAction=KIDS_TYPESCRIPT_HARDENING_STILL_FAILED_STOP
 BuildCommand=npm run build
 BuildStatus=PASS
-BuildLog=docs/planning/kids_enhancement/08_final_qa/logs/kids_targeted_validation_fix_build_2026-04-28.log
+FixActions=NO_SAFE_AUTOFIX_PATTERN_MATCHED
 RootCauseCsv=docs/planning/kids_enhancement/08_final_qa/kids_exact_root_cause_lock_2026-04-28.csv
-OverallStatus=PASS
+TargetedBuildLog=docs/planning/kids_enhancement/08_final_qa/logs/kids_targeted_validation_fix_build_2026-04-28.log
 NextRequiredAction=RUN_KIDS_MANUAL_SMOKE_CONFIRMATION
