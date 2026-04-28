@@ -1,0 +1,11 @@
+RESULT: NEXT_CATEGORY_POWERSHELL_EXECUTION_PLAN_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=NEXT_STEP_COMPLETE_ADULTS_COMPLETION_SEAL_READY
+RecommendedNextCategory=Kids enhancement pass
+Rule1=Do not repeat Adults tasks.
+Rule2=Run discovery before creating or modifying Kids files.
+Rule3=Use PowerShell only.
+Rule4=All scripts must start and end in C:\Projects\MindLab_Starter_Project.
+Rule5=Check dirty repository before each task.
+Rule6=Commit only managed files.
+NextRequiredAction=RUN_KIDS_ENHANCEMENT_DISCOVERY_AND_GAP_AUDIT

@@ -1,0 +1,4 @@
+"OptionId","NextCategory","RecommendedValue","Reason","ManualDecisionNeeded"
+"NEXT-CAT-001","Kids enhancement pass","YES","Adults section is complete; reuse adults route/session/scoring/persistence lessons to strengthen Kids safely.","NO"
+"NEXT-CAT-002","Senior or older adult extension","NO","Do not start new age expansion until existing Kids and Adults flows are stabilized.","YES_IF_SELECTED"
+"NEXT-CAT-003","Shared cross-age game engine","AFTER_KIDS_REVIEW","Shared engine should come after Kids and Adults route/data differences are documented.","NO"

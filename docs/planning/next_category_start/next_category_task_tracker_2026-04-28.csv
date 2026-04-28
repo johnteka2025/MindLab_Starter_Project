@@ -1,0 +1,7 @@
+"TaskId","Phase","Task","Status","NextAction"
+"KID-START-001","Next category planning","Verify Adults completion seal","COMPLETE","None"
+"KID-START-002","Next category planning","Create next-category decision matrix","COMPLETE","Use Kids enhancement pass unless manually changed"
+"KID-START-003","Kids discovery","Audit current Kids source files and docs","READY_NEXT","Run Kids discovery and gap audit script"
+"KID-START-004","Kids planning","Create Kids enhancement roadmap and tracker","PENDING","After discovery"
+"KID-START-005","Kids implementation","Patch Kids source safely only after audit","PENDING","After roadmap approval"
+"KID-START-006","Validation","Run build smoke and manual route smoke","PENDING","After implementation"
