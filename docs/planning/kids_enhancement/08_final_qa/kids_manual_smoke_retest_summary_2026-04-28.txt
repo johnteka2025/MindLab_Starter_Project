@@ -1,8 +1,9 @@
-RESULT: KIDS_SOURCE_VALIDATION_AND_SMOKE_COMPLETE
+RESULT: KIDS_MANUAL_SMOKE_RETEST_READY
 RepoRoot=C:\Projects\MindLab_Starter_Project
 StartFrom=NEXT_STEP_COMPLETE_KIDS_COPY_ROUTE_ABORTED_SMOKE_FIX_READY
-BuildStatus=PASS
-ManualRetestStatus=PASS
+KidsUrlTested=http://localhost:8090/kids
+AdultsUrlTested=http://localhost:8090/adults
 ManualRetestCsv=docs/planning/kids_enhancement/08_final_qa/kids_manual_smoke_retest_2026-04-28.csv
+FailCount=0
 OverallStatus=PASS
 NextRequiredAction=RUN_KIDS_FINAL_QA_CLOSEOUT

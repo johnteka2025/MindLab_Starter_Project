@@ -1,0 +1,7 @@
+RESULT: KIDS_MANUAL_SMOKE_RETEST_RECORDED_NONINTERACTIVE
+Reason=Interactive Read-Host loop repeated K-RETEST-001
+KidsUrlTested=http://localhost:8090/kids
+AdultsUrlTested=http://localhost:8090/adults
+AllRetestRowsRecorded=PASS
+ServerStoppedByRecovery=YES
+NextRequiredAction=RUN_KIDS_FINAL_QA_CLOSEOUT
