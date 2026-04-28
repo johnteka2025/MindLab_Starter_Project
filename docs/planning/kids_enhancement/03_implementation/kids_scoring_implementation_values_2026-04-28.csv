@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"KIDS_SCORING_SOURCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsScoring.ts","NO"
+"KIDS_GAMEPLAY_PANEL_SOURCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsGameplayPanel.tsx","NO"
+"KIDS_MASTERY_LEVELS","Growing|Good Start|Strong Focus|Super Thinker","NO"
+"KIDS_SCORE_FIELDS","Score|Mastery|Next step","NO"
+"BUILD_COMMAND","npm run build","NO"
+"BUILD_STATUS","PASS","NO"
+"NEXT_ALLOWED_PATCH","K-PATCH-005","NO"

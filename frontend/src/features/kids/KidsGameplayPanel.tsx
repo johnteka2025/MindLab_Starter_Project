@@ -3,6 +3,7 @@ import {
   getDefaultKidsGameplayItemForSession,
   getKidsGameplayItemsForSession
 } from "./kidsGameplayContent";
+import { calculateKidsScore } from "./kidsScoring";
 
 type KidsGameplayPanelProps = {
   selectedMode: string;
@@ -18,6 +19,12 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
   const activeItem = availableItems[0] ?? fallbackItem;
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = selectedAnswer === activeItem.correctAnswer;
+  const score = calculateKidsScore({
+    isCorrect,
+    hintVisible,
+    tryCount,
+    hasAnswered
+  });
 
   function handleAnswer(option: string) {
     if (selectedAnswer && option !== selectedAnswer) {
@@ -132,6 +139,33 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
             )}
           </div>
         )}
+
+        <aside
+          aria-label="Kids score and mastery"
+          style={{
+            marginTop: "18px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+            gap: "10px"
+          }}
+        >
+          <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+            <div style={{ color: "#64748b", fontSize: "13px" }}>Score</div>
+            <strong style={{ fontSize: "22px" }}>{score.totalScore}</strong>
+          </div>
+          <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+            <div style={{ color: "#64748b", fontSize: "13px" }}>Mastery</div>
+            <strong style={{ fontSize: "22px" }}>{score.masteryLabel}</strong>
+          </div>
+          <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+            <div style={{ color: "#64748b", fontSize: "13px" }}>Next step</div>
+            <strong>{score.nextStep}</strong>
+          </div>
+        </aside>
+
+        <p style={{ margin: "14px 0 0", color: "#475569" }}>
+          {score.encouragement}
+        </p>
       </article>
     </section>
   );

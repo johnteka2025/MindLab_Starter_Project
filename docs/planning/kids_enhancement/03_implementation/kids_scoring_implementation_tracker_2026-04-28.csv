@@ -1,0 +1,4 @@
+"StepId","Action","Status","SourceFile","Notes"
+"K-SRC-004","Create Kids scoring model","COMPLETE","frontend/src/features/kids/kidsScoring.ts","Accuracy, effort, hint, retry, completion, score, mastery, encouragement, and next step logic added."
+"K-SRC-004A","Connect scoring to Kids gameplay panel","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx","Gameplay panel now displays Score, Mastery, and Next step."
+"K-SRC-004B","Run build after Kids scoring","PASS","docs/planning/kids_enhancement/03_implementation/logs/kids_scoring_build_2026-04-28.log","Build result captured before moving to insight patch."
