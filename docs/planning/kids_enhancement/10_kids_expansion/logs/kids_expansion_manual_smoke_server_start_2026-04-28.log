@@ -1,0 +1,14 @@
+RESULT: KIDS_EXPANSION_MANUAL_SMOKE_SERVER_START_ATTEMPTED
+RepoRoot=C:\Projects\MindLab_Starter_Project
+PackageDir=C:\Projects\MindLab_Starter_Project\frontend
+DevCommand=npm run dev -- --host 127.0.0.1 --port 8090
+KidsUrl=http://localhost:8090/kids
+KidsRouteStatus=PASS
+KidsRouteStatusCode=200
+KidsRouteError=
+AdultsUrl=http://localhost:8090/adults
+AdultsRouteStatus=PASS
+AdultsRouteStatusCode=200
+AdultsRouteError=
+OverallServerStatus=PASS
+NextRequiredAction=RECORD_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_RESULTS
