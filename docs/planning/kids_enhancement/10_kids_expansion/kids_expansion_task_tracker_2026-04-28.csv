@@ -5,7 +5,7 @@
 "K-EXP-004","Implement expanded Kids content set","COMPLETE","Automation","kids_expansion_content_data_summary_2026-04-28.txt","IMPLEMENT_KIDS_EXPANSION_SCORING_AND_EXCEPTIONAL_LEVELS"
 "K-EXP-005","Implement adaptive mastery and recovery flow","COMPLETE","Automation","kids_expansion_scoring_exceptional_summary_2026-04-28.txt","IMPLEMENT_KIDS_EXPANSION_PROGRESS_PERSISTENCE_FIELDS"
 "K-EXP-006","Implement exceptional-player Kids levels","COMPLETE","Automation","kids_expansion_scoring_exceptional_summary_2026-04-28.txt","IMPLEMENT_KIDS_EXPANSION_PROGRESS_PERSISTENCE_FIELDS"
-"K-EXP-007","Implement Kids progress review panel","NEXT","Automation","Pending","IMPLEMENT_KIDS_EXPANSION_PROGRESS_PERSISTENCE_FIELDS"
+"K-EXP-007","Implement Kids progress review panel","IN_PROGRESS","Automation","kids_expansion_progress_persistence_summary_2026-04-28.txt","IMPLEMENT_KIDS_EXPANSION_INSIGHTS"
 "K-EXP-008","Run build and static validation","READY","Automation","Pending","Run validation script"
 "K-EXP-009","Run manual smoke and regression","READY","Manual plus Automation","Pending","Run smoke script"
 "K-EXP-010","Run final QA closeout","READY","Automation","Pending","Close expansion phase"

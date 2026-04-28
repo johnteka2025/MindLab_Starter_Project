@@ -3,7 +3,7 @@
 "K-EXP-STEP-002","Create source file map and patch plan","CREATE_FILES","COMPLETE","NEXT_STEP_COMPLETE_KIDS_EXPANSION_PLANNING_READY","kids_expansion_source_file_map_2026-04-28.csv"
 "K-EXP-STEP-003","Patch Kids content data","SOURCE_UPDATE","COMPLETE","K-EXP-STEP-002","Expanded kidsGameplayContent"
 "K-EXP-STEP-004","Patch adaptive mastery rules","SOURCE_UPDATE","COMPLETE","K-EXP-STEP-003","Adaptive Kids flow"
-"K-EXP-STEP-005","Patch progress review panel","SOURCE_UPDATE","NEXT","K-EXP-STEP-004","Kids progress review UI"
+"K-EXP-STEP-005","Patch progress review panel","SOURCE_UPDATE","IN_PROGRESS","K-EXP-STEP-004","Kids progress review UI"
 "K-EXP-STEP-006","Run build and static validation","VALIDATION","READY","K-EXP-STEP-005","Build log and static validation CSV"
 "K-EXP-STEP-007","Run manual smoke and regression","MANUAL_CONFIRMATION","READY","K-EXP-STEP-006","Manual smoke confirmation CSV"
 "K-EXP-STEP-008","Run final QA closeout","CLOSEOUT","READY","K-EXP-STEP-007","Final QA closeout summary"

@@ -1,0 +1,4 @@
+"StepId","Area","Action","Status","Evidence","NextAction"
+"K-EXP-PERSIST-001","Source","Rewrite Kids persistence with progress review fields","COMPLETE","frontend/src/features/kids/kidsPersistence.ts","IMPLEMENT_KIDS_EXPANSION_INSIGHTS"
+"K-EXP-PERSIST-002","Isolation","Confirm Kids-only storage keys remain isolated","PASS","kids_expansion_progress_persistence_static_validation_2026-04-28.csv","IMPLEMENT_KIDS_EXPANSION_INSIGHTS"
+"K-EXP-PERSIST-003","Build","Run build after progress persistence expansion","PASS","logs/kids_expansion_progress_persistence_build_2026-04-28.log","IMPLEMENT_KIDS_EXPANSION_INSIGHTS"
