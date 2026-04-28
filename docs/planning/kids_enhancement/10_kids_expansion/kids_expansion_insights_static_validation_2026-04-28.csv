@@ -1,0 +1,8 @@
+"CheckId","Check","Status","Evidence"
+"K-EXP-INSIGHT-001","Category-aware insight focus exists","PASS","frontend/src/features/kids/kidsPostSessionInsights.ts"
+"K-EXP-INSIGHT-002","Exceptional-level insight support exists","PASS","exceptionalLevel|Mastery Spark"
+"K-EXP-INSIGHT-003","Adaptive and recovery insight fields exist","PASS","adaptiveNextStep|recoveryModeSuggestion"
+"K-EXP-INSIGHT-004","Existing insight panel fields remain available","PASS","title|summary|celebration|practiceFocus|nextStep"
+"K-EXP-INSIGHT-005","Child-safe insight language exists","PASS","childSafeProgressNote"
+"K-EXP-INSIGHT-006","No mojibake in insights source","PASS","frontend/src/features/kids/kidsPostSessionInsights.ts"
+"K-EXP-INSIGHT-007","Build passes after insights expansion","PASS","logs/kids_expansion_insights_build_2026-04-28.log"

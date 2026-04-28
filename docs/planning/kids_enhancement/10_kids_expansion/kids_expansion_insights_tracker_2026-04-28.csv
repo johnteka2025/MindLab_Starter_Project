@@ -1,0 +1,4 @@
+"StepId","Area","Action","Status","Evidence","NextAction"
+"K-EXP-INSIGHT-001","Source","Rewrite Kids insights with category-aware adaptive text","COMPLETE","frontend/src/features/kids/kidsPostSessionInsights.ts","IMPLEMENT_KIDS_EXPANSION_ADAPTIVE_GAMEPLAY_PANEL"
+"K-EXP-INSIGHT-002","StaticValidation","Validate insight fields, child-safe language, and backward-compatible fields","PASS","kids_expansion_insights_static_validation_2026-04-28.csv","IMPLEMENT_KIDS_EXPANSION_ADAPTIVE_GAMEPLAY_PANEL"
+"K-EXP-INSIGHT-003","Build","Run build after insights expansion","PASS","logs/kids_expansion_insights_build_2026-04-28.log","IMPLEMENT_KIDS_EXPANSION_ADAPTIVE_GAMEPLAY_PANEL"
