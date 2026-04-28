@@ -4,5 +4,5 @@
 "3","K-PATCH-003","Wire /kids route","Discovered Vite entry and KidsLanding","YES","COMPLETE"
 "4","K-PATCH-004","Add scoring","kids_scoring_rules","YES","COMPLETE"
 "5","K-PATCH-005","Add insight","kids_feedback_copy_matrix","YES","COMPLETE"
-"6","K-PATCH-006","Add persistence","kids_persistence_schema","YES","READY_NEXT"
-"7","K-PATCH-007","Validate and smoke test","All source patches complete","YES","PENDING"
+"6","K-PATCH-006","Add persistence","kids_persistence_schema","YES","COMPLETE"
+"7","K-PATCH-007","Validate and smoke test","All source patches complete","YES","READY_NEXT"

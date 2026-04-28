@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   getDefaultKidsGameplayItemForSession,
   getKidsGameplayItemsForSession
 } from "./kidsGameplayContent";
 import KidsPostSessionInsightPanel from "./KidsPostSessionInsightPanel";
+import { appendKidsSessionHistory, saveKidsProfile } from "./kidsPersistence";
 import { calculateKidsScore } from "./kidsScoring";
 
 type KidsGameplayPanelProps = {
@@ -16,6 +17,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [hintVisible, setHintVisible] = useState(false);
   const [tryCount, setTryCount] = useState(0);
+  const [savedSessionKey, setSavedSessionKey] = useState("");
 
   const activeItem = availableItems[0] ?? fallbackItem;
   const hasAnswered = selectedAnswer.length > 0;
@@ -34,6 +36,42 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
 
     setSelectedAnswer(option);
   }
+
+  useEffect(() => {
+    if (!hasAnswered) {
+      return;
+    }
+
+    const sessionKey = `${activeItem.certifiedId}:${selectedAnswer}:${tryCount}:${hintVisible}`;
+    if (savedSessionKey === sessionKey) {
+      return;
+    }
+
+    saveKidsProfile({
+      currentStage: activeItem.stage,
+      currentCategory: activeItem.category,
+      preferredSessionMode: activeItem.sessionMode,
+      lastCertifiedId: activeItem.certifiedId,
+      lastScore: score.totalScore,
+      lastMasteryLabel: score.masteryLabel
+    });
+
+    appendKidsSessionHistory({
+      certifiedId: activeItem.certifiedId,
+      category: activeItem.category,
+      categoryName: activeItem.categoryName,
+      stage: activeItem.stage,
+      sessionMode: activeItem.sessionMode,
+      selectedAnswer,
+      correctAnswer: activeItem.correctAnswer,
+      isCorrect,
+      score: score.totalScore,
+      masteryLabel: score.masteryLabel,
+      completedAt: new Date().toISOString()
+    });
+
+    setSavedSessionKey(sessionKey);
+  }, [activeItem, hasAnswered, hintVisible, isCorrect, savedSessionKey, score.masteryLabel, score.totalScore, selectedAnswer, tryCount]);
 
   return (
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
@@ -166,6 +204,10 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
 
         <p style={{ margin: "14px 0 0", color: "#475569" }}>
           {score.encouragement}
+        </p>
+
+        <p style={{ margin: "10px 0 0", color: "#64748b", fontSize: "13px" }}>
+          Kids progress saved with mindlab.kids.profile.v1.
         </p>
 
         <KidsPostSessionInsightPanel

@@ -6,5 +6,5 @@
 "KID-IMPL-005","Scoring","Create Kids scoring rules","COMPLETE","kids_scoring_rules_2026-04-28.csv","Use in kidsScoring.ts"
 "KID-IMPL-006","Copy","Create Kids feedback copy matrix","COMPLETE","kids_feedback_copy_matrix_2026-04-28.csv","Use in insight and gameplay UI"
 "KID-IMPL-007","Persistence","Create Kids persistence schema","COMPLETE","kids_persistence_schema_2026-04-28.csv","Use in kidsPersistence.ts"
-"KID-IMPL-008","Source implementation","Run K-PATCH-001 Kids source foundation","COMPLETE","kidsPostSessionInsights.ts|KidsPostSessionInsightPanel.tsx|KidsGameplayPanel.tsx","Run K-PATCH-006 Kids persistence implementation"
-"KID-IMPL-009","Validation","Run Kids build and manual smoke","PENDING","Pending","After K-PATCH-007"
+"KID-IMPL-008","Source implementation","Run K-PATCH-001 Kids source foundation","COMPLETE","kidsPersistence.ts|KidsGameplayPanel.tsx","Run K-PATCH-007 Kids source validation and smoke prep"
+"KID-IMPL-009","Validation","Run Kids build and manual smoke","READY_NEXT","Pending","Run Kids build and manual smoke prep"
