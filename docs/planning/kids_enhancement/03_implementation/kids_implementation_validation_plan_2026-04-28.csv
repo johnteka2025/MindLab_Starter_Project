@@ -4,4 +4,4 @@
 "K-VAL-003","Kids route manual smoke","PASS","docs/planning/kids_enhancement/08_final_qa/kids_manual_smoke_retest_2026-04-28.csv"
 "K-VAL-004","Kids storage isolation","PASS","mindlab.kids.profile.v1|mindlab.kids.sessionHistory.v1"
 "K-VAL-005","Child-safe copy review","PASS","docs/planning/kids_enhancement/03_implementation/kids_feedback_copy_matrix_2026-04-28.csv"
-"K-VAL-006","Repo clean after each patch","READY_FOR_FINAL_CHECK","docs/planning/kids_enhancement/08_final_qa/git_status_after_kids_manual_smoke_retest_2026-04-28.txt"
+"K-VAL-006","Repo clean after each patch","PASS","docs/planning/kids_enhancement/08_final_qa/git_status_after_kids_final_qa_closeout_2026-04-28.txt"

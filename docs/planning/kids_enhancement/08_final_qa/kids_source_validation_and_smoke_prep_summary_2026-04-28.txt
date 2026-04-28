@@ -1,8 +1,9 @@
 RESULT: KIDS_SOURCE_VALIDATION_AND_SMOKE_COMPLETE
 RepoRoot=C:\Projects\MindLab_Starter_Project
-StartFrom=NEXT_STEP_COMPLETE_KIDS_COPY_ROUTE_ABORTED_SMOKE_FIX_READY
+StartFrom=NEXT_STEP_COMPLETE_KIDS_MANUAL_SMOKE_RETEST_READY
 BuildStatus=PASS
 ManualRetestStatus=PASS
-ManualRetestCsv=docs/planning/kids_enhancement/08_final_qa/kids_manual_smoke_retest_2026-04-28.csv
+FinalQaStatus=PASS
+FinalQaTracker=docs/planning/kids_enhancement/08_final_qa/kids_final_qa_closeout_tracker_2026-04-28.csv
 OverallStatus=PASS
-NextRequiredAction=RUN_KIDS_FINAL_QA_CLOSEOUT
+NextRequiredAction=KIDS_CATEGORY_READY_FOR_NEXT_PHASE
