@@ -2,4 +2,4 @@
 "K-EXP-MANUAL-001","Server","Start dev server on port 8090","PASS","logs/kids_expansion_manual_smoke_server_start_2026-04-28.log","RECORD_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_RESULTS"
 "K-EXP-MANUAL-002","KidsRoute","Open Kids route for manual verification","READY","http://localhost:8090/kids","RECORD_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_RESULTS"
 "K-EXP-MANUAL-003","AdultsRegression","Open Adults route for regression verification","READY","http://localhost:8090/adults","RECORD_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_RESULTS"
-"K-EXP-MANUAL-004","ManualChecks","Verify checklist rows K-EXP-SMOKE-001 through K-EXP-SMOKE-012","PENDING_USER_VERIFY","kids_expansion_manual_smoke_regression_checklist_2026-04-28.csv","RECORD_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_RESULTS"
+"K-EXP-MANUAL-004","ManualChecks","Verify checklist rows K-EXP-SMOKE-001 through K-EXP-SMOKE-012","FAIL","kids_expansion_manual_smoke_regression_results_2026-04-28.csv","FIX_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_FAILURE"

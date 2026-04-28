@@ -1,0 +1,8 @@
+RESULT: KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_BLOCKED
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=NEXT_STEP_COMPLETE_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_READY_FOR_REVIEW
+PatchCompleted=K-EXP-PATCH-008
+ManualSmokeResults=docs/planning/kids_enhancement/10_kids_expansion/kids_expansion_manual_smoke_regression_results_2026-04-28.csv
+OverallStatus=FAIL
+FailCount=5
+NextRequiredAction=FIX_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_FAILURE

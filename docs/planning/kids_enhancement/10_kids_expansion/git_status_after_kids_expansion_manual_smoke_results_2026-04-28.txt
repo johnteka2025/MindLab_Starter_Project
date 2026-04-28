@@ -1,0 +1,8 @@
+RESULT: KIDS_EXPANSION_MANUAL_SMOKE_RESULTS_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+GeneratedOn=2026-04-28T19:28:14-04:00
+LatestCommitBeforeManualSmokeResults=c9ef699 test(kids): start expansion manual smoke and regression
+OverallStatus=FAIL
+FailCount=5
+ManagedDirtyCountBeforeCommit=10
+NextRequiredAction=FIX_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_FAILURE

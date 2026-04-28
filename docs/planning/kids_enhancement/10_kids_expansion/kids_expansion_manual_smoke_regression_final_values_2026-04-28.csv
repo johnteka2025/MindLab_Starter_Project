@@ -1,0 +1,6 @@
+"Key","Value","ManualUpdateNeeded"
+"OVERALL_STATUS","FAIL","NO"
+"FAIL_COUNT","5","NO"
+"KIDS_URL","http://localhost:8090/kids","NO"
+"ADULTS_URL","http://localhost:8090/adults","NO"
+"NEXT_ACTION","FIX_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_FAILURE","NO"
