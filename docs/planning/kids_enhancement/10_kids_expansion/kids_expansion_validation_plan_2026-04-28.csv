@@ -1,7 +1,7 @@
 "ValidationId","Check","Status","Evidence","StopIfFail"
 "K-EXP-VAL-001","Repository clean before each step","READY","git status --porcelain","YES"
 "K-EXP-VAL-002","Required source files exist","PASS","docs/planning/kids_enhancement/10_kids_expansion/kids_expansion_source_file_map_2026-04-28.csv","YES"
-"K-EXP-VAL-003","Build passes","PASS","docs/planning/kids_enhancement/10_kids_expansion/logs/kids_expansion_content_data_build_2026-04-28.log","YES"
+"K-EXP-VAL-003","Build passes","PASS","docs/planning/kids_enhancement/10_kids_expansion/logs/kids_expansion_scoring_exceptional_build_2026-04-28.log","YES"
 "K-EXP-VAL-004","Kids page has no mojibake","PASS","docs/planning/kids_enhancement/10_kids_expansion/kids_expansion_content_data_static_validation_2026-04-28.csv","YES"
 "K-EXP-VAL-005","Score hidden before answer and visible after answer","READY","manual smoke","YES"
 "K-EXP-VAL-006","Kids storage keys remain isolated","READY","mindlab.kids.* only","YES"

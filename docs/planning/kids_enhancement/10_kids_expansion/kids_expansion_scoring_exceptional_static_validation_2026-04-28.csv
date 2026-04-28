@@ -1,0 +1,7 @@
+"CheckId","Check","Status","Evidence"
+"K-EXP-SCORE-001","Exceptional level labels exist","PASS","frontend/src/features/kids/kidsScoring.ts"
+"K-EXP-SCORE-002","Adaptive next-step helper exists","PASS","frontend/src/features/kids/kidsScoring.ts"
+"K-EXP-SCORE-003","Recovery suggestion helper exists","PASS","frontend/src/features/kids/kidsScoring.ts"
+"K-EXP-SCORE-004","Existing gameplay score fields remain available","PASS","totalScore|masteryLabel|nextStep|encouragement"
+"K-EXP-SCORE-005","No mojibake in scoring source","PASS","frontend/src/features/kids/kidsScoring.ts"
+"K-EXP-SCORE-006","Build passes after scoring expansion","PASS","logs/kids_expansion_scoring_exceptional_build_2026-04-28.log"
