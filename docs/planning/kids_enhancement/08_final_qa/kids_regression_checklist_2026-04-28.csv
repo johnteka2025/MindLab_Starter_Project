@@ -1,0 +1,6 @@
+"RegressionId","Area","Check","Status","Evidence"
+"K-REG-001","Adults route","/adults still renders Adults UI","READY_FOR_MANUAL_CONFIRMATION","Manual smoke after Kids source validation"
+"K-REG-002","Kids route","/kids renders Kids UI","READY_FOR_MANUAL_CONFIRMATION","Manual smoke after Kids source validation"
+"K-REG-003","Storage isolation","Kids storage keys do not overwrite Adults storage keys","READY_FOR_MANUAL_CONFIRMATION","mindlab.kids.profile.v1 vs mindlab.adults.profile.v1"
+"K-REG-004","Build","Build smoke passes","PASS","docs/planning/kids_enhancement/08_final_qa/logs/kids_build_smoke_2026-04-28.log"
+"K-REG-005","Repo","Repo clean after validation commit","READY_FOR_FINAL_CHECK","docs/planning/kids_enhancement/08_final_qa/git_status_after_kids_validation_smoke_prep_2026-04-28.txt"
