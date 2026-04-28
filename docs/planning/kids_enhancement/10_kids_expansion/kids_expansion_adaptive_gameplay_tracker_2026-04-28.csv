@@ -1,0 +1,4 @@
+"StepId","Area","Action","Status","Evidence","NextAction"
+"K-EXP-ADAPT-001","Source","Rewrite Kids gameplay panel with adaptive next-round handling","COMPLETE","frontend/src/features/kids/KidsGameplayPanel.tsx","IMPLEMENT_KIDS_EXPANSION_PROGRESS_REVIEW_PANEL"
+"K-EXP-ADAPT-002","StaticValidation","Validate progress recording, adaptive next round, recovery path, and score gating","PASS","kids_expansion_adaptive_gameplay_static_validation_2026-04-28.csv","IMPLEMENT_KIDS_EXPANSION_PROGRESS_REVIEW_PANEL"
+"K-EXP-ADAPT-003","Build","Run build after adaptive gameplay panel update","PASS","logs/kids_expansion_adaptive_gameplay_build_2026-04-28.log","IMPLEMENT_KIDS_EXPANSION_PROGRESS_REVIEW_PANEL"

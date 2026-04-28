@@ -1,25 +1,76 @@
 import * as React from "react";
 import {
   getDefaultKidsGameplayItemForSession,
-  getKidsGameplayItemsForSession
+  getKidsGameplayItemsForSession,
+  kidsGameplayItems,
+  type KidsGameplayItem
 } from "./kidsGameplayContent";
 import KidsPostSessionInsightPanel from "./KidsPostSessionInsightPanel";
-import { appendKidsSessionHistory, saveKidsProfile } from "./kidsPersistence";
+import { recordKidsSessionProgress } from "./kidsPersistence";
 import { calculateKidsScore } from "./kidsScoring";
 
 type KidsGameplayPanelProps = {
   selectedMode: string;
 };
 
-export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelProps) {
-  const availableItems = React.useMemo(() => getKidsGameplayItemsForSession(selectedMode), [selectedMode]);
-  const fallbackItem = React.useMemo(() => getDefaultKidsGameplayItemForSession(selectedMode), [selectedMode]);
-  const activeItem = availableItems[0] ?? fallbackItem;
+function findDifferentItem(items: KidsGameplayItem[], currentCertifiedId: string): KidsGameplayItem | null {
+  return items.find((item) => item.certifiedId !== currentCertifiedId) ?? null;
+}
 
+function getSuggestedNextKidsItem(
+  currentItem: KidsGameplayItem,
+  selectedMode: string,
+  isCorrect: boolean,
+  exceptionalLevel: string
+): KidsGameplayItem | null {
+  if (!isCorrect) {
+    return (
+      findDifferentItem(
+        kidsGameplayItems.filter((item) => item.sessionMode === "CalmReview"),
+        currentItem.certifiedId
+      ) ?? null
+    );
+  }
+
+  if (exceptionalLevel === "Mastery Spark" || exceptionalLevel === "Solver") {
+    return (
+      findDifferentItem(
+        kidsGameplayItems.filter((item) => item.sessionMode === "Challenge"),
+        currentItem.certifiedId
+      ) ?? null
+    );
+  }
+
+  if (exceptionalLevel === "Builder") {
+    return (
+      findDifferentItem(
+        kidsGameplayItems.filter((item) => item.sessionMode === "StoryPractice" || item.sessionMode === selectedMode),
+        currentItem.certifiedId
+      ) ?? null
+    );
+  }
+
+  return findDifferentItem(getKidsGameplayItemsForSession(selectedMode), currentItem.certifiedId);
+}
+
+export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelProps) {
+  const [activeItem, setActiveItem] = React.useState<KidsGameplayItem>(() =>
+    getDefaultKidsGameplayItemForSession(selectedMode)
+  );
   const [selectedAnswer, setSelectedAnswer] = React.useState("");
   const [hintVisible, setHintVisible] = React.useState(false);
   const [tryCount, setTryCount] = React.useState(0);
   const [savedSessionKey, setSavedSessionKey] = React.useState("");
+
+  const availableItems = React.useMemo(() => getKidsGameplayItemsForSession(selectedMode), [selectedMode]);
+
+  React.useEffect(() => {
+    setActiveItem(getDefaultKidsGameplayItemForSession(selectedMode));
+    setSelectedAnswer("");
+    setHintVisible(false);
+    setTryCount(0);
+    setSavedSessionKey("");
+  }, [selectedMode]);
 
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = selectedAnswer === activeItem.correctAnswer;
@@ -30,6 +81,22 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     hasAnswered
   });
 
+  const nextSuggestedItem = React.useMemo(
+    () =>
+      hasAnswered
+        ? getSuggestedNextKidsItem(activeItem, selectedMode, isCorrect, score.exceptionalLevel)
+        : null,
+    [activeItem, hasAnswered, isCorrect, score.exceptionalLevel, selectedMode]
+  );
+
+  function resetRound(nextItem: KidsGameplayItem) {
+    setActiveItem(nextItem);
+    setSelectedAnswer("");
+    setHintVisible(false);
+    setTryCount(0);
+    setSavedSessionKey("");
+  }
+
   function handleAnswer(option: string) {
     if (selectedAnswer && option !== selectedAnswer) {
       setTryCount((current) => current + 1);
@@ -38,33 +105,29 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
     setSelectedAnswer(option);
   }
 
-  React.useEffect(() => {
-    setSelectedAnswer("");
-    setHintVisible(false);
-    setTryCount(0);
-    setSavedSessionKey("");
-  }, [selectedMode]);
+  function handleSuggestedNextRound() {
+    if (nextSuggestedItem) {
+      resetRound(nextSuggestedItem);
+      return;
+    }
+
+    const fallbackItem = findDifferentItem(availableItems, activeItem.certifiedId);
+    if (fallbackItem) {
+      resetRound(fallbackItem);
+    }
+  }
 
   React.useEffect(() => {
     if (!hasAnswered) {
       return;
     }
 
-    const sessionKey = `${activeItem.certifiedId}:${selectedAnswer}:${tryCount}:${hintVisible}`;
+    const sessionKey = `${activeItem.certifiedId}:${selectedAnswer}:${tryCount}:${hintVisible}:${score.totalScore}`;
     if (savedSessionKey === sessionKey) {
       return;
     }
 
-    saveKidsProfile({
-      currentStage: activeItem.stage,
-      currentCategory: activeItem.category,
-      preferredSessionMode: activeItem.sessionMode,
-      lastCertifiedId: activeItem.certifiedId,
-      lastScore: score.totalScore,
-      lastMasteryLabel: score.masteryLabel
-    });
-
-    appendKidsSessionHistory({
+    recordKidsSessionProgress({
       certifiedId: activeItem.certifiedId,
       category: activeItem.category,
       categoryName: activeItem.categoryName,
@@ -75,11 +138,33 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
       isCorrect,
       score: score.totalScore,
       masteryLabel: score.masteryLabel,
+      exceptionalLevel: score.exceptionalLevel,
+      exceptionalLevelUnlocked: score.exceptionalLevelUnlocked,
+      scoreBand: score.scoreBand,
+      growthSignal: score.growthSignal,
+      recoveryModeSuggestion: score.recoveryModeSuggestion,
+      adaptiveNextStep: score.adaptiveNextStep,
       completedAt: new Date().toISOString()
     });
 
     setSavedSessionKey(sessionKey);
-  }, [activeItem, hasAnswered, hintVisible, isCorrect, savedSessionKey, score.masteryLabel, score.totalScore, selectedAnswer, tryCount]);
+  }, [
+    activeItem,
+    hasAnswered,
+    hintVisible,
+    isCorrect,
+    savedSessionKey,
+    score.adaptiveNextStep,
+    score.exceptionalLevel,
+    score.exceptionalLevelUnlocked,
+    score.growthSignal,
+    score.masteryLabel,
+    score.recoveryModeSuggestion,
+    score.scoreBand,
+    score.totalScore,
+    selectedAnswer,
+    tryCount
+  ]);
 
   return (
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
@@ -194,7 +279,7 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
             </div>
 
             <aside
-              aria-label="Kids score and mastery"
+              aria-label="Kids score, mastery, and adaptive guidance"
               style={{
                 marginTop: "18px",
                 display: "grid",
@@ -211,17 +296,61 @@ export default function KidsGameplayPanel({ selectedMode }: KidsGameplayPanelPro
                 <strong style={{ fontSize: "22px" }}>{score.masteryLabel}</strong>
               </div>
               <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
-                <div style={{ color: "#64748b", fontSize: "13px" }}>Next step</div>
-                <strong>{score.nextStep}</strong>
+                <div style={{ color: "#64748b", fontSize: "13px" }}>Level</div>
+                <strong style={{ fontSize: "22px" }}>{score.exceptionalLevel}</strong>
+              </div>
+              <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
+                <div style={{ color: "#64748b", fontSize: "13px" }}>Score band</div>
+                <strong>{score.scoreBand}</strong>
               </div>
             </aside>
+
+            <section
+              aria-label="Adaptive next step"
+              style={{
+                marginTop: "18px",
+                borderRadius: "18px",
+                background: "#f8fafc",
+                border: "1px solid #e5e7eb",
+                padding: "16px"
+              }}
+            >
+              <h3 style={{ margin: "0 0 8px", fontSize: "20px" }}>Adaptive next step</h3>
+              <p style={{ margin: "0 0 8px", color: "#475569", lineHeight: 1.55 }}>
+                {score.growthSignal}
+              </p>
+              <p style={{ margin: "0 0 8px", color: "#475569", lineHeight: 1.55 }}>
+                {score.recoveryModeSuggestion}
+              </p>
+              <strong style={{ color: "#111827" }}>{score.adaptiveNextStep}</strong>
+
+              <div style={{ marginTop: "14px" }}>
+                <button
+                  type="button"
+                  onClick={handleSuggestedNextRound}
+                  disabled={!nextSuggestedItem && availableItems.length <= 1}
+                  style={{
+                    border: "1px solid #111827",
+                    borderRadius: "999px",
+                    padding: "10px 14px",
+                    background: "#111827",
+                    color: "#ffffff",
+                    cursor: nextSuggestedItem || availableItems.length > 1 ? "pointer" : "not-allowed"
+                  }}
+                >
+                  {nextSuggestedItem
+                    ? `Try suggested next: ${nextSuggestedItem.categoryName}`
+                    : "Try another friendly round"}
+                </button>
+              </div>
+            </section>
 
             <p style={{ margin: "14px 0 0", color: "#475569" }}>
               {score.encouragement}
             </p>
 
             <p style={{ margin: "10px 0 0", color: "#64748b", fontSize: "13px" }}>
-              Kids progress saved with mindlab.kids.profile.v1.
+              Kids progress saved with mindlab.kids.profile.v1 and adaptive progress fields.
             </p>
 
             <KidsPostSessionInsightPanel

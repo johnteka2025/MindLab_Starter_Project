@@ -1,0 +1,8 @@
+"CheckId","Check","Status","Evidence"
+"K-EXP-ADAPT-001","Gameplay records expanded progress fields","PASS","frontend/src/features/kids/KidsGameplayPanel.tsx"
+"K-EXP-ADAPT-002","Adaptive next-round helper exists","PASS","getSuggestedNextKidsItem|handleSuggestedNextRound"
+"K-EXP-ADAPT-003","Calm recovery suggestion path exists","PASS","CalmReview|recoveryModeSuggestion"
+"K-EXP-ADAPT-004","Score remains hidden before answer","PASS","hasAnswered gated score UI"
+"K-EXP-ADAPT-005","Kids storage message references adaptive fields","PASS","mindlab.kids.profile.v1"
+"K-EXP-ADAPT-006","No mojibake in gameplay panel source","PASS","frontend/src/features/kids/KidsGameplayPanel.tsx"
+"K-EXP-ADAPT-007","Build passes after adaptive gameplay panel","PASS","logs/kids_expansion_adaptive_gameplay_build_2026-04-28.log"
