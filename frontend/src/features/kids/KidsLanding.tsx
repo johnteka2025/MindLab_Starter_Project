@@ -26,7 +26,7 @@ export default function KidsLanding() {
       >
         <header style={{ marginBottom: "28px" }}>
           <p style={{ margin: "0 0 8px", color: "#64748b", fontSize: "15px" }}>
-            Kids practice Â· playful focus Â· calm learning
+            Kids practice ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· playful focus ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· calm learning
           </p>
           <h1 style={{ margin: 0, fontSize: "40px", lineHeight: 1.1 }}>
             Kids cognitive training
@@ -71,7 +71,7 @@ export default function KidsLanding() {
                     {mode.purpose}
                   </p>
                   <p style={{ margin: 0, color: "#64748b", fontSize: "14px" }}>
-                    {mode.duration} Â· {mode.childSafety}
+                    {mode.duration} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {mode.childSafety}
                   </p>
                 </button>
               );

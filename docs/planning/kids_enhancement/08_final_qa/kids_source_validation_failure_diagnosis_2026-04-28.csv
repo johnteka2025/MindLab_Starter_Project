@@ -1,0 +1,4 @@
+"Item","Status","Evidence","Action"
+"PreviousBuildStatus","PASS","kids_source_validation_and_smoke_prep_summary_2026-04-28.txt","Rebuild after source normalization"
+"PreviousOverallStatus","FAIL","kids_source_validation_and_smoke_prep_summary_2026-04-28.txt","Patch failed source/static/build causes"
+"K-STATIC-006","FAIL","frontend/src/features/kids/KidsPostSessionInsightPanel.tsx","Fix insight panel if FAIL"

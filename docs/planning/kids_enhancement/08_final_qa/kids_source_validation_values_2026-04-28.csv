@@ -5,7 +5,7 @@
 "KIDS_GAMEPLAY_PANEL","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsGameplayPanel.tsx","PASS"
 "KIDS_SCORING","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsScoring.ts","PASS"
 "KIDS_INSIGHTS","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsPostSessionInsights.ts","PASS"
-"KIDS_INSIGHT_PANEL","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsPostSessionInsightPanel.tsx","PASS"
+"KIDS_INSIGHT_PANEL","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsPostSessionInsightPanel.tsx","FAIL"
 "KIDS_PERSISTENCE","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsPersistence.ts","PASS"
 "BUILD_STATUS","PASS","PASS"
 "STATIC_FAIL_COUNT","1","FAIL"

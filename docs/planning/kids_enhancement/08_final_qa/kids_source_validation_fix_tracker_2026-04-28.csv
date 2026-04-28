@@ -1,0 +1,5 @@
+"FixId","Area","Action","Status","Evidence"
+"K-FIX-001","Route","Re-applied /kids route gate safely","COMPLETE","frontend/src/main.tsx"
+"K-FIX-002","Formatting","Normalized all managed source and QA text files","COMPLETE","No blank line at EOF expected"
+"K-FIX-003","Build","Re-ran build after source validation fix","PASS","docs/planning/kids_enhancement/08_final_qa/logs/kids_source_validation_fix_build_2026-04-28.log"
+"K-FIX-004","StaticValidation","Re-ran static route/source validation","FAIL","docs/planning/kids_enhancement/08_final_qa/kids_route_static_validation_2026-04-28.csv"

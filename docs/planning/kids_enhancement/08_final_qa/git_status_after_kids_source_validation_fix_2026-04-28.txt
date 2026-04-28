@@ -1,0 +1,10 @@
+RESULT: KIDS_SOURCE_VALIDATION_FIX_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+GeneratedOn=2026-04-28T15:25:10-04:00
+LatestCommitBeforeKidsSourceValidationFix=83d3caa test(kids): rebuild source validation and manual smoke prep
+RoutePatchStatus=KIDS_IMPORT_PRESENT|ROUTE_GATE_REPLACED|GATE_RENDER_PRESENT
+BuildStatus=PASS
+StaticFailCount=1
+OverallStatus=FAIL
+ManagedDirtyCountBeforeCommit=13
+NextRequiredAction=REVIEW_KIDS_SOURCE_VALIDATION_FIX_LOGS
