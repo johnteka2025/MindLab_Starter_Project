@@ -1,0 +1,3 @@
+"RouteKey","ExpectedRoute","Status","Evidence"
+"KIDS_ROUTE","/kids","FAIL","ARCHIVE_DUPLICATES_2025-12-27/frontend_20251029_090727/src/App.tsx"
+"ADULTS_ROUTE","/adults","FAIL","ARCHIVE_DUPLICATES_2025-12-27/frontend_20251029_090727/src/App.tsx"

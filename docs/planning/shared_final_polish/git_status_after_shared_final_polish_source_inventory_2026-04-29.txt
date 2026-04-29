@@ -1,0 +1,8 @@
+RESULT: SHARED_FINAL_POLISH_SOURCE_INVENTORY_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+LatestCommitBeforeSharedInventory=84df560 docs(shared): start adult kids final polish phase
+OverallStatus=FAIL
+MissingRequiredCount=1
+RouteFailCount=2
+ManagedDirtyCountBeforeCommit=7
+NextRequiredAction=FIX_SHARED_SOURCE_INVENTORY_FAILURES
