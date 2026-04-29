@@ -1,0 +1,8 @@
+"Key","Value","ManualUpdateNeeded"
+"OVERALL_STATUS","PASS","NO"
+"BUILD_STATUS","PASS","NO"
+"BUILD_EXIT_CODE","0","NO"
+"BUILD_PACKAGE_JSON","C:\Projects\MindLab_Starter_Project\frontend\package.json","NO"
+"BUILD_PACKAGE_DIR","C:\Projects\MindLab_Starter_Project\frontend","NO"
+"BUILD_COMMAND","npm run build","NO"
+"NEXT_ACTION","SHARED_FINAL_POLISH_COMPLETE_OR_STOP_FOR_DAY","NO"

@@ -1,0 +1,29 @@
+Command=npm run build
+WorkingDirectory=C:\Projects\MindLab_Starter_Project\frontend
+ExitCode=0
+---- STDOUT ----
+
+> mindlab-frontend@1.0.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32mÃŽâ€œÃ‚Â£ÃƒÂ´[39m 66 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  0.39 kB[22m[1m[22m[2m ÃŽâ€œÃƒÂ¶ÃƒÂ© gzip:  0.27 kB[22m
+[2mdist/[22m[35massets/index-CAe3yHlF.css  [39m[1m[2m  0.66 kB[22m[1m[22m[2m ÃŽâ€œÃƒÂ¶ÃƒÂ© gzip:  0.35 kB[22m
+[2mdist/[22m[36massets/index-Ctvg1nca.js   [39m[1m[2m279.33 kB[22m[1m[22m[2m ÃŽâ€œÃƒÂ¶ÃƒÂ© gzip: 85.93 kB[22m
+[32mÃŽâ€œÃ‚Â£ÃƒÂ´ built in 1.03s[39m
+
+---- STDERR ----
+src/features/adults/AdultsLanding.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/features/adults/AdultsLanding.tsx (1:0): Module level directives cause errors when bundled, "use client" in "src/features/adults/AdultsLanding.tsx" was ignored.
+src/features/adults/AdultsGameplayPanel.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/features/adults/AdultsGameplayPanel.tsx (1:0): Module level directives cause errors when bundled, "use client" in "src/features/adults/AdultsGameplayPanel.tsx" was ignored.
+src/features/adults/AdultsSessionModeSelector.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/features/adults/AdultsSessionModeSelector.tsx (1:0): Module level directives cause errors when bundled, "use client" in "src/features/adults/AdultsSessionModeSelector.tsx" was ignored.
+node_modules/react-router/dist/development/index.mjs (11:0): Module level directives cause errors when bundled, "use client" in "node_modules/react-router/dist/development/index.mjs" was ignored.
+src/features/adults/AdultsPostSessionInsightPanel.tsx (1:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/features/adults/AdultsPostSessionInsightPanel.tsx (1:0): Module level directives cause errors when bundled, "use client" in "src/features/adults/AdultsPostSessionInsightPanel.tsx" was ignored.
+node_modules/react-router/dist/development/dom-export.mjs (1:0): Module level directives cause errors when bundled, "use client" in "node_modules/react-router/dist/development/dom-export.mjs" was ignored.
