@@ -7,5 +7,5 @@
 "K-EXP-006","Implement exceptional-player Kids levels","COMPLETE","Automation","kids_expansion_scoring_exceptional_summary_2026-04-28.txt","IMPLEMENT_KIDS_EXPANSION_PROGRESS_PERSISTENCE_FIELDS"
 "K-EXP-007","Implement Kids progress review panel","COMPLETE","Automation","kids_expansion_progress_review_summary_2026-04-28.txt","RUN_KIDS_EXPANSION_BUILD_AND_STATIC_VALIDATION"
 "K-EXP-008","Run build and static validation","COMPLETE","Automation","kids_expansion_build_static_summary_2026-04-28.txt","RUN_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION"
-"K-EXP-009","Run manual smoke and regression","BLOCKED","Manual plus Automation","kids_expansion_manual_smoke_regression_summary_2026-04-28.txt","FIX_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_FAILURE"
-"K-EXP-010","Run final QA closeout","READY","Automation","Pending","FIX_KIDS_EXPANSION_MANUAL_SMOKE_AND_REGRESSION_FAILURE"
+"K-EXP-009","Run manual smoke and regression","COMPLETE","Manual plus Automation","kids_expansion_root_cause_summary_2026-04-28.txt","FINAL_QA_CLOSEOUT"
+"K-EXP-010","Run final QA closeout","COMPLETE","Automation","kids_expansion_final_qa_closeout_summary_2026-04-29.txt","KIDS_EXPANSION_COMPLETE_OR_BEGIN_NEXT_GAME_PHASE"

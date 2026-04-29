@@ -6,4 +6,4 @@
 "K-EXP-STEP-005","Patch progress review panel","SOURCE_UPDATE","COMPLETE","K-EXP-STEP-004","Kids progress review UI"
 "K-EXP-STEP-006","Run build and static validation","VALIDATION","COMPLETE","K-EXP-STEP-005","Build log and static validation CSV"
 "K-EXP-STEP-007","Run manual smoke and regression","MANUAL_CONFIRMATION","BLOCKED","K-EXP-STEP-006","Manual smoke confirmation CSV"
-"K-EXP-STEP-008","Run final QA closeout","CLOSEOUT","READY","K-EXP-STEP-007","Final QA closeout summary"
+"K-EXP-STEP-008","Run final QA closeout","CLOSEOUT","COMPLETE","K-EXP-STEP-007","Final QA closeout summary"

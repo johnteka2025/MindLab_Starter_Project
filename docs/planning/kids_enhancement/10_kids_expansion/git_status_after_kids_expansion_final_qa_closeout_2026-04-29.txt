@@ -1,0 +1,8 @@
+RESULT: KIDS_EXPANSION_FINAL_QA_CLOSEOUT_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+LatestCommitBeforeFinalQaCloseout=78c9b74 test(kids): rerun expansion root cause audit
+OverallStatus=PASS
+BuildStatus=PASS
+RootAuditFailCount=0
+ManagedDirtyCountBeforeCommit=10
+NextRequiredAction=KIDS_EXPANSION_COMPLETE_OR_BEGIN_NEXT_GAME_PHASE
