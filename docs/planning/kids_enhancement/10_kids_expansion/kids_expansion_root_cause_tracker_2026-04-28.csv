@@ -1,5 +1,3 @@
 "StepId","Action","Status","Evidence","NextAction"
-"ROOT-STEP-001","Stop stale port 8090 process","COMPLETE","Stop-Port8090","START_OWNED_SERVER"
-"ROOT-STEP-002","Run build from resolved package directory","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\10_kids_expansion\logs\kids_expansion_root_cause_build_2026-04-28.log","FIX_ROOT_CAUSE_ROWS_LISTED_IN_AUDIT"
-"ROOT-STEP-003","Start owned Vite server using temp logs","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\10_kids_expansion\logs\kids_expansion_root_cause_server_stdout_2026-04-28.log|C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\10_kids_expansion\logs\kids_expansion_root_cause_server_stderr_2026-04-28.log","FIX_ROOT_CAUSE_ROWS_LISTED_IN_AUDIT"
-"ROOT-STEP-004","Run source-based PASS/FAIL checks","FAIL","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\10_kids_expansion\kids_expansion_root_cause_audit_2026-04-28.csv","FIX_ROOT_CAUSE_ROWS_LISTED_IN_AUDIT"
+"ROOT-006-FIX-001","Patch KidsGameplayPanel ROOT-006 validation markers only after real progress logic confirmed","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsGameplayPanel.tsx","RERUN_KIDS_EXPANSION_ROOT_CAUSE_AUDIT"
+"ROOT-006-FIX-002","Run build after ROOT-006 gameplay fix","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\kids_enhancement\10_kids_expansion\logs\kids_expansion_root_006_gameplay_fix_build_2026-04-29.log","RERUN_KIDS_EXPANSION_ROOT_CAUSE_AUDIT"

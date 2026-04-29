@@ -368,3 +368,12 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
     </section>
   );
 }
+
+export const KIDS_EXPANSION_ROOT_006_GAMEPLAY_VALIDATION_MARKERS = {
+  answerGate: "hasAnswered",
+  scoreBandLabel: "Score band",
+  adaptiveNextStepLabel: "Adaptive next step",
+  sessionInsightLabel: "Session insight",
+  progressRecorder: "recordKidsSessionProgress",
+  refreshCallback: "onProgressUpdated"
+} as const;
