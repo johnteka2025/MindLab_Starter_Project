@@ -1,0 +1,9 @@
+RESULT: SHARED_SOURCE_INVENTORY_STILL_BLOCKED
+StartFrom=SHARED_SOURCE_INVENTORY_BLOCKED
+RootCause1=Previous inventory selected archived App.tsx from ARCHIVE_DUPLICATES_2025-12-27.
+RootCause2=Previous Kids insights resolver depended only on exact filename kidsInsights.ts.
+FixApplied=Excluded archive/build/dist/node_modules paths and resolved Kids insights by content markers.
+OverallStatus=FAIL
+MissingRequiredCount=0
+RouteFailCount=2
+NextRequiredAction=FIX_SHARED_SOURCE_INVENTORY_FAILURES

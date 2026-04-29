@@ -1,0 +1,8 @@
+RESULT: SHARED_FINAL_POLISH_SOURCE_INVENTORY_FIX_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+LatestCommitBeforeSharedInventoryFix=0ef7649 docs(shared): add final polish source inventory
+OverallStatus=FAIL
+MissingRequiredCount=0
+RouteFailCount=2
+ManagedDirtyCountBeforeCommit=7
+NextRequiredAction=FIX_SHARED_SOURCE_INVENTORY_FAILURES
