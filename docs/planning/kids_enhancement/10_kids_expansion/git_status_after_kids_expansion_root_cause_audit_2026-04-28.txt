@@ -1,0 +1,7 @@
+RESULT: KIDS_EXPANSION_ROOT_CAUSE_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+LatestCommitBeforeRootCauseAudit=a31d1ed test(kids): record expansion manual smoke and regression results
+OverallStatus=FAIL
+FailCount=1
+ManagedDirtyCountBeforeCommit=8
+NextRequiredAction=FIX_ROOT_CAUSE_ROWS_LISTED_IN_AUDIT
