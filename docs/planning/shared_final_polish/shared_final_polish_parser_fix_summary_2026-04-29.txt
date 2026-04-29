@@ -1,0 +1,8 @@
+RESULT: SHARED_FINAL_POLISH_PARSER_ERROR_FIXED_AND_RERUN
+StartFrom=SCRIPT_FAILED_STOP_PARSER_ERROR
+RootCause=Invalid PowerShell Sort-Object syntax used: Sort-Object Score -Descending, RepoRelativePath.
+FixApplied=Replaced invalid syntax with Sort-Object property hash tables.
+OverallStatus=PASS
+MissingRequiredCount=0
+RouteFailCount=0
+NextRequiredAction=RUN_SHARED_ROUTE_PARITY_VALIDATION

@@ -1,0 +1,10 @@
+RESULT: NEXT_STEP_COMPLETE_SHARED_SOURCE_INVENTORY_READY
+StartFrom=SCRIPT_FAILED_STOP_PARSER_ERROR
+RunnablePackageJson=C:\Projects\MindLab_Starter_Project\frontend\package.json
+RunCommand=npm run dev -- --host 127.0.0.1 --port 8090
+KidsRouteStatus=PASS
+AdultsRouteStatus=PASS
+OverallStatus=PASS
+MissingRequiredCount=0
+RouteFailCount=0
+NextRequiredAction=RUN_SHARED_ROUTE_PARITY_VALIDATION

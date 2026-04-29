@@ -1,6 +1,6 @@
 "Step","Action","ScriptRequired","Status","Output"
 "SFP-STEP-001","Start shared final polish phase","YES","COMPLETE","shared_final_polish_start_summary_2026-04-29.txt"
-"SFP-STEP-002","Inventory Adult/Kids source files and routes","YES","BLOCKED","shared_final_polish_source_inventory_2026-04-29.csv"
-"SFP-STEP-003","Patch shared polish issues only after inventory","YES","PENDING","shared_final_polish_patch_plan_2026-04-29.csv"
+"SFP-STEP-002","Inventory Adult/Kids source files and routes","YES","COMPLETE","shared_final_polish_source_inventory_2026-04-29.csv"
+"SFP-STEP-003","Patch shared polish issues only after inventory","YES","NEXT","shared_final_polish_patch_plan_2026-04-29.csv"
 "SFP-STEP-004","Run automated PASS/FAIL validation","YES","PENDING","shared_final_polish_validation_results_2026-04-29.csv"
 "SFP-STEP-005","Run final build and closeout","YES","PENDING","shared_final_polish_closeout_summary_2026-04-29.txt"

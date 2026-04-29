@@ -1,5 +1,5 @@
 "FileKey","Area","Required","FullPath","RepoRelativePath","Status"
-"PACKAGE_JSON","Project","YES","C:\Projects\MindLab_Starter_Project\api\package.json","api/package.json","FOUND"
+"PACKAGE_JSON","Project","YES","C:\Projects\MindLab_Starter_Project\frontend\package.json","frontend/package.json","FOUND"
 "APP_ENTRY","Routes","YES","C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx","frontend/src/App.tsx","FOUND"
 "KIDS_LANDING","Kids","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsLanding.tsx","frontend/src/features/kids/KidsLanding.tsx","FOUND"
 "ADULTS_LANDING","Adults","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\adults\AdultsLanding.tsx","frontend/src/features/adults/AdultsLanding.tsx","FOUND"

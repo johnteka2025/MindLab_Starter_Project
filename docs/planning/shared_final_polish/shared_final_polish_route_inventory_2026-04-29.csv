@@ -1,3 +1,3 @@
 "RouteKey","ExpectedRoute","Status","Evidence"
-"KIDS_ROUTE","/kids","FAIL","frontend/src/App.tsx"
-"ADULTS_ROUTE","/adults","FAIL","frontend/src/App.tsx"
+"KIDS_ROUTE","/kids","PASS","Source=frontend/src/app/mindlab_kids_runtime.js; Live=http://127.0.0.1:8090/kids HTTP=200 HTTP_200"
+"ADULTS_ROUTE","/adults","PASS","Source=frontend/src/features/adults/AdultsGameplayPanel.tsx; Live=http://127.0.0.1:8090/adults HTTP=200 HTTP_200"

@@ -1,0 +1,6 @@
+"RepoRelativePath","FullPath","PackageDir","Scripts","HasDev","HasStart","HasPreview","HasBuild","HasSrcFolder","Score"
+"frontend/package.json","C:\Projects\MindLab_Starter_Project\frontend\package.json","C:\Projects\MindLab_Starter_Project\frontend","build|dev|preview|start","YES","YES","YES","YES","YES","240"
+"web/package.json","C:\Projects\MindLab_Starter_Project\web\package.json","C:\Projects\MindLab_Starter_Project\web","dev","YES","NO","NO","NO","NO","100"
+"api/package.json","C:\Projects\MindLab_Starter_Project\api\package.json","C:\Projects\MindLab_Starter_Project\api","start","NO","YES","NO","NO","NO","50"
+"backend/package.json","C:\Projects\MindLab_Starter_Project\backend\package.json","C:\Projects\MindLab_Starter_Project\backend","","NO","NO","NO","NO","YES","20"
+"deploy/backend/package.json","C:\Projects\MindLab_Starter_Project\deploy\backend\package.json","C:\Projects\MindLab_Starter_Project\deploy\backend","","NO","NO","NO","NO","NO","0"
