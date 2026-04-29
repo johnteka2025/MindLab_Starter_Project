@@ -1,0 +1,5 @@
+RESULT: SHARED_FINAL_POLISH_PHASE_SELECTED
+StartFrom=NEXT_STEP_COMPLETE_KIDS_EXPANSION_COMPLETION_CHECKPOINT_READY
+SelectedNextPhase=START_ADULT_KIDS_SHARED_POLISH
+Reason=Kids expansion is complete and final QA closeout is complete. Next safest phase is shared Adult/Kids final polish before new game content.
+NextRequiredAction=RUN_SHARED_SOURCE_INVENTORY
