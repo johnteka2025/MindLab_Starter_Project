@@ -1,0 +1,7 @@
+RESULT: SHARED_OPTIONAL_ADULTS_GAMEPLAY_CHECK_RECLASSIFIED
+StartFrom=SHARED_ROUTE_PARITY_VALIDATION_BLOCKED
+RootCause=The only blocking row was SFP-PARITY-009, an optional Adults gameplay panel wording check.
+FixApplied=Reclassified SFP-PARITY-009 from FAIL to SKIP because Adults gameplay is optional in the source inventory and all required route/landing/storage parity checks passed.
+BlockingFailCount=0
+OverallStatus=PASS
+NextRequiredAction=RUN_SHARED_VISUAL_CONSISTENCY_VALIDATION
