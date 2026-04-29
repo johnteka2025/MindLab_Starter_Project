@@ -1,0 +1,7 @@
+RESULT: SHARED_FINAL_POLISH_ROUTE_PARITY_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+LatestCommitBeforeRouteParity=8455df5 test(shared): fix parser error and rerun route resolver
+OverallStatus=FAIL
+FailCount=1
+ManagedDirtyCountBeforeCommit=8
+NextRequiredAction=FIX_SHARED_ROUTE_PARITY_FAILURES
