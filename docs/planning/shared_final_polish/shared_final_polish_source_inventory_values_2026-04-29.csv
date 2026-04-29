@@ -2,7 +2,7 @@
 "OVERALL_STATUS","FAIL","NO"
 "MISSING_REQUIRED_COUNT","0","NO"
 "ROUTE_FAIL_COUNT","2","NO"
-"ROOT_CAUSE_FIXED","Archive paths excluded and Kids insights discovered by content scan","NO"
+"ROOT_CAUSE_FIXED","Git tracked active files only; backups and archives excluded","NO"
 "SOURCE_INVENTORY","C:\Projects\MindLab_Starter_Project\docs\planning\shared_final_polish\shared_final_polish_source_inventory_2026-04-29.csv","NO"
 "ROUTE_INVENTORY","C:\Projects\MindLab_Starter_Project\docs\planning\shared_final_polish\shared_final_polish_route_inventory_2026-04-29.csv","NO"
 "NEXT_ACTION","FIX_SHARED_SOURCE_INVENTORY_FAILURES","NO"

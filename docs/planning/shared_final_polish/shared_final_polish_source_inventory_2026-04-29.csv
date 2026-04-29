@@ -1,6 +1,6 @@
 "FileKey","Area","Required","FullPath","RepoRelativePath","Status"
 "PACKAGE_JSON","Project","YES","C:\Projects\MindLab_Starter_Project\api\package.json","api/package.json","FOUND"
-"APP_ENTRY","Routes","YES","C:\Projects\MindLab_Starter_Project\backups\baseline_snapshots\baseline_20251214_115859\frontend\src\main.tsx","backups/baseline_snapshots/baseline_20251214_115859/frontend/src/main.tsx","FOUND"
+"APP_ENTRY","Routes","YES","C:\Projects\MindLab_Starter_Project\frontend\src\App.tsx","frontend/src/App.tsx","FOUND"
 "KIDS_LANDING","Kids","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsLanding.tsx","frontend/src/features/kids/KidsLanding.tsx","FOUND"
 "ADULTS_LANDING","Adults","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\adults\AdultsLanding.tsx","frontend/src/features/adults/AdultsLanding.tsx","FOUND"
 "KIDS_GAMEPLAY_PANEL","Kids","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsGameplayPanel.tsx","frontend/src/features/kids/KidsGameplayPanel.tsx","FOUND"
@@ -10,4 +10,4 @@
 "KIDS_PERSISTENCE","Kids","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsPersistence.ts","frontend/src/features/kids/kidsPersistence.ts","FOUND"
 "ADULTS_PERSISTENCE","Adults","NO","C:\Projects\MindLab_Starter_Project\frontend\src\features\adults\adultsPersistence.ts","frontend/src/features/adults/adultsPersistence.ts","FOUND"
 "KIDS_INSIGHTS","Kids","YES","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsPostSessionInsights.ts","frontend/src/features/kids/kidsPostSessionInsights.ts","FOUND"
-"ADULTS_INSIGHTS","Adults","NO","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\kidsPostSessionInsights.ts","frontend/src/features/kids/kidsPostSessionInsights.ts","FOUND"
+"ADULTS_INSIGHTS","Adults","NO","C:\Projects\MindLab_Starter_Project\frontend\src\features\kids\KidsGameplayPanel.tsx","frontend/src/features/kids/KidsGameplayPanel.tsx","FOUND"

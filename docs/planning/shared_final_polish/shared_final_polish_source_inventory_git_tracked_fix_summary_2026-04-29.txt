@@ -1,0 +1,8 @@
+RESULT: SHARED_SOURCE_INVENTORY_STILL_BLOCKED
+StartFrom=SHARED_SOURCE_INVENTORY_STILL_BLOCKED
+RootCause=Previous resolver still selected backup route file under backups/baseline_snapshots.
+FixApplied=Resolver now uses git ls-files only and excludes backups, baseline snapshots, archive, dist, build, coverage, docs, and node_modules.
+OverallStatus=FAIL
+MissingRequiredCount=0
+RouteFailCount=2
+NextRequiredAction=FIX_SHARED_SOURCE_INVENTORY_FAILURES

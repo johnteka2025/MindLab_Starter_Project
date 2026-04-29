@@ -1,3 +1,3 @@
 "RouteKey","ExpectedRoute","Status","Evidence"
-"KIDS_ROUTE","/kids","FAIL","backups/baseline_snapshots/baseline_20251214_115859/frontend/src/main.tsx"
-"ADULTS_ROUTE","/adults","FAIL","backups/baseline_snapshots/baseline_20251214_115859/frontend/src/main.tsx"
+"KIDS_ROUTE","/kids","FAIL","frontend/src/App.tsx"
+"ADULTS_ROUTE","/adults","FAIL","frontend/src/App.tsx"

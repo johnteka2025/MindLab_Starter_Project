@@ -1,0 +1,8 @@
+RESULT: SHARED_FINAL_POLISH_SOURCE_INVENTORY_GIT_TRACKED_FIX_CLEAN_PROOF_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+LatestCommitBeforeSharedInventoryGitTrackedFix=3df2d7b docs(shared): fix source inventory resolver
+OverallStatus=FAIL
+MissingRequiredCount=0
+RouteFailCount=2
+ManagedDirtyCountBeforeCommit=7
+NextRequiredAction=FIX_SHARED_SOURCE_INVENTORY_FAILURES
