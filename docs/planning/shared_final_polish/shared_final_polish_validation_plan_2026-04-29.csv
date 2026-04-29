@@ -2,5 +2,5 @@
 "SFP-VAL-001","Repository","Repo clean before each step","PENDING","git status --short"
 "SFP-VAL-002","Routes","Kids and Adults routes remain separate","PASS","shared_final_polish_route_parity_results_2026-04-29.csv"
 "SFP-VAL-003","Build","Production build passes","PENDING","Build log"
-"SFP-VAL-004","Copy","No mojibake/corrupted text","PENDING","Source scan"
+"SFP-VAL-004","Copy","No mojibake/corrupted text","PASS","shared_final_polish_visual_consistency_results_2026-04-29.csv"
 "SFP-VAL-005","SharedPolish","Adult/Kids shared polish tracker complete","PENDING","Closeout summary"
