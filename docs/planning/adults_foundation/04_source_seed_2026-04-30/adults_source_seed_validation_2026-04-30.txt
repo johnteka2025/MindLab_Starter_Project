@@ -1,0 +1,7 @@
+RESULT: ADULTS_SOURCE_IMPLEMENTATION_SEED_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+AdultsJson=C:\Projects\MindLab_Starter_Project\backend\src\data\age_categories\adults_baseline_2026-04-30.json
+AdultsSourceFile=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsAgeMode.ts
+AdultsSourceIndex=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts
+PatchTargetsCsv=C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\03_source_patch_plan_2026-04-30\adults_source_patch_targets_2026-04-30.csv
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

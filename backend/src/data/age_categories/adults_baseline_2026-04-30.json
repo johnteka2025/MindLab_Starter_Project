@@ -1,0 +1,31 @@
+{
+    "ageCategory":  "Adults",
+    "status":  "BASELINE_READY",
+    "createdFrom":  "Kids accepted checkpoint and Adults source inventory",
+    "createdDate":  "2026-04-30",
+    "scope":  {
+                  "coreTheme":  "Strategic cognitive challenge",
+                  "gameplayPillars":  [
+                                          "strategy",
+                                          "focus",
+                                          "memory",
+                                          "adaptive_challenge",
+                                          "replayability"
+                                      ],
+                  "difficultyModel":  "adaptive_adult_progression",
+                  "marketPosition":  "adult_brain_training_and_productivity_adjacent_play"
+              },
+    "boundaries":  {
+                       "doNotRepeatKidsCreation":  true,
+                       "doNotCombineSeniors":  true,
+                       "adultsOnly":  true,
+                       "sourcePatchType":  "implementation_seed"
+                   },
+    "passFailRules":  [
+                          "PASS_IF_REPO_CLEAN_BEFORE_PATCH",
+                          "PASS_IF_ADULTS_JSON_EXISTS",
+                          "PASS_IF_ADULTS_TS_EXISTS",
+                          "PASS_IF_NO_SENIORS_COMBINED",
+                          "PASS_IF_COMMIT_SUCCEEDS"
+                      ]
+}
