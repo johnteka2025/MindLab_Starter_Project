@@ -1,0 +1,6 @@
+RESULT: ADULTS_SOURCE_INVENTORY_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+TotalSourceFiles=1328
+AgeRelatedSignalFiles=685
+NextAction=Review REVIEW_FOR_ADULTS_EXTENSION rows before source patching
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project
