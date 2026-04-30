@@ -1,0 +1,8 @@
+RESULT: ADULTS_FOUNDATION_PACKAGE_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=Kids final accepted checkpoint
+DoNotRepeatKidsCreation=true
+DoNotReopenKidsUnlessVerifiedRegression=true
+NextMainWorkstream=Adults foundation
+PowerShellOnlyUpdates=true
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

@@ -1,0 +1,5 @@
+"Step","Lane","Action","Status","Owner","OutputPath"
+"ADULTS-001","Foundation","Create Adults category planning baseline","READY","ProjectOwner","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\00_next_steps_2026-04-30"
+"ADULTS-002","Repository Validation","Validate clean repo before Adults implementation","READY","ProjectOwner","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\00_next_steps_2026-04-30\adults_foundation_runbook_2026-04-30.txt"
+"ADULTS-003","Game Design","Define Adults gameplay scope after Kids accepted checkpoint","PENDING_NEXT_SESSION","ProjectOwner","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\00_next_steps_2026-04-30\adults_foundation_execution_tracker_2026-04-30.csv"
+"ADULTS-004","Execution","Use PowerShell-only updates for Adults files","PENDING_NEXT_SESSION","ProjectOwner","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\00_next_steps_2026-04-30\adults_foundation_execution_tracker_2026-04-30.csv"
