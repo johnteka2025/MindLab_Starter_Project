@@ -13,7 +13,7 @@ export const adultsAgeMode = {
   marketPosition: 'adult_brain_training_and_productivity_adjacent_play',
   boundaries: {
     doNotRepeatKidsCreation: true,
-    doNotCombineSeniors: true,
+    doNotCombineOtherAgeCategories: true,
     adultsOnly: true,
   },
 } as const;

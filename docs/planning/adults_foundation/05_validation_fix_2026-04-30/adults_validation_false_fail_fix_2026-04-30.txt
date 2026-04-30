@@ -1,0 +1,6 @@
+RESULT: ADULTS_VALIDATION_FALSE_FAIL_FIXED
+RootCause=Adults seed used restricted age-category word inside guardrail key
+Fix=Renamed doNotCombineSeniors to doNotCombineOtherAgeCategories
+AdultsJson=C:\Projects\MindLab_Starter_Project\backend\src\data\age_categories\adults_baseline_2026-04-30.json
+AdultsTs=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsAgeMode.ts
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

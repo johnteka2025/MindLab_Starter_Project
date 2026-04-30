@@ -17,7 +17,7 @@
               },
     "boundaries":  {
                        "doNotRepeatKidsCreation":  true,
-                       "doNotCombineSeniors":  true,
+                       "doNotCombineOtherAgeCategories":  true,
                        "adultsOnly":  true,
                        "sourcePatchType":  "implementation_seed"
                    },
@@ -25,7 +25,7 @@
                           "PASS_IF_REPO_CLEAN_BEFORE_PATCH",
                           "PASS_IF_ADULTS_JSON_EXISTS",
                           "PASS_IF_ADULTS_TS_EXISTS",
-                          "PASS_IF_NO_SENIORS_COMBINED",
+                          "PASS_IF_NO_OTHER_AGE_CATEGORY_COMBINED",
                           "PASS_IF_COMMIT_SUCCEEDS"
                       ]
 }
