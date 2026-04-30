@@ -1,0 +1,6 @@
+"CheckId","Check","Status","Evidence"
+"ADULTS-CLOSEOUT-001","Adults visible UI wiring committed","PASS","07_visible_ui_wiring_2026-04-30"
+"ADULTS-CLOSEOUT-002","Adults app-flow integration validated","PASS","06_app_flow_integration_2026-04-30"
+"ADULTS-CLOSEOUT-003","Frontend validation passed","PASS","08_frontend_validation_2026-04-30"
+"ADULTS-CLOSEOUT-004","Repository clean after validation","PASS","git status --porcelain empty"
+"ADULTS-CLOSEOUT-005","Adults workstream remains separate from other age categories","PASS","Adults seed and UI validation rules"
