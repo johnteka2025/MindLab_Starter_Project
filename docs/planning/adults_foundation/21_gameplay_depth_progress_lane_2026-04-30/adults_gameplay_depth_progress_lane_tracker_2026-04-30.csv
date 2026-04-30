@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"ADULTS-DP-TASK-001","Confirm Adults implementation checkpoint exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\20_adults_implementation_checkpoint_2026-04-30\adults_implementation_checkpoint_2026-04-30.txt","Create gameplay depth/progress lane"
+"ADULTS-DP-TASK-002","Create gameplay depth/progress lane roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\21_gameplay_depth_progress_lane_2026-04-30\adults_gameplay_depth_progress_lane_roadmap_2026-04-30.csv","Commit package"
+"ADULTS-DP-TASK-003","Create gameplay depth/progress target inventory","NEXT_SCRIPT","NEXT_STEP","Find confirmed source targets"
+"ADULTS-DP-TASK-004","Patch confirmed Adults target only","NOT_STARTED","NEXT_STEP","Patch after inventory"
+"ADULTS-DP-TASK-005","Run validation and closeout","NOT_STARTED","NEXT_STEP","Validate after patch"

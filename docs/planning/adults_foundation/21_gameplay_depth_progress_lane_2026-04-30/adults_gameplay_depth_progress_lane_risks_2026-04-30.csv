@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"ADULTS-DP-RISK-001","Patching unconfirmed progress or gameplay file","Inventory first","FAIL_IF_TARGET_NOT_CONFIRMED"
+"ADULTS-DP-RISK-002","Dirty repository before patch","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"ADULTS-DP-RISK-003","Repeating checkpoint work","Start from checkpoint only","FAIL_IF_CHECKPOINT_RECREATED"
+"ADULTS-DP-RISK-004","Combining other age categories","Adults-only lane","FAIL_IF_OTHER_AGE_CATEGORY_COMBINED"
+"ADULTS-DP-RISK-005","Validation artifacts dirty repo","Clean transient folders before final status","FAIL_IF_TRANSIENT_ARTIFACTS_REMAIN"

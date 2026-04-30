@@ -1,0 +1,9 @@
+RESULT: ADULTS_GAMEPLAY_DEPTH_PROGRESS_LANE_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=Adults implementation checkpoint committed and repo clean
+NextLane=Adults gameplay depth or progress integration
+AdultsOnly=true
+DoNotRepeatCheckpoint=true
+DoNotCombineOtherAgeCategories=true
+RequiredNextStep=Create gameplay depth/progress target inventory before source patch
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project
