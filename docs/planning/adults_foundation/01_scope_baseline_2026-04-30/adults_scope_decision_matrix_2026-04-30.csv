@@ -1,0 +1,8 @@
+"DecisionId","Category","RecommendedValue","Status","Notes"
+"ADULTS-SCOPE-001","Audience","Adults","APPROVED_BASELINE","Adults category follows accepted Kids checkpoint and precedes Seniors."
+"ADULTS-SCOPE-002","CoreTheme","Strategic cognitive challenge","APPROVED_BASELINE","More complex than Kids; not Senior accessibility-first."
+"ADULTS-SCOPE-003","GameplayPillars","Strategy|Focus|Memory|Adaptive challenge|Replayability","APPROVED_BASELINE","Use as MVP design guardrail."
+"ADULTS-SCOPE-004","DifficultyModel","Adaptive adult progression","APPROVED_BASELINE","Avoid Kids tuning reuse unless explicitly parameterized."
+"ADULTS-SCOPE-005","MarketPosition","Adult brain-training and productivity-adjacent play","APPROVED_BASELINE","Position separately from Kids learning and Seniors wellness."
+"ADULTS-SCOPE-006","TechFocus","Reusable age-mode architecture","APPROVED_BASELINE","Prevent duplicate age-category code paths."
+"ADULTS-SCOPE-007","MvpBoundary","Planning baseline before source implementation","APPROVED_BASELINE","Do not edit app source until file inventory and target list are confirmed."

@@ -1,0 +1,9 @@
+RESULT: ADULTS_SCOPE_BASELINE_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=Adults foundation package committed
+DoNotRepeatKidsTasks=true
+DoNotCombineSeniors=true
+AdultsOnly=true
+PowerShellOnlyUpdates=true
+NextRequiredStep=Repository source inventory before source implementation
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

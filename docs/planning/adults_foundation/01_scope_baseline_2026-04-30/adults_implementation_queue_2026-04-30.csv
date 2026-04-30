@@ -1,0 +1,6 @@
+"TaskId","Priority","Action","TargetPath","Status","PassFail"
+"ADULTS-Q-001","P0","Create Adults scope baseline","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\01_scope_baseline_2026-04-30\adults_scope_decision_matrix_2026-04-30.csv","READY_TO_COMMIT","PASS_IF_FILE_EXISTS"
+"ADULTS-Q-002","P0","Create Adults implementation queue","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\01_scope_baseline_2026-04-30\adults_implementation_queue_2026-04-30.csv","READY_TO_COMMIT","PASS_IF_FILE_EXISTS"
+"ADULTS-Q-003","P0","Create Adults risk control matrix","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\01_scope_baseline_2026-04-30\adults_risk_control_matrix_2026-04-30.csv","READY_TO_COMMIT","PASS_IF_FILE_EXISTS"
+"ADULTS-Q-004","P1","Run repository file inventory before source edits","NEXT_STEP","PENDING_NEXT_SCRIPT","PASS_IF_SOURCE_TARGETS_IDENTIFIED"
+"ADULTS-Q-005","P1","Create Adults source implementation patch only after inventory","NEXT_STEP","PENDING_NEXT_SCRIPT","PASS_IF_TESTS_PASS"

@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"ADULTS-RISK-001","Repeating Kids completed work","Start from Adults foundation only","FAIL_IF_KIDS_CREATION_REOPENED"
+"ADULTS-RISK-002","Missing file errors","Require-Path checks before every script","FAIL_IF_REQUIRED_PATH_MISSING"
+"ADULTS-RISK-003","Dirty repository before changes","Restore known transient files and stop on remaining dirty state","FAIL_IF_REPO_DIRTY"
+"ADULTS-RISK-004","Commit failure","Check staged files and LASTEXITCODE","FAIL_IF_COMMIT_FAILED"
+"ADULTS-RISK-005","Wrong age-category scope","Adults only; Seniors separate later","FAIL_IF_SENIORS_COMBINED"
