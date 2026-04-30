@@ -1,0 +1,9 @@
+RESULT: ADULTS_APP_FLOW_INTEGRATION_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+AdultsJson=C:\Projects\MindLab_Starter_Project\backend\src\data\age_categories\adults_baseline_2026-04-30.json
+AdultsMode=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsAgeMode.ts
+Registry=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\ageModeRegistry.ts
+AppFlow=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\appFlowAgeModes.ts
+Index=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts
+DefaultAppFlowAgeMode=adults
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project
