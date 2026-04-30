@@ -1,0 +1,9 @@
+RESULT: ADULTS_GAMEPLAY_ROUTING_LANE_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=Adults visible UI patch closeout committed and repo clean
+NextLane=Adults gameplay or routing implementation
+AdultsOnly=true
+DoNotRepeatVisibleUiCloseout=true
+DoNotCombineOtherAgeCategories=true
+RequiredNextStep=Create gameplay/routing target inventory before source patch
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

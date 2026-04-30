@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"ADULTS-GR-TASK-001","Confirm visible UI patch closeout exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\14_visible_ui_patch_closeout_2026-04-30\adults_visible_ui_patch_closeout_2026-04-30.txt","Create gameplay/routing lane"
+"ADULTS-GR-TASK-002","Create gameplay/routing lane roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\15_gameplay_routing_lane_2026-04-30\adults_gameplay_routing_lane_roadmap_2026-04-30.csv","Commit package"
+"ADULTS-GR-TASK-003","Create gameplay/routing target inventory","NEXT_SCRIPT","NEXT_STEP","Find confirmed source targets"
+"ADULTS-GR-TASK-004","Patch confirmed Adults target only","NOT_STARTED","NEXT_STEP","Patch after inventory"
+"ADULTS-GR-TASK-005","Run validation and closeout","NOT_STARTED","NEXT_STEP","Validate after patch"

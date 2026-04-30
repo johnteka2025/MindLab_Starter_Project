@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"ADULTS-GR-RISK-001","Patching unconfirmed gameplay or route file","Inventory first","FAIL_IF_TARGET_NOT_CONFIRMED"
+"ADULTS-GR-RISK-002","Dirty repository before patch","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"ADULTS-GR-RISK-003","Repeating visible UI closeout work","Start from closeout only","FAIL_IF_VISIBLE_CLOSEOUT_RECREATED"
+"ADULTS-GR-RISK-004","Combining other age categories","Adults-only lane","FAIL_IF_OTHER_AGE_CATEGORY_COMBINED"
+"ADULTS-GR-RISK-005","Validation artifacts dirty repo","Clean transient folders before final status","FAIL_IF_TRANSIENT_ARTIFACTS_REMAIN"

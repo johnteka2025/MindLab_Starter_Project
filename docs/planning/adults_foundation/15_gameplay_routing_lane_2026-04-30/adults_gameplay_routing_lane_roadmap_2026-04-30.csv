@@ -1,0 +1,6 @@
+"Step","Lane","Action","Priority","Status","Owner"
+"ADULTS-GR-001","Gameplay","Inventory gameplay screens and config targets before source patch","P0","READY_NEXT","ProjectOwner"
+"ADULTS-GR-002","Routing","Inventory route/navigation targets before source patch","P0","READY_NEXT","ProjectOwner"
+"ADULTS-GR-003","Adults Integration","Patch only confirmed Adults gameplay or route target","P0","PENDING_TARGET_INVENTORY","ProjectOwner"
+"ADULTS-GR-004","Validation","Run frontend validation after gameplay/routing patch","P0","REQUIRED_AFTER_PATCH","ProjectOwner"
+"ADULTS-GR-005","Closeout","Create gameplay/routing patch closeout evidence","P1","PENDING","ProjectOwner"
