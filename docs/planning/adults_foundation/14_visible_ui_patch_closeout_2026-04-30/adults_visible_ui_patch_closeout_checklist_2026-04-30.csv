@@ -1,0 +1,6 @@
+"CheckId","Check","Status","Evidence"
+"VISIBLE-CLOSEOUT-001","Confirmed Adults visible UI patch committed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\12_confirmed_visible_ui_patch_2026-04-30\adults_confirmed_visible_ui_patch_2026-04-30.txt"
+"VISIBLE-CLOSEOUT-002","Frontend validation after visible patch passed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\13_frontend_validation_after_visible_patch_2026-04-30\frontend_validation_after_visible_patch_summary_2026-04-30.txt"
+"VISIBLE-CLOSEOUT-003","Adults panel test id present","PASS","adults-mode-visible-panel"
+"VISIBLE-CLOSEOUT-004","Adults panel production content present","PASS","Strategic cognitive challenge"
+"VISIBLE-CLOSEOUT-005","Other age categories not combined","PASS","No restricted age-category text in visible panel"
