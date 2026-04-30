@@ -1,0 +1,7 @@
+"CheckId","Check","Status","Evidence"
+"GAMEPLAY-ROUTING-CLOSEOUT-001","Confirmed Adults gameplay/routing patch committed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\17_confirmed_gameplay_routing_patch_2026-04-30\adults_confirmed_gameplay_routing_patch_2026-04-30.txt"
+"GAMEPLAY-ROUTING-CLOSEOUT-002","Frontend validation after gameplay/routing patch passed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\18_frontend_validation_after_gameplay_routing_patch_2026-04-30\frontend_validation_after_gameplay_routing_patch_summary_2026-04-30.txt"
+"GAMEPLAY-ROUTING-CLOSEOUT-003","Gameplay routing config exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsGameplayRouting.ts"
+"GAMEPLAY-ROUTING-CLOSEOUT-004","Visible panel uses gameplay routing config","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"GAMEPLAY-ROUTING-CLOSEOUT-005","Gameplay routing export exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts"
+"GAMEPLAY-ROUTING-CLOSEOUT-006","Adults-only scope preserved","PASS","No restricted age-category text in patched files"
