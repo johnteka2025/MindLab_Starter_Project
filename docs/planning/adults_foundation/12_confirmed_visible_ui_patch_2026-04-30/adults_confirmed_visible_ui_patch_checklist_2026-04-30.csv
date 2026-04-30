@@ -1,0 +1,5 @@
+"CheckId","Check","Status","Evidence"
+"ADULTS-PATCH-001","Confirmed P1 target inventory exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\11_route_ui_target_inventory_2026-04-30\adults_route_ui_target_inventory_2026-04-30.csv"
+"ADULTS-PATCH-002","Adults visible panel patched","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"ADULTS-PATCH-003","Adults panel keeps app-flow resolver","PASS","resolveAppFlowAgeMode('adults')"
+"ADULTS-PATCH-004","Other age categories not combined","PASS","No restricted age-category text in panel"
