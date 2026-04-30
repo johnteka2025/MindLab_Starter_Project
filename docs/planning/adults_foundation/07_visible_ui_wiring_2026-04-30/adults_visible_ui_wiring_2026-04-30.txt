@@ -1,0 +1,8 @@
+RESULT: ADULTS_VISIBLE_UI_WIRING_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+RenderFile=C:\Projects\MindLab_Starter_Project\frontend\src\main.tsx
+VisiblePanel=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx
+Index=C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts
+Inventory=C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\07_visible_ui_wiring_2026-04-30\adults_visible_ui_target_inventory_2026-04-30.csv
+DefaultVisibleAgeMode=adults
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

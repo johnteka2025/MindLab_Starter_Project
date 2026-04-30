@@ -1,3 +1,4 @@
+import { AdultsModeVisiblePanel } from './ageModes/AdultsModeVisiblePanel';
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
@@ -9,7 +10,11 @@ function MindLabRouteGate() {
   const path = typeof window !== "undefined" ? window.location.pathname : "/";
   if (path.startsWith("/kids")) return <KidsLanding />;
   if (path.startsWith("/adults")) return <AdultsLanding />;
-  return <App />;
+  return <>
+      {/* ADULTS_MODE_VISIBLE_PANEL_ANCHOR */}
+      <AdultsModeVisiblePanel />
+      <App />
+    </>;
 }
 
 const root = document.getElementById("root");
