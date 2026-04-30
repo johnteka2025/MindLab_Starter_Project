@@ -1,0 +1,6 @@
+"Step","Lane","Action","Priority","Status","Owner"
+"ADULTS-NEXT-001","Visible UI","Expand Adults visible panel into production-ready age-mode entry","P0","READY_NEXT","ProjectOwner"
+"ADULTS-NEXT-002","Routing","Add safe Adults route or visible navigation entry only after route inventory","P0","READY_NEXT","ProjectOwner"
+"ADULTS-NEXT-003","Gameplay","Map Adults gameplay configuration to existing game screens without reopening Kids","P1","PENDING_TARGET_INVENTORY","ProjectOwner"
+"ADULTS-NEXT-004","Validation","Run frontend validation after each source patch","P0","REQUIRED_EACH_BATCH","ProjectOwner"
+"ADULTS-NEXT-005","Closeout","Create evidence after next implementation lane passes","P1","PENDING","ProjectOwner"

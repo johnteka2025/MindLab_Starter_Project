@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"ADULTS-NEXT-RISK-001","Patching wrong app entry","Run target inventory before source edits","FAIL_IF_TARGET_NOT_CONFIRMED"
+"ADULTS-NEXT-RISK-002","Dirty repository before next patch","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"ADULTS-NEXT-RISK-003","Reopening Kids work","Adults-only scope","FAIL_IF_KIDS_CREATION_MODIFIED"
+"ADULTS-NEXT-RISK-004","Combining other age categories","Adults lane only","FAIL_IF_OTHER_AGE_CATEGORY_COMBINED"
+"ADULTS-NEXT-RISK-005","Validation logs dirty repo","Clean transient logs before final status","FAIL_IF_UNTRACKED_TRANSIENT_LOGS"

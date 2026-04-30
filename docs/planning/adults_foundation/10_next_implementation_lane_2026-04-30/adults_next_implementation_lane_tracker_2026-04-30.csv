@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"ADULTS-LANE-001","Confirm Adults validation closeout exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\09_validation_closeout_2026-04-30\adults_validation_closeout_2026-04-30.txt","Create next lane"
+"ADULTS-LANE-002","Create Adults next implementation roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\10_next_implementation_lane_2026-04-30\adults_next_implementation_lane_roadmap_2026-04-30.csv","Commit package"
+"ADULTS-LANE-003","Create Adults next implementation tracker","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\10_next_implementation_lane_2026-04-30\adults_next_implementation_lane_tracker_2026-04-30.csv","Use tracker for next source patch"
+"ADULTS-LANE-004","Create route and UI target inventory","NEXT_SCRIPT","NEXT_STEP","Find safe source patch targets"
+"ADULTS-LANE-005","Patch app UI or routing","NOT_STARTED","NEXT_STEP","Patch only after target inventory"
