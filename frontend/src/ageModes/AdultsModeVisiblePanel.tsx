@@ -1,4 +1,5 @@
 import { resolveAppFlowAgeMode } from './appFlowAgeModes';
+import { adultsGameplayRouting } from './adultsGameplayRouting';
 
 export function AdultsModeVisiblePanel() {
   const { selectedAgeMode, config } = resolveAppFlowAgeMode('adults');
@@ -17,12 +18,10 @@ export function AdultsModeVisiblePanel() {
       }}
     >
       <p style={{ margin: 0, fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-        Adults Mode
+        {adultsGameplayRouting.routeLabel}
       </p>
-      <h2 style={{ margin: '6px 0 8px' }}>Strategic cognitive challenge</h2>
-      <p style={{ margin: '0 0 12px' }}>
-        Focus, memory, strategy, adaptive challenge, and replayability are active for the selected Adults experience.
-      </p>
+      <h2 style={{ margin: '6px 0 8px' }}>{adultsGameplayRouting.entryTitle}</h2>
+      <p style={{ margin: '0 0 12px' }}>{adultsGameplayRouting.entryDescription}</p>
       <div data-testid="adults-mode-selected-key">Selected age mode: {selectedAgeMode}</div>
       <div data-testid="adults-mode-theme">Theme: {config.coreTheme}</div>
       <div data-testid="adults-mode-difficulty">Difficulty: {config.difficultyModel}</div>
@@ -31,6 +30,11 @@ export function AdultsModeVisiblePanel() {
           <li key={pillar}>{pillar.replaceAll('_', ' ')}</li>
         ))}
       </ul>
+      <ol aria-label="Adults gameplay loop">
+        {adultsGameplayRouting.gameplayLoop.map((step) => (
+          <li key={step}>{step.replaceAll('_', ' ')}</li>
+        ))}
+      </ol>
     </section>
   );
 }
