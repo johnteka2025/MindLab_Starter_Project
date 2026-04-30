@@ -3,3 +3,4 @@ export * from './ageModeRegistry';
 export * from './appFlowAgeModes';
 export * from './AdultsModeVisiblePanel';
 export * from './adultsGameplayRouting';
+export * from './adultsGameplayDepthProgress';
