@@ -1,0 +1,6 @@
+"NextId","Priority","Action","Status","Guardrail"
+"ADULTS-NEXT-001","P0","Prepare Adults gameplay depth or progress integration lane","READY_NEXT","Inventory before source patch"
+"ADULTS-NEXT-002","P0","Run repository and target validation before patch","REQUIRED","Stop if repo dirty"
+"ADULTS-NEXT-003","P1","Patch only confirmed Adults target","PENDING","Do not reopen Kids or combine other age categories"
+"ADULTS-NEXT-004","P0","Run frontend validation after patch","REQUIRED","Commit validation evidence"
+"ADULTS-NEXT-005","P1","Create closeout evidence after validation","PENDING","Final repo clean required"
