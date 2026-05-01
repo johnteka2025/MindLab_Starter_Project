@@ -2,6 +2,7 @@ import { resolveAppFlowAgeMode } from './appFlowAgeModes';
 import { adultsGameplayRouting } from './adultsGameplayRouting';
 import { adultsGameplayDepthProgress } from './adultsGameplayDepthProgress';
 import { adultsPolishBalancingUx } from './adultsPolishBalancingUx';
+import { adultsFinalReadinessAcceptance } from './adultsFinalReadinessAcceptance';
 
 export function AdultsModeVisiblePanel() {
   const { selectedAgeMode, config } = resolveAppFlowAgeMode('adults');
@@ -30,11 +31,17 @@ export function AdultsModeVisiblePanel() {
       <p data-testid="adults-depth-progress-summary" style={{ margin: '0 0 12px' }}>
         {adultsGameplayDepthProgress.progressSummary}
       </p>
+      <p data-testid="adults-final-readiness-summary" style={{ margin: '0 0 12px' }}>
+        {adultsFinalReadinessAcceptance.finalReadinessSummary}
+      </p>
       <div data-testid="adults-mode-selected-key">Selected age mode: {selectedAgeMode}</div>
       <div data-testid="adults-mode-theme">Theme: {config.coreTheme}</div>
       <div data-testid="adults-mode-difficulty">Difficulty: {config.difficultyModel}</div>
       <div data-testid="adults-balancing-tuning">
         Balance: {adultsPolishBalancingUx.balanceTuning.startingDifficulty} / {adultsPolishBalancingUx.balanceTuning.adaptiveRamp}
+      </div>
+      <div data-testid="adults-acceptance-gate">
+        Acceptance gate: {adultsFinalReadinessAcceptance.acceptanceGate.gateLabel}
       </div>
       <ul aria-label="Adults gameplay pillars">
         {pillars.map((pillar) => (
@@ -49,6 +56,11 @@ export function AdultsModeVisiblePanel() {
       <ol aria-label={adultsPolishBalancingUx.accessibility.progressLabel}>
         {adultsGameplayDepthProgress.depthMilestones.map((milestone) => (
           <li key={milestone.id}>{milestone.label}: {milestone.target.replaceAll('_', ' ')}</li>
+        ))}
+      </ol>
+      <ol aria-label="Adults acceptance checklist">
+        {adultsFinalReadinessAcceptance.acceptanceChecklist.map((item) => (
+          <li key={item.id}>{item.label}: {item.status}</li>
         ))}
       </ol>
     </section>

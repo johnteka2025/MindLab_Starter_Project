@@ -5,3 +5,4 @@ export * from './AdultsModeVisiblePanel';
 export * from './adultsGameplayRouting';
 export * from './adultsGameplayDepthProgress';
 export * from './adultsPolishBalancingUx';
+export * from './adultsFinalReadinessAcceptance';
