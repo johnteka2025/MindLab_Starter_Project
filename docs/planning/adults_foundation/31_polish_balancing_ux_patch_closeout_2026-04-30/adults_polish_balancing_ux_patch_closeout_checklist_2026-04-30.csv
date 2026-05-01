@@ -1,0 +1,7 @@
+"CheckId","Check","Status","Evidence"
+"POLISH-BALANCING-UX-CLOSEOUT-001","Confirmed Adults polish/balancing/UX patch committed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\29_confirmed_polish_balancing_ux_patch_2026-04-30\adults_confirmed_polish_balancing_ux_patch_2026-04-30.txt"
+"POLISH-BALANCING-UX-CLOSEOUT-002","Frontend validation after polish/balancing/UX patch passed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\30_frontend_validation_after_polish_balancing_ux_patch_2026-04-30\frontend_validation_after_polish_balancing_ux_patch_summary_2026-04-30.txt"
+"POLISH-BALANCING-UX-CLOSEOUT-003","Polish/balancing/UX config exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsPolishBalancingUx.ts"
+"POLISH-BALANCING-UX-CLOSEOUT-004","Visible panel uses polish/balancing/UX config","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"POLISH-BALANCING-UX-CLOSEOUT-005","Polish/balancing/UX export exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts"
+"POLISH-BALANCING-UX-CLOSEOUT-006","Adults-only scope preserved","PASS","No restricted age-category text in patched files"
