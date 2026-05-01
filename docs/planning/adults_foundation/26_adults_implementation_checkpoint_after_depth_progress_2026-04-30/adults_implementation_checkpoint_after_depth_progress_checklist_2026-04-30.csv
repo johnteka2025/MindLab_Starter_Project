@@ -1,0 +1,7 @@
+"CheckId","Check","Status","Evidence"
+"ADULTS-DP-CHECKPOINT-001","Adults depth/progress patch closed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\25_gameplay_depth_progress_patch_closeout_2026-04-30\adults_gameplay_depth_progress_patch_closeout_2026-04-30.txt"
+"ADULTS-DP-CHECKPOINT-002","Frontend validation passed after depth/progress patch","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\24_frontend_validation_after_depth_progress_patch_2026-04-30\frontend_validation_after_depth_progress_patch_summary_2026-04-30.txt"
+"ADULTS-DP-CHECKPOINT-003","Adults depth/progress config exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsGameplayDepthProgress.ts"
+"ADULTS-DP-CHECKPOINT-004","Adults gameplay routing config still exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsGameplayRouting.ts"
+"ADULTS-DP-CHECKPOINT-005","Adults visible panel uses depth/progress config","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"ADULTS-DP-CHECKPOINT-006","Repository clean before checkpoint","PASS","git status --porcelain empty"
