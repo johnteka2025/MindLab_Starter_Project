@@ -1,0 +1,6 @@
+"CheckId","Check","Status","Evidence"
+"ADULTS-PBUX-PATCH-001","Confirmed P1 polish/balancing/UX target exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\28_polish_balancing_ux_target_inventory_2026-04-30\adults_polish_balancing_ux_target_inventory_2026-04-30.csv"
+"ADULTS-PBUX-PATCH-002","Adults polish/balancing/UX config created","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsPolishBalancingUx.ts"
+"ADULTS-PBUX-PATCH-003","Visible panel wired to polish/balancing/UX config","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"ADULTS-PBUX-PATCH-004","Polish/balancing/UX export added","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts"
+"ADULTS-PBUX-PATCH-005","Adults-only scope preserved","PASS","No restricted age-category text in patched files"
