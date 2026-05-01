@@ -1,0 +1,7 @@
+"CheckId","Check","Status","Evidence"
+"DEPTH-PROGRESS-CLOSEOUT-001","Confirmed Adults gameplay depth/progress patch committed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\23_confirmed_gameplay_depth_progress_patch_2026-04-30\adults_confirmed_gameplay_depth_progress_patch_2026-04-30.txt"
+"DEPTH-PROGRESS-CLOSEOUT-002","Frontend validation after depth/progress patch passed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\24_frontend_validation_after_depth_progress_patch_2026-04-30\frontend_validation_after_depth_progress_patch_summary_2026-04-30.txt"
+"DEPTH-PROGRESS-CLOSEOUT-003","Depth/progress config exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsGameplayDepthProgress.ts"
+"DEPTH-PROGRESS-CLOSEOUT-004","Visible panel uses depth/progress config","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"DEPTH-PROGRESS-CLOSEOUT-005","Depth/progress export exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts"
+"DEPTH-PROGRESS-CLOSEOUT-006","Adults-only scope preserved","PASS","No restricted age-category text in patched files"
