@@ -1,0 +1,5 @@
+"NextId","Priority","Action","Status","Guardrail"
+"SENIORS-NEXT-001","P0","Create Seniors gameplay accessibility progress target inventory","READY_NEXT","Inventory before source patch"
+"SENIORS-NEXT-002","P0","Patch only confirmed Seniors target","PENDING","Do not combine with Adults or Kids"
+"SENIORS-NEXT-003","P0","Run frontend validation after patch","REQUIRED","Commit validation evidence"
+"SENIORS-NEXT-004","P1","Create Seniors gameplay accessibility progress closeout","PENDING","Final repo clean required"

@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"SENIORS-GAP-TASK-001","Confirm Seniors foundation checkpoint exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\seniors_foundation\06_seniors_implementation_checkpoint_2026-04-30\seniors_implementation_checkpoint_2026-04-30.txt","Create next lane"
+"SENIORS-GAP-TASK-002","Create Seniors gameplay/accessibility/progress roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\seniors_foundation\07_gameplay_accessibility_progress_lane_2026-04-30\seniors_gameplay_accessibility_progress_lane_roadmap_2026-04-30.csv","Commit package"
+"SENIORS-GAP-TASK-003","Create Seniors target inventory","NEXT_SCRIPT","NEXT_STEP","Find confirmed source targets"
+"SENIORS-GAP-TASK-004","Patch confirmed Seniors source target","NOT_STARTED","WAIT","Only after inventory passes"
+"SENIORS-GAP-TASK-005","Validate and close out","NOT_STARTED","WAIT","Run validation after patch"
