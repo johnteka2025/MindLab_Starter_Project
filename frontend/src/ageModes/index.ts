@@ -6,3 +6,5 @@ export * from './adultsGameplayRouting';
 export * from './adultsGameplayDepthProgress';
 export * from './adultsPolishBalancingUx';
 export * from './adultsFinalReadinessAcceptance';
+export * from './seniorsAgeModeFoundation';
+export * from './SeniorsModeVisiblePanel';
