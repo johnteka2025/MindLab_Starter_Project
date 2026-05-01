@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"ADULTS-FRA-RISK-001","Accepting Adults before validation evidence exists","Require validation summary before final closeout","FAIL_IF_VALIDATION_MISSING"
+"ADULTS-FRA-RISK-002","Dirty repository before final readiness patch","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"ADULTS-FRA-RISK-003","Repeating prior Adults work","Start from checkpoint only","FAIL_IF_PRIOR_LANES_RECREATED"
+"ADULTS-FRA-RISK-004","Combining other age categories","Adults-only final readiness lane","FAIL_IF_OTHER_AGE_CATEGORY_COMBINED"
+"ADULTS-FRA-RISK-005","Missing acceptance evidence","Create checklist, gate, and runbook evidence","FAIL_IF_ACCEPTANCE_EVIDENCE_MISSING"
