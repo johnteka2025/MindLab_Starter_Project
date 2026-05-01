@@ -1,0 +1,8 @@
+"CheckId","Check","Status","Evidence"
+"ADULTS-PBUX-CHECKPOINT-001","Adults polish/balancing/UX patch closed","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\31_polish_balancing_ux_patch_closeout_2026-04-30\adults_polish_balancing_ux_patch_closeout_2026-04-30.txt"
+"ADULTS-PBUX-CHECKPOINT-002","Frontend validation passed after polish/balancing/UX patch","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\30_frontend_validation_after_polish_balancing_ux_patch_2026-04-30\frontend_validation_after_polish_balancing_ux_patch_summary_2026-04-30.txt"
+"ADULTS-PBUX-CHECKPOINT-003","Adults polish/balancing/UX config exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsPolishBalancingUx.ts"
+"ADULTS-PBUX-CHECKPOINT-004","Adults depth/progress config still exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsGameplayDepthProgress.ts"
+"ADULTS-PBUX-CHECKPOINT-005","Adults gameplay/routing config still exists","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\adultsGameplayRouting.ts"
+"ADULTS-PBUX-CHECKPOINT-006","Adults visible panel uses polish/balancing/UX config","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\AdultsModeVisiblePanel.tsx"
+"ADULTS-PBUX-CHECKPOINT-007","Repository clean before checkpoint","PASS","git status --porcelain empty"
