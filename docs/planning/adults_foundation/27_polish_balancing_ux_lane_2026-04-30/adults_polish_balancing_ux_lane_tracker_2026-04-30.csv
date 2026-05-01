@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"ADULTS-PBUX-TASK-001","Confirm depth/progress checkpoint exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\26_adults_implementation_checkpoint_after_depth_progress_2026-04-30\adults_implementation_checkpoint_after_depth_progress_2026-04-30.txt","Create polish/balancing/UX lane"
+"ADULTS-PBUX-TASK-002","Create polish/balancing/UX lane roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\27_polish_balancing_ux_lane_2026-04-30\adults_polish_balancing_ux_lane_roadmap_2026-04-30.csv","Commit package"
+"ADULTS-PBUX-TASK-003","Create polish/balancing/UX target inventory","NEXT_SCRIPT","NEXT_STEP","Find confirmed source targets"
+"ADULTS-PBUX-TASK-004","Patch confirmed Adults target only","NOT_STARTED","NEXT_STEP","Patch after inventory"
+"ADULTS-PBUX-TASK-005","Run validation and closeout","NOT_STARTED","NEXT_STEP","Validate after patch"

@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"ADULTS-PBUX-RISK-001","Patching unconfirmed UX or balancing file","Inventory first","FAIL_IF_TARGET_NOT_CONFIRMED"
+"ADULTS-PBUX-RISK-002","Dirty repository before patch","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"ADULTS-PBUX-RISK-003","Repeating checkpoint work","Start from checkpoint only","FAIL_IF_CHECKPOINT_RECREATED"
+"ADULTS-PBUX-RISK-004","Combining other age categories","Adults-only lane","FAIL_IF_OTHER_AGE_CATEGORY_COMBINED"
+"ADULTS-PBUX-RISK-005","Validation artifacts dirty repo","Clean transient folders before final status","FAIL_IF_TRANSIENT_ARTIFACTS_REMAIN"
