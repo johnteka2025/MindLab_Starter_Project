@@ -1,0 +1,10 @@
+RESULT: SENIORS_SEPARATE_PLANNING_LANE_READY
+RepoRoot=C:\Projects\MindLab_Starter_Project
+StartFrom=Adults final implementation checkpoint transition gate committed and repo clean
+NextLane=Seniors separate age category planning
+SeniorsOnly=true
+DoNotCombineWithAdults=true
+DoNotRepeatAdultsCompletedLanes=true
+DoNotRepeatKidsTasks=true
+RequiredNextStep=Create Seniors architecture inventory and assumptions matrix before source patch
+RequiredStartAndEndPath=C:\Projects\MindLab_Starter_Project

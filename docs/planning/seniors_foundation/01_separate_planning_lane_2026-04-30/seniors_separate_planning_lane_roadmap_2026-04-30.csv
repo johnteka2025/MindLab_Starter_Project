@@ -1,0 +1,6 @@
+"Step","Lane","Action","Priority","Status","Owner"
+"SENIORS-PLAN-001","Foundation","Create Seniors as separate age category planning lane","P0","READY","ProjectOwner"
+"SENIORS-PLAN-002","Discovery","Inventory existing age-mode architecture before Seniors source patch","P0","NEXT","ProjectOwner"
+"SENIORS-PLAN-003","Design","Define Seniors cognitive, accessibility, pacing, and UX assumptions","P0","PENDING","ProjectOwner"
+"SENIORS-PLAN-004","Validation","Require repo clean and frontend validation before any Seniors source patch","P0","REQUIRED","ProjectOwner"
+"SENIORS-PLAN-005","Isolation","Do not modify Adults or Kids completed lanes unless inventory proves a shared registry target","P0","REQUIRED","ProjectOwner"

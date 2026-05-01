@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"SENIORS-TASK-001","Confirm Adults transition gate exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\adults_foundation\38_final_implementation_checkpoint_transition_gate_2026-04-30\adults_final_implementation_checkpoint_transition_gate_2026-04-30.txt","Create Seniors planning lane"
+"SENIORS-TASK-002","Create Seniors roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\seniors_foundation\01_separate_planning_lane_2026-04-30\seniors_separate_planning_lane_roadmap_2026-04-30.csv","Commit planning package"
+"SENIORS-TASK-003","Create Seniors architecture inventory","NEXT_SCRIPT","NEXT_STEP","Inventory before source patch"
+"SENIORS-TASK-004","Create Seniors assumptions matrix","NEXT_SCRIPT","NEXT_STEP","Define values before patch"
+"SENIORS-TASK-005","Patch Seniors source target","NOT_STARTED","WAIT","Only after inventory and assumptions pass"

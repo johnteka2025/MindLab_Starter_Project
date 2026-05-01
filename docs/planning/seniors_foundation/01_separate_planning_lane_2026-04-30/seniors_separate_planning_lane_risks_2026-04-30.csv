@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"SENIORS-RISK-001","Combining Seniors with Adults","Separate docs path and separate lane","FAIL_IF_SENIORS_COMBINED_WITH_ADULTS"
+"SENIORS-RISK-002","Reopening completed Adults work","Read Adults gate only","FAIL_IF_ADULTS_SOURCE_MODIFIED_IN_PLANNING"
+"SENIORS-RISK-003","Dirty repo before planning","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"SENIORS-RISK-004","Missing architecture inventory","Inventory before patch","FAIL_IF_INVENTORY_MISSING"
+"SENIORS-RISK-005","Missing accessibility and pacing assumptions","Create assumptions matrix before implementation","FAIL_IF_ASSUMPTIONS_MISSING"
