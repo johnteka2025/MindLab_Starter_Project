@@ -1,4 +1,5 @@
 import { seniorsAgeModeFoundation } from './seniorsAgeModeFoundation';
+import { seniorsGameplayAccessibilityProgress } from './seniorsGameplayAccessibilityProgress';
 
 export function SeniorsModeVisiblePanel() {
   return (
@@ -22,6 +23,9 @@ export function SeniorsModeVisiblePanel() {
       <p data-testid="seniors-foundation-summary" style={{ margin: '0 0 12px' }}>
         Seniors mode supports memory, focus, attention, pattern recognition, accessible pacing, and confidence-building progress.
       </p>
+      <p data-testid="seniors-gap-progress-summary" style={{ margin: '0 0 12px' }}>
+        {seniorsGameplayAccessibilityProgress.progressSummary}
+      </p>
       <div data-testid="seniors-pacing-model">Pacing: {seniorsAgeModeFoundation.pacingModel.replaceAll('_', ' ')}</div>
       <div data-testid="seniors-accessibility-model">Accessibility: {seniorsAgeModeFoundation.accessibilityModel.replaceAll('_', ' ')}</div>
       <div data-testid="seniors-difficulty-model">Difficulty: {seniorsAgeModeFoundation.difficultyModel.replaceAll('_', ' ')}</div>
@@ -30,6 +34,21 @@ export function SeniorsModeVisiblePanel() {
           <li key={pillar}>{pillar.replaceAll('_', ' ')}</li>
         ))}
       </ul>
+      <ol aria-label="Seniors gameplay loop">
+        {seniorsGameplayAccessibilityProgress.gameplayLoop.map((step) => (
+          <li key={step}>{step.replaceAll('_', ' ')}</li>
+        ))}
+      </ol>
+      <ul aria-label="Seniors accessibility supports">
+        {seniorsGameplayAccessibilityProgress.accessibilitySupports.map((support) => (
+          <li key={support}>{support.replaceAll('_', ' ')}</li>
+        ))}
+      </ul>
+      <ol aria-label="Seniors progress milestones">
+        {seniorsGameplayAccessibilityProgress.progressMilestones.map((milestone) => (
+          <li key={milestone.id}>{milestone.label}: {milestone.target.replaceAll('_', ' ')}</li>
+        ))}
+      </ol>
     </section>
   );
 }
