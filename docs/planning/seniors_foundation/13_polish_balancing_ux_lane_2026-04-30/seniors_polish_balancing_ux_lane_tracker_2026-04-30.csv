@@ -1,0 +1,6 @@
+"TaskId","Task","Status","Evidence","NextAction"
+"SENIORS-PBUX-TASK-001","Confirm Seniors GAP checkpoint exists","PASS","C:\Projects\MindLab_Starter_Project\docs\planning\seniors_foundation\12_seniors_implementation_checkpoint_after_gameplay_accessibility_progress_2026-04-30\seniors_implementation_checkpoint_after_gameplay_accessibility_progress_2026-04-30.txt","Create polish balancing UX lane"
+"SENIORS-PBUX-TASK-002","Create Seniors polish balancing UX roadmap","READY_TO_COMMIT","C:\Projects\MindLab_Starter_Project\docs\planning\seniors_foundation\13_polish_balancing_ux_lane_2026-04-30\seniors_polish_balancing_ux_lane_roadmap_2026-04-30.csv","Commit package"
+"SENIORS-PBUX-TASK-003","Create Seniors polish balancing UX target inventory","NEXT_SCRIPT","NEXT_STEP","Find confirmed source targets"
+"SENIORS-PBUX-TASK-004","Patch confirmed Seniors source target","NOT_STARTED","WAIT","Only after inventory passes"
+"SENIORS-PBUX-TASK-005","Validate and close out","NOT_STARTED","WAIT","Run validation after patch"

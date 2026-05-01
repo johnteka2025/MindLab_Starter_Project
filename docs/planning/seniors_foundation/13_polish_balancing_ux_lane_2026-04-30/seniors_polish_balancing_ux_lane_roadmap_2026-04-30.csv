@@ -1,0 +1,6 @@
+"Step","Lane","Action","Priority","Status","Owner"
+"SENIORS-PBUX-001","Polish","Inventory Seniors copy, guidance, empty state, and summary polish targets","P0","READY_NEXT","ProjectOwner"
+"SENIORS-PBUX-002","Balancing","Inventory gentle ramp, low-pressure difficulty, mastery, and replay tuning targets","P0","READY_NEXT","ProjectOwner"
+"SENIORS-PBUX-003","UX","Inventory readable layout, accessibility labels, larger text, and reduced clutter targets","P0","READY_NEXT","ProjectOwner"
+"SENIORS-PBUX-004","Validation","Run frontend validation after confirmed Seniors polish balancing UX patch","P0","REQUIRED_AFTER_PATCH","ProjectOwner"
+"SENIORS-PBUX-005","Closeout","Create Seniors polish balancing UX closeout evidence","P1","PENDING","ProjectOwner"

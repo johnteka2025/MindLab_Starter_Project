@@ -1,0 +1,6 @@
+"RiskId","Risk","Control","PassFailRule"
+"SENIORS-PBUX-RISK-001","Patching unconfirmed Seniors polish balancing UX target","Inventory first","FAIL_IF_TARGET_NOT_CONFIRMED"
+"SENIORS-PBUX-RISK-002","Combining Seniors with Adults","Seniors-only lane","FAIL_IF_ADULTS_SOURCE_PATCHED_WITHOUT_SHARED_REGISTRY_REASON"
+"SENIORS-PBUX-RISK-003","Reopening Kids work","Do not patch Kids files","FAIL_IF_KIDS_SOURCE_MODIFIED"
+"SENIORS-PBUX-RISK-004","Dirty repository before patch","Stop on dirty state","FAIL_IF_REPO_DIRTY"
+"SENIORS-PBUX-RISK-005","Missing validation evidence","Run validation after patch","FAIL_IF_VALIDATION_MISSING"
