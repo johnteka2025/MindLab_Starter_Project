@@ -1,0 +1,2 @@
+"CommandName","CommandText","ExitCode","Result"
+"build","npm run build","0","PASS"
