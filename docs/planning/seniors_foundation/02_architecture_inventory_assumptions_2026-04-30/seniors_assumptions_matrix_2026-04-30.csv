@@ -1,0 +1,8 @@
+"AssumptionId","Area","RecommendedValue","Reason","RequiredForPatch"
+"SENIORS-ASSUME-001","Cognitive Goal","memory_support_focus_attention_pattern_recognition","Seniors lane needs cognitive value distinct from Adults","YES"
+"SENIORS-ASSUME-002","Pacing","slower_guided_low_pressure_progression","Supports accessible play and reduces frustration","YES"
+"SENIORS-ASSUME-003","Accessibility","larger_text_clear_labels_high_readability_reduced_clutter","Improves usability for older players","YES"
+"SENIORS-ASSUME-004","Difficulty","adaptive_gentle_ramp_with_optional_challenge","Maintains engagement without forcing high pressure","YES"
+"SENIORS-ASSUME-005","Progress","confidence_milestones_consistency_streaks_and_replay_mastery","Tracks improvement without punishing failure","YES"
+"SENIORS-ASSUME-006","UX Tone","encouraging_clear_respectful_non_childlike","Keeps Seniors experience age-appropriate","YES"
+"SENIORS-ASSUME-007","Separation","separate_from_adults_and_kids","Required by Adults transition gate","YES"
