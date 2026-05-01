@@ -1,0 +1,6 @@
+"GateId","Gate","Status","RequiredBeforeNext"
+"TRANSITION-GATE-001","Adults final readiness accepted for current lane","PASS","YES"
+"TRANSITION-GATE-002","Repository clean after Adults final closeout","PASS","YES"
+"TRANSITION-GATE-003","Do not repeat Adults completed lanes","PASS","YES"
+"TRANSITION-GATE-004","Do not reopen Kids tasks","PASS","YES"
+"TRANSITION-GATE-005","Prepare next age category only as a separate lane","READY_NEXT","YES"
