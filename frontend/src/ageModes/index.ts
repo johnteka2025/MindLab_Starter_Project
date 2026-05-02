@@ -9,3 +9,4 @@ export * from './adultsFinalReadinessAcceptance';
 export * from './seniorsAgeModeFoundation';
 export * from './SeniorsModeVisiblePanel';
 export * from './seniorsGameplayAccessibilityProgress';
+export * from './seniorsPolishBalancingUx';
