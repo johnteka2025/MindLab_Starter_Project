@@ -1,0 +1,4 @@
+RESULT: UNIFIED_RELEASE_CANDIDATE_QA_EVIDENCE_READY
+RequiredChecks=typecheck,build
+OptionalChecks=lint,test
+DoNotCommit=frontend/dist|frontend/build unless release policy explicitly changes

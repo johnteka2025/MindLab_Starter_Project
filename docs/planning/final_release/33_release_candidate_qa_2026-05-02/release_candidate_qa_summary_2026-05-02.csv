@@ -1,0 +1,5 @@
+"Check","Classification","Status","ExitCode","Evidence"
+"typecheck","INFO","SKIP","","C:\Projects\MindLab_Starter_Project\docs\planning\final_release\33_release_candidate_qa_2026-05-02\release_candidate_typecheck.log"
+"lint","INFO","SKIP","","C:\Projects\MindLab_Starter_Project\docs\planning\final_release\33_release_candidate_qa_2026-05-02\release_candidate_lint.log"
+"test","INFO","SKIP","","C:\Projects\MindLab_Starter_Project\docs\planning\final_release\33_release_candidate_qa_2026-05-02\release_candidate_test.log"
+"build","REQUIRED","PASS","0","C:\Projects\MindLab_Starter_Project\docs\planning\final_release\33_release_candidate_qa_2026-05-02\release_candidate_build.log"
