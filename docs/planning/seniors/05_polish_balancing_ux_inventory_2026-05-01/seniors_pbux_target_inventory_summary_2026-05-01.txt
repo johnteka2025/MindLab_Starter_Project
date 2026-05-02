@@ -1,0 +1,2 @@
+RESULT: SENIORS_PBUX_TARGET_INVENTORY_READY
+NextAction=Patch confirmed Seniors PBUX target

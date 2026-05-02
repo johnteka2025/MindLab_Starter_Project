@@ -1,0 +1,4 @@
+"Target","Status","Action"
+"frontend/src/ageModes/seniorsPolishBalancingUx.ts","MISSING_CREATE","Create Seniors PBUX rules/data module"
+"frontend/src/ageModes/SeniorsModeVisiblePanel.tsx","EXISTS","Wire visible Seniors PBUX panel safely"
+"frontend/src/ageModes/index.ts","EXISTS","Export Seniors PBUX module"
