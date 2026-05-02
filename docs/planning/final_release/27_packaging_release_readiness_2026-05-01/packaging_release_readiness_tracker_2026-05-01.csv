@@ -1,0 +1,5 @@
+"Step","Task","Status","Notes"
+"REL-001","Package-script audit","READY","Use package.json script inventory and build command audit."
+"REL-002","Build artifact review","READY","Do not commit transient dist/build unless policy explicitly requires it."
+"REL-003","Accessibility evidence check","READY","Verify Seniors comfort/accessibility evidence is present."
+"REL-004","Release notes and known backlog","READY","Document deferred enhancements and optional lanes."
