@@ -1,0 +1,6 @@
+"AgeCategory","Lane","Priority","Focus","Guardrail","NextAction"
+"Kids","K-E1","OPTIONAL_AFTER_BASELINE","Light acceleration and confidence-safe routing","Do not reduce scaffolding, readability, or emotional safety","Open only after release packaging and QA evidence remain clean"
+"Adults","A-E1","OPTIONAL_AFTER_BASELINE","Adaptive tuning, mastery, self-insight, replay evolution","Keep enhancement separate from sealed baseline","Open only as bounded enhancement lane"
+"Seniors","S-SE1","OPTIONAL_AFTER_BASELINE","Adaptive comfort, calm mastery, replay familiarity, multimodal assist","Defer SE2 and SE3 until accessibility and pacing evidence are proven","Open only after comfort and accessibility checks"
+"WholeGame","WG-TEL","OPTIONAL_POLICY_REQUIRED","Privacy-aware telemetry and quality evidence","No personal data collection without explicit policy","Define privacy policy before telemetry implementation"
+"WholeGame","WG-TECH","OPTIONAL_POLICY_REQUIRED","Performance-ready pipelines and packaging review","Do not commit generated dist/build unless policy changes","Keep generated build artifacts excluded unless approved"
