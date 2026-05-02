@@ -1,0 +1,4 @@
+RESULT: MINDLAB_FINAL_HANDOFF_READY
+RepositoryRoot=C:\Projects\MindLab_Starter_Project
+DoNotReopen=Kids|Adults|Closed Seniors lanes
+NextAction=Stop after final clean verification
