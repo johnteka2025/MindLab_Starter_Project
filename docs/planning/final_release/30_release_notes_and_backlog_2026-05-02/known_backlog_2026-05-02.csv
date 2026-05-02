@@ -1,0 +1,5 @@
+"ID","Area","Task","Status","Notes"
+"B-001","Release","Confirm packaging policy","OPTIONAL","Do not commit dist/build without policy."
+"B-002","Seniors","SE1 enhancement planning","OPTIONAL","Start only after baseline evidence remains stable."
+"B-003","Adults","E1 enhancement planning","OPTIONAL","Separate from baseline closeout."
+"B-004","Kids","Light acceleration research","OPTIONAL","Keep scaffolding/confidence first."
