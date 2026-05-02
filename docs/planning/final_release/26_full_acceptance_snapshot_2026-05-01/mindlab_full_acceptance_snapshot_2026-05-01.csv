@@ -1,0 +1,6 @@
+"Area","Status","Notes"
+"Kids","CLOSED","Do not reopen"
+"Adults","CLOSED","Optional enhancement is separate"
+"Seniors","READY_AFTER_FINAL_GATE","Use Seniors final transition evidence"
+"Repository","CLEAN","Required before release prep"
+"NextFocus","FINAL_RELEASE_PREP","Packaging, documentation, handoff"
