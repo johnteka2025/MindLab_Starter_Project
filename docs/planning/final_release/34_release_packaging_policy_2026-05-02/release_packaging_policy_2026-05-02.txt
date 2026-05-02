@@ -1,0 +1,11 @@
+RESULT: RELEASE_PACKAGING_POLICY_READY
+ReleaseOwner=Project Owner
+ReleaseChannel=Internal QA / Release Candidate
+TargetVersion=1.0.0-rc.1
+CommitBuildArtifacts=NO
+Policy=Do not commit frontend/dist or frontend/build unless CommitBuildArtifacts is YES and release owner approves.
+Policy=Run release-candidate QA before packaging or release.
+Policy=Keep Kids, Adults, and Seniors baselines closed unless a new approved enhancement lane starts.
+Policy=Release packaging may proceed only after final clean repository check passes.
+Policy=Generated QA logs must remain committed as evidence.
+ManualUpdateNeeded=NO
