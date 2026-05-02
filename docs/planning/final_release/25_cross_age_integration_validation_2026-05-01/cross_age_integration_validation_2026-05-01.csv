@@ -1,0 +1,5 @@
+"Check","Status","Evidence"
+"Export:seniorsPolishBalancingUx","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts"
+"Export:seniorsFinalReadinessAcceptance","PASS","C:\Projects\MindLab_Starter_Project\frontend\src\ageModes\index.ts"
+"Script:build","PASS","C:\Projects\MindLab_Starter_Project\frontend\package.json"
+"Script:lint","INFO","C:\Projects\MindLab_Starter_Project\frontend\package.json"

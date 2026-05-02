@@ -1,0 +1,2 @@
+RESULT: CROSS_AGE_INTEGRATION_VALIDATION_READY
+RequiredNextAction=Create final acceptance snapshot
