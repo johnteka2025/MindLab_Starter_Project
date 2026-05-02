@@ -1,0 +1,5 @@
+"Check","Classification","Status","ExitCode","Evidence"
+"typecheck","INFO","SKIP","","C:\Projects\MindLab_Starter_Project\docs\planning\seniors\07_pbux_validation_2026-05-01\seniors_pbux_typecheck.log"
+"lint","INFO","SKIP","","C:\Projects\MindLab_Starter_Project\docs\planning\seniors\07_pbux_validation_2026-05-01\seniors_pbux_lint.log"
+"test","INFO","SKIP","","C:\Projects\MindLab_Starter_Project\docs\planning\seniors\07_pbux_validation_2026-05-01\seniors_pbux_test.log"
+"build","REQUIRED","PASS","0","C:\Projects\MindLab_Starter_Project\docs\planning\seniors\07_pbux_validation_2026-05-01\seniors_pbux_build.log"
