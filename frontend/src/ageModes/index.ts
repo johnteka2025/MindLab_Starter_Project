@@ -10,3 +10,4 @@ export * from './seniorsAgeModeFoundation';
 export * from './SeniorsModeVisiblePanel';
 export * from './seniorsGameplayAccessibilityProgress';
 export * from './seniorsPolishBalancingUx';
+export * from './seniorsFinalReadinessAcceptance';

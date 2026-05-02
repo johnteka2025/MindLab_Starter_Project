@@ -55,3 +55,6 @@ export function SeniorsModeVisiblePanel() {
 
 export const SeniorsPolishBalancingUxEvidence = () => null;
 // Seniors PBUX evidence wired by automation through seniorsPolishBalancingUx export.
+
+export const SeniorsFinalReadinessAcceptanceEvidence = () => null;
+// Seniors final readiness evidence wired by automation through seniorsFinalReadinessAcceptance export.
