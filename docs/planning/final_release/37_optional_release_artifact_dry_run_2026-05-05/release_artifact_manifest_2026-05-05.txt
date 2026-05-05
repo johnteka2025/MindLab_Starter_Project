@@ -1,0 +1,9 @@
+RESULT: OPTIONAL_RELEASE_ARTIFACT_DRY_RUN_READY
+ReleaseOwner=Project Owner
+ReleaseChannel=Internal QA / Release Candidate
+CommitBuildArtifacts=NO
+ExternalArtifactPath=C:\Projects\MindLab_Release_Artifacts\mindlab_release_candidate_2026-05-05.zip
+ExternalArtifactBytes=89179
+BuildLog=C:\Projects\MindLab_Starter_Project\docs\planning\final_release\37_optional_release_artifact_dry_run_2026-05-05\release_artifact_build.log
+Policy=Do not commit frontend/dist or frontend/build.
+ManualUpdateNeeded=NO
