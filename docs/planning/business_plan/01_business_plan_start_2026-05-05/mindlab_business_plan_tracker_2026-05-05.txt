@@ -1,0 +1,18 @@
+RESULT: BUSINESS_PLAN_TRACKER_CREATED
+ProductName=MindLab
+BusinessOwner=Project Owner
+LaunchStage=Internal QA / Release Candidate
+TargetAudience=Kids, Adults, Seniors
+PricingModel=TBD
+DistributionChannel=TBD
+SupportModel=TBD
+PrivacyLegalStatus=TBD
+GameCreationStatus=Complete
+ReleaseArtifactStatus=Complete
+ManualUpdateNeeded=YES
+RecommendedManualValues:
+BusinessOwner=Project Owner
+PricingModel=Free pilot, then TBD
+DistributionChannel=Internal QA first, public channel TBD
+SupportModel=Email/contact form TBD
+PrivacyLegalStatus=Privacy policy required before public launch
