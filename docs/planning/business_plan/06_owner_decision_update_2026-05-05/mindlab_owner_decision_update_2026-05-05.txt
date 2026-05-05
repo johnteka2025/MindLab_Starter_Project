@@ -1,0 +1,21 @@
+RESULT: OWNER_DECISION_UPDATE_ONLY_CREATED
+ProductName=MindLab
+ReleaseArtifact=C:\Projects\MindLab_Release_Artifacts\mindlab_release_candidate_2026-05-05.zip
+GameCreationStatus=COMPLETE
+ReleaseArtifactStatus=COMPLETE
+BusinessPlanningStatus=OWNER_DECISION_VALUES_RECORDED
+
+OwnerDecisionValues:
+PrivacyPolicy=REQUIRED_BEFORE_PUBLIC_LAUNCH
+TermsOfUse=REQUIRED_BEFORE_PUBLIC_LAUNCH
+SupportContact=TBD_EMAIL_OR_CONTACT_FORM
+DistributionChannel=INTERNAL_QA_FIRST_PUBLIC_WEB_APP_TBD
+PricingDecision=FREE_PILOT_THEN_TBD
+UserTestingApproval=REQUIRED_BEFORE_PUBLIC_OR_COMMERCIAL_LAUNCH
+FinalLaunchOwnerApproval=REQUIRED_PROJECT_OWNER_APPROVAL
+PublicLaunchDecision=NO_GO_PENDING_REQUIRED_BUSINESS_DECISIONS
+
+ManualUpdateNeeded=YES_IF_VALUES_REMAIN_TBD_OR_REQUIRED
+DoNotRerun=S1,S2,S3,S4,BP001,BP002,BP003,BP004,BP005
+NextApprovedAction=Owner decision review or final launch go/no-go only
+RESULT: STOP_NOW
