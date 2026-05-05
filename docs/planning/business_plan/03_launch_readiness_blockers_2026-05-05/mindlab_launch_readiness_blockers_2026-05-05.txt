@@ -1,0 +1,29 @@
+RESULT: BP003_LAUNCH_READINESS_BLOCKERS_CREATED
+ProductName=MindLab
+GameCreationStatus=Complete
+ReleaseArtifactStatus=Complete
+BusinessPlanTrackerStatus=Started
+RecommendedValuesStatus=Complete
+PublicLaunchStatus=BLOCKED_UNTIL_MANUAL_BUSINESS_DECISIONS_COMPLETE
+
+RequiredBeforePublicLaunch:
+1_PrivacyPolicy=REQUIRED
+2_TermsOfUse=REQUIRED
+3_SupportContact=REQUIRED
+4_DistributionChannel=REQUIRED
+5_PricingDecision=REQUIRED
+6_UserTestingApproval=REQUIRED
+7_FinalLaunchOwnerApproval=REQUIRED
+
+RecommendedManualValues:
+PrivacyPolicy=Create privacy policy before public launch
+TermsOfUse=Create terms of use before public launch
+SupportContact=Use project support email or contact form
+DistributionChannel=Internal QA first, public web/app distribution TBD
+PricingDecision=Free pilot, then TBD
+UserTestingApproval=Internal QA approval required before public/commercial launch
+FinalLaunchOwnerApproval=Project Owner approval required
+
+DoNotRerun=S1,S2,S3,S4,BP001,BP002
+NextApprovedAction=BP004_FINAL_BUSINESS_PLAN_STOP_CHECK
+ManualUpdateNeeded=YES
