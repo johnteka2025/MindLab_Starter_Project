@@ -1,4 +1,4 @@
-﻿const http = require("http");
+const http = require("http");
 const url = require("url");
 
 const host = process.env.BACKEND_HOST || process.env.HOST || "0.0.0.0";
@@ -8,6 +8,10 @@ function makePuzzle(input) {
   const puzzle = {
     ok: true,
     id: input.id,
+
+    dailyChallengeId: input.dailyChallengeId || input.id,
+
+    challengeId: input.challengeId || input.dailyChallengeId || input.id,
     title: input.title,
     name: input.title,
     label: input.title,
@@ -119,6 +123,7 @@ const dailyPayload = {
   attempts: 0,
   nextAvailable: null,
   challengeId: adultsPuzzle.id,
+  dailyChallengeId: adultsPuzzle.dailyChallengeId || adultsPuzzle.id,
   ageMode: adultsPuzzle.ageMode,
   puzzle: adultsPuzzle,
   challenge: adultsPuzzle,
@@ -148,6 +153,7 @@ const dailyStatus = {
   attempts: 0,
   nextAvailable: null,
   challengeId: adultsPuzzle.id,
+  dailyChallengeId: adultsPuzzle.dailyChallengeId || adultsPuzzle.id,
   ageMode: adultsPuzzle.ageMode,
   puzzles: [adultsPuzzle],
   count: 1
@@ -308,7 +314,9 @@ const server = http.createServer((req, res) => {
     pathname === "/solve" ||
     pathname === "/api/solve" ||
     pathname === "/daily/solve" ||
-    pathname === "/api/daily/solve"
+    pathname === "/api/daily/solve" ||
+    pathname === "/daily/submit" ||
+    pathname === "/api/daily/submit"
   ) {
     if (req.method === "POST") {
       return readBody(req, () => {
@@ -317,6 +325,7 @@ const server = http.createServer((req, res) => {
           correct: true,
           result: "accepted",
           challengeId: adultsPuzzle.id,
+  dailyChallengeId: adultsPuzzle.dailyChallengeId || adultsPuzzle.id,
           puzzle: adultsPuzzle,
           progress
         });
