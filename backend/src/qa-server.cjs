@@ -4,14 +4,68 @@ const url = require("url");
 const host = process.env.BACKEND_HOST || process.env.HOST || "0.0.0.0";
 const port = Number(process.env.BACKEND_PORT || process.env.PORT || 8085);
 
-const dailyChallenge = {
-  ok: true,
+function makePuzzle(input) {
+  const puzzle = {
+    ok: true,
+    id: input.id,
+    title: input.title,
+    name: input.title,
+    label: input.title,
+    mode: input.ageMode,
+    ageMode: input.ageMode,
+    category: input.category,
+    type: input.type || "puzzle",
+    daily: input.daily || false,
+    isDaily: input.daily || false,
+    difficulty: input.difficulty,
+    level: input.difficulty,
+    prompt: input.prompt,
+    question: input.question || input.prompt,
+    text: input.prompt,
+    choices: input.choices,
+    options: input.choices,
+    answers: input.choices,
+    answer: input.answer,
+    correctAnswer: input.answer,
+    solution: input.answer,
+    explanation: input.explanation,
+    hints: input.hints || [],
+    tags: input.tags || [],
+    steps: input.steps || [],
+    metadata: {
+      ageMode: input.ageMode,
+      category: input.category,
+      difficulty: input.difficulty,
+      daily: input.daily || false
+    }
+  };
+
+  return puzzle;
+}
+
+const kidsPuzzle = makePuzzle({
+  id: "qa-kids-focus-001",
+  title: "Kids Focus Foundation",
+  ageMode: "kids",
+  category: "focus",
+  difficulty: "baseline",
+  prompt: "Choose the matching pattern.",
+  question: "Which choice matches the pattern?",
+  choices: ["pattern", "memory", "speed", "noise"],
+  answer: "pattern",
+  explanation: "Pattern matching supports the Kids focus flow.",
+  hints: ["Look for the matching pattern."],
+  tags: ["kids", "focus", "pattern"],
+  steps: ["look", "match", "choose"]
+});
+
+const adultsPuzzle = makePuzzle({
   id: "daily-adults-strategy-001",
   title: "Strategic Cognitive Challenge",
-  mode: "adults",
   ageMode: "adults",
   category: "strategy",
   type: "daily",
+  daily: true,
   difficulty: "adaptive_adult_progression",
   prompt: "Choose the strongest strategy to complete the focus challenge.",
   question: "Which action best supports focus, memory, and adaptive challenge growth?",
@@ -21,58 +75,69 @@ const dailyChallenge = {
     "Review memory result",
     "Increase adaptive difficulty"
   ],
-  options: [
-    "Choose strategy",
-    "Complete focus challenge",
-    "Review memory result",
-    "Increase adaptive difficulty"
-  ],
   answer: "Choose strategy",
-  correctAnswer: "Choose strategy",
   explanation: "Strategy selection is the first step in the Adults daily readiness flow.",
   hints: [
     "Start with strategy.",
     "Then complete the focus challenge.",
     "Review memory and progress."
   ],
-  tags: ["strategy", "focus", "memory", "adaptive challenge", "replayability"],
+  tags: ["adults", "strategy", "focus", "memory", "adaptive challenge", "replayability"],
   steps: [
     "choose strategy",
     "complete focus challenge",
     "review memory result",
     "increase adaptive difficulty",
     "replay for mastery"
-  ],
-  createdAt: new Date().toISOString()
-};
+  ]
+});
 
-const puzzles = [
-  {
-    id: "qa-kids-focus-001",
-    title: "Kids Focus Foundation",
-    category: "focus",
-    ageMode: "kids",
-    prompt: "Choose the matching pattern.",
-    question: "Which choice matches the pattern?",
-    choices: ["pattern", "memory", "speed", "noise"],
-    options: ["pattern", "memory", "speed", "noise"],
-    answer: "pattern",
-    correctAnswer: "pattern"
-  },
-  dailyChallenge,
-  {
-    id: "qa-seniors-memory-001",
-    title: "Seniors Memory Recall",
-    category: "memory",
-    ageMode: "seniors",
-    prompt: "Recall the displayed item.",
-    question: "Which item did you see?",
-    choices: ["memory", "strategy", "timer", "score"],
-    options: ["memory", "strategy", "timer", "score"],
-    answer: "memory",
-    correctAnswer: "memory"
-  }
-];
+const seniorsPuzzle = makePuzzle({
+  id: "qa-seniors-memory-001",
+  title: "Seniors Memory Recall",
+  ageMode: "seniors",
+  category: "memory",
+  difficulty: "steady_skill_growth",
+  prompt: "Recall the displayed item.",
+  question: "Which item did you see?",
+  choices: ["memory", "strategy", "timer", "score"],
+  answer: "memory",
+  explanation: "Recall supports the Seniors memory flow.",
+  hints: ["Focus on the remembered item."],
+  tags: ["seniors", "memory", "recall"],
+  steps: ["observe", "recall", "choose"]
+});
+
+const puzzles = [kidsPuzzle, adultsPuzzle, seniorsPuzzle];
+
+const dailyPayload = {
+  ok: true,
+  status: "available",
+  completed: false,
+  todayCompleted: false,
+  streak: 0,
+  attempts: 0,
+  nextAvailable: null,
+  challengeId: adultsPuzzle.id,
+  ageMode: adultsPuzzle.ageMode,
+  puzzle: adultsPuzzle,
+  challenge: adultsPuzzle,
+  daily: adultsPuzzle,
+  selected: adultsPuzzle,
+  current: adultsPuzzle,
+  item: adultsPuzzle,
+  puzzles: [adultsPuzzle],
+  items: [adultsPuzzle],
+  results: [adultsPuzzle],
+  count: 1,
+  prompt: adultsPuzzle.prompt,
+  question: adultsPuzzle.question,
+  choices: adultsPuzzle.choices,
+  options: adultsPuzzle.options,
+  answer: adultsPuzzle.answer,
+  correctAnswer: adultsPuzzle.correctAnswer,
+  difficulty: adultsPuzzle.difficulty
+};
 
 const dailyStatus = {
   ok: true,
@@ -82,32 +147,46 @@ const dailyStatus = {
   streak: 0,
   attempts: 0,
   nextAvailable: null,
-  challengeId: dailyChallenge.id,
-  ageMode: dailyChallenge.ageMode
+  challengeId: adultsPuzzle.id,
+  ageMode: adultsPuzzle.ageMode,
+  puzzles: [adultsPuzzle],
+  count: 1
 };
 
-const difficulty = {
+const difficultyOptions = [
+  "All",
+  "baseline",
+  "adaptive_adult_progression",
+  "steady_skill_growth",
+  "strategy_skill_growth"
+];
+
+const difficultyPayload = {
   ok: true,
   current: "adaptive_adult_progression",
   difficulty: "adaptive_adult_progression",
   level: "adaptive",
   selected: "adaptive_adult_progression",
-  options: [
-    "baseline",
-    "adaptive_adult_progression",
-    "strategy_skill_growth"
-  ],
+  options: difficultyOptions,
+  items: difficultyOptions,
+  difficulties: difficultyOptions,
   levels: [
-    { id: "baseline", label: "Baseline", value: 1 },
-    { id: "adaptive_adult_progression", label: "Adaptive adult progression", value: 2 },
-    { id: "strategy_skill_growth", label: "Strategy skill growth", value: 3 }
+    { id: "All", label: "All", value: "All" },
+    { id: "baseline", label: "Baseline", value: "baseline" },
+    { id: "adaptive_adult_progression", label: "Adaptive adult progression", value: "adaptive_adult_progression" },
+    { id: "steady_skill_growth", label: "Steady skill growth", value: "steady_skill_growth" },
+    { id: "strategy_skill_growth", label: "Strategy skill growth", value: "strategy_skill_growth" }
   ]
 };
 
 const progress = {
   ok: true,
   completed: 0,
+  solved: 0,
+  total: puzzles.length,
   streak: 0,
+  completion: 0,
+  percent: 0,
   sessions: [],
   source: "qa-backend",
   ageModes: ["kids", "adults", "seniors"]
@@ -147,6 +226,7 @@ function readBody(req, callback) {
 const server = http.createServer((req, res) => {
   const parsed = url.parse(req.url || "/", true);
   const pathname = parsed.pathname || "/";
+  const query = parsed.query || {};
 
   if (req.method === "OPTIONS") {
     return sendOptions(res);
@@ -162,8 +242,22 @@ const server = http.createServer((req, res) => {
     });
   }
 
-  if (pathname === "/daily" || pathname === "/api/daily") {
-    return sendJson(res, 200, dailyChallenge);
+  if (
+    pathname === "/daily" ||
+    pathname === "/api/daily" ||
+    pathname === "/daily/challenge" ||
+    pathname === "/api/daily/challenge" ||
+    pathname === "/daily/today" ||
+    pathname === "/api/daily/today"
+  ) {
+    return sendJson(res, 200, dailyPayload);
+  }
+
+  if (
+    pathname === "/daily/puzzles" ||
+    pathname === "/api/daily/puzzles"
+  ) {
+    return sendJson(res, 200, [adultsPuzzle]);
   }
 
   if (pathname === "/daily/status" || pathname === "/api/daily/status") {
@@ -171,11 +265,29 @@ const server = http.createServer((req, res) => {
   }
 
   if (pathname === "/difficulty" || pathname === "/api/difficulty") {
-    return sendJson(res, 200, difficulty);
+    return sendJson(res, 200, difficultyPayload);
+  }
+
+  if (pathname === "/difficulties" || pathname === "/api/difficulties") {
+    return sendJson(res, 200, difficultyOptions);
   }
 
   if (pathname === "/puzzles") {
-    return sendJson(res, 200, puzzles);
+    let filtered = puzzles.slice();
+
+    if (query.difficulty && query.difficulty !== "All") {
+      filtered = filtered.filter(p => p.difficulty === query.difficulty);
+    }
+
+    if (query.ageMode) {
+      filtered = filtered.filter(p => p.ageMode === query.ageMode);
+    }
+
+    if (query.daily === "true") {
+      filtered = filtered.filter(p => p.daily === true);
+    }
+
+    return sendJson(res, 200, filtered);
   }
 
   if (pathname === "/api/puzzles") {
@@ -183,6 +295,7 @@ const server = http.createServer((req, res) => {
       ok: true,
       puzzles,
       items: puzzles,
+      results: puzzles,
       count: puzzles.length
     });
   }
@@ -191,14 +304,20 @@ const server = http.createServer((req, res) => {
     return sendJson(res, 200, progress);
   }
 
-  if (pathname === "/solve" || pathname === "/api/solve" || pathname === "/daily/solve" || pathname === "/api/daily/solve") {
+  if (
+    pathname === "/solve" ||
+    pathname === "/api/solve" ||
+    pathname === "/daily/solve" ||
+    pathname === "/api/daily/solve"
+  ) {
     if (req.method === "POST") {
       return readBody(req, () => {
         sendJson(res, 200, {
           ok: true,
           correct: true,
           result: "accepted",
-          challengeId: dailyChallenge.id,
+          challengeId: adultsPuzzle.id,
+          puzzle: adultsPuzzle,
           progress
         });
       });
@@ -206,8 +325,12 @@ const server = http.createServer((req, res) => {
 
     return sendJson(res, 200, {
       ok: true,
-      puzzle: dailyChallenge,
-      challenge: dailyChallenge
+      puzzle: adultsPuzzle,
+      challenge: adultsPuzzle,
+      selected: adultsPuzzle,
+      puzzles,
+      items: puzzles,
+      options: adultsPuzzle.options
     });
   }
 
