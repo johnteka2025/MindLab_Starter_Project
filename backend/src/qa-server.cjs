@@ -316,7 +316,9 @@ const server = http.createServer((req, res) => {
     pathname === "/daily/solve" ||
     pathname === "/api/daily/solve" ||
     pathname === "/daily/submit" ||
-    pathname === "/api/daily/submit"
+    pathname === "/api/daily/submit" ||
+    pathname === "/daily/answer" ||
+    pathname === "/api/daily/answer"
   ) {
     if (req.method === "POST") {
       return readBody(req, () => {
