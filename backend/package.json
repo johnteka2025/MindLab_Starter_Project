@@ -1,8 +1,13 @@
 {
-  "name": "mindlab-backend",
-  "version": "1.0.0",
-  "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
-  }
+    "name":  "mindlab-backend",
+    "version":  "1.0.0",
+    "dependencies":  {
+                         "cors":  "^2.8.6",
+                         "express":  "^5.2.1"
+                     },
+    "scripts":  {
+                    "start":  "node src/qa-server.cjs",
+                    "dev":  "node src/qa-server.cjs",
+                    "qa:health":  "node src/qa-server.cjs"
+                }
 }
