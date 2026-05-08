@@ -1,3 +1,4 @@
+import { BrowserRouter as MindLabBrowserRouter } from "react-router-dom";
 import { AdultsModeVisiblePanel } from './ageModes/AdultsModeVisiblePanel';
 import * as React from "react";
 import { createRoot } from "react-dom/client";
@@ -13,7 +14,9 @@ function MindLabRouteGate() {
   return <>
       {/* ADULTS_MODE_VISIBLE_PANEL_ANCHOR */}
       <AdultsModeVisiblePanel />
-      <App />
+      <MindLabBrowserRouter>
+        <App />
+      </MindLabBrowserRouter>
     </>;
 }
 
