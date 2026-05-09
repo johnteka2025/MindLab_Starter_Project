@@ -8,6 +8,8 @@
     "backend:production:parity": "node backend/src/production-api-parity.cjs",
     "frontend:production-backend:validate": "node backend/src/frontend-production-backend-switch-validation.cjs",
     "content:production:registry:smoke": "node backend/src/production-content-registry-smoke.cjs",
-    "persistence:production:smoke": "node backend/src/production-persistence-smoke.cjs"
+    "persistence:production:smoke": "node backend/src/production-persistence-smoke.cjs",
+    "runtime:production:env:smoke": "node backend/src/production-runtime-env-smoke.cjs",
+    "runtime:production:start:validate": "node backend/src/production-start-validation.cjs"
   }
 }

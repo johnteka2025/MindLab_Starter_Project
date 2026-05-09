@@ -5,6 +5,7 @@ const { URL } = require("url");
 const { productionApiContract } = require("./production-api-contract.cjs");
 const { buildContentRegistry } = require("./production-content-registry.cjs");
 const { createPersistenceStore } = require("./production-persistence.cjs");
+const { loadProductionRuntimeEnv } = require("./production-runtime-env.cjs");
 
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
@@ -254,15 +255,16 @@ function createProductionServer(options = {}) {
   });
 }
 
-function startProductionServer(port = process.env.PORT || 3100) {
-  const persistence = process.env.MINDLAB_PERSISTENCE_ENABLED === "1";
-  const dataRoot = process.env.MINDLAB_PERSISTENCE_DATA_ROOT;
+function startProductionServer(port = null, options = {}) {
+  const runtimeConfig = options.runtimeConfig || loadProductionRuntimeEnv(process.env);
   const server = createProductionServer({
-    persistence,
-    dataRoot
+    persistence: runtimeConfig.persistenceEnabled,
+    dataRoot: runtimeConfig.persistenceDataRoot
   });
 
-  server.listen(port, () => {
+  const listenPort = port === null || port === undefined ? runtimeConfig.port : port;
+
+  server.listen(listenPort, () => {
     const address = server.address();
     console.log(`PASS: PRODUCTION_BACKEND_LISTENING :: ${address.port}`);
   });
