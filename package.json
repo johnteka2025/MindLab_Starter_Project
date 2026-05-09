@@ -1,0 +1,10 @@
+{
+  "name": "mindlab-starter-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "backend:production": "node backend/src/production-server.cjs",
+    "backend:production:smoke": "node backend/src/production-server-smoke.cjs",
+    "backend:production:parity": "node backend/src/production-api-parity.cjs"
+  }
+}
