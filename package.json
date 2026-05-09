@@ -5,6 +5,7 @@
   "scripts": {
     "backend:production": "node backend/src/production-server.cjs",
     "backend:production:smoke": "node backend/src/production-server-smoke.cjs",
-    "backend:production:parity": "node backend/src/production-api-parity.cjs"
+    "backend:production:parity": "node backend/src/production-api-parity.cjs",
+    "frontend:production-backend:validate": "node backend/src/frontend-production-backend-switch-validation.cjs"
   }
 }
