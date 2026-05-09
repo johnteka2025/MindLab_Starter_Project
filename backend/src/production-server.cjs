@@ -3,7 +3,7 @@
 const http = require("http");
 const { URL } = require("url");
 const { productionApiContract } = require("./production-api-contract.cjs");
-const { loadSeedPuzzleContent } = require("./production-content-loader.cjs");
+const { buildContentRegistry } = require("./production-content-registry.cjs");
 
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
@@ -56,11 +56,11 @@ function createInMemoryState() {
   };
 }
 
-function buildProductionResponse(req, state) {
+function buildProductionResponse(req, state, registry = buildContentRegistry()) {
   const method = req.method.toUpperCase();
   const pathName = normalizePath(req);
-  const seedData = loadSeedPuzzleContent();
-  const puzzles = seedData.puzzles;
+  const seedData = registry.seedData;
+  const puzzles = registry.puzzles;
 
   if (method === "OPTIONS") {
     return { statusCode: 204, payload: null };
@@ -73,7 +73,11 @@ function buildProductionResponse(req, state) {
         ok: true,
         service: "mindlab-production-backend",
         contractVersion: productionApiContract.version,
-        puzzleCount: puzzles.length
+        puzzleCount: registry.counts.total,
+        contentRegistry: {
+          total: registry.counts.total,
+          byAgeCategory: registry.counts.byAgeCategory
+        }
       }
     };
   }
@@ -146,6 +150,7 @@ function buildProductionResponse(req, state) {
 
 function createProductionServer(options = {}) {
   const state = options.state || createInMemoryState();
+  const registry = options.registry || buildContentRegistry();
 
   return http.createServer(async (req, res) => {
     try {
@@ -182,7 +187,7 @@ function createProductionServer(options = {}) {
         return;
       }
 
-      const result = buildProductionResponse(req, state);
+      const result = buildProductionResponse(req, state, registry);
 
       if (result.statusCode === 204) {
         res.writeHead(204, {
