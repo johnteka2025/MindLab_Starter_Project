@@ -1,0 +1,11 @@
+﻿{
+    "name":  "mindlab-seed-puzzles",
+    "version":  "1.0.0",
+    "seedJson":  "content/seed-puzzles/mindlab-seed-puzzles.v1.json",
+    "requiredAgeCategories":  [
+                                  "kids",
+                                  "adults",
+                                  "seniors"
+                              ],
+    "expectedPuzzleCount":  9
+}

@@ -1,0 +1,202 @@
+﻿{
+    "version":  "1.0.0",
+    "scaffoldName":  "MindLab Seed Puzzle Content Scaffold",
+    "createdFrom":  "PowerShell automation",
+    "ageCategories":  [
+                          "kids",
+                          "adults",
+                          "seniors"
+                      ],
+    "puzzleCount":  9,
+    "puzzles":  [
+                    {
+                        "id":  "kids-pattern-001",
+                        "ageCategory":  "kids",
+                        "type":  "pattern",
+                        "difficulty":  "easy",
+                        "title":  "Fruit Pattern",
+                        "prompt":  "What comes next: apple, banana, apple, banana, apple, ?",
+                        "choices":  [
+                                        "apple",
+                                        "banana",
+                                        "orange",
+                                        "grape"
+                                    ],
+                        "answer":  "banana",
+                        "explanation":  "The pattern repeats apple, banana.",
+                        "tags":  [
+                                     "pattern",
+                                     "sequence",
+                                     "kids"
+                                 ]
+                    },
+                    {
+                        "id":  "kids-memory-001",
+                        "ageCategory":  "kids",
+                        "type":  "memory",
+                        "difficulty":  "easy",
+                        "title":  "Color Memory",
+                        "prompt":  "Remember this order: red, blue, green. What was the second color?",
+                        "choices":  [
+                                        "red",
+                                        "blue",
+                                        "green",
+                                        "yellow"
+                                    ],
+                        "answer":  "blue",
+                        "explanation":  "The second color in the order is blue.",
+                        "tags":  [
+                                     "memory",
+                                     "colors",
+                                     "kids"
+                                 ]
+                    },
+                    {
+                        "id":  "kids-logic-001",
+                        "ageCategory":  "kids",
+                        "type":  "logic",
+                        "difficulty":  "easy",
+                        "title":  "Bigger Number",
+                        "prompt":  "Which number is bigger?",
+                        "choices":  [
+                                        "4",
+                                        "7",
+                                        "3",
+                                        "1"
+                                    ],
+                        "answer":  "7",
+                        "explanation":  "7 is greater than the other choices.",
+                        "tags":  [
+                                     "logic",
+                                     "numbers",
+                                     "kids"
+                                 ]
+                    },
+                    {
+                        "id":  "adults-pattern-001",
+                        "ageCategory":  "adults",
+                        "type":  "pattern",
+                        "difficulty":  "medium",
+                        "title":  "Number Progression",
+                        "prompt":  "What comes next: 3, 6, 12, 24, ?",
+                        "choices":  [
+                                        "30",
+                                        "36",
+                                        "48",
+                                        "60"
+                                    ],
+                        "answer":  "48",
+                        "explanation":  "Each number doubles.",
+                        "tags":  [
+                                     "pattern",
+                                     "sequence",
+                                     "adults"
+                                 ]
+                    },
+                    {
+                        "id":  "adults-logic-001",
+                        "ageCategory":  "adults",
+                        "type":  "logic",
+                        "difficulty":  "medium",
+                        "title":  "Meeting Order",
+                        "prompt":  "Alex arrived before Jordan. Casey arrived after Jordan. Who arrived first?",
+                        "choices":  [
+                                        "Alex",
+                                        "Jordan",
+                                        "Casey",
+                                        "Cannot tell"
+                                    ],
+                        "answer":  "Alex",
+                        "explanation":  "Alex arrived before Jordan, and Casey arrived after Jordan.",
+                        "tags":  [
+                                     "logic",
+                                     "ordering",
+                                     "adults"
+                                 ]
+                    },
+                    {
+                        "id":  "adults-memory-001",
+                        "ageCategory":  "adults",
+                        "type":  "memory",
+                        "difficulty":  "medium",
+                        "title":  "Code Recall",
+                        "prompt":  "Remember the code: 4-9-2-7. What is the third digit?",
+                        "choices":  [
+                                        "4",
+                                        "9",
+                                        "2",
+                                        "7"
+                                    ],
+                        "answer":  "2",
+                        "explanation":  "The third digit in 4-9-2-7 is 2.",
+                        "tags":  [
+                                     "memory",
+                                     "digits",
+                                     "adults"
+                                 ]
+                    },
+                    {
+                        "id":  "seniors-memory-001",
+                        "ageCategory":  "seniors",
+                        "type":  "memory",
+                        "difficulty":  "easy",
+                        "title":  "Grocery Recall",
+                        "prompt":  "Remember these items: milk, bread, apples. Which item was listed last?",
+                        "choices":  [
+                                        "milk",
+                                        "bread",
+                                        "apples",
+                                        "eggs"
+                                    ],
+                        "answer":  "apples",
+                        "explanation":  "Apples was the last item listed.",
+                        "tags":  [
+                                     "memory",
+                                     "recall",
+                                     "seniors"
+                                 ]
+                    },
+                    {
+                        "id":  "seniors-pattern-001",
+                        "ageCategory":  "seniors",
+                        "type":  "pattern",
+                        "difficulty":  "easy",
+                        "title":  "Simple Count",
+                        "prompt":  "What comes next: 2, 4, 6, 8, ?",
+                        "choices":  [
+                                        "9",
+                                        "10",
+                                        "11",
+                                        "12"
+                                    ],
+                        "answer":  "10",
+                        "explanation":  "The sequence counts by twos.",
+                        "tags":  [
+                                     "pattern",
+                                     "numbers",
+                                     "seniors"
+                                 ]
+                    },
+                    {
+                        "id":  "seniors-logic-001",
+                        "ageCategory":  "seniors",
+                        "type":  "logic",
+                        "difficulty":  "easy",
+                        "title":  "Day Order",
+                        "prompt":  "If today is Monday, what day comes tomorrow?",
+                        "choices":  [
+                                        "Sunday",
+                                        "Monday",
+                                        "Tuesday",
+                                        "Wednesday"
+                                    ],
+                        "answer":  "Tuesday",
+                        "explanation":  "Tuesday comes after Monday.",
+                        "tags":  [
+                                     "logic",
+                                     "calendar",
+                                     "seniors"
+                                 ]
+                    }
+                ]
+}
