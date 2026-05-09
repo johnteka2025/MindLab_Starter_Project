@@ -4,6 +4,7 @@ const http = require("http");
 const { URL } = require("url");
 const { productionApiContract } = require("./production-api-contract.cjs");
 const { buildContentRegistry } = require("./production-content-registry.cjs");
+const { createPersistenceStore } = require("./production-persistence.cjs");
 
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
@@ -53,6 +54,31 @@ function createInMemoryState() {
     answers: [],
     scores: [],
     progress: {}
+  };
+}
+
+function createStateProvider(options = {}) {
+  if (options.persistenceStore) {
+    return {
+      persistenceStore: options.persistenceStore,
+      state: options.persistenceStore.getState()
+    };
+  }
+
+  if (options.persistence === true) {
+    const persistenceStore = createPersistenceStore({
+      dataRoot: options.dataRoot
+    });
+
+    return {
+      persistenceStore,
+      state: persistenceStore.getState()
+    };
+  }
+
+  return {
+    persistenceStore: null,
+    state: options.state || createInMemoryState()
   };
 }
 
@@ -149,8 +175,10 @@ function buildProductionResponse(req, state, registry = buildContentRegistry()) 
 }
 
 function createProductionServer(options = {}) {
-  const state = options.state || createInMemoryState();
   const registry = options.registry || buildContentRegistry();
+  const provider = createStateProvider(options);
+  const state = provider.state;
+  const persistenceStore = provider.persistenceStore;
 
   return http.createServer(async (req, res) => {
     try {
@@ -167,7 +195,13 @@ function createProductionServer(options = {}) {
           completedAt: null,
           status: "active"
         };
+
         state.sessions.push(session);
+
+        if (persistenceStore) {
+          persistenceStore.appendSession(session);
+        }
+
         sendJson(res, 201, { ok: true, session });
         return;
       }
@@ -182,9 +216,19 @@ function createProductionServer(options = {}) {
           isCorrect: Boolean(body.isCorrect),
           answeredAt: new Date().toISOString()
         };
+
         state.answers.push(answer);
+
+        if (persistenceStore) {
+          persistenceStore.appendAnswer(answer);
+        }
+
         sendJson(res, 201, { ok: true, answer });
         return;
+      }
+
+      if (persistenceStore) {
+        state.progress = persistenceStore.readProgress();
       }
 
       const result = buildProductionResponse(req, state, registry);
@@ -211,11 +255,18 @@ function createProductionServer(options = {}) {
 }
 
 function startProductionServer(port = process.env.PORT || 3100) {
-  const server = createProductionServer();
+  const persistence = process.env.MINDLAB_PERSISTENCE_ENABLED === "1";
+  const dataRoot = process.env.MINDLAB_PERSISTENCE_DATA_ROOT;
+  const server = createProductionServer({
+    persistence,
+    dataRoot
+  });
+
   server.listen(port, () => {
     const address = server.address();
     console.log(`PASS: PRODUCTION_BACKEND_LISTENING :: ${address.port}`);
   });
+
   return server;
 }
 
@@ -227,6 +278,7 @@ module.exports = {
   buildProductionResponse,
   createInMemoryState,
   createProductionServer,
+  createStateProvider,
   normalizePath,
   startProductionServer
 };
