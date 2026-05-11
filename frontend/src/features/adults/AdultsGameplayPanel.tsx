@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect, useMemo, useState } from "react";
+﻿import React, { useEffect, useMemo, useState } from "react";
 import {
   getDefaultAdultsGameplayItemForSession,
   getAdultsGameplayItemsForSession
@@ -52,7 +50,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
       scoreResult
     });
 
-    setSavedProfileLabel(`${savedProfile.currentStage} Ãƒâ€šÃ‚Â· ${savedProfile.currentCategory}`);
+    setSavedProfileLabel(`${savedProfile.currentStage} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· ${savedProfile.currentCategory}`);
   }, [activeItem, isCorrect, scoreResult, selectedAnswer, selectedMode]);
 
   function handleAnswer(option: string) {
@@ -71,7 +69,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     <section aria-labelledby="adults-gameplay-heading" style={{ marginTop: "28px" }}>
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-          {activeItem.certifiedId} Ãƒâ€šÃ‚Â· {activeItem.categoryName} Ãƒâ€šÃ‚Â· {activeItem.stage}
+          {activeItem.certifiedId} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.categoryName} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {activeItem.stage}
         </p>
         <h2 id="adults-gameplay-heading" style={{ margin: 0, fontSize: "26px" }}>
           Starter challenge
@@ -164,3 +162,4 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     </section>
   );
 }
+

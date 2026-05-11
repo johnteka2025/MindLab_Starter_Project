@@ -1,6 +1,4 @@
-"use client";
-
-import React from "react";
+﻿import React from "react";
 import { adultsSessionModes, defaultAdultsSessionMode } from "./adultsSessionModes";
 
 type AdultsSessionModeSelectorProps = {
@@ -47,7 +45,7 @@ export default function AdultsSessionModeSelector({
                 {mode.label}
               </span>
               <span style={{ display: "block", fontSize: "14px", color: "#64748b", marginBottom: "10px" }}>
-                {mode.duration} Ãƒâ€šÃ‚Â· {mode.cognitiveLoad}
+                {mode.duration} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {mode.cognitiveLoad}
               </span>
               <span style={{ display: "block", lineHeight: 1.5, color: "#475569" }}>
                 {mode.description}
@@ -59,3 +57,4 @@ export default function AdultsSessionModeSelector({
     </section>
   );
 }
+

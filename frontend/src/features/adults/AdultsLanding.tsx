@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import AdultsGameplayPanel from "./AdultsGameplayPanel";
 import AdultsSessionModeSelector from "./AdultsSessionModeSelector";
 import { defaultAdultsSessionMode } from "./adultsSessionModes";
@@ -60,3 +58,4 @@ export default function AdultsLanding() {
     </main>
   );
 }
+

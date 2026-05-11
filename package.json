@@ -10,6 +10,9 @@
     "content:production:registry:smoke": "node backend/src/production-content-registry-smoke.cjs",
     "persistence:production:smoke": "node backend/src/production-persistence-smoke.cjs",
     "runtime:production:env:smoke": "node backend/src/production-runtime-env-smoke.cjs",
-    "runtime:production:start:validate": "node backend/src/production-start-validation.cjs"
+    "runtime:production:start:validate": "node backend/src/production-start-validation.cjs",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "frontend:start": "npm --prefix frontend run dev"
   }
 }
