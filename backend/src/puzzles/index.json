@@ -11,7 +11,7 @@
     },
     {
         "id":  2,
-        "question":  "What is the color of the sky?",
+        "question":  "What is the color of the sky for the production variant 2?",
         "options":  [
                         "Blue",
                         "Green",
@@ -21,7 +21,7 @@
     },
     {
         "id":  3,
-        "question":  "Which shape has 3 sides?",
+        "question":  "Which shape has 3 sides for the production variant 2?",
         "options":  [
                         "Triangle",
                         "Square",
