@@ -17,7 +17,7 @@ type Step = "home" | "loading" | "play" | "feedback" | "progress" | "error";
 
 const AGE_OPTIONS = [
   { id: "kids", label: "Kids" },
-  { id: "teens", label: "Teens" },
+  { id: "seniors", label: "Seniors" },
   { id: "adults", label: "Adults" },
 ];
 

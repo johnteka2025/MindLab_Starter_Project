@@ -1,356 +1,308 @@
-﻿const http = require("http");
-const url = require("url");
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
 
-const host = process.env.BACKEND_HOST || process.env.HOST || "0.0.0.0";
-const port = Number(process.env.BACKEND_PORT || process.env.PORT || 8085);
+const PORT = Number(process.env.PORT || 8085);
+const DATA_DIR = path.join(__dirname, "data");
 
-function makePuzzle(input) {
-  return {
-    ok: true,
-    id: input.id,
-    dailyChallengeId: input.dailyChallengeId || input.id,
-    challengeId: input.challengeId || input.dailyChallengeId || input.id,
-    title: input.title,
-    name: input.title,
-    label: input.title,
-    mode: input.ageMode,
-    ageMode: input.ageMode,
-    category: input.category,
-    type: input.type || "puzzle",
-    daily: input.daily || false,
-    isDaily: input.daily || false,
-    difficulty: input.difficulty,
-    level: input.difficulty,
-    prompt: input.prompt,
-    question: input.question || input.prompt,
-    text: input.prompt,
-    choices: input.choices,
-    options: input.choices,
-    answers: input.choices,
-    answer: input.answer,
-    correctAnswer: input.answer,
-    solution: input.answer,
-    explanation: input.explanation,
-    hints: input.hints || [],
-    tags: input.tags || [],
-    steps: input.steps || [],
-    metadata: {
-      ageMode: input.ageMode,
-      category: input.category,
-      difficulty: input.difficulty,
-      daily: input.daily || false
-    }
-  };
-}
+const sessionsPath = path.join(DATA_DIR, "sessions.json");
+const answersPath = path.join(DATA_DIR, "answers.json");
+const scoresPath = path.join(DATA_DIR, "scores.json");
+const progressPath = path.join(DATA_DIR, "progress.json");
 
-const kidsPuzzle = makePuzzle({
-  id: "qa-kids-focus-001",
-  title: "Kids Focus Foundation",
-  ageMode: "kids",
-  category: "focus",
-  difficulty: "baseline",
-  prompt: "Which choice matches the pattern?",
-  choices: ["pattern", "memory", "speed", "noise"],
-  answer: "pattern",
-  explanation: "Pattern matching supports the Kids focus flow.",
-  hints: ["Look for the matching pattern."],
-  tags: ["kids", "focus", "pattern"],
-  steps: ["look", "match", "choose"]
-});
-
-const adultsPuzzle = makePuzzle({
-  id: "daily-adults-strategy-001",
-  dailyChallengeId: "daily-adults-strategy-001",
-  challengeId: "daily-adults-strategy-001",
-  title: "Strategic Cognitive Challenge",
-  ageMode: "adults",
-  category: "strategy",
-  type: "daily",
-  daily: true,
-  difficulty: "adaptive_adult_progression",
-  prompt: "Which action best supports focus, memory, and adaptive challenge growth?",
-  choices: [
-    "Choose strategy",
-    "Complete focus challenge",
-    "Review memory result",
-    "Increase adaptive difficulty"
+const puzzles = {
+  Kids: [
+    { id: "kids-1", prompt: "Which shape has three sides?", choices: ["Circle", "Triangle", "Square"], answer: "Triangle" },
+    { id: "kids-2", prompt: "What number comes after 4?", choices: ["3", "5", "8"], answer: "5" },
+    { id: "kids-3", prompt: "Which word rhymes with cat?", choices: ["Hat", "Dog", "Sun"], answer: "Hat" }
   ],
-  answer: "Choose strategy",
-  explanation: "Strategy selection is the first step in the Adults daily readiness flow.",
-  hints: ["Start with strategy.", "Then complete the focus challenge.", "Review memory and progress."],
-  tags: ["adults", "strategy", "focus", "memory", "adaptive challenge", "replayability"],
-  steps: ["choose strategy", "complete focus challenge", "review memory result", "increase adaptive difficulty", "replay for mastery"]
-});
-
-const seniorsPuzzle = makePuzzle({
-  id: "qa-seniors-memory-001",
-  title: "Seniors Memory Recall",
-  ageMode: "seniors",
-  category: "memory",
-  difficulty: "steady_skill_growth",
-  prompt: "Which item did you see?",
-  choices: ["memory", "strategy", "timer", "score"],
-  answer: "memory",
-  explanation: "Recall supports the Seniors memory flow.",
-  hints: ["Focus on the remembered item."],
-  tags: ["seniors", "memory", "recall"],
-  steps: ["observe", "recall", "choose"]
-});
-
-const puzzles = [kidsPuzzle, adultsPuzzle, seniorsPuzzle];
-
-const dailyPayload = {
-  ok: true,
-  status: "available",
-  completed: false,
-  todayCompleted: false,
-  streak: 0,
-  attempts: 0,
-  nextAvailable: null,
-  challengeId: adultsPuzzle.id,
-  dailyChallengeId: adultsPuzzle.dailyChallengeId,
-  ageMode: adultsPuzzle.ageMode,
-  puzzle: adultsPuzzle,
-  challenge: adultsPuzzle,
-  daily: adultsPuzzle,
-  selected: adultsPuzzle,
-  current: adultsPuzzle,
-  item: adultsPuzzle,
-  puzzles: [adultsPuzzle],
-  items: [adultsPuzzle],
-  results: [adultsPuzzle],
-  count: 1,
-  prompt: adultsPuzzle.prompt,
-  question: adultsPuzzle.question,
-  choices: adultsPuzzle.choices,
-  options: adultsPuzzle.options,
-  answer: adultsPuzzle.answer,
-  correctAnswer: adultsPuzzle.correctAnswer,
-  difficulty: adultsPuzzle.difficulty
+  Adults: [
+    { id: "adults-1", prompt: "Which option best completes the pattern: 2, 4, 8, 16, ?", choices: ["18", "24", "32"], answer: "32" },
+    { id: "adults-2", prompt: "A project needs prioritization. What should be checked first?", choices: ["Risk", "Color", "Font"], answer: "Risk" },
+    { id: "adults-3", prompt: "Which decision is strongest?", choices: ["Evidence-based", "Random", "Delayed"], answer: "Evidence-based" }
+  ],
+  Seniors: [
+    { id: "seniors-1", prompt: "Which item is usually used to tell time?", choices: ["Clock", "Plate", "Chair"], answer: "Clock" },
+    { id: "seniors-2", prompt: "Which action helps confirm safety before crossing?", choices: ["Look both ways", "Close eyes", "Run fast"], answer: "Look both ways" },
+    { id: "seniors-3", prompt: "Which number is larger?", choices: ["12", "7", "3"], answer: "12" }
+  ]
 };
 
-const dailyStatus = {
-  ok: true,
-  status: "available",
-  completed: false,
-  todayCompleted: false,
-  streak: 0,
-  attempts: 0,
-  nextAvailable: null,
-  challengeId: adultsPuzzle.id,
-  dailyChallengeId: adultsPuzzle.dailyChallengeId,
-  ageMode: adultsPuzzle.ageMode,
-  puzzles: [adultsPuzzle],
-  count: 1
-};
-
-const difficultyOptions = ["All", "baseline", "adaptive_adult_progression", "steady_skill_growth", "strategy_skill_growth"];
-
-const difficultyPayload = {
-  ok: true,
-  current: "adaptive_adult_progression",
-  difficulty: "adaptive_adult_progression",
-  level: "adaptive",
-  selected: "adaptive_adult_progression",
-  options: difficultyOptions,
-  items: difficultyOptions,
-  difficulties: difficultyOptions,
-  levels: difficultyOptions.map((value, index) => ({
-    id: value,
-    label: value,
-    value,
-    order: index
-  }))
-};
-
-let solvedCount = 0;
-
-function progressPayload() {
-  return {
-    ok: true,
-    completed: solvedCount,
-    solved: solvedCount,
-    total: puzzles.length,
-    streak: solvedCount > 0 ? 1 : 0,
-    completion: Math.round((solvedCount / puzzles.length) * 100),
-    percent: Math.round((solvedCount / puzzles.length) * 100),
-    sessions: [],
-    source: "qa-backend",
-    ageModes: ["kids", "adults", "seniors"]
-  };
+function ensureDataDir() {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-function sendJson(res, statusCode, body) {
-  const payload = JSON.stringify(body, null, 2);
+function readJsonFile(filePath, fallback) {
+  try {
+    if (!fs.existsSync(filePath)) return fallback;
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
+  }
+}
+
+function writeJsonFile(filePath, value) {
+  ensureDataDir();
+  fs.writeFileSync(filePath, JSON.stringify(value, null, 2), "utf8");
+}
+
+function sendJson(res, statusCode, payload) {
+  const body = JSON.stringify(payload);
+
   res.writeHead(statusCode, {
     "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": Buffer.byteLength(body),
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type,Authorization",
-    "Cache-Control": "no-store"
+    "Access-Control-Allow-Headers": "Content-Type"
   });
-  res.end(payload);
+
+  res.end(body);
 }
 
-function sendOptions(res) {
-  res.writeHead(204, {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type,Authorization"
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    let raw = "";
+
+    req.on("data", chunk => {
+      raw += chunk;
+
+      if (raw.length > 1000000) {
+        reject(new Error("Request body too large"));
+        req.destroy();
+      }
+    });
+
+    req.on("end", () => {
+      if (!raw.trim()) {
+        resolve({});
+        return;
+      }
+
+      try {
+        resolve(JSON.parse(raw));
+      } catch {
+        resolve({});
+      }
+    });
+
+    req.on("error", reject);
   });
-  res.end();
 }
 
-function readBody(req, callback) {
-  let body = "";
-  req.on("data", chunk => { body += chunk; });
-  req.on("end", () => { callback(body); });
+function normalizeAgeCategory(value) {
+  const text = String(value || "Kids").trim().toLowerCase();
+
+  if (text === "kid" || text === "kids" || text === "child" || text === "children") return "Kids";
+  if (text === "adult" || text === "adults") return "Adults";
+  if (text === "senior" || text === "seniors" || text === "older adult" || text === "older adults") return "Seniors";
+
+  return "Kids";
 }
 
-function filteredPuzzles(query) {
-  let filtered = puzzles.slice();
-
-  if (query.difficulty && query.difficulty !== "All") {
-    filtered = filtered.filter(p => p.difficulty === query.difficulty);
-  }
-
-  if (query.ageMode) {
-    filtered = filtered.filter(p => p.ageMode === query.ageMode);
-  }
-
-  if (query.daily === "true") {
-    filtered = filtered.filter(p => p.daily === true);
-  }
-
-  return filtered;
+function getQuestion(ageCategory, index) {
+  const list = puzzles[ageCategory] || puzzles.Kids;
+  const safeIndex = Math.max(0, Math.min(Number(index || 0), list.length - 1));
+  return list[safeIndex];
 }
 
-function answerResponse() {
-  solvedCount = Math.min(puzzles.length, solvedCount + 1);
+function publicQuestion(question) {
+  if (!question) return null;
 
   return {
-    ok: true,
-    correct: true,
-    status: "refreshed",
-    result: "accepted",
-    submitted: true,
-    challengeId: adultsPuzzle.id,
-    dailyChallengeId: adultsPuzzle.dailyChallengeId,
-    puzzle: adultsPuzzle,
-    challenge: adultsPuzzle,
-    progress: progressPayload()
+    id: question.id,
+    prompt: question.prompt,
+    choices: question.choices
   };
 }
 
-const server = http.createServer((req, res) => {
-  const parsed = url.parse(req.url || "/", true);
-  const pathname = parsed.pathname || "/";
-  const query = parsed.query || {};
+function createSession(ageCategory) {
+  const sessions = readJsonFile(sessionsPath, []);
+  const normalizedAge = normalizeAgeCategory(ageCategory);
+
+  const session = {
+    id: "session-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8),
+    ageCategory: normalizedAge,
+    currentIndex: 0,
+    score: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+
+  sessions.push(session);
+  writeJsonFile(sessionsPath, sessions);
+
+  return session;
+}
+
+const server = http.createServer(async (req, res) => {
+  const requestUrl = new URL(req.url, `http://${req.headers.host || "localhost:8085"}`);
+  const pathname = requestUrl.pathname;
 
   if (req.method === "OPTIONS") {
-    return sendOptions(res);
-  }
-
-  if (pathname === "/health" || pathname === "/api/health") {
-    return sendJson(res, 200, {
-      ok: true,
-      status: "healthy",
-      service: "mindlab-backend",
-      port,
-      timestamp: new Date().toISOString()
+    res.writeHead(204, {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
     });
+    res.end();
+    return;
   }
 
-  if (
-    pathname === "/daily" ||
-    pathname === "/api/daily" ||
-    pathname === "/daily/challenge" ||
-    pathname === "/api/daily/challenge" ||
-    pathname === "/daily/today" ||
-    pathname === "/api/daily/today"
-  ) {
-    return sendJson(res, 200, dailyPayload);
-  }
-
-  if (pathname === "/daily/puzzles" || pathname === "/api/daily/puzzles") {
-    return sendJson(res, 200, [adultsPuzzle]);
-  }
-
-  if (pathname === "/daily/status" || pathname === "/api/daily/status") {
-    return sendJson(res, 200, dailyStatus);
-  }
-
-  if (pathname === "/difficulty" || pathname === "/api/difficulty") {
-    return sendJson(res, 200, difficultyPayload);
-  }
-
-  if (pathname === "/difficulties" || pathname === "/api/difficulties") {
-    return sendJson(res, 200, difficultyOptions);
-  }
-
-  if (pathname === "/puzzles") {
-    return sendJson(res, 200, filteredPuzzles(query));
-  }
-
-  if (pathname === "/api/puzzles") {
-    return sendJson(res, 200, {
-      ok: true,
-      puzzles,
-      items: puzzles,
-      results: puzzles,
-      count: puzzles.length
-    });
-  }
-
-  if (pathname === "/progress" || pathname === "/api/progress") {
-    return sendJson(res, 200, progressPayload());
-  }
-
-  if (
-    pathname === "/solve" ||
-    pathname === "/api/solve" ||
-    pathname === "/daily/solve" ||
-    pathname === "/api/daily/solve"
-  ) {
-    if (req.method === "POST") {
-      return readBody(req, () => sendJson(res, 200, answerResponse()));
+  try {
+    if (req.method === "GET" && (pathname === "/" || pathname === "/health" || pathname === "/api/health")) {
+      sendJson(res, 200, {
+        ok: true,
+        service: "mindlab-backend",
+        port: PORT,
+        ageCategories: ["Kids", "Adults", "Seniors"]
+      });
+      return;
     }
 
-    return sendJson(res, 200, {
-      ok: true,
-      puzzle: adultsPuzzle,
-      challenge: adultsPuzzle,
-      selected: adultsPuzzle,
-      puzzles,
-      items: puzzles,
-      options: adultsPuzzle.options
-    });
-  }
-
-  if (
-    pathname === "/daily/submit" ||
-    pathname === "/api/daily/submit" ||
-    pathname === "/daily/answer" ||
-    pathname === "/api/daily/answer"
-  ) {
-    if (req.method === "POST") {
-      return readBody(req, () => sendJson(res, 200, answerResponse()));
+    if (req.method === "GET" && (pathname === "/api/age-categories" || pathname === "/api/categories")) {
+      sendJson(res, 200, {
+        ok: true,
+        ageCategories: ["Kids", "Adults", "Seniors"],
+        categories: ["Kids", "Adults", "Seniors"]
+      });
+      return;
     }
 
-    return sendJson(res, 200, {
-      ok: true,
-      dailyChallengeId: adultsPuzzle.dailyChallengeId,
-      puzzle: adultsPuzzle
+    if (req.method === "GET" && (pathname === "/api/questions" || pathname === "/api/puzzles")) {
+      const ageCategory = normalizeAgeCategory(requestUrl.searchParams.get("ageCategory"));
+
+      sendJson(res, 200, {
+        ok: true,
+        ageCategory,
+        questions: (puzzles[ageCategory] || puzzles.Kids).map(publicQuestion),
+        puzzles: (puzzles[ageCategory] || puzzles.Kids).map(publicQuestion)
+      });
+      return;
+    }
+
+    if (req.method === "POST" && (pathname === "/api/sessions" || pathname === "/api/session")) {
+      const body = await readBody(req);
+      const session = createSession(body.ageCategory || body.category || body.age || "Kids");
+      const question = publicQuestion(getQuestion(session.ageCategory, 0));
+
+      sendJson(res, 201, {
+        ok: true,
+        sessionId: session.id,
+        id: session.id,
+        session,
+        ageCategory: session.ageCategory,
+        question,
+        currentQuestion: question
+      });
+      return;
+    }
+
+    if (req.method === "GET" && pathname.startsWith("/api/sessions/")) {
+      const sessionId = pathname.split("/").filter(Boolean).pop();
+      const sessions = readJsonFile(sessionsPath, []);
+      const session = sessions.find(item => item.id === sessionId);
+
+      if (!session) {
+        sendJson(res, 404, { ok: false, error: "Session not found", sessionId });
+        return;
+      }
+
+      const question = publicQuestion(getQuestion(session.ageCategory, session.currentIndex));
+
+      sendJson(res, 200, {
+        ok: true,
+        session,
+        sessionId: session.id,
+        question,
+        currentQuestion: question
+      });
+      return;
+    }
+
+    if (req.method === "POST" && (pathname === "/api/answers" || pathname === "/api/answer" || pathname === "/api/submit")) {
+      const body = await readBody(req);
+      const sessions = readJsonFile(sessionsPath, []);
+      const answers = readJsonFile(answersPath, []);
+      const scores = readJsonFile(scoresPath, []);
+
+      const session = sessions.find(item => item.id === body.sessionId) || null;
+      const ageCategory = normalizeAgeCategory(body.ageCategory || (session && session.ageCategory) || "Kids");
+      const currentIndex = session ? Number(session.currentIndex || 0) : 0;
+      const question = getQuestion(ageCategory, currentIndex);
+      const submitted = String(body.answer || body.choice || body.value || "").trim();
+      const correct = question ? submitted.toLowerCase() === String(question.answer).toLowerCase() : false;
+
+      answers.push({
+        id: "answer-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8),
+        sessionId: body.sessionId || null,
+        ageCategory,
+        questionId: body.questionId || (question && question.id) || null,
+        answer: submitted,
+        correct,
+        createdAt: new Date().toISOString()
+      });
+
+      if (session) {
+        session.currentIndex = currentIndex + 1;
+        if (correct) session.score = Number(session.score || 0) + 1;
+        session.updatedAt = new Date().toISOString();
+      }
+
+      scores.push({
+        sessionId: body.sessionId || null,
+        ageCategory,
+        correct,
+        createdAt: new Date().toISOString()
+      });
+
+      writeJsonFile(answersPath, answers);
+      writeJsonFile(scoresPath, scores);
+      writeJsonFile(sessionsPath, sessions);
+
+      const nextQuestion = session ? publicQuestion(getQuestion(ageCategory, session.currentIndex)) : null;
+
+      sendJson(res, 200, {
+        ok: true,
+        correct,
+        session,
+        nextQuestion,
+        question: nextQuestion
+      });
+      return;
+    }
+
+    if (req.method === "GET" && pathname === "/api/progress") {
+      const progress = readJsonFile(progressPath, {});
+      sendJson(res, 200, { ok: true, progress });
+      return;
+    }
+
+    if (req.method === "POST" && pathname === "/api/progress") {
+      const body = await readBody(req);
+
+      writeJsonFile(progressPath, {
+        ...body,
+        updatedAt: new Date().toISOString()
+      });
+
+      sendJson(res, 200, { ok: true });
+      return;
+    }
+
+    sendJson(res, 404, {
+      ok: false,
+      error: "Not found",
+      path: pathname
+    });
+  } catch (error) {
+    sendJson(res, 500, {
+      ok: false,
+      error: error.message || "Internal server error"
     });
   }
-
-  return sendJson(res, 404, {
-    ok: false,
-    error: "Not found",
-    path: pathname
-  });
 });
 
-server.listen(port, host, () => {
-  console.log(`MindLab backend listening on http://${host}:${port}`);
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`MindLab backend listening on http://0.0.0.0:${PORT}`);
 });
