@@ -66,3 +66,12 @@ docs/*.docx
 
 backend/artifacts/
 
+# MindLab local environment and secret safety rules
+.env.*
+!.env.example
+!.env.*.example
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+frontend/build/
