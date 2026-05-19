@@ -1,121 +1,63 @@
-﻿# MindLab Starter Project
+# MindLab Starter Project
 
-MindLab is a small full-stack app with:
-- A Node/Express backend (port 8085)
-- A Vite/React frontend served from /app
-- Health and puzzles APIs
-- Playwright end-to-end tests
-- PowerShell smoke scripts
-- Docker image and Docker-based smoke test
-- GitHub Actions CI
+MindLab is a three-age-category cognitive game project for Kids, Adults, and Seniors.
 
----
+## Current State
 
-## 1. Prerequisites
+- Mandatory game-creation work: complete.
+- Current approved scope: Documentation polish.
+- Repository root: `C:\Projects\MindLab_Starter_Project`.
+- QA evidence root: `C:\Projects\MindLab_QA_Notes`.
+- Deployment: blocked unless explicitly approved.
+- Push: blocked unless explicitly approved.
+- Release tagging: blocked unless explicitly approved.
 
-- Node.js (v18+ recommended)
-- npm
-- PowerShell
-- Docker Desktop
-- Git
+## Validated Game Scope
 
----
+- Kids category: complete.
+- Adults category: complete.
+- Seniors category: complete.
+- Question presentation: passed temporary full game review.
+- Score view: passed temporary full game review.
+- Progress view: passed temporary full game review.
+- Age-category switching: passed temporary full game review.
+- Runtime or missing-file issue status: no blocker recorded in latest review.
 
-## 2. Running the Backend
+## Local Runtime References
 
-Open PowerShell and run:
-  cd C:\Projects\MindLab_Starter_Project\backend
-  npm install
-  npm start
+- Backend URL: `http://localhost:8085`
+- Frontend URL: `http://localhost:8090`
 
-Backend routes:
-- http://127.0.0.1:8085/
-- http://127.0.0.1:8085/health
-- http://127.0.0.1:8085/puzzles
-- http://127.0.0.1:8085/app
+## Documentation
 
----
+- Runbook: `docs/RUNBOOK.md`
+- Release notes: `docs/RELEASE_NOTES.md`
+- Support guide: `docs/SUPPORT_GUIDE.md`
+- QA evidence index: `docs/QA_EVIDENCE_INDEX.md`
+- Final stop state: `docs/FINAL_STOP_STATE.md`
 
-## 3. Build & Serve Frontend (Production)
+## Execution Rules
 
-From PowerShell:
-  cd C:\Projects\MindLab_Starter_Project\frontend
-  npm install
-  npm run build
+Use PowerShell automation only for repository changes.
 
-Then copy the build into backend/static:
-  cd C:\Projects\MindLab_Starter_Project
-  Remove-Item -Recurse -Force backend\static\* -ErrorAction SilentlyContinue
-  Copy-Item -Recurse -Force frontend\dist\* backend\static\
+Required controls:
 
-Make sure the backend is running with:
-  cd C:\Projects\MindLab_Starter_Project\backend
-  npm start
+1. Start and end in `C:\Projects\MindLab_Starter_Project`.
+2. Validate `.git` before git actions.
+3. Restore runtime-mutated files before clean checks.
+4. Remove runtime artifacts before final clean checks.
+5. Commit only when approved documentation files changed.
+6. Do not deploy, push, or tag without explicit approval.
 
----
+## Next Approved Scope Order
 
-## 4. Run Playwright Tests
+1. Documentation polish.
+2. Analytics planning.
+3. Hosting / store setup planning.
+4. Release tagging.
+5. Post-release bug triage.
+6. Temporary Full Game Visual Evidence Gallery, if screenshot-level evidence is needed.
 
-Backend MUST be running first.
+## Stop Rule
 
-In a new PowerShell window:
-  cd C:\Projects\MindLab_Starter_Project\frontend
-  npx playwright test --trace=on
-
----
-
-## 5. Local Smoke Test (full_smoke.ps1)
-
-This script:
-- checks port 8085
-- starts backend
-- waits for /health
-- runs Playwright tests
-- stops backend
-
-Run from project root:
-  cd C:\Projects\MindLab_Starter_Project
-  .\full_smoke.ps1
-
-Expected: FULL SMOKE TEST PASSED ✅
-
----
-
-## 6. Docker Smoke Test (docker_smoke.ps1)
-
-This script:
-- builds Docker image mindlab-fullapp:latest
-- runs container on port 8085
-- waits for /health
-- runs Playwright tests
-- stops and removes container
-
-Run from project root:
-  cd C:\Projects\MindLab_Starter_Project
-  .\docker_smoke.ps1
-
-Expected: DOCKER SMOKE TEST PASSED ✅
-
----
-
-## 7. Basic Git Commands
-
-From project root:
-  cd C:\Projects\MindLab_Starter_Project
-  git status
-  git add .
-  git commit -m "Your message here"
-  git push origin master
-
----
-
-## 8. GitHub Actions CI
-
-Workflow file:
-  .github\workflows\ci.yml
-
-On each push to master, CI will:
-- build frontend
-- copy dist to backend/static
-- start backend
-- run Playwright tests
+When final stop tokens are confirmed, do not continue work until one new scope is explicitly approved.
