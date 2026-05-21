@@ -1,4 +1,4 @@
-{
+﻿{
     "name":  "mindlab-backend",
     "version":  "1.0.0",
     "dependencies":  {
@@ -8,6 +8,7 @@
     "scripts":  {
                     "start":  "node src/qa-server.cjs",
                     "dev":  "node src/qa-server.cjs",
-                    "qa:health":  "node src/qa-server.cjs"
+                    "qa:health":  "node src/qa-server.cjs",
+                    "test":  "node ./scripts/validate-backend.mjs"
                 }
 }
