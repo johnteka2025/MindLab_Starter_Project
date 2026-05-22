@@ -121,6 +121,15 @@ export default function App() {
 
   return (
     <main className="mindlab-shell">
+{/* MINDLAB_SCOPE1_ONBOARDING_START */}
+<section className="mindlab-onboarding-polish" aria-label="MindLab game overview">
+  <p className="mindlab-onboarding-eyebrow">MindLab Brain Game</p>
+  <h2>Pick your age group and answer quick brain-building questions.</h2>
+  <p>
+    Choose a category, play through each question, and watch your score and progress as you go.
+  </p>
+</section>
+{/* MINDLAB_SCOPE1_ONBOARDING_END */}
       <section className="mindlab-card">
         <p className="eyebrow">MindLab gameplay loop</p>
         <h1>Practice puzzles by age category</h1>
@@ -202,4 +211,5 @@ export default function App() {
     </main>
   );
 }
+
 

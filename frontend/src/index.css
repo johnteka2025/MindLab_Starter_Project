@@ -66,3 +66,43 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* MINDLAB_SCOPE1_ONBOARDING_START */
+.mindlab-onboarding-polish {
+  margin: 0 auto 1rem auto;
+  padding: 1rem;
+  max-width: 760px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  text-align: center;
+}
+
+.mindlab-onboarding-polish h2 {
+  margin: 0.25rem 0 0.5rem 0;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  line-height: 1.15;
+}
+
+.mindlab-onboarding-polish p {
+  margin: 0.35rem auto;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.mindlab-onboarding-eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.82;
+}
+
+@media (max-width: 520px) {
+  .mindlab-onboarding-polish {
+    padding: 0.85rem;
+    border-radius: 14px;
+  }
+}
+/* MINDLAB_SCOPE1_ONBOARDING_END */
