@@ -1,4 +1,4 @@
-
+﻿
 export type MindLabPuzzle = {
   id: string;
   title?: string;
@@ -20,7 +20,7 @@ export type MindLabSession = {
 const API_BASE =
   import.meta.env.VITE_FRONTEND_API_BASE_URL ||
   import.meta.env.VITE_API_BASE_URL ||
-  "http://127.0.0.1:3100";
+  "https://mindlab-backend.onrender.com";
 
 async function requestJson<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(API_BASE + path, {
@@ -86,3 +86,4 @@ export function puzzleTextOf(puzzle: MindLabPuzzle) {
 export function puzzleChoicesOf(puzzle: MindLabPuzzle) {
   return puzzle.choices || puzzle.options || [];
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 import { useEffect, useMemo, useState } from "react";
 import {
   createSession,
@@ -37,7 +37,7 @@ export default function App() {
 
   useEffect(() => {
     getHealth().catch(() => {
-      setError("Backend is not reachable at http://127.0.0.1:3100.");
+      setError("Backend is not reachable at https://mindlab-backend.onrender.com.");
       setStep("error");
     });
   }, []);
@@ -141,12 +141,12 @@ export default function App() {
           </div>
         )}
 
-        {step === "loading" && <p className="status">Loading…</p>}
+        {step === "loading" && <p className="status">Loadingâ€¦</p>}
 
         {step === "play" && activePuzzle && (
           <div className="stack">
             <p className="meta">
-              Session: {sessionId} · Puzzle {activeIndex + 1} of {puzzles.length}
+              Session: {sessionId} Â· Puzzle {activeIndex + 1} of {puzzles.length}
             </p>
             <h2>{activePuzzle.title || "Puzzle"}</h2>
             <p className="prompt">{puzzleTextOf(activePuzzle)}</p>
@@ -202,3 +202,4 @@ export default function App() {
     </main>
   );
 }
+
