@@ -137,13 +137,13 @@ export default function App() {
 </section>
 {/* MINDLAB_SCOPE1_ONBOARDING_END */}
       <section className="mindlab-card">
-        <p className="eyebrow">MindLab gameplay loop</p>
-        <h1>Practice puzzles by age category</h1>
+        <p className="eyebrow">MindLab practice session</p>
+        <h1>Practice questions by age group</h1>
 
         {step === "home" && (
           <div className="stack">
             <label>
-              Age category
+              Age group
               <select value={ageCategory} onChange={(event) => setAgeCategory(event.target.value)}>
                 {AGE_OPTIONS.map((option) => (
                   <option key={option.id} value={option.id}>
@@ -152,7 +152,7 @@ export default function App() {
                 ))}
               </select>
             </label>
-            <button onClick={startGame}>Start session</button>
+            <button onClick={startGame}>Start practice</button>
           </div>
         )}
 
@@ -217,6 +217,7 @@ export default function App() {
     </main>
   );
 }
+
 
 
 
