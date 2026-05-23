@@ -1,4 +1,4 @@
-﻿
+
 import { useEffect, useMemo, useState } from "react";
 import {
   createSession,
@@ -192,19 +192,53 @@ export default function App() {
 
         {step === "feedback" && (
           <div className="stack">
-            <h2>Answer submitted</h2>
-            <pre>{JSON.stringify(feedback, null, 2)}</pre>
+            <h2>Answer saved</h2>
+            <div
+  className="player-feedback-card"
+  role="status"
+  style={{
+    padding: "1rem",
+    borderRadius: "0.75rem",
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
+    lineHeight: 1.6,
+    marginTop: "1rem",
+    marginBottom: "1rem"
+  }}
+>
+  <strong>Progress saved.</strong>
+  <p style={{ margin: "0.5rem 0 0 0" }}>
+    Continue to the next question or view your result when the session is complete.
+  </p>
+</div>
             <div className="actions">
               <button onClick={nextPuzzle}>Next</button>
-              <button onClick={showProgress}>View progress</button>
+              <button onClick={showProgress}>View result</button>
             </div>
           </div>
         )}
 
         {step === "progress" && (
           <div className="stack">
-            <h2>Progress</h2>
-            <pre>{JSON.stringify(progress, null, 2)}</pre>
+            <h2>Result</h2>
+            <div
+  className="player-feedback-card"
+  role="status"
+  style={{
+    padding: "1rem",
+    borderRadius: "0.75rem",
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
+    lineHeight: 1.6,
+    marginTop: "1rem",
+    marginBottom: "1rem"
+  }}
+>
+  <strong>Progress saved.</strong>
+  <p style={{ margin: "0.5rem 0 0 0" }}>
+    Continue to the next question or view your result when the session is complete.
+  </p>
+</div>
             <button onClick={() => setStep("home")}>Start another session</button>
           </div>
         )}
