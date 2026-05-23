@@ -128,6 +128,7 @@ export default function App() {
   <p>
     Choose a category, play through each question, and watch your score and progress as you go.
   </p>
+  <p className="mindlab-feedback-guide">After each answer, MindLab gives quick feedback so you know what to try next.</p>
 </section>
 {/* MINDLAB_SCOPE1_ONBOARDING_END */}
       <section className="mindlab-card">
@@ -211,6 +212,7 @@ export default function App() {
     </main>
   );
 }
+
 
 
 
