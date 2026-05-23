@@ -12,6 +12,9 @@ import {
   type MindLabPuzzle,
 } from "./lib/mindlabApi";
 import "./styles.css";
+import { startMindLabAnalyticsDomBridge } from "./lib/mindlabAnalytics";
+
+startMindLabAnalyticsDomBridge();
 
 type Step = "home" | "loading" | "play" | "feedback" | "progress" | "error";
 
@@ -217,6 +220,7 @@ export default function App() {
     </main>
   );
 }
+
 
 
 
