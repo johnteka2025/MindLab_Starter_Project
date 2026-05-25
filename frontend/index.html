@@ -20,5 +20,18 @@
       </main>
     </div>
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <!-- MindLab service worker registration start -->
+<script>
+  window.addEventListener("load", function () {
+    if ("serviceWorker" in navigator && window.location.protocol === "https:") {
+      navigator.serviceWorker.register("/MindLab_Starter_Project/sw.js", {
+        scope: "/MindLab_Starter_Project/"
+      }).catch(function (error) {
+        console.warn("MindLab service worker registration failed:", error);
+      });
+    }
+  });
+</script>
+<!-- MindLab service worker registration end -->
+</body>
 </html>
