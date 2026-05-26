@@ -1,13 +1,13 @@
 {
     "name":  "MindLab",
     "short_name":  "MindLab",
-    "description":  "A simple game experience with Kids, Adults, and Seniors modes.",
+    "description":  "MindLab game for Kids, Adults, and Seniors.",
     "start_url":  "/MindLab_Starter_Project/",
     "scope":  "/MindLab_Starter_Project/",
     "display":  "standalone",
     "orientation":  "any",
     "theme_color":  "#2563eb",
-    "background_color":  "#f8fafc",
+    "background_color":  "#ffffff",
     "lang":  "en",
     "dir":  "ltr",
     "categories":  [
