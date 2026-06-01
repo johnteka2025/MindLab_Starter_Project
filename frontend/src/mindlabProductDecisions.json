@@ -1,0 +1,24 @@
+﻿{
+  "ageCategoryBehavior": "RESTRICT_VISIBLE_CONTENT_BY_SELECTED_AGE_GROUP",
+  "collectEmail": false,
+  "collectPassword": false,
+  "collectExactAge": false,
+  "collectBirthdate": false,
+  "useSignOutLabel": false,
+  "approvedProfileExitLabels": [
+    "Exit Profile",
+    "Switch Profile",
+    "Reset Local Profile"
+  ],
+  "addProfileReviewScreen": true,
+  "addPolicyReturnNavigation": true,
+  "policyReturnNavigationLabels": [
+    "Return to Main Menu",
+    "Back to Game"
+  ],
+  "keepMindLabName": true,
+  "avoidMedicalClaims": true,
+  "avoidCognitiveImprovementClaims": true,
+  "googlePlayStatus": "HOLD",
+  "publicFeedbackCaptureStatus": "HOLD_UNTIL_PRODUCT_FEEDBACK_IMPLEMENTED_AND_VALIDATED"
+}
