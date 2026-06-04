@@ -164,7 +164,7 @@ export default function MindLabAgeProfileGate({ children }) {
         <section className="mindlab-age-gate-card">
           <h1>Privacy</h1>
           <p>MindLab uses a local profile on this device to guide the game experience.</p>
-          <p>No email, password, exact age, or birthdate is required in this repair scope.</p>
+          <p>Only a local profile name and selected category are used in this repair scope.</p>
           <div className="mindlab-age-gate-actions">
             <button type="button" onClick={() => setScreen("profile")}>Return to Main Menu</button>
             <button type="button" onClick={() => setScreen(profile ? "game" : "profile")}>Back to Game</button>
@@ -283,3 +283,4 @@ export default function MindLabAgeProfileGate({ children }) {
     </>
   );
 }
+
