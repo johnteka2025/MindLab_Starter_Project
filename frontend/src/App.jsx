@@ -1,11 +1,10 @@
-import React from "react";
-import AppBase from "./AppBase.jsx";
-import LocalProfileGate from "./LocalProfileGate.jsx";
+﻿import MindLabAgeProfileGate from "./mindlab-profile-age-repair/MindLabAgeProfileGate";
+import MindLabOriginalApp from "./MindLabOriginalApp";
 
 export default function App() {
   return (
-    <LocalProfileGate>
-      <AppBase />
-    </LocalProfileGate>
+    <MindLabAgeProfileGate>
+      <MindLabOriginalApp />
+    </MindLabAgeProfileGate>
   );
 }
