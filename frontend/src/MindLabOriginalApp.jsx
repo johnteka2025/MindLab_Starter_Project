@@ -8,6 +8,7 @@ const MODES = [
     id: "kids",
     label: "Kids",
     title: "Kids Mode",
+    instruction: "Kids profile is locked to Kids Mode. Only Kids activities are shown.",
     description: "Bright, simple, and confidence-building questions.",
     questions: [
       {
@@ -31,6 +32,7 @@ const MODES = [
     id: "adults",
     label: "Adults",
     title: "Adults Mode",
+    instruction: "Adults profile is locked to Adults Mode. Only Adults activities are shown.",
     description: "Balanced focus, reasoning, and recall challenges.",
     questions: [
       {
@@ -54,6 +56,7 @@ const MODES = [
     id: "seniors",
     label: "Seniors",
     title: "Seniors Mode",
+    instruction: "Seniors profile is locked to Seniors Mode. Only Seniors activities are shown.",
     description: "Clear, readable, steady-paced memory and reasoning prompts.",
     questions: [
       {
@@ -84,7 +87,6 @@ function readProfileState() {
     const rawProfile = window.localStorage.getItem(STORAGE_KEY);
     const parsedProfile = rawProfile ? JSON.parse(rawProfile) : null;
     const storedCategory = window.localStorage.getItem("mindlab.selectedAgeCategory");
-    const allowExplore = false;
 
     const profileCategory = parsedProfile && isModeId(parsedProfile.ageCategory)
       ? parsedProfile.ageCategory
@@ -118,13 +120,12 @@ export default function MindLabOriginalApp() {
     function syncFromProfileEvent(event) {
       const detail = event.detail || {};
       const nextCategory = detail.activeAgeCategory || detail.profile?.ageCategory || readProfileState().selectedAgeCategory;
-      const nextAllowExplore = Boolean(detail.allowExploreOtherCategories);
 
       if (isModeId(nextCategory)) {
         setProfileState({
           profileName: detail.profile?.name || readProfileState().profileName,
           selectedAgeCategory: nextCategory,
-          allowExploreOtherCategories: nextAllowExplore
+          allowExploreOtherCategories: false
         });
 
         setActiveModeId(nextCategory);
@@ -155,8 +156,7 @@ export default function MindLabOriginalApp() {
   }, []);
 
   const visibleModes = MODES.filter((mode) => mode.id === profileState.selectedAgeCategory);
-
-  const activeMode = MODES.find((mode) => mode.id === activeModeId) || MODES.find((mode) => mode.id === profileState.selectedAgeCategory) || MODES[0];
+  const activeMode = MODES.find((mode) => mode.id === activeModeId) || visibleModes[0] || MODES[0];
   const currentQuestion = activeMode.questions[questionIndex];
 
   function selectMode(modeId) {
@@ -196,10 +196,8 @@ export default function MindLabOriginalApp() {
       <section className="mindlab-hero-card">
         <p className="mindlab-eyebrow">MINDLAB</p>
         <h1>MindLab Game Modes</h1>
-        <p>
-          Choose a focused game mode for Kids, Adults, or Seniors. MindLab is not a medical,
-          diagnostic, treatment, prevention, or guaranteed cognitive-improvement product.
-        </p>
+        <p>{activeMode.instruction}</p>
+        <p className="mindlab-scope-note">MindLab is a game experience, not professional care or outcome advice.</p>
 
         <div className="mindlab-mode-grid">
           {visibleModes.map((mode) => (
@@ -256,4 +254,3 @@ export default function MindLabOriginalApp() {
     </main>
   );
 }
-
