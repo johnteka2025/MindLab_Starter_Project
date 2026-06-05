@@ -1,256 +1,221 @@
-﻿import { useEffect, useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
+import "./MindLabOriginalApp.css";
 
 const STORAGE_KEY = "mindlab.localProfile.v1";
-const EVENT_NAME = "mindlab-profile-changed";
 
-const MODES = [
-  {
-    id: "kids",
+const GAME_MODES = {
+  kids: {
     label: "Kids",
     title: "Kids Mode",
-    instruction: "Kids profile is locked to Kids Mode. Only Kids activities are shown.",
-    description: "Bright, simple, and confidence-building questions.",
+    subtitle: "Bright, simple, and confidence-building questions.",
+    lockedText: "Kids profile is locked to Kids Mode. Only Kids activities are shown.",
     questions: [
       {
         prompt: "Which shape has three sides?",
-        options: ["Circle", "Triangle", "Square"],
-        answer: "Triangle"
+        answers: ["Circle", "Triangle", "Square"],
+        correctAnswer: "Triangle"
       },
       {
-        prompt: "Which number comes after 4?",
-        options: ["3", "5", "9"],
-        answer: "5"
+        prompt: "What number comes after 4?",
+        answers: ["3", "5", "8"],
+        correctAnswer: "5"
       },
       {
-        prompt: "Which color is the sky often on a clear day?",
-        options: ["Blue", "Orange", "Black"],
-        answer: "Blue"
+        prompt: "Which animal says meow?",
+        answers: ["Dog", "Cat", "Bird"],
+        correctAnswer: "Cat"
       }
     ]
   },
-  {
-    id: "adults",
+  adults: {
     label: "Adults",
     title: "Adults Mode",
-    instruction: "Adults profile is locked to Adults Mode. Only Adults activities are shown.",
-    description: "Balanced focus, reasoning, and recall challenges.",
+    subtitle: "Focused questions for quick reasoning practice.",
+    lockedText: "Adults profile is locked to Adults Mode. Only Adults activities are shown.",
     questions: [
       {
-        prompt: "If a train leaves at 2:00 and arrives at 4:30, how long was the trip?",
-        options: ["2 hours", "2.5 hours", "3 hours"],
-        answer: "2.5 hours"
+        prompt: "Which option is the strongest planning step?",
+        answers: ["Guess first", "Define the goal", "Ignore limits"],
+        correctAnswer: "Define the goal"
       },
       {
-        prompt: "Which word best means careful planning?",
-        options: ["Strategy", "Accident", "Guess"],
-        answer: "Strategy"
+        prompt: "What improves decision quality?",
+        answers: ["Clear tradeoffs", "More confusion", "No review"],
+        correctAnswer: "Clear tradeoffs"
       },
       {
-        prompt: "What is 15% of 200?",
-        options: ["15", "30", "45"],
-        answer: "30"
+        prompt: "Which habit supports learning?",
+        answers: ["Review mistakes", "Avoid feedback", "Rush every task"],
+        correctAnswer: "Review mistakes"
       }
     ]
   },
-  {
-    id: "seniors",
+  seniors: {
     label: "Seniors",
     title: "Seniors Mode",
-    instruction: "Seniors profile is locked to Seniors Mode. Only Seniors activities are shown.",
-    description: "Clear, readable, steady-paced memory and reasoning prompts.",
+    subtitle: "Clear, comfortable questions with easy navigation.",
+    lockedText: "Seniors profile is locked to Seniors Mode. Only Seniors activities are shown.",
     questions: [
       {
-        prompt: "Remember this word: Garden. Which word were you asked to remember?",
-        options: ["Window", "Garden", "River"],
-        answer: "Garden"
+        prompt: "Which item is used to tell time?",
+        answers: ["Clock", "Plate", "Pillow"],
+        correctAnswer: "Clock"
       },
       {
-        prompt: "Which item is usually used to tell time?",
-        options: ["Clock", "Plate", "Pillow"],
-        answer: "Clock"
+        prompt: "Which word means the same as calm?",
+        answers: ["Peaceful", "Loud", "Sharp"],
+        correctAnswer: "Peaceful"
       },
       {
-        prompt: "Which number is larger?",
-        options: ["18", "12", "9"],
-        answer: "18"
+        prompt: "Which activity helps organize a day?",
+        answers: ["Making a list", "Losing notes", "Skipping plans"],
+        correctAnswer: "Making a list"
       }
     ]
   }
-];
+};
 
-function isModeId(value) {
+function isValidCategory(value) {
   return value === "kids" || value === "adults" || value === "seniors";
 }
 
-function readProfileState() {
+function loadLocalProfile() {
   try {
     const rawProfile = window.localStorage.getItem(STORAGE_KEY);
-    const parsedProfile = rawProfile ? JSON.parse(rawProfile) : null;
-    const storedCategory = window.localStorage.getItem("mindlab.selectedAgeCategory");
+    if (!rawProfile) {
+      return null;
+    }
 
-    const profileCategory = parsedProfile && isModeId(parsedProfile.ageCategory)
-      ? parsedProfile.ageCategory
-      : null;
+    const parsedProfile = JSON.parse(rawProfile);
 
-    const selectedAgeCategory = profileCategory || (isModeId(storedCategory) ? storedCategory : "kids");
+    if (!parsedProfile || !isValidCategory(parsedProfile.ageCategory)) {
+      return null;
+    }
 
     return {
-      profileName: parsedProfile?.name || "MindLab Player",
-      selectedAgeCategory,
-      allowExploreOtherCategories: false
+      name: parsedProfile.name || "MindLab Player",
+      ageCategory: parsedProfile.ageCategory
     };
   } catch {
-    return {
-      profileName: "MindLab Player",
-      selectedAgeCategory: "kids",
-      allowExploreOtherCategories: false
-    };
+    return null;
   }
 }
 
 export default function MindLabOriginalApp() {
-  const initialProfileState = useMemo(() => readProfileState(), []);
-  const [profileState, setProfileState] = useState(initialProfileState);
-  const [activeModeId, setActiveModeId] = useState(initialProfileState.selectedAgeCategory);
+  const localProfile = useMemo(() => loadLocalProfile(), []);
+  const lockedCategory = isValidCategory(localProfile?.ageCategory) ? localProfile.ageCategory : "kids";
+  const activeMode = GAME_MODES[lockedCategory];
+
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [answerState, setAnswerState] = useState(null);
 
-  useEffect(() => {
-    function syncFromProfileEvent(event) {
-      const detail = event.detail || {};
-      const nextCategory = detail.activeAgeCategory || detail.profile?.ageCategory || readProfileState().selectedAgeCategory;
-
-      if (isModeId(nextCategory)) {
-        setProfileState({
-          profileName: detail.profile?.name || readProfileState().profileName,
-          selectedAgeCategory: nextCategory,
-          allowExploreOtherCategories: false
-        });
-
-        setActiveModeId(nextCategory);
-        setQuestionIndex(0);
-        setSelectedAnswer("");
-        setScore(0);
-      }
-    }
-
-    function syncFromStorage() {
-      const nextProfileState = readProfileState();
-      setProfileState(nextProfileState);
-      setActiveModeId(nextProfileState.selectedAgeCategory);
-      setQuestionIndex(0);
-      setSelectedAnswer("");
-      setScore(0);
-    }
-
-    window.addEventListener(EVENT_NAME, syncFromProfileEvent);
-    window.addEventListener("storage", syncFromStorage);
-
-    syncFromStorage();
-
-    return () => {
-      window.removeEventListener(EVENT_NAME, syncFromProfileEvent);
-      window.removeEventListener("storage", syncFromStorage);
-    };
-  }, []);
-
-  const visibleModes = MODES.filter((mode) => mode.id === profileState.selectedAgeCategory);
-  const activeMode = MODES.find((mode) => mode.id === activeModeId) || visibleModes[0] || MODES[0];
   const currentQuestion = activeMode.questions[questionIndex];
+  const totalQuestions = activeMode.questions.length;
 
-  function selectMode(modeId) {
-    setActiveModeId(modeId);
-    setQuestionIndex(0);
-    setSelectedAnswer("");
-    setScore(0);
-  }
+  function handleAnswer(answer) {
+    if (answerState) {
+      return;
+    }
 
-  function submitAnswer(option) {
-    setSelectedAnswer(option);
+    const isCorrect = answer === currentQuestion.correctAnswer;
 
-    if (option === currentQuestion.answer) {
-      setScore((value) => value + 1);
+    setAnswerState({
+      selectedAnswer: answer,
+      isCorrect
+    });
+
+    if (isCorrect) {
+      setScore((currentScore) => currentScore + 1);
     }
   }
 
-  function nextQuestion() {
-    setSelectedAnswer("");
-    setQuestionIndex((value) => {
-      if (value + 1 >= activeMode.questions.length) {
-        return 0;
-      }
-
-      return value + 1;
-    });
+  function goToNextQuestion() {
+    setQuestionIndex((currentIndex) => (currentIndex + 1) % totalQuestions);
+    setAnswerState(null);
   }
 
   function restartMode() {
     setQuestionIndex(0);
     setScore(0);
-    setSelectedAnswer("");
+    setAnswerState(null);
   }
 
   return (
-    <main className="mindlab-app-shell">
-      <section className="mindlab-hero-card">
-        <p className="mindlab-eyebrow">MINDLAB</p>
-        <h1>MindLab Game Modes</h1>
-        <p>{activeMode.instruction}</p>
-        <p className="mindlab-scope-note">MindLab is a game experience, not professional care or outcome advice.</p>
+    <div className="mindlab-game-shell" role="main">
+      <section className="mindlab-game-hero" aria-labelledby="mindlab-title">
+        <div className="mindlab-kicker">MindLab</div>
+        <h1 id="mindlab-title">MindLab Game Modes</h1>
+        <p className="mindlab-hero-lock">{activeMode.lockedText}</p>
+        <p className="mindlab-hero-note">MindLab is a game experience for structured play and practice.</p>
 
-        <div className="mindlab-mode-grid">
-          {visibleModes.map((mode) => (
-            <button
-              key={mode.id}
-              type="button"
-              className={activeMode.id === mode.id ? "mindlab-mode-card is-active" : "mindlab-mode-card"}
-              onClick={() => selectMode(mode.id)}
-              data-age-category={mode.id}
-            >
-              <strong>{mode.label}</strong>
-              <span>{mode.description}</span>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className="mindlab-question-card" data-active-age-category={activeMode.id}>
-        <div className="mindlab-question-header">
+        <div className="mindlab-profile-summary">
           <div>
-            <p className="mindlab-eyebrow">QUESTION {questionIndex + 1} OF {activeMode.questions.length}</p>
-            <h2>{activeMode.title}</h2>
-            <p>{activeMode.description}</p>
+            <span className="mindlab-summary-label">Current profile</span>
+            <strong>{localProfile?.name || "MindLab Player"}</strong>
           </div>
-          <strong className="mindlab-score">Score: {score}</strong>
-        </div>
-
-        <h3>{currentQuestion.prompt}</h3>
-
-        <div className="mindlab-answer-list">
-          {currentQuestion.options.map((option) => (
-            <button
-              key={option}
-              type="button"
-              className={selectedAnswer === option ? "mindlab-answer is-selected" : "mindlab-answer"}
-              onClick={() => submitAnswer(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-
-        {selectedAnswer && (
-          <p className="mindlab-feedback">
-            {selectedAnswer === currentQuestion.answer ? "Correct." : `Correct answer: ${currentQuestion.answer}`}
-          </p>
-        )}
-
-        <div className="mindlab-game-actions">
-          <button type="button" onClick={nextQuestion}>Next Question</button>
-          <button type="button" onClick={restartMode}>Restart Mode</button>
+          <div>
+            <span className="mindlab-summary-label">Active category</span>
+            <strong>{activeMode.label}</strong>
+          </div>
         </div>
       </section>
-    </main>
+
+      <section className="mindlab-mode-card mindlab-mode-card-active" aria-label={`${activeMode.label} game area`}>
+        <div className="mindlab-mode-header">
+          <div>
+            <span className="mindlab-mode-pill">{activeMode.label}</span>
+            <h2>{activeMode.title}</h2>
+            <p>{activeMode.subtitle}</p>
+          </div>
+          <div className="mindlab-score-card">
+            <span>Score</span>
+            <strong>{score}</strong>
+          </div>
+        </div>
+
+        <div className="mindlab-question-card">
+          <div className="mindlab-question-meta">
+            Question {questionIndex + 1} of {totalQuestions}
+          </div>
+
+          <h3>{currentQuestion.prompt}</h3>
+
+          <div className="mindlab-answer-grid">
+            {currentQuestion.answers.map((answer) => {
+              const selected = answerState?.selectedAnswer === answer;
+              const correct = selected && answerState?.isCorrect;
+              const incorrect = selected && answerState && !answerState.isCorrect;
+
+              return (
+                <button
+                  key={answer}
+                  type="button"
+                  className={[
+                    "mindlab-answer-button",
+                    correct ? "is-correct" : "",
+                    incorrect ? "is-incorrect" : ""
+                  ].filter(Boolean).join(" ")}
+                  onClick={() => handleAnswer(answer)}
+                >
+                  {answer}
+                </button>
+              );
+            })}
+          </div>
+
+          {answerState && (
+            <div className={answerState.isCorrect ? "mindlab-result is-correct" : "mindlab-result is-incorrect"}>
+              {answerState.isCorrect ? "Correct." : `Try again. Correct answer: ${currentQuestion.correctAnswer}.`}
+            </div>
+          )}
+
+          <div className="mindlab-action-row">
+            <button type="button" onClick={goToNextQuestion}>Next Question</button>
+            <button type="button" onClick={restartMode}>Restart Mode</button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
