@@ -106,3 +106,128 @@ button:focus-visible {
   }
 }
 /* MINDLAB_SCOPE1_ONBOARDING_END */
+
+/* mindlab-source-level-age-filter */
+.mindlab-app-shell {
+  min-height: 100vh;
+  padding: 28px;
+  background: #f5f6f8;
+  color: #111827;
+  font-family: Arial, sans-serif;
+}
+
+.mindlab-hero-card,
+.mindlab-question-card {
+  width: min(920px, calc(100vw - 48px));
+  margin: 28px auto;
+  padding: 24px;
+  border: 1px solid #d7dce3;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.mindlab-eyebrow {
+  margin: 0 0 8px;
+  color: #1d4ed8;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.mindlab-hero-card h1 {
+  margin: 0 0 16px;
+  font-size: clamp(38px, 7vw, 64px);
+  line-height: 1;
+}
+
+.mindlab-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.mindlab-mode-card {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  min-height: 92px;
+  border: 1px solid #c9d1dc;
+  border-radius: 12px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mindlab-mode-card strong {
+  font-size: 22px;
+}
+
+.mindlab-mode-card.is-active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.mindlab-question-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  border-bottom: 1px solid #d7dce3;
+  padding-bottom: 18px;
+}
+
+.mindlab-question-header h2 {
+  margin: 0 0 6px;
+  font-size: 32px;
+}
+
+.mindlab-score {
+  display: inline-flex;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+}
+
+.mindlab-question-card h3 {
+  margin-top: 22px;
+  font-size: 26px;
+}
+
+.mindlab-answer-list {
+  display: grid;
+  gap: 10px;
+}
+
+.mindlab-answer {
+  padding: 14px 16px;
+  border: 1px solid #c9d1dc;
+  border-radius: 12px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mindlab-answer.is-selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.mindlab-feedback {
+  font-weight: 700;
+}
+
+.mindlab-game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.mindlab-game-actions button {
+  padding: 10px 14px;
+  border: 1px solid #8b95a1;
+  border-radius: 8px;
+  background: #f8fafc;
+  cursor: pointer;
+}

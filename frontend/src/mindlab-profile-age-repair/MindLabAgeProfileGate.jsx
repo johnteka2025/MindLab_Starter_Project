@@ -2,23 +2,12 @@
 import "./MindLabAgeProfileGate.css";
 
 const STORAGE_KEY = "mindlab.localProfile.v1";
+const EVENT_NAME = "mindlab-profile-changed";
 
 const AGE_CATEGORIES = [
-  {
-    id: "kids",
-    label: "Kids",
-    description: "Simple, playful activities for younger players."
-  },
-  {
-    id: "adults",
-    label: "Adults",
-    description: "Focused activities for adult players."
-  },
-  {
-    id: "seniors",
-    label: "Seniors",
-    description: "Clear, comfortable activities for senior players."
-  }
+  { id: "kids", label: "Kids", description: "Simple, playful activities for younger players." },
+  { id: "adults", label: "Adults", description: "Focused activities for adult players." },
+  { id: "seniors", label: "Seniors", description: "Clear, comfortable activities for senior players." }
 ];
 
 const CATEGORY_LABELS = {
@@ -31,24 +20,14 @@ function isAgeCategory(value) {
   return value === "kids" || value === "adults" || value === "seniors";
 }
 
-function normalizeText(value) {
-  return String(value || "").replace(/\s+/g, " ").trim();
-}
-
-function categoryRegex(label) {
-  return new RegExp("\\b" + label + "\\b", "i");
-}
-
 function loadProfile() {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-
     if (!raw) {
       return null;
     }
 
     const parsed = JSON.parse(raw);
-
     if (!parsed || !parsed.name || !isAgeCategory(parsed.ageCategory)) {
       return null;
     }
@@ -63,10 +42,18 @@ function loadProfile() {
   }
 }
 
-function saveProfile(profile) {
-  const label = CATEGORY_LABELS[profile.ageCategory] || "Kids";
+function publishProfile(profile, allowExplore) {
+  const detail = {
+    profile,
+    activeAgeCategory: profile?.ageCategory || "kids",
+    allowExploreOtherCategories: Boolean(allowExplore)
+  };
 
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+  window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail }));
+}
+
+function saveProfile(profile, allowExplore) {
+  const label = CATEGORY_LABELS[profile.ageCategory] || "Kids";
 
   const mirrorProfile = {
     name: profile.name,
@@ -82,11 +69,15 @@ function saveProfile(profile) {
     createdAt: profile.createdAt
   };
 
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
   window.localStorage.setItem("mindlabProfile", JSON.stringify(mirrorProfile));
   window.localStorage.setItem("mindlab.profile", JSON.stringify(mirrorProfile));
   window.localStorage.setItem("MindLabProfile", JSON.stringify(mirrorProfile));
   window.localStorage.setItem("mindlab.selectedAgeCategory", profile.ageCategory);
   window.localStorage.setItem("mindlab.activeAgeCategory", profile.ageCategory);
+  window.localStorage.setItem("mindlab.allowExploreOtherCategories", allowExplore ? "true" : "false");
+
+  publishProfile(profile, allowExplore);
 }
 
 function clearProfile() {
@@ -96,188 +87,15 @@ function clearProfile() {
   window.localStorage.removeItem("MindLabProfile");
   window.localStorage.removeItem("mindlab.selectedAgeCategory");
   window.localStorage.removeItem("mindlab.activeAgeCategory");
-}
+  window.localStorage.removeItem("mindlab.allowExploreOtherCategories");
 
-function resetDomGuard() {
-  document.querySelectorAll("[data-mindlab-age-hidden='true']").forEach((element) => {
-    element.style.display = element.dataset.mindlabPreviousDisplay || "";
-    element.removeAttribute("data-mindlab-age-hidden");
-    element.removeAttribute("data-mindlab-previous-display");
-  });
-}
-
-function shouldSkipElement(element) {
-  if (!element) {
-    return true;
-  }
-
-  if (element.closest(".mindlab-age-gate")) {
-    return true;
-  }
-
-  if (element.closest("script, style, noscript, svg")) {
-    return true;
-  }
-
-  return false;
-}
-
-function findBestHideTarget(element) {
-  const preferredSelectors = [
-    "[data-age-category]",
-    "[data-age-mode]",
-    "[data-category]",
-    "[role='button']",
-    "button",
-    "a",
-    "article",
-    "li",
-    "[class*='card']",
-    "[class*='Card']",
-    "[class*='tile']",
-    "[class*='Tile']",
-    "[class*='mode']",
-    "[class*='Mode']",
-    "[class*='category']",
-    "[class*='Category']"
-  ];
-
-  for (const selector of preferredSelectors) {
-    const target = element.closest(selector);
-
-    if (target && !target.closest(".mindlab-age-gate")) {
-      const text = normalizeText(target.textContent);
-
-      if (text.length > 0 && text.length <= 500) {
-        return target;
-      }
+  window.dispatchEvent(new CustomEvent(EVENT_NAME, {
+    detail: {
+      profile: null,
+      activeAgeCategory: "kids",
+      allowExploreOtherCategories: false
     }
-  }
-
-  const directText = normalizeText(element.textContent);
-
-  if (directText.length > 0 && directText.length <= 500) {
-    return element;
-  }
-
-  return null;
-}
-
-function hideElement(element) {
-  if (!element || element.dataset.mindlabAgeHidden === "true") {
-    return;
-  }
-
-  element.dataset.mindlabAgeHidden = "true";
-  element.dataset.mindlabPreviousDisplay = element.style.display || "";
-  element.style.display = "none";
-}
-
-function hideOriginalUndefinedProfileBars() {
-  document.querySelectorAll("div, section, aside, header").forEach((element) => {
-    if (shouldSkipElement(element)) {
-      return;
-    }
-
-    const text = normalizeText(element.textContent);
-
-    if (/MindLab Profile:/i.test(text) && /undefined/i.test(text) && text.length <= 250) {
-      hideElement(element);
-    }
-  });
-}
-
-function applyDomGuard(activeCategory, allowExplore) {
-  resetDomGuard();
-
-  document.documentElement.dataset.mindlabActiveAgeCategory = activeCategory;
-  document.documentElement.dataset.mindlabExploreOtherCategories = allowExplore ? "true" : "false";
-
-  hideOriginalUndefinedProfileBars();
-
-  if (allowExplore) {
-    return;
-  }
-
-  const activeLabel = CATEGORY_LABELS[activeCategory] || "Kids";
-  const blockedLabels = Object.values(CATEGORY_LABELS).filter((label) => label !== activeLabel);
-
-  const candidateSelector = [
-    "[data-age-category]",
-    "[data-age-mode]",
-    "[data-category]",
-    "button",
-    "a",
-    "[role='button']",
-    "article",
-    "li",
-    "section",
-    "div",
-    "[class*='card']",
-    "[class*='Card']",
-    "[class*='tile']",
-    "[class*='Tile']",
-    "[class*='mode']",
-    "[class*='Mode']",
-    "[class*='category']",
-    "[class*='Category']"
-  ].join(",");
-
-  const allCandidates = Array.from(document.querySelectorAll(candidateSelector));
-
-  allCandidates.forEach((element) => {
-    if (shouldSkipElement(element)) {
-      return;
-    }
-
-    const text = normalizeText(element.textContent);
-
-    if (!text || text.length > 500) {
-      return;
-    }
-
-    const hasActiveLabel = categoryRegex(activeLabel).test(text);
-    const blockedMatches = blockedLabels.filter((label) => categoryRegex(label).test(text));
-
-    if (blockedMatches.length === 0) {
-      return;
-    }
-
-    if (hasActiveLabel && blockedMatches.length > 0) {
-      const childElements = Array.from(element.querySelectorAll("button,a,[role='button'],article,li,div,section"));
-
-      childElements.forEach((child) => {
-        if (shouldSkipElement(child)) {
-          return;
-        }
-
-        const childText = normalizeText(child.textContent);
-
-        if (!childText || childText.length > 500) {
-          return;
-        }
-
-        const childHasActive = categoryRegex(activeLabel).test(childText);
-        const childHasBlocked = blockedLabels.some((label) => categoryRegex(label).test(childText));
-
-        if (childHasBlocked && !childHasActive) {
-          const target = findBestHideTarget(child);
-
-          if (target) {
-            hideElement(target);
-          }
-        }
-      });
-
-      return;
-    }
-
-    const target = findBestHideTarget(element);
-
-    if (target) {
-      hideElement(target);
-    }
-  });
+  }));
 }
 
 export default function MindLabAgeProfileGate({ children }) {
@@ -285,64 +103,37 @@ export default function MindLabAgeProfileGate({ children }) {
   const [profile, setProfile] = useState(loadedProfile);
   const [name, setName] = useState(loadedProfile?.name || "");
   const [selectedAgeCategory, setSelectedAgeCategory] = useState(loadedProfile?.ageCategory || "kids");
-  const [activeCategory, setActiveCategory] = useState(loadedProfile?.ageCategory || "kids");
   const [allowExplore, setAllowExplore] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [screen, setScreen] = useState(loadedProfile ? "game" : "profile");
 
+  const activeCategory = profile?.ageCategory || selectedAgeCategory || "kids";
+
   useEffect(() => {
-    if (!profile) {
-      resetDomGuard();
-      return undefined;
+    if (profile) {
+      saveProfile(profile, allowExplore);
     }
-
-    applyDomGuard(activeCategory, allowExplore);
-
-    const observer = new MutationObserver(() => {
-      applyDomGuard(activeCategory, allowExplore);
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
-
-    const interval = window.setInterval(() => {
-      applyDomGuard(activeCategory, allowExplore);
-    }, 250);
-
-    return () => {
-      observer.disconnect();
-      window.clearInterval(interval);
-      resetDomGuard();
-    };
-  }, [profile, activeCategory, allowExplore]);
+  }, [profile, allowExplore]);
 
   function createProfile() {
-    const safeName = name.trim() || "MindLab Player";
-
     const nextProfile = {
-      name: safeName,
+      name: name.trim() || "MindLab Player",
       ageCategory: selectedAgeCategory,
       createdAt: new Date().toISOString()
     };
 
-    saveProfile(nextProfile);
     setProfile(nextProfile);
-    setActiveCategory(nextProfile.ageCategory);
     setAllowExplore(false);
     setShowReview(false);
     setScreen("game");
+    saveProfile(nextProfile, false);
   }
 
   function exitProfile() {
     clearProfile();
-    resetDomGuard();
     setProfile(null);
     setName("");
     setSelectedAgeCategory("kids");
-    setActiveCategory("kids");
     setAllowExplore(false);
     setShowReview(false);
     setScreen("profile");
@@ -354,7 +145,7 @@ export default function MindLabAgeProfileGate({ children }) {
         <section className="mindlab-age-gate-card">
           <h1>Privacy</h1>
           <p>MindLab uses a local profile on this device to guide the game experience.</p>
-          <p>Only a local profile name and selected category are used in this repair scope.</p>
+          <p>Only a local profile name and selected category are used.</p>
           <div className="mindlab-age-gate-actions">
             <button type="button" onClick={() => setScreen("profile")}>Return to Main Menu</button>
             <button type="button" onClick={() => setScreen(profile ? "game" : "profile")}>Back to Game</button>
@@ -448,24 +239,6 @@ export default function MindLabAgeProfileGate({ children }) {
           <p>Profile name: {profile.name}</p>
           <p>Default category: {CATEGORY_LABELS[profile.ageCategory]}</p>
           <p>Current view: {allowExplore ? "Exploring other categories" : CATEGORY_LABELS[activeCategory]}</p>
-        </section>
-      )}
-
-      {allowExplore && (
-        <section className="mindlab-age-gate mindlab-age-gate-switcher">
-          <h2>Switch Age Category</h2>
-          {AGE_CATEGORIES.map((category) => (
-            <button
-              key={category.id}
-              type="button"
-              onClick={() => {
-                setActiveCategory(category.id);
-                setAllowExplore(false);
-              }}
-            >
-              {category.label}
-            </button>
-          ))}
         </section>
       )}
 
