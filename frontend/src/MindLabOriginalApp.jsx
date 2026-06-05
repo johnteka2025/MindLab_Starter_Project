@@ -84,7 +84,7 @@ function readProfileState() {
     const rawProfile = window.localStorage.getItem(STORAGE_KEY);
     const parsedProfile = rawProfile ? JSON.parse(rawProfile) : null;
     const storedCategory = window.localStorage.getItem("mindlab.selectedAgeCategory");
-    const allowExplore = window.localStorage.getItem("mindlab.allowExploreOtherCategories") === "true";
+    const allowExplore = false;
 
     const profileCategory = parsedProfile && isModeId(parsedProfile.ageCategory)
       ? parsedProfile.ageCategory
@@ -95,7 +95,7 @@ function readProfileState() {
     return {
       profileName: parsedProfile?.name || "MindLab Player",
       selectedAgeCategory,
-      allowExploreOtherCategories: allowExplore
+      allowExploreOtherCategories: false
     };
   } catch {
     return {
@@ -154,9 +154,7 @@ export default function MindLabOriginalApp() {
     };
   }, []);
 
-  const visibleModes = profileState.allowExploreOtherCategories
-    ? MODES
-    : MODES.filter((mode) => mode.id === profileState.selectedAgeCategory);
+  const visibleModes = MODES.filter((mode) => mode.id === profileState.selectedAgeCategory);
 
   const activeMode = MODES.find((mode) => mode.id === activeModeId) || MODES.find((mode) => mode.id === profileState.selectedAgeCategory) || MODES[0];
   const currentQuestion = activeMode.questions[questionIndex];
@@ -258,3 +256,4 @@ export default function MindLabOriginalApp() {
     </main>
   );
 }
+

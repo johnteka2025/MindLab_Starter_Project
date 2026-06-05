@@ -42,17 +42,17 @@ function loadProfile() {
   }
 }
 
-function publishProfile(profile, allowExplore) {
-  const detail = {
-    profile,
-    activeAgeCategory: profile?.ageCategory || "kids",
-    allowExploreOtherCategories: Boolean(allowExplore)
-  };
-
-  window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail }));
+function publishProfile(profile) {
+  window.dispatchEvent(new CustomEvent(EVENT_NAME, {
+    detail: {
+      profile,
+      activeAgeCategory: profile?.ageCategory || "kids",
+      lockedToSelectedCategory: true
+    }
+  }));
 }
 
-function saveProfile(profile, allowExplore) {
+function saveProfile(profile) {
   const label = CATEGORY_LABELS[profile.ageCategory] || "Kids";
 
   const mirrorProfile = {
@@ -66,6 +66,7 @@ function saveProfile(profile, allowExplore) {
     ageGroupLabel: label,
     mode: profile.ageCategory,
     modeLabel: label,
+    lockedToSelectedCategory: true,
     createdAt: profile.createdAt
   };
 
@@ -75,9 +76,10 @@ function saveProfile(profile, allowExplore) {
   window.localStorage.setItem("MindLabProfile", JSON.stringify(mirrorProfile));
   window.localStorage.setItem("mindlab.selectedAgeCategory", profile.ageCategory);
   window.localStorage.setItem("mindlab.activeAgeCategory", profile.ageCategory);
-  window.localStorage.setItem("mindlab.allowExploreOtherCategories", allowExplore ? "true" : "false");
+  window.localStorage.setItem("mindlab.lockedToSelectedCategory", "true");
+  window.localStorage.removeItem("mindlab.allowExploreOtherCategories");
 
-  publishProfile(profile, allowExplore);
+  publishProfile(profile);
 }
 
 function clearProfile() {
@@ -87,13 +89,14 @@ function clearProfile() {
   window.localStorage.removeItem("MindLabProfile");
   window.localStorage.removeItem("mindlab.selectedAgeCategory");
   window.localStorage.removeItem("mindlab.activeAgeCategory");
+  window.localStorage.removeItem("mindlab.lockedToSelectedCategory");
   window.localStorage.removeItem("mindlab.allowExploreOtherCategories");
 
   window.dispatchEvent(new CustomEvent(EVENT_NAME, {
     detail: {
       profile: null,
       activeAgeCategory: "kids",
-      allowExploreOtherCategories: false
+      lockedToSelectedCategory: true
     }
   }));
 }
@@ -103,7 +106,6 @@ export default function MindLabAgeProfileGate({ children }) {
   const [profile, setProfile] = useState(loadedProfile);
   const [name, setName] = useState(loadedProfile?.name || "");
   const [selectedAgeCategory, setSelectedAgeCategory] = useState(loadedProfile?.ageCategory || "kids");
-  const [allowExplore, setAllowExplore] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [screen, setScreen] = useState(loadedProfile ? "game" : "profile");
 
@@ -111,9 +113,9 @@ export default function MindLabAgeProfileGate({ children }) {
 
   useEffect(() => {
     if (profile) {
-      saveProfile(profile, allowExplore);
+      saveProfile(profile);
     }
-  }, [profile, allowExplore]);
+  }, [profile]);
 
   function createProfile() {
     const nextProfile = {
@@ -122,11 +124,26 @@ export default function MindLabAgeProfileGate({ children }) {
       createdAt: new Date().toISOString()
     };
 
+    saveProfile(nextProfile);
     setProfile(nextProfile);
-    setAllowExplore(false);
     setShowReview(false);
     setScreen("game");
-    saveProfile(nextProfile, false);
+  }
+
+  function continueLocalProfile() {
+    const existingProfile = loadProfile();
+
+    if (!existingProfile) {
+      setScreen("profile");
+      return;
+    }
+
+    saveProfile(existingProfile);
+    setProfile(existingProfile);
+    setName(existingProfile.name || "");
+    setSelectedAgeCategory(existingProfile.ageCategory || "kids");
+    setShowReview(false);
+    setScreen("game");
   }
 
   function exitProfile() {
@@ -134,7 +151,6 @@ export default function MindLabAgeProfileGate({ children }) {
     setProfile(null);
     setName("");
     setSelectedAgeCategory("kids");
-    setAllowExplore(false);
     setShowReview(false);
     setScreen("profile");
   }
@@ -145,7 +161,7 @@ export default function MindLabAgeProfileGate({ children }) {
         <section className="mindlab-age-gate-card">
           <h1>Privacy</h1>
           <p>MindLab uses a local profile on this device to guide the game experience.</p>
-          <p>Only a local profile name and selected category are used.</p>
+          <p>No real sign-in, email, password, exact age, or birthdate is used in this scope.</p>
           <div className="mindlab-age-gate-actions">
             <button type="button" onClick={() => setScreen("profile")}>Return to Main Menu</button>
             <button type="button" onClick={() => setScreen(profile ? "game" : "profile")}>Back to Game</button>
@@ -207,6 +223,7 @@ export default function MindLabAgeProfileGate({ children }) {
 
           <div className="mindlab-age-gate-actions">
             <button type="button" onClick={createProfile}>Create Local Profile</button>
+            <button type="button" onClick={continueLocalProfile}>Continue Local Profile</button>
           </div>
 
           <div className="mindlab-age-gate-links">
@@ -225,9 +242,6 @@ export default function MindLabAgeProfileGate({ children }) {
         <span>{profile.name}</span>
 
         <button type="button" onClick={() => setShowReview((value) => !value)}>Review Profile</button>
-        <button type="button" onClick={() => setAllowExplore((value) => !value)}>
-          {allowExplore ? "Return to Default Category" : "Explore Other Categories"}
-        </button>
         <button type="button" onClick={() => setScreen("privacy")}>Privacy</button>
         <button type="button" onClick={() => setScreen("support")}>Support</button>
         <button type="button" onClick={exitProfile}>Exit Profile</button>
@@ -238,7 +252,7 @@ export default function MindLabAgeProfileGate({ children }) {
           <h2>Profile Review</h2>
           <p>Profile name: {profile.name}</p>
           <p>Default category: {CATEGORY_LABELS[profile.ageCategory]}</p>
-          <p>Current view: {allowExplore ? "Exploring other categories" : CATEGORY_LABELS[activeCategory]}</p>
+          <p>Category lock: Enabled</p>
         </section>
       )}
 
