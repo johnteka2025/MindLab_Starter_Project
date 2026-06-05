@@ -31,6 +31,14 @@ function isAgeCategory(value) {
   return value === "kids" || value === "adults" || value === "seniors";
 }
 
+function normalizeText(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function categoryRegex(label) {
+  return new RegExp("\\b" + label + "\\b", "i");
+}
+
 function loadProfile() {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -56,50 +64,218 @@ function loadProfile() {
 }
 
 function saveProfile(profile) {
+  const label = CATEGORY_LABELS[profile.ageCategory] || "Kids";
+
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+
+  const mirrorProfile = {
+    name: profile.name,
+    profileName: profile.name,
+    displayName: profile.name,
+    ageCategory: profile.ageCategory,
+    selectedAgeCategory: profile.ageCategory,
+    category: profile.ageCategory,
+    ageGroup: profile.ageCategory,
+    ageGroupLabel: label,
+    mode: profile.ageCategory,
+    modeLabel: label,
+    createdAt: profile.createdAt
+  };
+
+  window.localStorage.setItem("mindlabProfile", JSON.stringify(mirrorProfile));
+  window.localStorage.setItem("mindlab.profile", JSON.stringify(mirrorProfile));
+  window.localStorage.setItem("MindLabProfile", JSON.stringify(mirrorProfile));
+  window.localStorage.setItem("mindlab.selectedAgeCategory", profile.ageCategory);
+  window.localStorage.setItem("mindlab.activeAgeCategory", profile.ageCategory);
 }
 
 function clearProfile() {
   window.localStorage.removeItem(STORAGE_KEY);
+  window.localStorage.removeItem("mindlabProfile");
+  window.localStorage.removeItem("mindlab.profile");
+  window.localStorage.removeItem("MindLabProfile");
+  window.localStorage.removeItem("mindlab.selectedAgeCategory");
+  window.localStorage.removeItem("mindlab.activeAgeCategory");
 }
 
 function resetDomGuard() {
   document.querySelectorAll("[data-mindlab-age-hidden='true']").forEach((element) => {
     element.style.display = element.dataset.mindlabPreviousDisplay || "";
-    delete element.dataset.mindlabAgeHidden;
-    delete element.dataset.mindlabPreviousDisplay;
+    element.removeAttribute("data-mindlab-age-hidden");
+    element.removeAttribute("data-mindlab-previous-display");
+  });
+}
+
+function shouldSkipElement(element) {
+  if (!element) {
+    return true;
+  }
+
+  if (element.closest(".mindlab-age-gate")) {
+    return true;
+  }
+
+  if (element.closest("script, style, noscript, svg")) {
+    return true;
+  }
+
+  return false;
+}
+
+function findBestHideTarget(element) {
+  const preferredSelectors = [
+    "[data-age-category]",
+    "[data-age-mode]",
+    "[data-category]",
+    "[role='button']",
+    "button",
+    "a",
+    "article",
+    "li",
+    "[class*='card']",
+    "[class*='Card']",
+    "[class*='tile']",
+    "[class*='Tile']",
+    "[class*='mode']",
+    "[class*='Mode']",
+    "[class*='category']",
+    "[class*='Category']"
+  ];
+
+  for (const selector of preferredSelectors) {
+    const target = element.closest(selector);
+
+    if (target && !target.closest(".mindlab-age-gate")) {
+      const text = normalizeText(target.textContent);
+
+      if (text.length > 0 && text.length <= 500) {
+        return target;
+      }
+    }
+  }
+
+  const directText = normalizeText(element.textContent);
+
+  if (directText.length > 0 && directText.length <= 500) {
+    return element;
+  }
+
+  return null;
+}
+
+function hideElement(element) {
+  if (!element || element.dataset.mindlabAgeHidden === "true") {
+    return;
+  }
+
+  element.dataset.mindlabAgeHidden = "true";
+  element.dataset.mindlabPreviousDisplay = element.style.display || "";
+  element.style.display = "none";
+}
+
+function hideOriginalUndefinedProfileBars() {
+  document.querySelectorAll("div, section, aside, header").forEach((element) => {
+    if (shouldSkipElement(element)) {
+      return;
+    }
+
+    const text = normalizeText(element.textContent);
+
+    if (/MindLab Profile:/i.test(text) && /undefined/i.test(text) && text.length <= 250) {
+      hideElement(element);
+    }
   });
 }
 
 function applyDomGuard(activeCategory, allowExplore) {
   resetDomGuard();
 
+  document.documentElement.dataset.mindlabActiveAgeCategory = activeCategory;
+  document.documentElement.dataset.mindlabExploreOtherCategories = allowExplore ? "true" : "false";
+
+  hideOriginalUndefinedProfileBars();
+
   if (allowExplore) {
     return;
   }
 
-  const activeLabel = CATEGORY_LABELS[activeCategory];
+  const activeLabel = CATEGORY_LABELS[activeCategory] || "Kids";
   const blockedLabels = Object.values(CATEGORY_LABELS).filter((label) => label !== activeLabel);
-  const selector = "button, a, [role='button'], [data-age-category], [class*='card'], [class*='tile'], section, article";
 
-  document.querySelectorAll(selector).forEach((element) => {
-    if (element.closest(".mindlab-age-gate")) {
+  const candidateSelector = [
+    "[data-age-category]",
+    "[data-age-mode]",
+    "[data-category]",
+    "button",
+    "a",
+    "[role='button']",
+    "article",
+    "li",
+    "section",
+    "div",
+    "[class*='card']",
+    "[class*='Card']",
+    "[class*='tile']",
+    "[class*='Tile']",
+    "[class*='mode']",
+    "[class*='Mode']",
+    "[class*='category']",
+    "[class*='Category']"
+  ].join(",");
+
+  const allCandidates = Array.from(document.querySelectorAll(candidateSelector));
+
+  allCandidates.forEach((element) => {
+    if (shouldSkipElement(element)) {
       return;
     }
 
-    const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+    const text = normalizeText(element.textContent);
 
-    if (!text) {
+    if (!text || text.length > 500) {
       return;
     }
 
-    const hasActiveLabel = new RegExp(`\\b${activeLabel}\\b`, "i").test(text);
-    const hasBlockedLabel = blockedLabels.some((label) => new RegExp(`\\b${label}\\b`, "i").test(text));
+    const hasActiveLabel = categoryRegex(activeLabel).test(text);
+    const blockedMatches = blockedLabels.filter((label) => categoryRegex(label).test(text));
 
-    if (hasBlockedLabel && !hasActiveLabel) {
-      element.dataset.mindlabAgeHidden = "true";
-      element.dataset.mindlabPreviousDisplay = element.style.display || "";
-      element.style.display = "none";
+    if (blockedMatches.length === 0) {
+      return;
+    }
+
+    if (hasActiveLabel && blockedMatches.length > 0) {
+      const childElements = Array.from(element.querySelectorAll("button,a,[role='button'],article,li,div,section"));
+
+      childElements.forEach((child) => {
+        if (shouldSkipElement(child)) {
+          return;
+        }
+
+        const childText = normalizeText(child.textContent);
+
+        if (!childText || childText.length > 500) {
+          return;
+        }
+
+        const childHasActive = categoryRegex(activeLabel).test(childText);
+        const childHasBlocked = blockedLabels.some((label) => categoryRegex(label).test(childText));
+
+        if (childHasBlocked && !childHasActive) {
+          const target = findBestHideTarget(child);
+
+          if (target) {
+            hideElement(target);
+          }
+        }
+      });
+
+      return;
+    }
+
+    const target = findBestHideTarget(element);
+
+    if (target) {
+      hideElement(target);
     }
   });
 }
@@ -121,9 +297,23 @@ export default function MindLabAgeProfileGate({ children }) {
     }
 
     applyDomGuard(activeCategory, allowExplore);
-    const interval = window.setInterval(() => applyDomGuard(activeCategory, allowExplore), 500);
+
+    const observer = new MutationObserver(() => {
+      applyDomGuard(activeCategory, allowExplore);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    const interval = window.setInterval(() => {
+      applyDomGuard(activeCategory, allowExplore);
+    }, 250);
 
     return () => {
+      observer.disconnect();
       window.clearInterval(interval);
       resetDomGuard();
     };
@@ -179,7 +369,7 @@ export default function MindLabAgeProfileGate({ children }) {
       <main className="mindlab-age-gate mindlab-age-gate-page">
         <section className="mindlab-age-gate-card">
           <h1>Support</h1>
-          <p>Use Review Profile to confirm the selected age category.</p>
+          <p>Use Review Profile to confirm the selected category.</p>
           <p>Use Exit Profile to clear the local profile and start again.</p>
           <div className="mindlab-age-gate-actions">
             <button type="button" onClick={() => setScreen("profile")}>Return to Main Menu</button>
@@ -256,7 +446,7 @@ export default function MindLabAgeProfileGate({ children }) {
         <section className="mindlab-age-gate mindlab-age-gate-review">
           <h2>Profile Review</h2>
           <p>Profile name: {profile.name}</p>
-          <p>Default age category: {CATEGORY_LABELS[profile.ageCategory]}</p>
+          <p>Default category: {CATEGORY_LABELS[profile.ageCategory]}</p>
           <p>Current view: {allowExplore ? "Exploring other categories" : CATEGORY_LABELS[activeCategory]}</p>
         </section>
       )}
@@ -283,4 +473,3 @@ export default function MindLabAgeProfileGate({ children }) {
     </>
   );
 }
-
