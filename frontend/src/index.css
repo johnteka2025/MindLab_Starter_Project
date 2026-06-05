@@ -231,3 +231,147 @@ button:focus-visible {
   background: #f8fafc;
   cursor: pointer;
 }
+
+/* mindlab-ui-polish-responsive-v1 */
+:root {
+  --mindlab-bg: #f5f7fb;
+  --mindlab-surface: #ffffff;
+  --mindlab-text: #111827;
+  --mindlab-muted: #4b5563;
+  --mindlab-border: #d1d5db;
+  --mindlab-accent: #2563eb;
+  --mindlab-accent-soft: #eff6ff;
+  --mindlab-radius: 18px;
+  --mindlab-shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+}
+
+body {
+  margin: 0;
+  background: var(--mindlab-bg);
+  color: var(--mindlab-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mindlab-app-shell {
+  width: min(1120px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: clamp(18px, 4vw, 40px) 0;
+}
+
+.mindlab-age-gate-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px clamp(12px, 3vw, 28px);
+  border-bottom: 1px solid var(--mindlab-border);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.mindlab-age-gate-toolbar button,
+.mindlab-age-gate button,
+.mindlab-game-actions button {
+  padding: 10px 16px;
+  border: 1px solid var(--mindlab-border);
+  border-radius: 12px;
+  background: var(--mindlab-surface);
+  color: var(--mindlab-text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mindlab-hero-card,
+.mindlab-question-card,
+.mindlab-age-gate-card,
+.mindlab-age-gate-review {
+  border: 1px solid var(--mindlab-border);
+  border-radius: var(--mindlab-radius);
+  background: var(--mindlab-surface);
+  box-shadow: var(--mindlab-shadow);
+}
+
+.mindlab-hero-card,
+.mindlab-question-card {
+  margin: 24px auto;
+  padding: clamp(20px, 4vw, 34px);
+}
+
+.mindlab-hero-card h1 {
+  margin: 0 0 16px;
+  font-size: clamp(38px, 8vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.mindlab-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.mindlab-mode-card {
+  padding: 20px;
+  border: 1px solid var(--mindlab-border);
+  border-radius: 14px;
+  background: var(--mindlab-surface);
+  color: var(--mindlab-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mindlab-mode-card.is-active {
+  border-color: var(--mindlab-accent);
+  background: var(--mindlab-accent-soft);
+}
+
+.mindlab-question-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--mindlab-border);
+  padding-bottom: 18px;
+}
+
+.mindlab-answer-list {
+  display: grid;
+  gap: 12px;
+}
+
+.mindlab-answer {
+  padding: 14px 16px;
+  border: 1px solid var(--mindlab-border);
+  border-radius: 12px;
+  background: var(--mindlab-surface);
+  color: var(--mindlab-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+@media (max-width: 680px) {
+  .mindlab-app-shell {
+    width: min(100vw - 20px, 1120px);
+    padding-top: 16px;
+  }
+
+  .mindlab-age-gate-toolbar {
+    align-items: stretch;
+  }
+
+  .mindlab-age-gate-toolbar button {
+    flex: 1 1 140px;
+  }
+
+  .mindlab-question-header {
+    display: grid;
+  }
+
+  .mindlab-hero-card h1 {
+    font-size: clamp(34px, 12vw, 48px);
+  }
+}
