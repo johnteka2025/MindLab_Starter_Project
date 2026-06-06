@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindLab</title>
+      <link rel="manifest" href="/MindLab_Starter_Project/manifest.webmanifest" />
+    <meta name="theme-color" content="#2563eb" />
+  <script type="module" crossorigin src="/MindLab_Starter_Project/assets/index-DHosnyfL.js"></script>
+  <link rel="stylesheet" crossorigin href="/MindLab_Starter_Project/assets/index-v50uFPPU.css">
+</head>
+  <body>
+    <div id="root">
+      <main style="font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 24px;">
+        <h1>MindLab</h1>
+        <p>Loading Kids, Adults, and Seniors game modes...</p>
+        <ul>
+          <li>Kids</li>
+          <li>Adults</li>
+          <li>Seniors</li>
+        </ul>
+      </main>
+    </div>
+  <!-- MindLab service worker registration start -->
+<script>
+  window.addEventListener("load", function () {
+    if ("serviceWorker" in navigator && window.location.protocol === "https:") {
+      navigator.serviceWorker.register("/MindLab_Starter_Project/sw.js", {
+        scope: "/MindLab_Starter_Project/"
+      }).catch(function (error) {
+        console.warn("MindLab service worker registration failed:", error);
+      });
+    }
+  });
+</script>
+<!-- MindLab service worker registration end -->
+</body>
+</html>
