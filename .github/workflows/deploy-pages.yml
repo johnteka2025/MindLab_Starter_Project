@@ -1,4 +1,4 @@
-﻿name: Deploy MindLab Frontend to GitHub Pages
+﻿name: Deploy MindLab to GitHub Pages
 
 on:
   push:
@@ -12,18 +12,13 @@ permissions:
   id-token: write
 
 concurrency:
-  group: mindlab-pages
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Build and deploy frontend
+  build:
+    name: Build MindLab frontend
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -34,29 +29,28 @@ jobs:
         with:
           node-version: 20
 
-      - name: Print diagnostics
-        run: |
-          pwd
-          ls -la
-          ls -la frontend
-          node --version
-          npm --version
-
       - name: Install frontend dependencies
         working-directory: frontend
-        run: npm install --package-lock=false
-
-      - name: Build frontend for GitHub Pages
-        working-directory: frontend
-        run: npm run build -- --base=/MindLab_Starter_Project/
-
-      - name: Add nojekyll marker
-        run: touch frontend/dist/.nojekyll
-
-      - name: Verify build output
+        shell: bash
         run: |
-          test -f frontend/dist/index.html
-          ls -la frontend/dist
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Validate frontend
+        working-directory: frontend
+        run: npm test -- --runInBand
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm run build
+
+      - name: Confirm privacy policy exists in build output
+        shell: bash
+        run: |
+          test -f frontend/dist/privacy-policy.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -66,6 +60,16 @@ jobs:
         with:
           path: frontend/dist
 
+  deploy:
+    name: Deploy MindLab frontend
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
