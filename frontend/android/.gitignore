@@ -115,3 +115,5 @@ app/build/
 .externalNativeBuild/
 app/build/
 .externalNativeBuild/
+app/build/
+.externalNativeBuild/
