@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowBackground">@color/colorSplashScreenBackground</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar" parent="@style/AppTheme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-    </style>
-
-    <style name="AppTheme.NoActionBarLaunch" parent="@style/AppTheme.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash</item>
-        <item name="postSplashScreenTheme">@style/AppTheme.AppCompatPostSplash</item>
-</style>
-    <style name="AppTheme.AppCompatPostSplash" parent="Theme.AppCompat.NoActionBar">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-    </style>
-
+  <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowBackground">@color/colorSplashScreenBackground</item>
+  </style>
+  <style name="AppTheme.NoActionBar" parent="@style/AppTheme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+  </style>
+  <style name="AppTheme.NoActionBarLaunch" parent="@style/AppTheme.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash</item>
+    <item name="postSplashScreenTheme">@style/AppTheme.AppCompatPostSplash</item>
+  </style>
+  <style name="AppTheme.AppCompatPostSplash" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowDisablePreview">true</item>
+    <item name="android:forceDarkAllowed">false</item>
+  </style>
 </resources>
