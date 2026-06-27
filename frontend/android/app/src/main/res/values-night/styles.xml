@@ -13,5 +13,11 @@
 
     <style name="AppTheme.NoActionBarLaunch" parent="@style/AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
+        <item name="postSplashScreenTheme">@style/AppTheme.AppCompatPostSplash</item>
+</style>
+    <style name="AppTheme.AppCompatPostSplash" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
+
 </resources>
