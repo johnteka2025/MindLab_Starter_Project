@@ -89,7 +89,7 @@ export default function App() {
 
         <div className="mode-grid" aria-label="Age category selection">
           {Object.keys(MODES).map((modeName) => (
-            <button
+            <button aria-label="MindLab interactive control"
               key={modeName}
               type="button"
               className={modeName === mode ? 'mode-card active' : 'mode-card'}
@@ -117,7 +117,7 @@ export default function App() {
             <h3>{question.prompt}</h3>
             <div className="choice-list">
               {question.choices.map((choice) => (
-                <button
+                <button aria-label="MindLab interactive control"
                   key={choice}
                   type="button"
                   className={selected === choice ? 'choice selected' : 'choice'}
@@ -127,7 +127,7 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <button type="button" className="primary-action" onClick={submitAnswer}>
+            <button aria-label="p ri ma ry a ct io n" type="button" className="primary-action" onClick={submitAnswer}>
               Submit Answer
             </button>
           </div>
@@ -138,7 +138,7 @@ export default function App() {
               You completed {currentMode.title} with a score of {score} out of{' '}
               {currentMode.questions.length}.
             </p>
-            <button type="button" className="primary-action" onClick={restartMode}>
+            <button aria-label="p ri ma ry a ct io n" type="button" className="primary-action" onClick={restartMode}>
               Play Again
             </button>
           </div>

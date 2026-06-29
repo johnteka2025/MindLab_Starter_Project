@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { adultsSessionModes, defaultAdultsSessionMode } from "./adultsSessionModes";
 
 type AdultsSessionModeSelectorProps = {
@@ -26,7 +26,7 @@ export default function AdultsSessionModeSelector({
           const isSelected = selectedMode === mode.id;
 
           return (
-            <button
+            <button aria-label="MindLab interactive control"
               key={mode.id}
               type="button"
               aria-pressed={isSelected}
@@ -57,4 +57,3 @@ export default function AdultsSessionModeSelector({
     </section>
   );
 }
-

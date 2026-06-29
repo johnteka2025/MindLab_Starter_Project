@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchDailyStatus, type DailyChallengeStatus } from "./dailyChallengeApi";
 
 /**
@@ -82,7 +82,7 @@ export function DailyChallengeHomeCard() {
     <section style={{ border: "1px solid #ddd", borderRadius: 12, padding: 16 }}>
       <h2 style={{ marginTop: 0 }}>Daily Challenge</h2>
       {body}
-      <button type="button" onClick={handleOpenClick} style={{ marginTop: 12 }}>
+      <button aria-label="MindLab interactive control" type="button" onClick={handleOpenClick} style={{ marginTop: 12 }}>
         Open Daily Challenge
       </button>
     </section>

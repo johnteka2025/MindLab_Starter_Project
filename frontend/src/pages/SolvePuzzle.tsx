@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 type Puzzle = {
@@ -290,7 +290,7 @@ export default function SolvePuzzle() {
               <p style={{ marginTop: "0.5rem" }}>Already solved. Select a different puzzle.</p>
             )}
 
-            <button
+            <button aria-label="MindLab interactive control"
               style={{ marginTop: "0.75rem" }}
               onClick={solve}
               disabled={isSelectedSolved || pickedOptionIndex === ""}

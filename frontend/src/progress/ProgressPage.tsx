@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apiGet } from "../api";
 
 type ProgressData = {
@@ -57,7 +57,7 @@ export default function Progress() {
 
       <p data-testid="progress-completion">Completion: {completion}%</p>
 
-      <button
+      <button aria-label="MindLab interactive control"
         data-testid="progress-refresh"
         style={{ marginTop: "0.75rem" }}
         onClick={loadProgress}

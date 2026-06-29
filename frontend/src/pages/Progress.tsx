@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apiGet, apiPost } from "../api";
 
 type Progress = {
@@ -59,11 +59,11 @@ export default function ProgressPage() {
       <p>Completion: {pct}%</p>
       <p data-testid="progress-status">{statusText}</p>
 
-      <button type="button" onClick={load} disabled={busy}>
+      <button aria-label="MindLab interactive control" type="button" onClick={load} disabled={busy}>
         Refresh
       </button>
 
-      <button
+      <button aria-label="MindLab interactive control"
         type="button"
         onClick={resetProgress}
         disabled={busy}

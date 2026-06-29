@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   fetchDaily,
@@ -139,7 +139,7 @@ export default function DailyChallengeDetailPage() {
                 const isSelected = String(p.id) === selectedId;
                 return (
                   <li key={String(p.id)} style={{ marginBottom: 6 }}>
-                    <button
+                    <button aria-label="MindLab interactive control"
                       type="button"
                       onClick={() => {
                         setSelectedId(String(p.id));
@@ -182,7 +182,7 @@ export default function DailyChallengeDetailPage() {
                     disabled={isSubmitting}
                   />
                 </label>{" "}
-                <button
+                <button aria-label="MindLab interactive control"
                   type="submit"
                   disabled={isSubmitting}
                   data-testid="daily-submit"

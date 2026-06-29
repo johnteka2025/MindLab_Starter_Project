@@ -113,7 +113,7 @@ export default function LocalProfileGate({ children }) {
           </p>
 
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
-            <button
+            <button aria-label="MindLab interactive control"
               onClick={saveProfile}
               disabled={!canCreate}
               style={{ padding: "12px 16px", borderRadius: 12, border: 0, background: canCreate ? "#2563eb" : "#94a3b8", color: "#ffffff", fontWeight: 700 }}
@@ -121,7 +121,7 @@ export default function LocalProfileGate({ children }) {
               Create Local Profile
             </button>
 
-            <button
+            <button aria-label="MindLab interactive control"
               onClick={() => setGuestMode(true)}
               style={{ padding: "12px 16px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#ffffff", fontWeight: 700 }}
             >
@@ -144,7 +144,7 @@ export default function LocalProfileGate({ children }) {
       <div style={{ background: "#e0f2fe", color: "#0f172a", padding: "10px 16px", fontFamily: "Arial, Helvetica, sans-serif", display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
         <strong>MindLab Profile: {activeModeLabel}</strong>
 
-        <button
+        <button aria-label="MindLab interactive control"
           onClick={resetProfile}
           style={{ border: "1px solid #0369a1", background: "#ffffff", borderRadius: 999, padding: "6px 10px", fontWeight: 700 }}
         >

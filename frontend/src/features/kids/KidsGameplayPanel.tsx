@@ -201,7 +201,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
             const isSelected = selectedAnswer === option;
 
             return (
-              <button
+              <button aria-label="MindLab interactive control"
                 key={option}
                 type="button"
                 onClick={() => handleAnswer(option)}
@@ -222,7 +222,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
           })}
         </div>
 
-        <button
+        <button aria-label="MindLab interactive control"
           type="button"
           onClick={() => setHintVisible((current) => !current)}
           style={{
@@ -328,7 +328,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
               <strong style={{ color: "#111827" }}>{score.adaptiveNextStep}</strong>
 
               <div style={{ marginTop: "14px" }}>
-                <button
+                <button aria-label="MindLab interactive control"
                   type="button"
                   onClick={handleSuggestedNextRound}
                   disabled={!nextSuggestedItem && availableItems.length <= 1}

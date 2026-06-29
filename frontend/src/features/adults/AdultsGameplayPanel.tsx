@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   getDefaultAdultsGameplayItemForSession,
   getAdultsGameplayItemsForSession
@@ -96,7 +96,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
             const isSelected = selectedAnswer === option;
 
             return (
-              <button
+              <button aria-label="MindLab interactive control"
                 key={option}
                 type="button"
                 onClick={() => handleAnswer(option)}
@@ -116,7 +116,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
           })}
         </div>
 
-        <button
+        <button aria-label="MindLab interactive control"
           type="button"
           onClick={handleHint}
           style={{
@@ -162,4 +162,3 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     </section>
   );
 }
-

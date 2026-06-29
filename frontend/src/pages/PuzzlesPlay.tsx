@@ -86,7 +86,7 @@ export default function PuzzlesPlay() {
 
   return (
     <div style={{ padding: 16, fontFamily: "system-ui, Arial" }}>
-      <h1>MindLab — Solve a Puzzle</h1>
+      <h1>MindLab â€” Solve a Puzzle</h1>
 
       <div style={{ marginBottom: 12 }}>
         <button onClick={() => refreshAll()}>Refresh</button>{" "}
@@ -142,7 +142,7 @@ export default function PuzzlesPlay() {
                 ))}
               </div>
 
-              <button
+              <button aria-label="MindLab interactive control"
                 onClick={() => solvePuzzle(pz.id)}
                 disabled={selected[pz.id] == null}
               >

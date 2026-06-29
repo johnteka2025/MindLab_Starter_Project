@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import "./MindLabOriginalApp.css";
 
 const STORAGE_KEY = "mindlab.localProfile.v1";
@@ -188,7 +188,7 @@ export default function MindLabOriginalApp() {
               const incorrect = selected && answerState && !answerState.isCorrect;
 
               return (
-                <button
+                <button aria-label="MindLab interactive control"
                   key={answer}
                   type="button"
                   className={[

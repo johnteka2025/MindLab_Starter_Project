@@ -50,7 +50,7 @@ function KidsProgressReviewPanel({ refreshKey, onRefresh }: KidsProgressReviewPa
           </h2>
         </div>
 
-        <button
+        <button aria-label="MindLab interactive control"
           type="button"
           onClick={onRefresh}
           style={{
@@ -183,7 +183,7 @@ export default function KidsLanding() {
               const isSelected = selectedMode === mode.id;
 
               return (
-                <button
+                <button aria-label="MindLab interactive control"
                   key={mode.id}
                   type="button"
                   onClick={() => setSelectedMode(mode.id)}
