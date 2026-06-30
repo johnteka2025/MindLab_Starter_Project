@@ -112,7 +112,7 @@ export default function LocalProfileGate({ children }) {
             Kids category does not require email, exact age, date of birth, or real name.
           </p>
 
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
+          <div aria-label="MindLab interactive control" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
             <button aria-label="MindLab interactive control"
               onClick={saveProfile}
               disabled={!canCreate}
@@ -141,7 +141,7 @@ export default function LocalProfileGate({ children }) {
 
   return (
     <>
-      <div style={{ background: "#e0f2fe", color: "#0f172a", padding: "10px 16px", fontFamily: "Arial, Helvetica, sans-serif", display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+      <div aria-label="MindLab interactive control" style={{ background: "#e0f2fe", color: "#0f172a", padding: "10px 16px", fontFamily: "Arial, Helvetica, sans-serif", display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
         <strong>MindLab Profile: {activeModeLabel}</strong>
 
         <button aria-label="MindLab interactive control"

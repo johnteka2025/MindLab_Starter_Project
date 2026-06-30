@@ -325,7 +325,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
               <p style={{ margin: "0 0 8px", color: "#475569", lineHeight: 1.55 }}>
                 {score.recoveryModeSuggestion}
               </p>
-              <strong style={{ color: "#111827" }}>{score.adaptiveNextStep}</strong>
+              <strong aria-label="MindLab interactive control" style={{ color: "#111827" }}>{score.adaptiveNextStep}</strong>
 
               <div style={{ marginTop: "14px" }}>
                 <button aria-label="MindLab interactive control"

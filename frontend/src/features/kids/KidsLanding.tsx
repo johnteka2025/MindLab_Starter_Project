@@ -32,7 +32,7 @@ function KidsProgressReviewPanel({ refreshKey, onRefresh }: KidsProgressReviewPa
         padding: "20px"
       }}
     >
-      <div
+      <div aria-label="MindLab interactive control"
         style={{
           display: "flex",
           justifyContent: "space-between",

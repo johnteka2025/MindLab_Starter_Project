@@ -287,7 +287,7 @@ export default function SolvePuzzle() {
             ))}
 
             {isSelectedSolved && (
-              <p style={{ marginTop: "0.5rem" }}>Already solved. Select a different puzzle.</p>
+              <p aria-label="MindLab interactive control" style={{ marginTop: "0.5rem" }}>Already solved. Select a different puzzle.</p>
             )}
 
             <button aria-label="MindLab interactive control"
