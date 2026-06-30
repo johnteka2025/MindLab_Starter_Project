@@ -60,3 +60,26 @@ try {
 } catch(Exception e) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
 }
+
+def mindLabSigningProperties = new Properties()
+def mindLabSigningPropertiesFile = file("C:/Projects/MindLab_Signing/mindlab-release-signing.properties")
+if (mindLabSigningPropertiesFile.exists()) {
+    mindLabSigningPropertiesFile.withInputStream { mindLabSigningProperties.load(it) }
+}
+
+android {
+    signingConfigs {
+        release {
+            storeFile file(mindLabSigningProperties['storeFile'])
+            storePassword mindLabSigningProperties['storePassword']
+            keyAlias mindLabSigningProperties['keyAlias']
+            keyPassword mindLabSigningProperties['keyPassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
