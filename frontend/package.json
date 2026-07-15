@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "build": "vite build --base /MindLab_Starter_Project/",
+        "build": "vite build --base ./",
         "dev": "vite --port 8090",
         "preview": "vite preview",
         "start": "vite --port 8090",
