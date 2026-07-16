@@ -130,9 +130,9 @@ export default function LocalProfileGate({ children }) {
           </div>
 
           <p style={{ marginTop: 18 }}>
-            <a href="/MindLab_Starter_Project/privacy.html">Privacy Policy</a>
+            <a href="./privacy.html">Privacy Policy</a>
             {" | "}
-            <a href="/MindLab_Starter_Project/support.html">Support</a>
+            <a href="./support.html">Support</a>
           </p>
         </section>
       </main>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MindLab</title>
-      <link rel="manifest" href="/MindLab_Starter_Project/manifest.webmanifest" />
+      <link rel="manifest" href="./manifest.webmanifest" />
     <meta name="theme-color" content="#2563eb" />
 </head>
   <body>
@@ -24,8 +24,8 @@
 <script>
   window.addEventListener("load", function () {
     if ("serviceWorker" in navigator && window.location.protocol === "https:") {
-      navigator.serviceWorker.register("/MindLab_Starter_Project/sw.js", {
-        scope: "/MindLab_Starter_Project/"
+      navigator.serviceWorker.register("./sw.js", {
+        scope: "./"
       }).catch(function (error) {
         console.warn("MindLab service worker registration failed:", error);
       });

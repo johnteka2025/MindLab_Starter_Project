@@ -1,5 +1,5 @@
 const CACHE_NAME = "mindlab-pwa-v1";
-const BASE_PATH = "/MindLab_Starter_Project/";
+const BASE_PATH = "./";
 const OFFLINE_URL = BASE_PATH + "offline.html";
 
 const STATIC_ASSETS = [
