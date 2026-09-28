@@ -26,7 +26,8 @@ export default function AdultsSessionModeSelector({
           const isSelected = selectedMode === mode.id;
 
           return (
-            <button aria-label="MindLab interactive control"
+            <button
+              aria-label="MindLab interactive control"
               key={mode.id}
               type="button"
               aria-pressed={isSelected}
@@ -45,7 +46,7 @@ export default function AdultsSessionModeSelector({
                 {mode.label}
               </span>
               <span style={{ display: "block", fontSize: "14px", color: "#64748b", marginBottom: "10px" }}>
-                {mode.duration} ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {mode.cognitiveLoad}
+                {mode.duration} - {mode.cognitiveLoad}
               </span>
               <span style={{ display: "block", lineHeight: 1.5, color: "#475569" }}>
                 {mode.description}

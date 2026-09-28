@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./MindLabAgeProfileGate.css";
 
 const STORAGE_KEY = "mindlab.localProfile.v1";
@@ -235,6 +235,10 @@ export default function MindLabAgeProfileGate({ children }) {
     );
   }
 
+  const renderedChildren = typeof children === "function"
+    ? children({ profile, activeCategory })
+    : children;
+
   return (
     <>
       <aside className="mindlab-age-gate mindlab-age-gate-toolbar">
@@ -256,7 +260,7 @@ export default function MindLabAgeProfileGate({ children }) {
         </section>
       )}
 
-      {children}
+      {renderedChildren}
     </>
   );
 }

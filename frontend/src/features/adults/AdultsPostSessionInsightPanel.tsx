@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import type { AdultsScoreResult } from "./adultsScoring";
 import { getAdultsPostSessionInsight } from "./adultsPostSessionInsights";
 
@@ -29,7 +29,7 @@ export default function AdultsPostSessionInsightPanel({
       }}
     >
       <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-        Session insight ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {insight.tone}
+        Challenge insight - {insight.tone}
       </p>
       <h3 id="adults-post-session-heading" style={{ margin: "0 0 10px", fontSize: "22px" }}>
         {insight.title}
@@ -60,4 +60,3 @@ export default function AdultsPostSessionInsightPanel({
     </section>
   );
 }
-

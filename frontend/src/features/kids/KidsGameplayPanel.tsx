@@ -1,132 +1,110 @@
 import * as React from "react";
 import {
-  getDefaultKidsGameplayItemForSession,
   getKidsGameplayItemsForSession,
-  kidsGameplayItems,
   type KidsGameplayItem
 } from "./kidsGameplayContent";
 import KidsPostSessionInsightPanel from "./KidsPostSessionInsightPanel";
 import { recordKidsSessionProgress } from "./kidsPersistence";
-import { calculateKidsScore } from "./kidsScoring";
+import {
+  calculateKidsScore,
+  type KidsScoreResult
+} from "./kidsScoring";
+
+const KIDS_SESSION_LENGTH = 3;
 
 type KidsGameplayPanelProps = {
   selectedMode: string;
   onProgressUpdated?: () => void;
 };
 
-function findDifferentItem(items: KidsGameplayItem[], currentCertifiedId: string): KidsGameplayItem | null {
-  return items.find((item) => item.certifiedId !== currentCertifiedId) ?? null;
-}
+type KidsRoundResult = {
+  certifiedId: string;
+  isCorrect: boolean;
+  score: number;
+};
 
-function getSuggestedNextKidsItem(
-  currentItem: KidsGameplayItem,
-  selectedMode: string,
-  isCorrect: boolean,
-  exceptionalLevel: string
-): KidsGameplayItem | null {
-  if (!isCorrect) {
-    return (
-      findDifferentItem(
-        kidsGameplayItems.filter((item) => item.sessionMode === "CalmReview"),
-        currentItem.certifiedId
-      ) ?? null
-    );
+export function buildKidsSessionItems(
+  items: KidsGameplayItem[],
+  cycle: number,
+  sessionLength = KIDS_SESSION_LENGTH
+): KidsGameplayItem[] {
+  if (items.length === 0 || sessionLength <= 0) {
+    return [];
   }
 
-  if (exceptionalLevel === "Mastery Spark" || exceptionalLevel === "Solver") {
-    return (
-      findDifferentItem(
-        kidsGameplayItems.filter((item) => item.sessionMode === "Challenge"),
-        currentItem.certifiedId
-      ) ?? null
-    );
-  }
+  const length = Math.min(sessionLength, items.length);
+  const startIndex = Math.abs(cycle) % items.length;
 
-  if (exceptionalLevel === "Builder") {
-    return (
-      findDifferentItem(
-        kidsGameplayItems.filter((item) => item.sessionMode === "StoryPractice" || item.sessionMode === selectedMode),
-        currentItem.certifiedId
-      ) ?? null
-    );
-  }
-
-  return findDifferentItem(getKidsGameplayItemsForSession(selectedMode), currentItem.certifiedId);
+  return Array.from({ length }, (_, index) => items[(startIndex + index) % items.length]!);
 }
 
 export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
-  const [activeItem, setActiveItem] = React.useState<KidsGameplayItem>(() =>
-    getDefaultKidsGameplayItemForSession(selectedMode)
-  );
+  const [sessionCycle, setSessionCycle] = React.useState(0);
+  const [questionIndex, setQuestionIndex] = React.useState(0);
   const [selectedAnswer, setSelectedAnswer] = React.useState("");
   const [hintVisible, setHintVisible] = React.useState(false);
-  const [tryCount, setTryCount] = React.useState(0);
-  const [savedSessionKey, setSavedSessionKey] = React.useState("");
+  const [roundScore, setRoundScore] = React.useState<KidsScoreResult | null>(null);
+  const [sessionResults, setSessionResults] = React.useState<KidsRoundResult[]>([]);
+  const [sessionComplete, setSessionComplete] = React.useState(false);
+  const answerLockedRef = React.useRef(false);
 
-  const availableItems = React.useMemo(() => getKidsGameplayItemsForSession(selectedMode), [selectedMode]);
-
-  React.useEffect(() => {
-    setActiveItem(getDefaultKidsGameplayItemForSession(selectedMode));
-    setSelectedAnswer("");
-    setHintVisible(false);
-    setTryCount(0);
-    setSavedSessionKey("");
-  }, [selectedMode]);
-
-  const hasAnswered = selectedAnswer.length > 0;
-  const isCorrect = selectedAnswer === activeItem.correctAnswer;
-  const score = calculateKidsScore({
-    isCorrect,
-    hintVisible,
-    tryCount,
-    hasAnswered
-  });
-
-  const nextSuggestedItem = React.useMemo(
-    () =>
-      hasAnswered
-        ? getSuggestedNextKidsItem(activeItem, selectedMode, isCorrect, score.exceptionalLevel)
-        : null,
-    [activeItem, hasAnswered, isCorrect, score.exceptionalLevel, selectedMode]
+  const availableItems = React.useMemo(
+    () => getKidsGameplayItemsForSession(selectedMode),
+    [selectedMode]
   );
 
-  function resetRound(nextItem: KidsGameplayItem) {
-    setActiveItem(nextItem);
+  const sessionItems = React.useMemo(
+    () => buildKidsSessionItems(availableItems, sessionCycle),
+    [availableItems, sessionCycle]
+  );
+
+  const activeItem = sessionItems[questionIndex] ?? null;
+  const hasAnswered = selectedAnswer.length > 0;
+  const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
+
+  React.useEffect(() => {
+    setSessionCycle(0);
+    setQuestionIndex(0);
     setSelectedAnswer("");
     setHintVisible(false);
-    setTryCount(0);
-    setSavedSessionKey("");
+    setRoundScore(null);
+    setSessionResults([]);
+    setSessionComplete(false);
+    answerLockedRef.current = false;
+  }, [selectedMode]);
+
+  function resetQuestionState() {
+    setSelectedAnswer("");
+    setHintVisible(false);
+    setRoundScore(null);
+    answerLockedRef.current = false;
   }
 
   function handleAnswer(option: string) {
-    if (selectedAnswer && option !== selectedAnswer) {
-      setTryCount((current) => current + 1);
+    if (!activeItem || answerLockedRef.current) {
+      return;
     }
+
+    answerLockedRef.current = true;
+
+    const answerIsCorrect = option === activeItem.correctAnswer;
+    const score = calculateKidsScore({
+      isCorrect: answerIsCorrect,
+      hintVisible,
+      tryCount: 0,
+      hasAnswered: true
+    });
 
     setSelectedAnswer(option);
-  }
-
-  function handleSuggestedNextRound() {
-    if (nextSuggestedItem) {
-      resetRound(nextSuggestedItem);
-      return;
-    }
-
-    const fallbackItem = findDifferentItem(availableItems, activeItem.certifiedId);
-    if (fallbackItem) {
-      resetRound(fallbackItem);
-    }
-  }
-
-  React.useEffect(() => {
-    if (!hasAnswered) {
-      return;
-    }
-
-    const sessionKey = `${activeItem.certifiedId}:${selectedAnswer}:${tryCount}:${hintVisible}:${score.totalScore}`;
-    if (savedSessionKey === sessionKey) {
-      return;
-    }
+    setRoundScore(score);
+    setSessionResults((current) => [
+      ...current,
+      {
+        certifiedId: activeItem.certifiedId,
+        isCorrect: answerIsCorrect,
+        score: score.totalScore
+      }
+    ]);
 
     recordKidsSessionProgress({
       certifiedId: activeItem.certifiedId,
@@ -134,9 +112,9 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
       categoryName: activeItem.categoryName,
       stage: activeItem.stage,
       sessionMode: activeItem.sessionMode,
-      selectedAnswer,
+      selectedAnswer: option,
       correctAnswer: activeItem.correctAnswer,
-      isCorrect,
+      isCorrect: answerIsCorrect,
       score: score.totalScore,
       masteryLabel: score.masteryLabel,
       exceptionalLevel: score.exceptionalLevel,
@@ -149,31 +127,112 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
     });
 
     onProgressUpdated?.();
-    setSavedSessionKey(sessionKey);
-  }, [
-    activeItem,
-    hasAnswered,
-    hintVisible,
-    isCorrect,
-    savedSessionKey,
-    score.adaptiveNextStep,
-    score.exceptionalLevel,
-    score.exceptionalLevelUnlocked,
-    score.growthSignal,
-    score.masteryLabel,
-    score.recoveryModeSuggestion,
-    score.scoreBand,
-    score.totalScore,
-    onProgressUpdated,
-    selectedAnswer,
-    tryCount
-  ]);
+  }
+
+  function handleContinue() {
+    if (!activeItem || !roundScore) {
+      return;
+    }
+
+    if (questionIndex >= sessionItems.length - 1) {
+      setSessionComplete(true);
+      return;
+    }
+
+    setQuestionIndex((current) => current + 1);
+    resetQuestionState();
+  }
+
+  function handleReplay() {
+    setSessionCycle((current) => current + 1);
+    setQuestionIndex(0);
+    setSessionResults([]);
+    setSessionComplete(false);
+    resetQuestionState();
+  }
+
+  if (sessionItems.length === 0) {
+    return (
+      <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
+        <h2 id="kids-gameplay-heading">Play round</h2>
+        <p>No gameplay items are available for this play mode.</p>
+      </section>
+    );
+  }
+
+  if (sessionComplete) {
+    const correctCount = sessionResults.filter((result) => result.isCorrect).length;
+    const averageScore = sessionResults.length > 0
+      ? Math.round(sessionResults.reduce((sum, result) => sum + result.score, 0) / sessionResults.length)
+      : 0;
+
+    return (
+      <section aria-labelledby="kids-session-result-heading" style={{ marginTop: "28px" }}>
+        <article
+          style={{
+            border: "1px solid #bbf7d0",
+            borderRadius: "22px",
+            padding: "22px",
+            background: "#f0fdf4"
+          }}
+        >
+          <p style={{ margin: "0 0 6px", color: "#166534", fontSize: "14px" }}>
+            Session complete
+          </p>
+          <h2 id="kids-session-result-heading" style={{ margin: "0 0 14px", fontSize: "28px" }}>
+            Nice work. You finished this play round.
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+              gap: "10px"
+            }}
+          >
+            <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+              <div style={{ color: "#64748b", fontSize: "13px" }}>Challenges</div>
+              <strong style={{ fontSize: "22px" }}>{sessionResults.length}</strong>
+            </div>
+            <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+              <div style={{ color: "#64748b", fontSize: "13px" }}>Correct</div>
+              <strong style={{ fontSize: "22px" }}>{correctCount}</strong>
+            </div>
+            <div style={{ borderRadius: "16px", background: "#ffffff", padding: "14px" }}>
+              <div style={{ color: "#64748b", fontSize: "13px" }}>Average score</div>
+              <strong style={{ fontSize: "22px" }}>{averageScore}</strong>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleReplay}
+            style={{
+              marginTop: "18px",
+              border: "1px solid #111827",
+              borderRadius: "999px",
+              padding: "12px 18px",
+              background: "#111827",
+              color: "#ffffff",
+              cursor: "pointer"
+            }}
+          >
+            Play another round
+          </button>
+        </article>
+      </section>
+    );
+  }
+
+  if (!activeItem) {
+    return null;
+  }
 
   return (
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
-          {activeItem.certifiedId} - {activeItem.categoryName} - {activeItem.stage}
+          Challenge {questionIndex + 1} of {sessionItems.length} - {activeItem.categoryName} - {activeItem.stage}
         </p>
         <h2 id="kids-gameplay-heading" style={{ margin: 0, fontSize: "26px" }}>
           Play round
@@ -201,9 +260,11 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
             const isSelected = selectedAnswer === option;
 
             return (
-              <button aria-label="MindLab interactive control"
+              <button
+                aria-label="MindLab interactive control"
                 key={option}
                 type="button"
+                disabled={hasAnswered}
                 onClick={() => handleAnswer(option)}
                 style={{
                   textAlign: "left",
@@ -212,7 +273,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
                   padding: "14px 16px",
                   background: isSelected ? "#fef3c7" : "#f9fafb",
                   color: "#111827",
-                  cursor: "pointer",
+                  cursor: hasAnswered ? "default" : "pointer",
                   fontSize: "16px"
                 }}
               >
@@ -222,8 +283,10 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
           })}
         </div>
 
-        <button aria-label="MindLab interactive control"
+        <button
+          aria-label="MindLab interactive control"
           type="button"
+          disabled={hasAnswered}
           onClick={() => setHintVisible((current) => !current)}
           style={{
             marginTop: "14px",
@@ -232,7 +295,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
             padding: "10px 14px",
             background: "#ffffff",
             color: "#334155",
-            cursor: "pointer"
+            cursor: hasAnswered ? "default" : "pointer"
           }}
         >
           {hintVisible ? "Hide clue" : "Show a small clue"}
@@ -258,7 +321,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
           </p>
         )}
 
-        {hasAnswered && (
+        {hasAnswered && roundScore && (
           <>
             <div
               aria-live="polite"
@@ -270,15 +333,12 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
                 color: isCorrect ? "#065f46" : "#9a3412"
               }}
             >
-              <strong>{isCorrect ? "Great job. You found it." : "Good try. Let us look again together."}</strong>
+              <strong>{isCorrect ? "Great job. You found it." : "Good try. Review the clue and keep going."}</strong>
               <div style={{ marginTop: "8px" }}>
-                {isCorrect ? activeItem.insight : activeItem.hint}
+                {isCorrect
+                  ? activeItem.insight
+                  : `${activeItem.hint} Correct answer: ${activeItem.correctAnswer}.`}
               </div>
-              {tryCount > 0 && (
-                <div style={{ marginTop: "8px", color: "#334155" }}>
-                  Tries: {tryCount + 1}. You are learning.
-                </div>
-              )}
             </div>
 
             <aside
@@ -292,19 +352,19 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
             >
               <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
                 <div style={{ color: "#64748b", fontSize: "13px" }}>Score</div>
-                <strong style={{ fontSize: "22px" }}>{score.totalScore}</strong>
+                <strong style={{ fontSize: "22px" }}>{roundScore.totalScore}</strong>
               </div>
               <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
                 <div style={{ color: "#64748b", fontSize: "13px" }}>Mastery</div>
-                <strong style={{ fontSize: "22px" }}>{score.masteryLabel}</strong>
+                <strong style={{ fontSize: "22px" }}>{roundScore.masteryLabel}</strong>
               </div>
               <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
                 <div style={{ color: "#64748b", fontSize: "13px" }}>Level</div>
-                <strong style={{ fontSize: "22px" }}>{score.exceptionalLevel}</strong>
+                <strong style={{ fontSize: "22px" }}>{roundScore.exceptionalLevel}</strong>
               </div>
               <div style={{ borderRadius: "16px", background: "#f8fafc", padding: "14px" }}>
                 <div style={{ color: "#64748b", fontSize: "13px" }}>Score band</div>
-                <strong>{score.scoreBand}</strong>
+                <strong>{roundScore.scoreBand}</strong>
               </div>
             </aside>
 
@@ -318,50 +378,35 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
                 padding: "16px"
               }}
             >
-              <h3 style={{ margin: "0 0 8px", fontSize: "20px" }}>Adaptive next step</h3>
+              <h3 style={{ margin: "0 0 8px", fontSize: "20px" }}>Adaptive guidance</h3>
               <p style={{ margin: "0 0 8px", color: "#475569", lineHeight: 1.55 }}>
-                {score.growthSignal}
+                {roundScore.growthSignal}
               </p>
-              <p style={{ margin: "0 0 8px", color: "#475569", lineHeight: 1.55 }}>
-                {score.recoveryModeSuggestion}
-              </p>
-              <strong aria-label="MindLab interactive control" style={{ color: "#111827" }}>{score.adaptiveNextStep}</strong>
-
-              <div style={{ marginTop: "14px" }}>
-                <button aria-label="MindLab interactive control"
-                  type="button"
-                  onClick={handleSuggestedNextRound}
-                  disabled={!nextSuggestedItem && availableItems.length <= 1}
-                  style={{
-                    border: "1px solid #111827",
-                    borderRadius: "999px",
-                    padding: "10px 14px",
-                    background: "#111827",
-                    color: "#ffffff",
-                    cursor: nextSuggestedItem || availableItems.length > 1 ? "pointer" : "not-allowed"
-                  }}
-                >
-                  {nextSuggestedItem
-                    ? `Try suggested next: ${nextSuggestedItem.categoryName}`
-                    : "Try another friendly round"}
-                </button>
-              </div>
+              <strong style={{ color: "#111827" }}>{roundScore.adaptiveNextStep}</strong>
             </section>
-
-            <p style={{ margin: "14px 0 0", color: "#475569" }}>
-              {score.encouragement}
-            </p>
-
-            <p style={{ margin: "10px 0 0", color: "#64748b", fontSize: "13px" }}>
-              Kids progress saved with mindlab.kids.profile.v1 and adaptive progress fields.
-            </p>
 
             <KidsPostSessionInsightPanel
               item={activeItem}
-              score={score}
+              score={roundScore}
               hasAnswered={hasAnswered}
               isCorrect={isCorrect}
             />
+
+            <button
+              type="button"
+              onClick={handleContinue}
+              style={{
+                marginTop: "18px",
+                border: "1px solid #111827",
+                borderRadius: "999px",
+                padding: "12px 18px",
+                background: "#111827",
+                color: "#ffffff",
+                cursor: "pointer"
+              }}
+            >
+              {questionIndex >= sessionItems.length - 1 ? "View session result" : "Next challenge"}
+            </button>
           </>
         )}
       </article>
@@ -370,10 +415,10 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
 }
 
 export const KIDS_EXPANSION_ROOT_006_GAMEPLAY_VALIDATION_MARKERS = {
-  answerGate: "hasAnswered",
+  answerGate: "answerLockedRef",
   scoreBandLabel: "Score band",
-  adaptiveNextStepLabel: "Adaptive next step",
+  adaptiveNextStepLabel: "Adaptive guidance",
   sessionInsightLabel: "Session insight",
   progressRecorder: "recordKidsSessionProgress",
-  refreshCallback: "onProgressUpdated"
+  sessionCompletion: "View session result"
 } as const;

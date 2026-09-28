@@ -1,7 +1,5 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import "./MindLabOriginalApp.css";
-
-const STORAGE_KEY = "mindlab.localProfile.v1";
 
 const GAME_MODES = {
   kids: {
@@ -79,31 +77,8 @@ function isValidCategory(value) {
   return value === "kids" || value === "adults" || value === "seniors";
 }
 
-function loadLocalProfile() {
-  try {
-    const rawProfile = window.localStorage.getItem(STORAGE_KEY);
-    if (!rawProfile) {
-      return null;
-    }
-
-    const parsedProfile = JSON.parse(rawProfile);
-
-    if (!parsedProfile || !isValidCategory(parsedProfile.ageCategory)) {
-      return null;
-    }
-
-    return {
-      name: parsedProfile.name || "MindLab Player",
-      ageCategory: parsedProfile.ageCategory
-    };
-  } catch {
-    return null;
-  }
-}
-
-export default function MindLabOriginalApp() {
-  const localProfile = useMemo(() => loadLocalProfile(), []);
-  const lockedCategory = isValidCategory(localProfile?.ageCategory) ? localProfile.ageCategory : "kids";
+export default function MindLabOriginalApp({ activeCategory = "kids", profileName = "MindLab Player" }) {
+  const lockedCategory = isValidCategory(activeCategory) ? activeCategory : "kids";
   const activeMode = GAME_MODES[lockedCategory];
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -152,7 +127,7 @@ export default function MindLabOriginalApp() {
         <div className="mindlab-profile-summary">
           <div>
             <span className="mindlab-summary-label">Current profile</span>
-            <strong>{localProfile?.name || "MindLab Player"}</strong>
+            <strong>{profileName}</strong>
           </div>
           <div>
             <span className="mindlab-summary-label">Active category</span>
@@ -188,7 +163,8 @@ export default function MindLabOriginalApp() {
               const incorrect = selected && answerState && !answerState.isCorrect;
 
               return (
-                <button aria-label="MindLab interactive control"
+                <button
+                  aria-label="MindLab interactive control"
                   key={answer}
                   type="button"
                   className={[
