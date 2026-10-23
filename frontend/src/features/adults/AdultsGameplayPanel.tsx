@@ -4,7 +4,15 @@ import {
   type AdultsGameplayItem
 } from "./adultsGameplayContent";
 import AdultsPostSessionInsightPanel from "./AdultsPostSessionInsightPanel";
-import { recordAdultSessionResult } from "./adultsPersistence";
+import {
+  readAdultSessionHistory,
+  recordAdultSessionResult,
+  type AdultSessionHistoryItem
+} from "./adultsPersistence";
+import {
+  buildFreshSequenceChallenge,
+  getAdaptiveSequenceDifficulty
+} from "../shared/sequenceChallengeEngine";
 import {
   calculateAdultsScore,
   type AdultsScoreResult
@@ -54,6 +62,51 @@ export function buildAdultsSessionItems(
   return Array.from({ length }, (_, index) => items[(startIndex + index) % items.length]!);
 }
 
+export function buildAdultsWorkingMemorySession(
+  items: AdultsGameplayItem[],
+  cycle: number,
+  history: AdultSessionHistoryItem[]
+): AdultsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score
+  }));
+  const difficulty = getAdaptiveSequenceDifficulty("adults", recentPerformance);
+  const sequenceChallenge = buildFreshSequenceChallenge({
+    lane: "adults",
+    baseSeed: `adults-working-memory-${cycle}-${history.length}`,
+    difficulty,
+    recentConfigurationIds: history
+      .map((entry) => entry.certifiedId)
+      .filter((id) => id.startsWith("SEQ-A-"))
+  });
+  const sequenceItem: AdultsGameplayItem = {
+    certifiedId: sequenceChallenge.configurationId,
+    category: "AC2",
+    categoryName: "Working Memory",
+    stage: difficulty >= 3 ? "A3" : difficulty >= 2 ? "A2" : "A1",
+    sessionProfile: "QuickFocus",
+    promptType: "WorkingMemorySequence",
+    objective: "Hold an ordered sequence and retrieve one position accurately",
+    prompt: sequenceChallenge.prompt,
+    options: sequenceChallenge.options,
+    correctAnswer: sequenceChallenge.correctAnswer,
+    answerFormat: "SingleChoice",
+    difficulty: `Adaptive ${difficulty}`,
+    timerPolicy: "Optional",
+    hintPolicy: "LightNudge",
+    hint: sequenceChallenge.hint,
+    insight: sequenceChallenge.insight
+  };
+  const staticItems = buildAdultsSessionItems(
+    items,
+    cycle,
+    Math.max(0, ADULTS_SESSION_LENGTH - 1)
+  );
+
+  return [sequenceItem, ...staticItems].slice(0, ADULTS_SESSION_LENGTH);
+}
+
 export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -72,10 +125,17 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     [selectedMode]
   );
 
-  const sessionItems = React.useMemo(
-    () => buildAdultsSessionItems(availableItems, sessionCycle),
-    [availableItems, sessionCycle]
-  );
+  const sessionItems = React.useMemo(() => {
+    if (selectedMode === "QuickFocus") {
+      return buildAdultsWorkingMemorySession(
+        availableItems,
+        sessionCycle,
+        readAdultSessionHistory()
+      );
+    }
+
+    return buildAdultsSessionItems(availableItems, sessionCycle);
+  }, [availableItems, selectedMode, sessionCycle]);
 
   const activeItem = sessionItems[questionIndex] ?? null;
   const hasAnswered = selectedAnswer.length > 0;

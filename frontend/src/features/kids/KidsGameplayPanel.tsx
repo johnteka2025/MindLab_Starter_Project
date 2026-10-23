@@ -4,7 +4,15 @@ import {
   type KidsGameplayItem
 } from "./kidsGameplayContent";
 import KidsPostSessionInsightPanel from "./KidsPostSessionInsightPanel";
-import { recordKidsSessionProgress } from "./kidsPersistence";
+import {
+  loadKidsSessionHistory,
+  recordKidsSessionProgress,
+  type KidsSessionHistoryEntry
+} from "./kidsPersistence";
+import {
+  buildFreshSequenceChallenge,
+  getAdaptiveSequenceDifficulty
+} from "../shared/sequenceChallengeEngine";
 import {
   calculateKidsScore,
   type KidsScoreResult
@@ -38,6 +46,46 @@ export function buildKidsSessionItems(
   return Array.from({ length }, (_, index) => items[(startIndex + index) % items.length]!);
 }
 
+export function buildKidsSequenceExplorerSession(
+  items: KidsGameplayItem[],
+  cycle: number,
+  history: KidsSessionHistoryEntry[]
+): KidsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score
+  }));
+  const difficulty = getAdaptiveSequenceDifficulty("kids", recentPerformance);
+  const sequenceChallenge = buildFreshSequenceChallenge({
+    lane: "kids",
+    baseSeed: `kids-sequence-explorer-${cycle}-${history.length}`,
+    difficulty,
+    recentConfigurationIds: history
+      .map((entry) => entry.certifiedId)
+      .filter((id) => id.startsWith("SEQ-K-"))
+  });
+  const sequenceItem: KidsGameplayItem = {
+    certifiedId: sequenceChallenge.configurationId,
+    category: "KC6",
+    categoryName: "Sequence Explorer",
+    stage: difficulty >= 3 ? "K3" : difficulty >= 2 ? "K2" : "K1",
+    sessionMode: "Challenge",
+    prompt: sequenceChallenge.prompt,
+    options: sequenceChallenge.options,
+    correctAnswer: sequenceChallenge.correctAnswer,
+    hint: sequenceChallenge.hint,
+    insight: sequenceChallenge.insight,
+    difficulty: `Adaptive ${difficulty}`
+  };
+  const staticItems = buildKidsSessionItems(
+    items,
+    cycle,
+    Math.max(0, KIDS_SESSION_LENGTH - 1)
+  );
+
+  return [sequenceItem, ...staticItems].slice(0, KIDS_SESSION_LENGTH);
+}
+
 export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -53,10 +101,17 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
     [selectedMode]
   );
 
-  const sessionItems = React.useMemo(
-    () => buildKidsSessionItems(availableItems, sessionCycle),
-    [availableItems, sessionCycle]
-  );
+  const sessionItems = React.useMemo(() => {
+    if (selectedMode === "Challenge") {
+      return buildKidsSequenceExplorerSession(
+        availableItems,
+        sessionCycle,
+        loadKidsSessionHistory()
+      );
+    }
+
+    return buildKidsSessionItems(availableItems, sessionCycle);
+  }, [availableItems, selectedMode, sessionCycle]);
 
   const activeItem = sessionItems[questionIndex] ?? null;
   const hasAnswered = selectedAnswer.length > 0;

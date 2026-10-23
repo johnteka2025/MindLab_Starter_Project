@@ -3,7 +3,15 @@ import {
   getSeniorsGameplayItemsForSession,
   type SeniorsGameplayItem
 } from "./seniorsGameplayContent";
-import { recordSeniorsChallengeResult } from "./seniorsPersistence";
+import {
+  readSeniorsSessionHistory,
+  recordSeniorsChallengeResult,
+  type SeniorsPersistenceRecord
+} from "./seniorsPersistence";
+import {
+  buildFreshSequenceChallenge,
+  getAdaptiveSequenceDifficulty
+} from "../shared/sequenceChallengeEngine";
 import {
   calculateSeniorsScore,
   type SeniorsScoreResult
@@ -44,6 +52,47 @@ export function buildSeniorsSessionItems(
   return Array.from({ length }, (_, index) => items[(startIndex + index) % items.length]!);
 }
 
+export function buildSeniorsGuidedRecallSession(
+  items: SeniorsGameplayItem[],
+  cycle: number,
+  history: SeniorsPersistenceRecord[]
+): SeniorsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score,
+    hintUsed: entry.hintUsed
+  }));
+  const difficulty = getAdaptiveSequenceDifficulty("seniors", recentPerformance);
+  const sequenceChallenge = buildFreshSequenceChallenge({
+    lane: "seniors",
+    baseSeed: `seniors-guided-recall-${cycle}-${history.length}`,
+    difficulty,
+    recentConfigurationIds: history
+      .map((entry) => entry.challengeId)
+      .filter((id) => id.startsWith("SEQ-S-"))
+  });
+  const sequenceItem: SeniorsGameplayItem = {
+    challengeId: sequenceChallenge.configurationId,
+    category: "memory_support",
+    categoryName: "Guided Recall",
+    stage: difficulty >= 2 ? "S2" : "S1",
+    sessionProfile: "GuidedMemory",
+    objective: "Practice ordered recall with clear pacing and no speed penalty",
+    prompt: sequenceChallenge.prompt,
+    options: sequenceChallenge.options,
+    correctAnswer: sequenceChallenge.correctAnswer,
+    hint: sequenceChallenge.hint,
+    insight: sequenceChallenge.insight
+  };
+  const staticItems = buildSeniorsSessionItems(
+    items,
+    cycle,
+    Math.max(0, SENIORS_SESSION_LENGTH - 1)
+  );
+
+  return [sequenceItem, ...staticItems].slice(0, SENIORS_SESSION_LENGTH);
+}
+
 type SeniorsGameplayPanelProps = {
   selectedMode: SeniorsSessionModeId;
 };
@@ -67,10 +116,17 @@ export default function SeniorsGameplayPanel({
     [selectedMode]
   );
 
-  const sessionItems = React.useMemo(
-    () => buildSeniorsSessionItems(availableItems, sessionCycle),
-    [availableItems, sessionCycle]
-  );
+  const sessionItems = React.useMemo(() => {
+    if (selectedMode === "GuidedMemory") {
+      return buildSeniorsGuidedRecallSession(
+        availableItems,
+        sessionCycle,
+        readSeniorsSessionHistory()
+      );
+    }
+
+    return buildSeniorsSessionItems(availableItems, sessionCycle);
+  }, [availableItems, selectedMode, sessionCycle]);
 
   const activeItem = sessionItems[questionIndex] ?? null;
   const hasAnswered = selectedAnswer.length > 0;
