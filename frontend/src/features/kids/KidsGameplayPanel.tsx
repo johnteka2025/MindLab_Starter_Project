@@ -14,6 +14,10 @@ import {
   getAdaptiveSequenceDifficulty
 } from "../shared/sequenceChallengeEngine";
 import {
+  buildFreshFocusChallenge,
+  getAdaptiveFocusDifficulty
+} from "../shared/focusChallengeEngine";
+import {
   calculateKidsScore,
   type KidsScoreResult
 } from "./kidsScoring";
@@ -86,6 +90,46 @@ export function buildKidsSequenceExplorerSession(
   return [sequenceItem, ...staticItems].slice(0, KIDS_SESSION_LENGTH);
 }
 
+export function buildKidsFocusFinderSession(
+  items: KidsGameplayItem[],
+  cycle: number,
+  history: KidsSessionHistoryEntry[]
+): KidsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score
+  }));
+  const difficulty = getAdaptiveFocusDifficulty("kids", recentPerformance);
+  const focusChallenge = buildFreshFocusChallenge({
+    lane: "kids",
+    baseSeed: `kids-focus-finder-${cycle}-${history.length}`,
+    difficulty,
+    recentConfigurationIds: history
+      .map((entry) => entry.certifiedId)
+      .filter((id) => id.startsWith("FOC-K-"))
+  });
+  const focusItem: KidsGameplayItem = {
+    certifiedId: focusChallenge.configurationId,
+    category: "KC8",
+    categoryName: "Focus Finder",
+    stage: difficulty >= 3 ? "K3" : difficulty >= 2 ? "K2" : "K1",
+    sessionMode: "PlayFocus",
+    prompt: focusChallenge.prompt,
+    options: focusChallenge.options,
+    correctAnswer: focusChallenge.correctAnswer,
+    hint: focusChallenge.hint,
+    insight: focusChallenge.insight,
+    difficulty: `Adaptive ${difficulty}`
+  };
+  const staticItems = buildKidsSessionItems(
+    items,
+    cycle,
+    Math.max(0, KIDS_SESSION_LENGTH - 1)
+  );
+
+  return [focusItem, ...staticItems].slice(0, KIDS_SESSION_LENGTH);
+}
+
 export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -104,6 +148,14 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
   const sessionItems = React.useMemo(() => {
     if (selectedMode === "Challenge") {
       return buildKidsSequenceExplorerSession(
+        availableItems,
+        sessionCycle,
+        loadKidsSessionHistory()
+      );
+    }
+
+    if (selectedMode === "PlayFocus") {
+      return buildKidsFocusFinderSession(
         availableItems,
         sessionCycle,
         loadKidsSessionHistory()

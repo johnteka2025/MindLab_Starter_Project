@@ -14,6 +14,10 @@ import {
   getAdaptiveSequenceDifficulty
 } from "../shared/sequenceChallengeEngine";
 import {
+  buildFreshFocusChallenge,
+  getAdaptiveFocusDifficulty
+} from "../shared/focusChallengeEngine";
+import {
   calculateAdultsScore,
   type AdultsScoreResult
 } from "./adultsScoring";
@@ -107,6 +111,51 @@ export function buildAdultsWorkingMemorySession(
   return [sequenceItem, ...staticItems].slice(0, ADULTS_SESSION_LENGTH);
 }
 
+export function buildAdultsQuickFocusEnhancedSession(
+  items: AdultsGameplayItem[],
+  cycle: number,
+  history: AdultSessionHistoryItem[]
+): AdultsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score
+  }));
+  const difficulty = getAdaptiveFocusDifficulty("adults", recentPerformance);
+  const focusChallenge = buildFreshFocusChallenge({
+    lane: "adults",
+    baseSeed: `adults-selective-attention-${cycle}-${history.length}`,
+    difficulty,
+    recentConfigurationIds: history
+      .map((entry) => entry.certifiedId)
+      .filter((id) => id.startsWith("FOC-A-"))
+  });
+  const focusItem: AdultsGameplayItem = {
+    certifiedId: focusChallenge.configurationId,
+    category: "AC1",
+    categoryName: "Selective Attention",
+    stage: difficulty >= 3 ? "A3" : difficulty >= 2 ? "A2" : "A1",
+    sessionProfile: "QuickFocus",
+    promptType: "SelectiveAttentionFilter",
+    objective: "Hold the target rule steady while rejecting near matches",
+    prompt: focusChallenge.prompt,
+    options: focusChallenge.options,
+    correctAnswer: focusChallenge.correctAnswer,
+    answerFormat: "SingleChoice",
+    difficulty: `Adaptive ${difficulty}`,
+    timerPolicy: "Optional",
+    hintPolicy: "LightNudge",
+    hint: focusChallenge.hint,
+    insight: focusChallenge.insight
+  };
+  const sequenceSession = buildAdultsWorkingMemorySession(items, cycle, history);
+  const sequenceItem = sequenceSession[0];
+  const staticItem = sequenceSession[1];
+
+  return [sequenceItem, focusItem, staticItem].filter(
+    (item): item is AdultsGameplayItem => Boolean(item)
+  ).slice(0, ADULTS_SESSION_LENGTH);
+}
+
 export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -127,7 +176,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
 
   const sessionItems = React.useMemo(() => {
     if (selectedMode === "QuickFocus") {
-      return buildAdultsWorkingMemorySession(
+      return buildAdultsQuickFocusEnhancedSession(
         availableItems,
         sessionCycle,
         readAdultSessionHistory()

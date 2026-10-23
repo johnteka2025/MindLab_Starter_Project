@@ -13,6 +13,10 @@ import {
   getAdaptiveSequenceDifficulty
 } from "../shared/sequenceChallengeEngine";
 import {
+  buildFreshFocusChallenge,
+  getAdaptiveFocusDifficulty
+} from "../shared/focusChallengeEngine";
+import {
   calculateSeniorsScore,
   type SeniorsScoreResult
 } from "./seniorsScoring";
@@ -93,6 +97,47 @@ export function buildSeniorsGuidedRecallSession(
   return [sequenceItem, ...staticItems].slice(0, SENIORS_SESSION_LENGTH);
 }
 
+export function buildSeniorsFocusFilterSession(
+  items: SeniorsGameplayItem[],
+  cycle: number,
+  history: SeniorsPersistenceRecord[]
+): SeniorsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score,
+    hintUsed: entry.hintUsed
+  }));
+  const difficulty = getAdaptiveFocusDifficulty("seniors", recentPerformance);
+  const focusChallenge = buildFreshFocusChallenge({
+    lane: "seniors",
+    baseSeed: `seniors-focus-filter-${cycle}-${history.length}`,
+    difficulty,
+    recentConfigurationIds: history
+      .map((entry) => entry.challengeId)
+      .filter((id) => id.startsWith("FOC-S-"))
+  });
+  const focusItem: SeniorsGameplayItem = {
+    challengeId: focusChallenge.configurationId,
+    category: "focus_attention",
+    categoryName: "Focus & Filter",
+    stage: difficulty >= 2 ? "S2" : "S1",
+    sessionProfile: "FocusAttention",
+    objective: "Apply a clear attention rule carefully without speed pressure",
+    prompt: focusChallenge.prompt,
+    options: focusChallenge.options,
+    correctAnswer: focusChallenge.correctAnswer,
+    hint: focusChallenge.hint,
+    insight: focusChallenge.insight
+  };
+  const staticItems = buildSeniorsSessionItems(
+    items,
+    cycle,
+    Math.max(0, SENIORS_SESSION_LENGTH - 1)
+  );
+
+  return [focusItem, ...staticItems].slice(0, SENIORS_SESSION_LENGTH);
+}
+
 type SeniorsGameplayPanelProps = {
   selectedMode: SeniorsSessionModeId;
 };
@@ -119,6 +164,14 @@ export default function SeniorsGameplayPanel({
   const sessionItems = React.useMemo(() => {
     if (selectedMode === "GuidedMemory") {
       return buildSeniorsGuidedRecallSession(
+        availableItems,
+        sessionCycle,
+        readSeniorsSessionHistory()
+      );
+    }
+
+    if (selectedMode === "FocusAttention") {
+      return buildSeniorsFocusFilterSession(
         availableItems,
         sessionCycle,
         readSeniorsSessionHistory()
