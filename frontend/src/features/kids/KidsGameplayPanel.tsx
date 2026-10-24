@@ -22,6 +22,10 @@ import {
   getAdaptivePatternDifficulty
 } from "../shared/patternChallengeEngine";
 import {
+  buildFreshPlanningChallenge,
+  getAdaptivePlanningDifficulty
+} from "../shared/planningChallengeEngine";
+import {
   calculateKidsScore,
   type KidsScoreResult
 } from "./kidsScoring";
@@ -177,6 +181,43 @@ export function buildKidsPatternBuilderSession(
 }
 
 
+export function buildKidsPathPlannerSession(
+  items: KidsGameplayItem[],
+  cycle: number,
+  history: KidsSessionHistoryEntry[]
+): KidsGameplayItem[] {
+  const accepted = buildKidsPatternBuilderSession(items, cycle, history);
+  const recent = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect, score: entry.score
+  }));
+  const difficulty = getAdaptivePlanningDifficulty("kids", recent);
+  const exposed = history.map((entry) => entry.certifiedId).filter((id) => id.startsWith("PLN-K-"));
+  const challenge = buildFreshPlanningChallenge({
+    lane: "kids",
+    baseSeed: `kids-path-planner-${cycle}-${history.length}`,
+    difficulty, variationIndex: exposed.length + cycle,
+    recentConfigurationIds: exposed
+  });
+  const planner: KidsGameplayItem = {
+    certifiedId: challenge.configurationId,
+    category: "KC4",
+    categoryName: "Path Planner",
+    stage: difficulty >= 3 ? "K3" : difficulty >= 2 ? "K2" : "K1",
+    sessionMode: "Challenge",
+    prompt: challenge.prompt,
+    options: challenge.options,
+    correctAnswer: challenge.correctAnswer,
+    hint: challenge.hint,
+    insight: challenge.insight,
+    difficulty: `Adaptive ${difficulty}`
+  };
+  // Preserve accepted Pattern Builder and Sequence Explorer as questions 1 and 2.
+  return [accepted[0], accepted[1], planner].filter(
+    (item): item is KidsGameplayItem => Boolean(item)
+  ).slice(0, KIDS_SESSION_LENGTH);
+}
+
+
 export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -194,7 +235,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
 
   const sessionItems = React.useMemo(() => {
     if (selectedMode === "Challenge") {
-      return buildKidsPatternBuilderSession(
+      return buildKidsPathPlannerSession(
         availableItems,
         sessionCycle,
         loadKidsSessionHistory()

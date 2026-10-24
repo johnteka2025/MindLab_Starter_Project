@@ -21,6 +21,10 @@ import {
   getAdaptivePatternDifficulty
 } from "../shared/patternChallengeEngine";
 import {
+  buildFreshPlanningChallenge,
+  getAdaptivePlanningDifficulty
+} from "../shared/planningChallengeEngine";
+import {
   calculateSeniorsScore,
   type SeniorsScoreResult
 } from "./seniorsScoring";
@@ -186,6 +190,43 @@ export function buildSeniorsPatternConfidenceSession(
 }
 
 
+export function buildSeniorsEverydayPlanningSession(
+  items: SeniorsGameplayItem[],
+  cycle: number,
+  history: SeniorsPersistenceRecord[]
+): SeniorsGameplayItem[] {
+  const accepted = buildSeniorsPatternConfidenceSession(items, cycle, history);
+  const recent = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect, score: entry.score, hintUsed: entry.hintUsed
+  }));
+  const difficulty = getAdaptivePlanningDifficulty("seniors", recent);
+  const exposed = history.map((entry) => entry.challengeId).filter((id) => id.startsWith("PLN-S-"));
+  const challenge = buildFreshPlanningChallenge({
+    lane: "seniors",
+    baseSeed: `seniors-everyday-planning-${cycle}-${history.length}`,
+    difficulty, variationIndex: exposed.length + cycle,
+    recentConfigurationIds: exposed
+  });
+  const planner: SeniorsGameplayItem = {
+    challengeId: challenge.configurationId,
+    category: "planning",
+    categoryName: "Everyday Planning",
+    stage: difficulty >= 2 ? "S2" : "S1",
+    sessionProfile: "PatternConfidence",
+    objective: "Plan familiar tasks confidently without speed pressure",
+    prompt: challenge.prompt,
+    options: challenge.options,
+    correctAnswer: challenge.correctAnswer,
+    hint: challenge.hint,
+    insight: challenge.insight
+  };
+  // Keep accepted Pattern Confidence first; no forced timer or speed control.
+  return [accepted[0], planner, accepted[1]].filter(
+    (item): item is SeniorsGameplayItem => Boolean(item)
+  ).slice(0, SENIORS_SESSION_LENGTH);
+}
+
+
 type SeniorsGameplayPanelProps = {
   selectedMode: SeniorsSessionModeId;
 };
@@ -227,7 +268,7 @@ export default function SeniorsGameplayPanel({
     }
 
     if (selectedMode === "PatternConfidence") {
-      return buildSeniorsPatternConfidenceSession(
+      return buildSeniorsEverydayPlanningSession(
         availableItems,
         sessionCycle,
         readSeniorsSessionHistory()

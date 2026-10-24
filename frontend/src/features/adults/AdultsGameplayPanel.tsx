@@ -22,6 +22,10 @@ import {
   getAdaptivePatternDifficulty
 } from "../shared/patternChallengeEngine";
 import {
+  buildFreshPlanningChallenge,
+  getAdaptivePlanningDifficulty
+} from "../shared/planningChallengeEngine";
+import {
   calculateAdultsScore,
   type AdultsScoreResult
 } from "./adultsScoring";
@@ -208,6 +212,48 @@ export function buildAdultsPatternLogicSession(
 }
 
 
+export function buildAdultsStrategicDecisionsSession(
+  items: AdultsGameplayItem[],
+  cycle: number,
+  history: AdultSessionHistoryItem[]
+): AdultsGameplayItem[] {
+  const accepted = buildAdultsPatternLogicSession(items, cycle, history);
+  const recent = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect, score: entry.score
+  }));
+  const difficulty = getAdaptivePlanningDifficulty("adults", recent);
+  const exposed = history.map((entry) => entry.certifiedId).filter((id) => id.startsWith("PLN-A-"));
+  const challenge = buildFreshPlanningChallenge({
+    lane: "adults",
+    baseSeed: `adults-strategic-decisions-${cycle}-${history.length}`,
+    difficulty, variationIndex: exposed.length + cycle,
+    recentConfigurationIds: exposed
+  });
+  const planner: AdultsGameplayItem = {
+    certifiedId: challenge.configurationId,
+    category: "AC3",
+    categoryName: "Strategic Decisions",
+    stage: difficulty >= 3 ? "A3" : difficulty >= 2 ? "A2" : "A1",
+    sessionProfile: "Deep",
+    promptType: "ConstrainedPlanning",
+    objective: "Choose a sound plan under dependencies and resource constraints",
+    prompt: challenge.prompt,
+    options: challenge.options,
+    correctAnswer: challenge.correctAnswer,
+    answerFormat: "SingleChoice",
+    difficulty: `Adaptive ${difficulty}`,
+    timerPolicy: "OffByDefault",
+    hintPolicy: "StrategyCueThenStructureCue",
+    hint: challenge.hint,
+    insight: challenge.insight
+  };
+  // Keep accepted Pattern Logic first and one existing Deep challenge.
+  return [accepted[0], planner, accepted[1]].filter(
+    (item): item is AdultsGameplayItem => Boolean(item)
+  ).slice(0, ADULTS_SESSION_LENGTH);
+}
+
+
 export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -236,7 +282,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     }
 
     if (selectedMode === "Deep") {
-      return buildAdultsPatternLogicSession(
+      return buildAdultsStrategicDecisionsSession(
         availableItems,
         sessionCycle,
         readAdultSessionHistory()
