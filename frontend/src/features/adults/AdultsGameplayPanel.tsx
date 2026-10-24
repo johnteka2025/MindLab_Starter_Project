@@ -18,6 +18,10 @@ import {
   getAdaptiveFocusDifficulty
 } from "../shared/focusChallengeEngine";
 import {
+  buildFreshPatternChallenge,
+  getAdaptivePatternDifficulty
+} from "../shared/patternChallengeEngine";
+import {
   calculateAdultsScore,
   type AdultsScoreResult
 } from "./adultsScoring";
@@ -156,6 +160,54 @@ export function buildAdultsQuickFocusEnhancedSession(
   ).slice(0, ADULTS_SESSION_LENGTH);
 }
 
+export function buildAdultsPatternLogicSession(
+  items: AdultsGameplayItem[],
+  cycle: number,
+  history: AdultSessionHistoryItem[]
+): AdultsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score
+  }));
+  const difficulty = getAdaptivePatternDifficulty("adults", recentPerformance);
+  const patternHistory = history
+    .map((entry) => entry.certifiedId)
+    .filter((id) => id.startsWith("PAT-A-"));
+  const patternChallenge = buildFreshPatternChallenge({
+    lane: "adults",
+    baseSeed: `adults-pattern-logic-${cycle}-${history.length}`,
+    difficulty,
+    variationIndex: patternHistory.length + cycle,
+    recentConfigurationIds: patternHistory
+  });
+  const patternItem: AdultsGameplayItem = {
+    certifiedId: patternChallenge.configurationId,
+    category: "AC3",
+    categoryName: "Pattern Logic",
+    stage: difficulty >= 3 ? "A3" : difficulty >= 2 ? "A2" : "A1",
+    sessionProfile: "Deep",
+    promptType: "AdaptivePatternLogic",
+    objective: "Identify a consistent transformation and predict the next value",
+    prompt: patternChallenge.prompt,
+    options: patternChallenge.options,
+    correctAnswer: patternChallenge.correctAnswer,
+    answerFormat: "SingleChoice",
+    difficulty: `Adaptive ${difficulty}`,
+    timerPolicy: "OffByDefault",
+    hintPolicy: "StrategyCueThenStructureCue",
+    hint: patternChallenge.hint,
+    insight: patternChallenge.insight
+  };
+  const staticItems = buildAdultsSessionItems(
+    items,
+    cycle * (ADULTS_SESSION_LENGTH - 1),
+    Math.max(0, ADULTS_SESSION_LENGTH - 1)
+  );
+
+  return [patternItem, ...staticItems].slice(0, ADULTS_SESSION_LENGTH);
+}
+
+
 export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -177,6 +229,14 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   const sessionItems = React.useMemo(() => {
     if (selectedMode === "QuickFocus") {
       return buildAdultsQuickFocusEnhancedSession(
+        availableItems,
+        sessionCycle,
+        readAdultSessionHistory()
+      );
+    }
+
+    if (selectedMode === "Deep") {
+      return buildAdultsPatternLogicSession(
         availableItems,
         sessionCycle,
         readAdultSessionHistory()

@@ -17,6 +17,10 @@ import {
   getAdaptiveFocusDifficulty
 } from "../shared/focusChallengeEngine";
 import {
+  buildFreshPatternChallenge,
+  getAdaptivePatternDifficulty
+} from "../shared/patternChallengeEngine";
+import {
   calculateSeniorsScore,
   type SeniorsScoreResult
 } from "./seniorsScoring";
@@ -138,6 +142,50 @@ export function buildSeniorsFocusFilterSession(
   return [focusItem, ...staticItems].slice(0, SENIORS_SESSION_LENGTH);
 }
 
+export function buildSeniorsPatternConfidenceSession(
+  items: SeniorsGameplayItem[],
+  cycle: number,
+  history: SeniorsPersistenceRecord[]
+): SeniorsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score,
+    hintUsed: entry.hintUsed
+  }));
+  const difficulty = getAdaptivePatternDifficulty("seniors", recentPerformance);
+  const patternHistory = history
+    .map((entry) => entry.challengeId)
+    .filter((id) => id.startsWith("PAT-S-"));
+  const patternChallenge = buildFreshPatternChallenge({
+    lane: "seniors",
+    baseSeed: `seniors-pattern-confidence-${cycle}-${history.length}`,
+    difficulty,
+    variationIndex: patternHistory.length + cycle,
+    recentConfigurationIds: patternHistory
+  });
+  const patternItem: SeniorsGameplayItem = {
+    challengeId: patternChallenge.configurationId,
+    category: "pattern_recognition",
+    categoryName: "Pattern Confidence",
+    stage: difficulty >= 2 ? "S2" : "S1",
+    sessionProfile: "PatternConfidence",
+    objective: "Recognize a clear pattern carefully without speed pressure",
+    prompt: patternChallenge.prompt,
+    options: patternChallenge.options,
+    correctAnswer: patternChallenge.correctAnswer,
+    hint: patternChallenge.hint,
+    insight: patternChallenge.insight
+  };
+  const staticItems = buildSeniorsSessionItems(
+    items,
+    cycle * (SENIORS_SESSION_LENGTH - 1),
+    Math.max(0, SENIORS_SESSION_LENGTH - 1)
+  );
+
+  return [patternItem, ...staticItems].slice(0, SENIORS_SESSION_LENGTH);
+}
+
+
 type SeniorsGameplayPanelProps = {
   selectedMode: SeniorsSessionModeId;
 };
@@ -172,6 +220,14 @@ export default function SeniorsGameplayPanel({
 
     if (selectedMode === "FocusAttention") {
       return buildSeniorsFocusFilterSession(
+        availableItems,
+        sessionCycle,
+        readSeniorsSessionHistory()
+      );
+    }
+
+    if (selectedMode === "PatternConfidence") {
+      return buildSeniorsPatternConfidenceSession(
         availableItems,
         sessionCycle,
         readSeniorsSessionHistory()

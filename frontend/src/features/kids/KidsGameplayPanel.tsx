@@ -18,6 +18,10 @@ import {
   getAdaptiveFocusDifficulty
 } from "../shared/focusChallengeEngine";
 import {
+  buildFreshPatternChallenge,
+  getAdaptivePatternDifficulty
+} from "../shared/patternChallengeEngine";
+import {
   calculateKidsScore,
   type KidsScoreResult
 } from "./kidsScoring";
@@ -130,6 +134,49 @@ export function buildKidsFocusFinderSession(
   return [focusItem, ...staticItems].slice(0, KIDS_SESSION_LENGTH);
 }
 
+export function buildKidsPatternBuilderSession(
+  items: KidsGameplayItem[],
+  cycle: number,
+  history: KidsSessionHistoryEntry[]
+): KidsGameplayItem[] {
+  const recentPerformance = history.slice(0, 5).map((entry) => ({
+    isCorrect: entry.isCorrect,
+    score: entry.score
+  }));
+  const difficulty = getAdaptivePatternDifficulty("kids", recentPerformance);
+  const patternHistory = history
+    .map((entry) => entry.certifiedId)
+    .filter((id) => id.startsWith("PAT-K-"));
+  const patternChallenge = buildFreshPatternChallenge({
+    lane: "kids",
+    baseSeed: `kids-pattern-builder-${cycle}-${history.length}`,
+    difficulty,
+    variationIndex: patternHistory.length + cycle,
+    recentConfigurationIds: patternHistory
+  });
+  const patternItem: KidsGameplayItem = {
+    certifiedId: patternChallenge.configurationId,
+    category: "KC4",
+    categoryName: "Pattern Builder",
+    stage: difficulty >= 3 ? "K3" : difficulty >= 2 ? "K2" : "K1",
+    sessionMode: "Challenge",
+    prompt: patternChallenge.prompt,
+    options: patternChallenge.options,
+    correctAnswer: patternChallenge.correctAnswer,
+    hint: patternChallenge.hint,
+    insight: patternChallenge.insight,
+    difficulty: `Adaptive ${difficulty}`
+  };
+  const sequenceSession = buildKidsSequenceExplorerSession(items, cycle, history);
+  const sequenceItem = sequenceSession[0];
+  const staticItem = sequenceSession[1];
+
+  return [patternItem, sequenceItem, staticItem].filter(
+    (item): item is KidsGameplayItem => Boolean(item)
+  ).slice(0, KIDS_SESSION_LENGTH);
+}
+
+
 export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
   const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -147,7 +194,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
 
   const sessionItems = React.useMemo(() => {
     if (selectedMode === "Challenge") {
-      return buildKidsSequenceExplorerSession(
+      return buildKidsPatternBuilderSession(
         availableItems,
         sessionCycle,
         loadKidsSessionHistory()
