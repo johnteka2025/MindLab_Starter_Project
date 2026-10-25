@@ -1,4 +1,8 @@
 import * as React from "react";
+import MasteryProgressPanel from "../shared/MasteryProgressPanel";
+import {
+  createMasterySessionId, masteryDomainFor, readMasteryState, saveMasterySession
+} from "../shared/masteryProgression";
 import {
   getAdultsGameplayItemsForSession,
   type AdultsGameplayItem
@@ -42,6 +46,8 @@ type AdultsGameplayPanelProps = {
 
 type AdultsRoundResult = {
   certifiedId: string;
+  categoryName: string;
+  hintUsed: boolean;
   isCorrect: boolean;
   score: number;
   elapsedSeconds: number;
@@ -296,6 +302,10 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   const [savedProfileLabel, setSavedProfileLabel] = React.useState("");
   const [sessionResults, setSessionResults] = React.useState<AdultsRoundResult[]>([]);
   const [sessionComplete, setSessionComplete] = React.useState(false);
+  const [mastery, setMastery] = React.useState(() => readMasteryState("adults"));
+  const [masterySaved, setMasterySaved] = React.useState(true);
+  const masterySessionIdRef = React.useRef(createMasterySessionId("adults"));
+  const masteryCommittedRef = React.useRef(false);
   const answerLockedRef = React.useRef(false);
   const questionStartedAtRef = React.useRef(nowMilliseconds());
 
@@ -332,6 +342,9 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
 
   React.useEffect(() => {
+    masterySessionIdRef.current = createMasterySessionId("adults");
+    masteryCommittedRef.current = false;
+    setMastery(readMasteryState("adults"));
     setSpatialMode(false);
     setSessionCycle(0);
     setQuestionIndex(0);
@@ -411,6 +424,8 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
       ...current,
       {
         certifiedId: activeItem.certifiedId,
+        categoryName: activeItem.categoryName,
+        hintUsed: hintUse > 0,
         isCorrect: answerIsCorrect,
         score: score.overallScore,
         elapsedSeconds
@@ -424,6 +439,15 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     }
 
     if (questionIndex >= sessionItems.length - 1) {
+      if (!masteryCommittedRef.current) {
+        masteryCommittedRef.current = true;
+        const result = saveMasterySession("adults", masterySessionIdRef.current, sessionResults.map(result => ({
+          configurationId: result.certifiedId, categoryName: result.categoryName,
+          isCorrect: result.isCorrect, hintUsed: result.hintUsed
+        })));
+        setMastery(result.state);
+        setMasterySaved(result.saved);
+      }
       setSessionComplete(true);
       return;
     }
@@ -433,6 +457,8 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   }
 
   function startSpatialSession() {
+    masterySessionIdRef.current = createMasterySessionId("adults");
+    masteryCommittedRef.current = false;
     setSpatialMode(true);
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
@@ -442,6 +468,8 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   }
 
   function handleReplay() {
+    masterySessionIdRef.current = createMasterySessionId("adults");
+    masteryCommittedRef.current = false;
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
     setSessionResults([]);
@@ -514,6 +542,9 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
               <strong style={{ fontSize: "22px" }}>{totalSeconds}s</strong>
             </div>
           </div>
+
+          <MasteryProgressPanel state={mastery} saved={masterySaved}
+            focus={masteryDomainFor(sessionResults[0]?.categoryName ?? "", sessionResults[0]?.certifiedId ?? "")} />
 
           <button
             type="button"

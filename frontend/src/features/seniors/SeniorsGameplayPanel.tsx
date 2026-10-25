@@ -1,4 +1,8 @@
 import * as React from "react";
+import MasteryProgressPanel from "../shared/MasteryProgressPanel";
+import {
+  createMasterySessionId, masteryDomainFor, readMasteryState, saveMasterySession
+} from "../shared/masteryProgression";
 import {
   getSeniorsGameplayItemsForSession,
   type SeniorsGameplayItem
@@ -40,6 +44,7 @@ import SeniorsPostSessionInsightPanel from "./SeniorsPostSessionInsightPanel";
 import type { SeniorsSessionModeId } from "./seniorsSessionModes";
 
 const SENIORS_SESSION_LENGTH = 3;
+type MasterySeniorsRoundResult = SeniorsSessionRoundResult & { hintUsed: boolean };
 
 function nowMilliseconds(): number {
   if (typeof performance !== "undefined" && typeof performance.now === "function") {
@@ -268,8 +273,12 @@ export default function SeniorsGameplayPanel({
   const [selectedAnswer, setSelectedAnswer] = React.useState("");
   const [hintVisible, setHintVisible] = React.useState(false);
   const [roundScore, setRoundScore] = React.useState<SeniorsScoreResult | null>(null);
-  const [sessionResults, setSessionResults] = React.useState<SeniorsSessionRoundResult[]>([]);
+  const [sessionResults, setSessionResults] = React.useState<MasterySeniorsRoundResult[]>([]);
   const [sessionComplete, setSessionComplete] = React.useState(false);
+  const [mastery, setMastery] = React.useState(() => readMasteryState("seniors"));
+  const [masterySaved, setMasterySaved] = React.useState(true);
+  const masterySessionIdRef = React.useRef(createMasterySessionId("seniors"));
+  const masteryCommittedRef = React.useRef(false);
 
   const answerLockedRef = React.useRef(false);
   const questionStartedAtRef = React.useRef(nowMilliseconds());
@@ -315,6 +324,9 @@ export default function SeniorsGameplayPanel({
   const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
 
   React.useEffect(() => {
+    masterySessionIdRef.current = createMasterySessionId("seniors");
+    masteryCommittedRef.current = false;
+    setMastery(readMasteryState("seniors"));
     setSpatialMode(false);
     setSessionCycle(0);
     setQuestionIndex(0);
@@ -379,7 +391,8 @@ export default function SeniorsGameplayPanel({
         isCorrect: answerIsCorrect,
         score: scoreResult.overallScore,
         elapsedSeconds,
-        practiceCategory: activeItem.categoryName
+        practiceCategory: activeItem.categoryName,
+        hintUsed: hintVisible
       }
     ]);
   }
@@ -390,6 +403,15 @@ export default function SeniorsGameplayPanel({
     }
 
     if (questionIndex >= sessionItems.length - 1) {
+      if (!masteryCommittedRef.current) {
+        masteryCommittedRef.current = true;
+        const result = saveMasterySession("seniors", masterySessionIdRef.current, sessionResults.map(result => ({
+          configurationId: result.challengeId, categoryName: result.practiceCategory,
+          isCorrect: result.isCorrect, hintUsed: result.hintUsed
+        })));
+        setMastery(result.state);
+        setMasterySaved(result.saved);
+      }
       setSessionComplete(true);
       return;
     }
@@ -399,6 +421,8 @@ export default function SeniorsGameplayPanel({
   }
 
   function startSpatialSession() {
+    masterySessionIdRef.current = createMasterySessionId("seniors");
+    masteryCommittedRef.current = false;
     setSpatialMode(true);
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
@@ -408,6 +432,8 @@ export default function SeniorsGameplayPanel({
   }
 
   function handleReplay() {
+    masterySessionIdRef.current = createMasterySessionId("seniors");
+    masteryCommittedRef.current = false;
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
     setSessionResults([]);
@@ -493,6 +519,9 @@ export default function SeniorsGameplayPanel({
           <p style={{ margin: "18px 0 0", fontSize: "19px", lineHeight: 1.6, color: "#334155" }}>
             <strong>Recommended next step:</strong> {summary.recommendedNextStep}
           </p>
+
+          <MasteryProgressPanel state={mastery} saved={masterySaved}
+            focus={masteryDomainFor(sessionResults[0]?.practiceCategory ?? "", sessionResults[0]?.challengeId ?? "")} />
 
           <button
             type="button"

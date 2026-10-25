@@ -1,4 +1,8 @@
 import * as React from "react";
+import MasteryProgressPanel from "../shared/MasteryProgressPanel";
+import {
+  createMasterySessionId, masteryDomainFor, readMasteryState, saveMasterySession
+} from "../shared/masteryProgression";
 import {
   getKidsGameplayItemsForSession,
   type KidsGameplayItem
@@ -43,6 +47,8 @@ type KidsGameplayPanelProps = {
 
 type KidsRoundResult = {
   certifiedId: string;
+  categoryName: string;
+  hintUsed: boolean;
   isCorrect: boolean;
   score: number;
 };
@@ -255,6 +261,10 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
   const [roundScore, setRoundScore] = React.useState<KidsScoreResult | null>(null);
   const [sessionResults, setSessionResults] = React.useState<KidsRoundResult[]>([]);
   const [sessionComplete, setSessionComplete] = React.useState(false);
+  const [mastery, setMastery] = React.useState(() => readMasteryState("kids"));
+  const [masterySaved, setMasterySaved] = React.useState(true);
+  const masterySessionIdRef = React.useRef(createMasterySessionId("kids"));
+  const masteryCommittedRef = React.useRef(false);
   const answerLockedRef = React.useRef(false);
 
   const availableItems = React.useMemo(
@@ -290,6 +300,9 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
   const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
 
   React.useEffect(() => {
+    masterySessionIdRef.current = createMasterySessionId("kids");
+    masteryCommittedRef.current = false;
+    setMastery(readMasteryState("kids"));
     setSpatialMode(false);
     setSessionCycle(0);
     setQuestionIndex(0);
@@ -329,6 +342,8 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
       ...current,
       {
         certifiedId: activeItem.certifiedId,
+        categoryName: activeItem.categoryName,
+        hintUsed: hintVisible,
         isCorrect: answerIsCorrect,
         score: score.totalScore
       }
@@ -363,6 +378,15 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
     }
 
     if (questionIndex >= sessionItems.length - 1) {
+      if (!masteryCommittedRef.current) {
+        masteryCommittedRef.current = true;
+        const result = saveMasterySession("kids", masterySessionIdRef.current, sessionResults.map(result => ({
+          configurationId: result.certifiedId, categoryName: result.categoryName,
+          isCorrect: result.isCorrect, hintUsed: result.hintUsed
+        })));
+        setMastery(result.state);
+        setMasterySaved(result.saved);
+      }
       setSessionComplete(true);
       return;
     }
@@ -372,6 +396,8 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
   }
 
   function startSpatialSession() {
+    masterySessionIdRef.current = createMasterySessionId("kids");
+    masteryCommittedRef.current = false;
     setSpatialMode(true);
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
@@ -381,6 +407,8 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
   }
 
   function handleReplay() {
+    masterySessionIdRef.current = createMasterySessionId("kids");
+    masteryCommittedRef.current = false;
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
     setSessionResults([]);
@@ -448,6 +476,9 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
               <strong style={{ fontSize: "22px" }}>{averageScore}</strong>
             </div>
           </div>
+
+          <MasteryProgressPanel state={mastery} saved={masterySaved}
+            focus={masteryDomainFor(sessionResults[0]?.categoryName ?? "", sessionResults[0]?.certifiedId ?? "")} />
 
           <button
             type="button"
