@@ -26,6 +26,10 @@ import {
   getAdaptivePlanningDifficulty
 } from "../shared/planningChallengeEngine";
 import {
+  buildFreshSpatialChallenge,
+  getAdaptiveSpatialDifficulty
+} from "../shared/spatialChallengeEngine";
+import {
   calculateAdultsScore,
   type AdultsScoreResult
 } from "./adultsScoring";
@@ -254,8 +258,36 @@ export function buildAdultsStrategicDecisionsSession(
 }
 
 
+export function buildAdultsSpatialReasoningSession(
+  cycle: number,
+  history: AdultSessionHistoryItem[]
+): AdultsGameplayItem[] {
+  const recent = history.slice(0,5).map((entry) => ({
+    isCorrect: entry.isCorrect, score: entry.score
+  }));
+  const difficulty = getAdaptiveSpatialDifficulty("adults", recent);
+  const exposed = history.map((entry) => entry.certifiedId).filter((id) => id.startsWith("SPC-A-"));
+  return Array.from({length:3}, (_,index) => {
+    const challenge = buildFreshSpatialChallenge({
+      lane: "adults", baseSeed: `adults-spatial-${cycle}-${history.length}-${index}`,
+      difficulty, variationIndex: cycle*3+index, recentConfigurationIds: exposed
+    });
+    return {
+    certifiedId: challenge.configurationId, category: "AC3", categoryName: "Spatial Reasoning",
+    stage: difficulty >= 3 ? "A3" : difficulty >= 2 ? "A2" : "A1",
+    sessionProfile: "Deep", promptType: "VisualSpatial",
+    objective: "Reason about geometry and navigate visual maps",
+    prompt: challenge.prompt, options: challenge.options,
+    correctAnswer: challenge.correctAnswer, answerFormat: "SingleChoice",
+    difficulty: `Adaptive ${difficulty}`, timerPolicy: "OffByDefault",
+    hintPolicy: "StrategyCueThenStructureCue", hint: challenge.hint, insight: challenge.insight
+    };
+  });
+}
+
 export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
+  const [spatialMode, setSpatialMode] = React.useState(false);
   const [questionIndex, setQuestionIndex] = React.useState(0);
   const [selectedAnswer, setSelectedAnswer] = React.useState("");
   const [hintVisible, setHintVisible] = React.useState(false);
@@ -273,6 +305,9 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
   );
 
   const sessionItems = React.useMemo(() => {
+    if (spatialMode && selectedMode === "Deep") {
+      return buildAdultsSpatialReasoningSession(sessionCycle, readAdultSessionHistory());
+    }
     if (selectedMode === "QuickFocus") {
       return buildAdultsQuickFocusEnhancedSession(
         availableItems,
@@ -290,13 +325,14 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     }
 
     return buildAdultsSessionItems(availableItems, sessionCycle);
-  }, [availableItems, selectedMode, sessionCycle]);
+  }, [availableItems, selectedMode, sessionCycle, spatialMode]);
 
   const activeItem = sessionItems[questionIndex] ?? null;
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
 
   React.useEffect(() => {
+    setSpatialMode(false);
     setSessionCycle(0);
     setQuestionIndex(0);
     setSelectedAnswer("");
@@ -396,6 +432,15 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
     resetQuestionState();
   }
 
+  function startSpatialSession() {
+    setSpatialMode(true);
+    setSessionCycle((current) => current + 1);
+    setQuestionIndex(0);
+    setSessionResults([]);
+    setSessionComplete(false);
+    resetQuestionState();
+  }
+
   function handleReplay() {
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
@@ -422,6 +467,14 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
 
     return (
       <section aria-labelledby="adults-session-result-heading" style={{ marginTop: "28px" }}>
+        {!spatialMode && selectedMode === "Deep" && (
+          <button type="button" onClick={startSpatialSession}
+            style={{ margin: "12px 0", padding: "13px 18px", borderRadius: "12px",
+              border: "2px solid #1e40af", background: "#eff6ff", color: "#1e3a8a",
+              fontWeight: 700, cursor: "pointer" }}>
+            Start Spatial Reasoning (3 visual puzzles)
+          </button>
+        )}
         <article
           style={{
             border: "1px solid #c7d2fe",
@@ -488,6 +541,14 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
 
   return (
     <section aria-labelledby="adults-gameplay-heading" style={{ marginTop: "28px" }}>
+        {!spatialMode && selectedMode === "Deep" && (
+          <button type="button" onClick={startSpatialSession}
+            style={{ margin: "12px 0", padding: "13px 18px", borderRadius: "12px",
+              border: "2px solid #1e40af", background: "#eff6ff", color: "#1e3a8a",
+              fontWeight: 700, cursor: "pointer" }}>
+            Start Spatial Reasoning (3 visual puzzles)
+          </button>
+        )}
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
           Challenge {questionIndex + 1} of {sessionItems.length} - {activeItem.categoryName} - {activeItem.stage}
@@ -508,7 +569,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
         <p style={{ margin: "0 0 10px", color: "#475569", lineHeight: 1.6 }}>
           {activeItem.objective}
         </p>
-        <h3 style={{ margin: "0 0 18px", fontSize: "22px", lineHeight: 1.3 }}>
+        <h3 style={{ whiteSpace: spatialMode ? "pre-wrap" : "normal", fontFamily: spatialMode ? "ui-monospace, monospace" : "inherit", margin: "0 0 18px", fontSize: "22px", lineHeight: 1.3 }}>
           {activeItem.prompt}
         </h3>
 
@@ -533,7 +594,7 @@ export default function AdultsGameplayPanel({ selectedMode }: AdultsGameplayPane
                   cursor: hasAnswered ? "default" : "pointer"
                 }}
               >
-                {option}
+                <span style={{ whiteSpace: spatialMode ? "pre" : "normal", fontFamily: spatialMode ? "ui-monospace, monospace" : "inherit", display: "block" }}>{option}</span>
               </button>
             );
           })}

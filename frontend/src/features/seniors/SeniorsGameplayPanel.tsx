@@ -25,6 +25,10 @@ import {
   getAdaptivePlanningDifficulty
 } from "../shared/planningChallengeEngine";
 import {
+  buildFreshSpatialChallenge,
+  getAdaptiveSpatialDifficulty
+} from "../shared/spatialChallengeEngine";
+import {
   calculateSeniorsScore,
   type SeniorsScoreResult
 } from "./seniorsScoring";
@@ -231,10 +235,35 @@ type SeniorsGameplayPanelProps = {
   selectedMode: SeniorsSessionModeId;
 };
 
+export function buildSeniorsEverydayNavigationSession(
+  cycle: number,
+  history: SeniorsPersistenceRecord[]
+): SeniorsGameplayItem[] {
+  const recent = history.slice(0,5).map((entry) => ({
+    isCorrect: entry.isCorrect, score: entry.score, hintUsed: entry.hintUsed
+  }));
+  const difficulty = getAdaptiveSpatialDifficulty("seniors", recent);
+  const exposed = history.map((entry) => entry.challengeId).filter((id) => id.startsWith("SPC-S-"));
+  return Array.from({length:3}, (_,index) => {
+    const challenge = buildFreshSpatialChallenge({
+      lane: "seniors", baseSeed: `seniors-spatial-${cycle}-${history.length}-${index}`,
+      difficulty, variationIndex: cycle*3+index, recentConfigurationIds: exposed
+    });
+    return {
+    challengeId: challenge.configurationId, category: "spatial", categoryName: "Everyday Navigation",
+    stage: difficulty >= 3 ? "S3" : difficulty >= 2 ? "S2" : "S1",
+    sessionProfile: "PatternConfidence", objective: "Spatial navigation without speed pressure",
+    prompt: challenge.prompt, options: challenge.options, correctAnswer: challenge.correctAnswer,
+    hint: challenge.hint, insight: challenge.insight
+    };
+  });
+}
+
 export default function SeniorsGameplayPanel({
   selectedMode
 }: SeniorsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
+  const [spatialMode, setSpatialMode] = React.useState(false);
   const [questionIndex, setQuestionIndex] = React.useState(0);
   const [selectedAnswer, setSelectedAnswer] = React.useState("");
   const [hintVisible, setHintVisible] = React.useState(false);
@@ -251,6 +280,9 @@ export default function SeniorsGameplayPanel({
   );
 
   const sessionItems = React.useMemo(() => {
+    if (spatialMode && selectedMode === "PatternConfidence") {
+      return buildSeniorsEverydayNavigationSession(sessionCycle, readSeniorsSessionHistory());
+    }
     if (selectedMode === "GuidedMemory") {
       return buildSeniorsGuidedRecallSession(
         availableItems,
@@ -276,13 +308,14 @@ export default function SeniorsGameplayPanel({
     }
 
     return buildSeniorsSessionItems(availableItems, sessionCycle);
-  }, [availableItems, selectedMode, sessionCycle]);
+  }, [availableItems, selectedMode, sessionCycle, spatialMode]);
 
   const activeItem = sessionItems[questionIndex] ?? null;
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
 
   React.useEffect(() => {
+    setSpatialMode(false);
     setSessionCycle(0);
     setQuestionIndex(0);
     setSelectedAnswer("");
@@ -365,6 +398,15 @@ export default function SeniorsGameplayPanel({
     resetQuestionState();
   }
 
+  function startSpatialSession() {
+    setSpatialMode(true);
+    setSessionCycle((current) => current + 1);
+    setQuestionIndex(0);
+    setSessionResults([]);
+    setSessionComplete(false);
+    resetQuestionState();
+  }
+
   function handleReplay() {
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
@@ -389,6 +431,14 @@ export default function SeniorsGameplayPanel({
 
     return (
       <section aria-labelledby="seniors-session-result-heading" style={{ marginTop: "30px" }}>
+        {!spatialMode && selectedMode === "PatternConfidence" && (
+          <button type="button" onClick={startSpatialSession}
+            style={{ margin: "12px 0", padding: "13px 18px", borderRadius: "12px",
+              border: "2px solid #1e40af", background: "#eff6ff", color: "#1e3a8a",
+              fontWeight: 700, cursor: "pointer" }}>
+            Start Everyday Navigation (3 visual puzzles)
+          </button>
+        )}
         <article
           style={{
             border: "1px solid #bbd7cc",
@@ -473,6 +523,14 @@ export default function SeniorsGameplayPanel({
 
   return (
     <section aria-labelledby="seniors-gameplay-heading" style={{ marginTop: "30px" }}>
+        {!spatialMode && selectedMode === "PatternConfidence" && (
+          <button type="button" onClick={startSpatialSession}
+            style={{ margin: "12px 0", padding: "13px 18px", borderRadius: "12px",
+              border: "2px solid #1e40af", background: "#eff6ff", color: "#1e3a8a",
+              fontWeight: 700, cursor: "pointer" }}>
+            Start Everyday Navigation (3 visual puzzles)
+          </button>
+        )}
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 8px", color: "#475569", fontSize: "16px" }}>
           Challenge {questionIndex + 1} of {sessionItems.length} - {activeItem.categoryName}
@@ -493,7 +551,7 @@ export default function SeniorsGameplayPanel({
         <p style={{ margin: "0 0 12px", color: "#475569", fontSize: "18px", lineHeight: 1.6 }}>
           {activeItem.objective}
         </p>
-        <h3 style={{ margin: "0 0 20px", fontSize: "24px", lineHeight: 1.4 }}>
+        <h3 style={{ whiteSpace: spatialMode ? "pre-wrap" : "normal", fontFamily: spatialMode ? "ui-monospace, monospace" : "inherit", margin: "0 0 20px", fontSize: "24px", lineHeight: 1.4 }}>
           {activeItem.prompt}
         </h3>
 
@@ -520,7 +578,7 @@ export default function SeniorsGameplayPanel({
                   cursor: hasAnswered ? "default" : "pointer"
                 }}
               >
-                {option}
+                <span style={{ whiteSpace: spatialMode ? "pre" : "normal", fontFamily: spatialMode ? "ui-monospace, monospace" : "inherit", display: "block" }}>{option}</span>
               </button>
             );
           })}

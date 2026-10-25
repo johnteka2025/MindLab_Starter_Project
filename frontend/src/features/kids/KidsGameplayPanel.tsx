@@ -26,6 +26,10 @@ import {
   getAdaptivePlanningDifficulty
 } from "../shared/planningChallengeEngine";
 import {
+  buildFreshSpatialChallenge,
+  getAdaptiveSpatialDifficulty
+} from "../shared/spatialChallengeEngine";
+import {
   calculateKidsScore,
   type KidsScoreResult
 } from "./kidsScoring";
@@ -218,8 +222,33 @@ export function buildKidsPathPlannerSession(
 }
 
 
+export function buildKidsShapeNavigatorSession(
+  cycle: number,
+  history: KidsSessionHistoryEntry[]
+): KidsGameplayItem[] {
+  const recent = history.slice(0,5).map((entry) => ({
+    isCorrect: entry.isCorrect, score: entry.score
+  }));
+  const difficulty = getAdaptiveSpatialDifficulty("kids", recent);
+  const exposed = history.map((entry) => entry.certifiedId).filter((id) => id.startsWith("SPC-K-"));
+  return Array.from({length:3}, (_,index) => {
+    const challenge = buildFreshSpatialChallenge({
+      lane: "kids", baseSeed: `kids-spatial-${cycle}-${history.length}-${index}`,
+      difficulty, variationIndex: cycle*3+index, recentConfigurationIds: exposed
+    });
+    return {
+    certifiedId: challenge.configurationId, category: "KC4", categoryName: "Shape Navigator",
+    stage: difficulty >= 3 ? "K3" : difficulty >= 2 ? "K2" : "K1",
+    sessionMode: "Challenge", prompt: challenge.prompt, options: challenge.options,
+    correctAnswer: challenge.correctAnswer, hint: challenge.hint, insight: challenge.insight,
+    difficulty: `Adaptive ${difficulty}`
+    };
+  });
+}
+
 export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: KidsGameplayPanelProps) {
   const [sessionCycle, setSessionCycle] = React.useState(0);
+  const [spatialMode, setSpatialMode] = React.useState(false);
   const [questionIndex, setQuestionIndex] = React.useState(0);
   const [selectedAnswer, setSelectedAnswer] = React.useState("");
   const [hintVisible, setHintVisible] = React.useState(false);
@@ -234,6 +263,9 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
   );
 
   const sessionItems = React.useMemo(() => {
+    if (spatialMode && selectedMode === "Challenge") {
+      return buildKidsShapeNavigatorSession(sessionCycle, loadKidsSessionHistory());
+    }
     if (selectedMode === "Challenge") {
       return buildKidsPathPlannerSession(
         availableItems,
@@ -251,13 +283,14 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
     }
 
     return buildKidsSessionItems(availableItems, sessionCycle);
-  }, [availableItems, selectedMode, sessionCycle]);
+  }, [availableItems, selectedMode, sessionCycle, spatialMode]);
 
   const activeItem = sessionItems[questionIndex] ?? null;
   const hasAnswered = selectedAnswer.length > 0;
   const isCorrect = Boolean(activeItem && selectedAnswer === activeItem.correctAnswer);
 
   React.useEffect(() => {
+    setSpatialMode(false);
     setSessionCycle(0);
     setQuestionIndex(0);
     setSelectedAnswer("");
@@ -338,6 +371,15 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
     resetQuestionState();
   }
 
+  function startSpatialSession() {
+    setSpatialMode(true);
+    setSessionCycle((current) => current + 1);
+    setQuestionIndex(0);
+    setSessionResults([]);
+    setSessionComplete(false);
+    resetQuestionState();
+  }
+
   function handleReplay() {
     setSessionCycle((current) => current + 1);
     setQuestionIndex(0);
@@ -363,6 +405,14 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
 
     return (
       <section aria-labelledby="kids-session-result-heading" style={{ marginTop: "28px" }}>
+        {!spatialMode && selectedMode === "Challenge" && (
+          <button type="button" onClick={startSpatialSession}
+            style={{ margin: "12px 0", padding: "13px 18px", borderRadius: "12px",
+              border: "2px solid #1e40af", background: "#eff6ff", color: "#1e3a8a",
+              fontWeight: 700, cursor: "pointer" }}>
+            Start Shape Navigator (3 visual puzzles)
+          </button>
+        )}
         <article
           style={{
             border: "1px solid #bbf7d0",
@@ -425,6 +475,14 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
 
   return (
     <section aria-labelledby="kids-gameplay-heading" style={{ marginTop: "28px" }}>
+        {!spatialMode && selectedMode === "Challenge" && (
+          <button type="button" onClick={startSpatialSession}
+            style={{ margin: "12px 0", padding: "13px 18px", borderRadius: "12px",
+              border: "2px solid #1e40af", background: "#eff6ff", color: "#1e3a8a",
+              fontWeight: 700, cursor: "pointer" }}>
+            Start Shape Navigator (3 visual puzzles)
+          </button>
+        )}
       <div style={{ marginBottom: "16px" }}>
         <p style={{ margin: "0 0 6px", color: "#64748b", fontSize: "14px" }}>
           Challenge {questionIndex + 1} of {sessionItems.length} - {activeItem.categoryName} - {activeItem.stage}
@@ -446,7 +504,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
           Pick the best answer. Take your time.
         </p>
 
-        <h3 style={{ margin: "0 0 18px", fontSize: "22px", lineHeight: 1.35 }}>
+        <h3 style={{ whiteSpace: spatialMode ? "pre-wrap" : "normal", fontFamily: spatialMode ? "ui-monospace, monospace" : "inherit", margin: "0 0 18px", fontSize: "22px", lineHeight: 1.35 }}>
           {activeItem.prompt}
         </h3>
 
@@ -472,7 +530,7 @@ export default function KidsGameplayPanel({ selectedMode, onProgressUpdated }: K
                   fontSize: "16px"
                 }}
               >
-                {option}
+                <span style={{ whiteSpace: spatialMode ? "pre" : "normal", fontFamily: spatialMode ? "ui-monospace, monospace" : "inherit", display: "block" }}>{option}</span>
               </button>
             );
           })}
