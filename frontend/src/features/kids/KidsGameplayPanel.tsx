@@ -232,11 +232,12 @@ export function buildKidsShapeNavigatorSession(
   cycle: number,
   history: KidsSessionHistoryEntry[]
 ): KidsGameplayItem[] {
-  const recent = history.slice(0,5).map((entry) => ({
+  const spatialHistory = history.filter((entry) => entry.certifiedId.startsWith("SPC-K-"));
+  const recent = spatialHistory.slice(0, 5).map((entry) => ({
     isCorrect: entry.isCorrect, score: entry.score
   }));
   const difficulty = getAdaptiveSpatialDifficulty("kids", recent);
-  const exposed = history.map((entry) => entry.certifiedId).filter((id) => id.startsWith("SPC-K-"));
+  const exposed = spatialHistory.map((entry) => entry.certifiedId);
   return Array.from({length:3}, (_,index) => {
     const challenge = buildFreshSpatialChallenge({
       lane: "kids", baseSeed: `kids-spatial-${cycle}-${history.length}-${index}`,

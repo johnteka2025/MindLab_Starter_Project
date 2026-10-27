@@ -268,11 +268,12 @@ export function buildAdultsSpatialReasoningSession(
   cycle: number,
   history: AdultSessionHistoryItem[]
 ): AdultsGameplayItem[] {
-  const recent = history.slice(0,5).map((entry) => ({
+  const spatialHistory = history.filter((entry) => entry.certifiedId.startsWith("SPC-A-"));
+  const recent = spatialHistory.slice(0, 5).map((entry) => ({
     isCorrect: entry.isCorrect, score: entry.score
   }));
   const difficulty = getAdaptiveSpatialDifficulty("adults", recent);
-  const exposed = history.map((entry) => entry.certifiedId).filter((id) => id.startsWith("SPC-A-"));
+  const exposed = spatialHistory.map((entry) => entry.certifiedId);
   return Array.from({length:3}, (_,index) => {
     const challenge = buildFreshSpatialChallenge({
       lane: "adults", baseSeed: `adults-spatial-${cycle}-${history.length}-${index}`,

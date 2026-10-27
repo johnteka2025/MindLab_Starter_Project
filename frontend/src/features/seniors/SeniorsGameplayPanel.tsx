@@ -244,11 +244,12 @@ export function buildSeniorsEverydayNavigationSession(
   cycle: number,
   history: SeniorsPersistenceRecord[]
 ): SeniorsGameplayItem[] {
-  const recent = history.slice(0,5).map((entry) => ({
+  const spatialHistory = history.filter((entry) => entry.challengeId.startsWith("SPC-S-"));
+  const recent = spatialHistory.slice(0, 5).map((entry) => ({
     isCorrect: entry.isCorrect, score: entry.score, hintUsed: entry.hintUsed
   }));
   const difficulty = getAdaptiveSpatialDifficulty("seniors", recent);
-  const exposed = history.map((entry) => entry.challengeId).filter((id) => id.startsWith("SPC-S-"));
+  const exposed = spatialHistory.map((entry) => entry.challengeId);
   return Array.from({length:3}, (_,index) => {
     const challenge = buildFreshSpatialChallenge({
       lane: "seniors", baseSeed: `seniors-spatial-${cycle}-${history.length}-${index}`,
